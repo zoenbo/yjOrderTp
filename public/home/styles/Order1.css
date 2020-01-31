@@ -1,0 +1,137 @@
+@charset "utf-8";
+*{
+	margin:0;
+	padding:0;
+}
+select optgroup{
+	font-style:normal;
+}
+.order{
+	margin:0 auto;
+}
+.order div.left{
+	width:614px;
+	float:left;
+}
+.order div.left dl{
+	width:530px;
+	margin:0 auto;
+	padding:15px 0;
+}
+.order div.left dl dd{
+	line-height:30px;
+	clear:both;
+}
+.order div.left dl dd.pro span.protext,.order div.left dl dd.pro span.prolist{
+	float:left;
+}
+.order div.left dl dd.pro span.prolist{
+	width:450px;
+}
+.order div.left dl dd.pro label{
+	display:inline-block;
+}
+.order div.left dl dd input.text{
+	width:443px;
+	height:19px;
+	border:1px solid #666;
+}
+.order div.left dl dd input.text2{
+	width:120px;
+	height:19px;
+	border:1px solid #666;
+}
+.order div.left dl dd.textarea{
+	height:87px;
+	margin:5px 0;
+}
+.order div.left dl dd.textarea span{
+	vertical-align:top;
+}
+.order div.left dl dd.textarea textarea{
+	width:443px;
+	height:85px;
+	border:1px solid #666;
+	resize:none;
+}
+.order div.left dl dd.submit{
+	text-align:center;
+	margin:10px 0;
+}
+.order div.left dl dd.submit input{
+	width:200px;
+	height:40px;
+	border:none;
+	cursor:pointer;
+	color:#FFF;
+	font-weight:bold;
+	font:120% Microsoft YaHei, 微软雅黑, SimSun, 宋体, Arial, Verdana;
+}
+.order div.left dl dd.smsverify input.button{
+	border:none;
+	cursor:pointer;
+	color:#FFF;
+	font-weight:bold;
+	font:100% Microsoft YaHei, 微软雅黑, SimSun, 宋体, Arial, Verdana;
+}
+.order div.left dl dd.submit img{
+	cursor:pointer;
+}
+.order div.left dl dd select{
+	height:25px;
+	font-size:14px;
+	border:1px solid #666;
+}
+.order div.left dl dd.pro select,.order div.left dl #aa select{
+	width:445px;
+}
+.order div.left dl dd.captcha{
+	height:auto;
+}
+.order div.left dl dd.captcha span{
+	vertical-align:top;
+}
+.order div.left dl dd.captcha img{
+	cursor:pointer;
+}
+.order div.left dl dd.info{
+	border:2px solid red;
+	text-align:center;
+}
+.order div.left dl .attr dd span.left,.order div.left dl .attr dd span.right{
+	float:left;
+}
+.order div.left dl .attr dd span.right{
+	width:450px;
+}
+.order div.left dl .attr dd span.right label{
+	margin:0 5px 0 0;
+	display:inline-block;
+}
+.order div.right{
+	width:335px;
+	float:right;
+}
+.order div.right .list{
+	overflow:hidden;
+	width:90%;
+	height:500px;
+	margin:20px auto;
+	font-size:12px;
+	color:#666;
+}
+.order div.right .list dl{
+	margin:0 0 10px 0;
+	line-height:20px;
+	border-bottom:1px dashed #999;
+}
+.order div.left .buy,.order div.right .send{
+	padding:8px 0 6px 0;
+	height:50px;
+}
+.order div.left .buy{
+	background:url(../images/buy.gif) no-repeat left center;
+}
+.order div.right .send{
+	background:url(../images/send.gif) no-repeat left center;
+}

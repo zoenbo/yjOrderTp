@@ -1,0 +1,17 @@
+@charset "utf-8";
+.list table tr th.name,.list table tr th.template{
+	width:130px;
+}
+.list table tr th.captcha,.list table tr th.sid,.list table tr th.send,.list table tr th.qq,.list table tr th.selected,.list table tr th.state,.list table tr th.ordersearch{
+	width:80px;
+}
+.list table tr th.date{
+	width:160px;
+}
+.list table tr th.control{
+	width:100px;
+}
+
+.form table tr.pid1 select,.form table tr.pid2 select{
+	height:120px;
+}

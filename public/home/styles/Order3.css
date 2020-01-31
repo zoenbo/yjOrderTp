@@ -1,0 +1,123 @@
+@charset "utf-8";
+*{
+	margin:0;
+	padding:0;
+}
+select optgroup{
+	font-style:normal;
+}
+.center{
+	text-align:center;
+}
+.order dl{
+	min-width:286px;
+	margin:0 auto;
+	font-size:14px;
+}
+.order dl dd{
+	line-height:30px;
+}
+.order dl dd span.left{
+	width:25%;
+	display:inline-block;
+	text-align:right;
+	padding-right:2%;
+	overflow:;
+	vertical-align:top;
+}
+.order dl .attr dd span.right label{
+	margin:0 10px 0 0;
+	display:inline-block;
+}
+.order dl dd span.right{
+	width:70%;
+	display:inline-block;
+}
+.order dl dd input.text{
+	width:100%;
+	height:19px;
+	border:1px solid #666;
+}
+.order dl dd input.text2{
+	width:21.82%;
+	height:19px;
+	border:1px solid #666;
+}
+.order dl dd.textarea{
+	height:87px;
+	margin:5px 0;
+}
+.order dl dd.textarea span{
+	vertical-align:top;
+}
+.order dl dd.textarea textarea{
+	width:100%;
+	height:85px;
+	border:1px solid #666;
+	resize:none;
+}
+.order dl dd.pay span.left{
+	vertical-align:top;
+}
+.order dl dd.pay label{
+	display:inline-block
+}
+.order dl dd.submit{
+	text-align:center;
+	margin:10px 0 25px 0;
+}
+.order dl dd.submit input{
+	width:200px;
+	height:40px;
+	border:none;
+	cursor:pointer;
+	color:#FFF;
+	font-weight:bold;
+	font:120% Microsoft YaHei, 微软雅黑, SimSun, 宋体, Arial, Verdana;
+}
+.order dl dd.smsverify input.button{
+	border:none;
+	cursor:pointer;
+	color:#FFF;
+	font-weight:bold;
+	font:100% Microsoft YaHei, 微软雅黑, SimSun, 宋体, Arial, Verdana;
+}
+.order dl dd.submit img{
+	cursor:pointer;
+}
+.order dl dd select{
+	height:25px;
+	font-size:14px;
+	border:1px solid #666;
+}
+.order dl dd.pro select,.order dl #aa select{
+	width:100%;
+}
+.order dl dd.info{
+	border:2px solid red;
+	text-align:center;
+	width:95%;
+	margin:0 auto;
+}
+.order dl dd.captcha img{
+	cursor:pointer;
+}
+.order .buy{
+	padding:8px 0 6px 0;
+	height:50px;
+	background:url(../images/buy.gif) no-repeat left center / 320px;
+}
+.order .new{
+	background:#F5FDB9;
+	line-height:24px;
+	text-align:center;
+	font-size:13px;
+}
+.order .buy2{
+	padding:8px 0 6px 43px;
+	height:30px;
+	line-height:30px;
+	font-size:24px;
+	background:#fc4400 url(../images/cart.png) no-repeat scroll 5px center / 40px 40px;
+	color:#FFF;
+}

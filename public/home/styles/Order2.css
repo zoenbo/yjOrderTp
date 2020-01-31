@@ -1,0 +1,112 @@
+@charset "utf-8";
+*{
+	margin:0;
+	padding:0;
+}
+select optgroup{
+	font-style:normal;
+}
+.order{
+	width:600px;
+	margin:0 auto;
+	padding:70px 0 0 0;
+	font-weight:bold;
+	background:url(../images/order_bg.jpg) no-repeat center top;
+}
+.order dl{
+	width:560px;
+	margin:0 auto;
+}
+.order dl dd{
+	height:30px;
+	line-height:30px;
+	clear:both;
+}
+.order dl dd.pro{
+	height:auto;
+}
+.order dl dd.pro span.protext,.order dl dd.pro span.prolist{
+	float:left;
+}
+.order dl dd.pro span.prolist{
+	width:450px;
+}
+.order dl dd input.text{
+	width:443px;
+	height:19px;
+	border:1px solid #666;
+}
+.order dl dd input.text2{
+	width:120px;
+	height:19px;
+	border:1px solid #666;
+}
+.order dl dd.textarea{
+	height:87px;
+	margin:5px 0;
+}
+.order dl dd.textarea span{
+	vertical-align:top;
+}
+.order dl dd.textarea textarea{
+	width:443px;
+	height:85px;
+	border:1px solid #666;
+	resize:none;
+}
+.order dl dd.submit{
+	text-align:center;
+	margin:10px 0 0 0;
+}
+.order dl dd.submit input{
+	width:200px;
+	height:40px;
+	border:none;
+	cursor:pointer;
+	color:#FFF;
+	background:#6EC90F;
+	font-weight:bold;
+	font:120% Microsoft YaHei, 微软雅黑, SimSun, 宋体, Arial, Verdana;
+}
+.order dl dd.smsverify input.button{
+	border:none;
+	cursor:pointer;
+	color:#FFF;
+	background:#6EC90F;
+	font-weight:bold;
+	font:100% Microsoft YaHei, 微软雅黑, SimSun, 宋体, Arial, Verdana;
+}
+.order dl dd.submit img{
+	cursor:pointer;
+}
+.order dl dd select{
+	height:25px;
+	font-size:14px;
+	border:1px solid #666;
+}
+.order dl dd.pro select,.order dl #aa select{
+	width:445px;
+}
+.order dl dd.info{
+	border:2px solid red;
+	text-align:center;
+}
+.order dl dd.captcha{
+	height:auto;
+}
+.order dl dd.captcha span{
+	vertical-align:top;
+}
+.order dl dd.captcha img{
+	cursor:pointer;
+}
+.order dl .attr dd span.left,.order dl .attr dd span.right{
+	float:left;
+}
+.order dl .attr dd span.right{
+	width:450px;
+}
+.order dl .attr dd span.right label{
+	margin:0 5px 0 0;
+	display:inline-block;
+}
