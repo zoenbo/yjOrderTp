@@ -16,11 +16,13 @@ var ThinkPHP = {
 </head>
 
 <body>
-<!--<style type="text/css">
+{if condition="config('app.demo')"}
+<style type="text/css">
 .a{position:absolute;z-index:100000;width:100%;text-align:center;}
 .a a{background:#fefee9;border-color:#ccc;border-style:solid;border-width:0 1px 1px;color:red;display:inline-block;padding:5px 10px;}
 </style>
-<div class="a"><a href="http://item.taobao.com/item.htm?id=42951107703" target="_blank">购买本系统</a> <a href="http://www.yvjie.cn/order/index.html" target="_blank">《昱杰多功能订单管理系统》正式发布</a> <a href="http://www.yvjie.cn/web/index.html" target="_blank">昱杰单页制作系统</a> <a href="http://www.yvjie.cn/wx/index.html" target="_blank">微商推广利器</a></div>-->
+<div class="a"><a href="https://github.com/HeroTianTYJ/yjOrderTp" target="_blank">下载本系统源码</a> <a href="https://www.yvjie.cn/order/index.html" target="_blank">功能更强大的《昱杰多功能订单管理系统》</a> <a href="https://www.yvjie.cn/web/index.html" target="_blank">《昱杰单页制作系统》，可视化制作产品单页</a></div>
+{/if}
 
 <header class="navbar-wrapper">
   <div class="navbar navbar-fixed-top">
@@ -28,7 +30,7 @@ var ThinkPHP = {
       <a class="logo navbar-logo f-l mr-10 hidden-xs" href="{:url('/'.parse_name(request()->controller()).'/index')}">{:config('system.copyright_top')}</a> <span class="logo navbar-slogan f-l mr-10 hidden-xs">V{$Version[0]}</span>
       <nav id="Hui-userbar" class="nav navbar-nav navbar-userbar hidden-xs">
         <ul class="cl">
-          <li>{$Admin['name']}（{$Admin['group']}） [<a href="javascript:;" onclick="addTab('{:url('/profile/index')}','个人资料')">个人资料</a>] [<a href="{:url('/login/logout')}">退出</a>] [<a href="http://item.taobao.com/item.htm?id=531038056831" target="_blank">赞助作者</a>]</li>
+          <li>{$Admin['name']}（{$Admin['group']}） [<a href="javascript:;" onclick="addTab('{:url('/profile/index')}','个人资料')">个人资料</a>] [<a href="{:url('/login/logout')}">退出</a>] [<a href="https://item.taobao.com/item.htm?id=531038056831" target="_blank">赞助作者</a>]</li>
           <li id="Hui-skin" class="dropDown right dropDown_hover">
            <a href="javascript:;" class="dropDown_A" title="换肤"><i class="Hui-iconfont" style="font-size:18px">&#xe62a;</i></a>
             <ul class="dropDown-menu menu radius box-shadow">
@@ -89,7 +91,7 @@ var ThinkPHP = {
       <dt>页面<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
       <dd>
         <ul>
-          <li><a href="http://www.yvjie.cn/web.php" target="_blank">单页制作</a></li>
+          <li><a href="https://www.yvjie.cn/web.php" target="_blank">单页制作</a></li>
         </ul>
       </dd>
     </dl>

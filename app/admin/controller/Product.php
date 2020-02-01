@@ -43,7 +43,7 @@ class Product extends Base{
 			$object = $Product->one();
 			if (!$object) return $this->failed('不存在此产品！');
 			if (Request::isPost()){
-				if (Config::get('app.demo')) if (in_array(Request::get('id'),[1,2,3,4,5])) return $this->failed('演示站，id为1、2、3、4、5的产品无法修改！');
+				if (Config::get('app.demo') && Request::get('id')<=5) return $this->failed('演示站，id<=5的产品无法修改！');
 				$object = $Product->modify();
 				return is_numeric($object) ? $this->success(Route::buildUrl('/'.parse_name(Request::controller()).'/index'),'产品修改成功！') : $this->failed($object);
 			}

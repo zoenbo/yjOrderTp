@@ -33,7 +33,7 @@ class Ostate extends Base{
 			$object = $Ostate->one();
 			if (!$object) return $this->failed('不存在此订单状态！');
 			if (Request::isPost()){
-				if (Config::get('app.demo')) if (in_array(Request::get('id'),[1,2,3,4])) return $this->failed('演示站，id为1、2、3、4的订单状态无法修改！');
+				if (Config::get('app.demo') && Request::get('id')<=4) return $this->failed('演示站，id<=4的订单状态无法修改！');
 				$object = $Ostate->modify();
 				return is_numeric($object) ? $this->success(Route::buildUrl('/'.parse_name(Request::controller()).'/index'),'订单状态修改成功！') : $this->failed($object);
 			}
@@ -70,7 +70,7 @@ class Ostate extends Base{
 	
 	public function delete(){
 		if (Request::get('id')){
-			if (Config::get('app.demo')) if (in_array(Request::get('id'),[1,2,3,4])) return $this->failed('演示站，id为1、2、3、4的订单状态无法删除！');
+			if (Config::get('app.demo') && Request::get('id')<=4) return $this->failed('演示站，id<=4的订单状态无法删除！');
 			$Ostate = new model\Ostate();
 			if (!$Ostate->one()) return $this->failed('不存在此订单状态！');
 			if (Request::isPost()) return $Ostate->remove() ? $this->success(Request::post('prev'),'订单状态删除成功！') : $this->failed('订单状态删除失败！');

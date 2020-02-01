@@ -56,7 +56,7 @@ class Update extends Base{
 	
 	public function dbupdate(){
 		if (IS_POST){
-			//$this->failed('演示站，无法操作升级！');
+			if (Config::get('app.demo')) $this->failed('演示站，无法操作升级！');
 			if (!is_file(ROOT_PATH.'/Data/install.sql')) $this->failed('Data目录中不存在install.sql文件，请检查！');
 			if (!is_file(ROOT_PATH.'/Bak/bak_n.sql')) $this->failed('Bak目录中不存在bak_n.sql文件，请检查！');
 			$Common = D('Common');

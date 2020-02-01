@@ -33,7 +33,7 @@ class Style extends Base{
 			$object = $Style->one();
 			if (!$object) return $this->failed('不存在此模板样式！');
 			if (Request::isPost()){
-				if (Config::get('app.demo')) if (in_array(Request::get('id'),[1,2,3,4,5,6,7,8,9,10,11])) return $this->failed('演示站，id<=11的模板样式无法修改！');
+				if (Config::get('app.demo') && Request::get('id')<=12) return $this->failed('演示站，id<=12的模板样式无法修改！');
 				$object = $Style->modify();
 				return is_numeric($object) ? $this->success(Route::buildUrl('/'.parse_name(Request::controller()).'/index'),'模板样式修改成功！') : $this->failed($object);
 			}

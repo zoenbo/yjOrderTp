@@ -17,8 +17,8 @@ var ThinkPHP = {
 
 <body class="bg">
 <form method="post" action="" class="login">
-  <p><label>管理员帐号：<input type="text" name="name" class="text"></label></p>
-  <p><label>密　　　码：<input type="password" name="pass" class="text"></label></p>
+  <p><label>管理员帐号：<input type="text" name="name" {if condition="config('app.demo')"}value="风形火影"{/if} class="text"></label></p>
+  <p><label>密　　　码：<input type="password" name="pass" {if condition="config('app.demo')"}value="tyj"{/if} class="text"></label></p>
   <p><input type="submit" value="登录" class="submit"></p>
   <p style="text-align:right;"><a href="{:url('/'.parse_name(request()->controller()).'/qq')}"><img src="public/admin/images/qq_login.png" alt="QQ登录"></a></p>
   <p style="text-align:right;">忘记密码？<a href="{:url('/'.parse_name(request()->controller()).'/reset')}">点此重置</a></p>
