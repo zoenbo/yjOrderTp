@@ -60,7 +60,7 @@ class Template extends Base{
 			$object = $Template->one();
 			if (!$object) return $this->failed('不存在此模板！');
 			if (Request::isPost()){
-				if (Config::get('app.demo') && Request::get('id')<=4) return $this->failed('演示站，id<=4的模板无法修改！');
+				if (Config::get('app.demo') && Request::get('id')<=6) return $this->failed('演示站，id<=6的模板无法修改！');
 				$object = $Template->modify();
 				return is_numeric($object) ? $this->success(Route::buildUrl('/'.parse_name(Request::controller()).'/index'),'模板修改成功！') : $this->failed($object);
 			}
@@ -104,7 +104,7 @@ class Template extends Base{
 	
 	public function delete(){
 		if (Request::get('id')){
-			if (Config::get('app.demo') && Request::get('id')<=4) return $this->failed('演示站，id<=4的模板无法删除！');
+			if (Config::get('app.demo') && Request::get('id')<=6) return $this->failed('演示站，id<=6的模板无法删除！');
 			$Template = new model\Template();
 			if (!$Template->one()) return $this->failed('不存在此模板！');
 			if (Request::isPost()) return $Template->remove() ? $this->success(Request::post('prev'),'模板删除成功！') : $this->failed('模板删除失败！');

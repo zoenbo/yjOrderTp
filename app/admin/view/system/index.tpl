@@ -32,6 +32,7 @@ var ThinkPHP = {
     <tr><td>访问模式：</td><td><div class="check-box"><label><input type="checkbox" name="www" value="1" {if condition="config('system.www')==1"}checked{/if}>强制www访问</label></div><div class="check-box"><label><input type="checkbox" name="https" value="1" {if condition="config('system.https')==1"}checked{/if}>强制https访问</label></div></td><td>开启强制www访问前，请先确保您的主域名加上www后可以访问；开启强制https访问前，请先确保您的网站支持https访问。以上两项若不能确保，请先咨询客服人员，若在不能确保的情况下开启，会导致网站无法访问。变更设置后可能需要重新登录。</td></tr>
     <tr><td>后台入口：</td><td><input type="text" name="manage_enter" value="{:config('system.manage_enter')}" class="input-text"></td><td>修改后会自动跳转到新入口</td></tr>
     <tr><td>后台皮肤：</td><td><select name="manage_skin" class="select">{$Skin}</select></td></tr>
+    <tr><td>隐藏index.php：</td><td><div class="radio-box"><label><input type="radio" name="index_php" value="" {if condition="config('system.index_php')==''"}checked{/if}>是</label></div><div class="radio-box"><label><input type="radio" name="index_php" value="index.php/" {if condition="config('system.index_php')=='index.php/'"}checked{/if}>否</label></div></td><td>设置前台的访问地址中是否隐藏掉index.php，开启此设置，服务器需支持伪静态，若开启后导致前台无法访问，请联系您的服务商解决</td></tr>
   </table>
   <table class="column">
     <tr><td>登录页背景图：</td><td><span class="loginbg"><span class="loginbg_picker"></span></span></td><td>请上传jpg格式的图片，您可<a href="public/admin/images/loginbg.fw.png" target="_blank">点此下载</a>原图，用PS或fireworks等软件编辑版权信息后上传</td></tr>

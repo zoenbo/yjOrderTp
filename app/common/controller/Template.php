@@ -46,7 +46,7 @@ class Template{
   <div class="left">
     <div class="buy"></div>
     
-    <form method="post" action="" class="form">
+    <form method="post" action="" target="_parent" class="form">
       <dl class="orderform">
         <dd>请认真填写订单信息，以便您尽快收到货物</dd>
         <dd class="pro">订购产品：<select name="pid"></select></dd>
@@ -127,7 +127,7 @@ class Template{
 </style>
 
 <div class="order">
-  <form method="post" action="" class="form">
+  <form method="post" action="" target="_parent" class="form">
     <dl class="orderform">
       <dd>请认真填写订单信息，以便您尽快收到货物</dd>
       <dd class="pro">订购产品：<select name="pid"></select></dd>
@@ -214,7 +214,7 @@ class Template{
 <div class="order">
   <div class="buy"></div>
   
-  <form method="post" action="" class="form">
+  <form method="post" action="" target="_parent" class="form">
     <dl class="orderform">
       <dd class="center">请认真填写订单信息，以便您尽快收到货物</dd>
       <dd class="pro"><span class="left">订购产品：</span><span class="right"><select name="pid"></select></span></dd>
@@ -291,7 +291,7 @@ class Template{
 <div class="order">
   <div class="buy2">在线快速订购</div>
   
-  <form method="post" action="" class="form">
+  <form method="post" action="" target="_parent" class="form">
     <dl class="orderform">
       <dd class="pro"><span class="left">订购产品：</span><span class="right"><select name="pid"></select></span></dd>
       <dd><span class="left">订购数量：</span><span class="right"><input type="text" name="count" value="1" class="text"></span></dd>
@@ -367,7 +367,7 @@ class Template{
 <div class="order">
   <div class="buy"></div>
   
-  <form method="post" action="" class="form">
+  <form method="post" action="" target="_parent" class="form">
     <dl class="orderform">
       <dd class="pro"><span class="left">订购产品：</span><span class="right"><select name="pid"></select></span></dd>
       <dd><span class="left">订购数量：</span><span class="right"><input type="text" name="count" value="1" class="text"></span></dd>
@@ -443,7 +443,7 @@ class Template{
 <div class="order">
   <div class="buy"></div>
   
-  <form method="post" action="" class="form">
+  <form method="post" action="" target="_parent" class="form">
     <dl class="orderform">
       <dd class="pro"><span class="left">订购产品：</span><span class="right"><select name="pid"></select></span></dd>
       <dd><span class="left">订购数量：</span><span class="right"><input type="text" name="count" value="1" class="text"></span></dd>

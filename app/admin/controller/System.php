@@ -27,6 +27,7 @@ return [
 	'https'=>'".Request::post('https',0)."',  //是否强制https
 	'manage_enter'=>'".str_replace("'","\'",Request::post('manage_enter'))."',  //后台入口
 	'manage_skin'=>'".Request::post('manage_skin')."',  //后台皮肤
+	'index_php'=>'".Request::post('index_php')."',  //隐藏index.php
 	'copyright_top'=>'".str_replace("'","\'",Request::post('copyright_top'))."',  //左上角版权
 	'copyright_start'=>'".str_replace("'","\'",Request::post('copyright_start',NULL,'stripslashes'))."',  //起始页版权
 	'copyright_footer'=>'".str_replace("'","\'",Request::post('copyright_footer',NULL,'stripslashes'))."',  //页面底部版权

@@ -212,7 +212,9 @@ $(function(){
 			if (marquee3 > marquee.length - 1) marquee1 = 0;
 			marquee2 = marquee1 + 1;
 			marquee3 = marquee2 + 1;
-			$('.new').html('<p>[最新购买]：' + marquee[marquee1] + '分钟前订购了【' + pro.eq(Math.floor(Math.random()*pro.length+1)-1).text().replace(/（[\d\.]+元）/,'').replace(/（[\d\.]+元～[\d\.]+元）/,'').replace(/└—/,'') + '】</p>' + '<p>[最新购买]：' + marquee[marquee2] + '分钟前订购了【' + pro.eq(Math.floor(Math.random()*pro.length+1)-1).text().replace(/（[\d\.]+元）/,'').replace(/（[\d\.]+元～[\d\.]+元）/,'').replace(/└—/,'') + '】</p>' + '<p>[最新购买]：' + marquee[marquee3] + '分钟前订购了【' + pro.eq(Math.floor(Math.random()*pro.length+1)-1).text().replace(/（[\d\.]+元）/,'').replace(/（[\d\.]+元～[\d\.]+元）/,'').replace(/└—/,'') + '】</p>');
+			var str = '<p>[最新购买]：' + marquee[marquee1] + '分钟前订购了【' + pro.eq(Math.floor(Math.random()*pro.length+1)-1).text().replace(/（[\d\.]+元）/,'').replace(/（[\d\.]+元～[\d\.]+元）/,'').replace(/└—/,'') + '】</p>' + '<p>[最新购买]：' + marquee[marquee2] + '分钟前订购了【' + pro.eq(Math.floor(Math.random()*pro.length+1)-1).text().replace(/（[\d\.]+元）/,'').replace(/（[\d\.]+元～[\d\.]+元）/,'').replace(/└—/,'') + '】</p>' + '<p>[最新购买]：' + marquee[marquee3] + '分钟前订购了【' + pro.eq(Math.floor(Math.random()*pro.length+1)-1).text().replace(/（[\d\.]+元）/,'').replace(/（[\d\.]+元～[\d\.]+元）/,'').replace(/└—/,'') + '】</p>';
+			$('.new').html(str);
+			window.parent.$('.new').html(str);
 			marquee1++;
 			marquee2++;
 			marquee3++;

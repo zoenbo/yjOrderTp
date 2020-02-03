@@ -216,7 +216,6 @@ CREATE TABLE `yjorder_product` (
   `sid` int(10) unsigned NOT NULL DEFAULT '0',
   `price` decimal(10,2) unsigned NOT NULL,
   `color` char(20) DEFAULT NULL,
-  `storage` smallint(6) unsigned NOT NULL DEFAULT '0',
   `sort` int(10) unsigned NOT NULL,
   `view` tinyint(1) unsigned NOT NULL DEFAULT '1',
   `selected` tinyint(1) unsigned NOT NULL DEFAULT '0',

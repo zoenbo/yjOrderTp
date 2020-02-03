@@ -46,7 +46,7 @@ class Style extends Base{
 	
 	public function delete(){
 		if (Request::get('id')){
-			if (Config::get('app.demo')) if (Request::get('id')<=11) return $this->failed('演示站，id<=11的模板样式无法删除！');
+			if (Config::get('app.demo')) if (Request::get('id')<=12) return $this->failed('演示站，id<=12的模板样式无法删除！');
 			$Style = new model\Style();
 			if (!$Style->one()) return $this->failed('不存在此模板样式！');
 			if (Request::isPost()) return $Style->remove() ? $this->success(Request::post('prev'),'模板样式删除成功！') : $this->failed('模板样式删除失败！');

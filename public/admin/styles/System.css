@@ -2,7 +2,10 @@
 .form table.column{
 	display:none;
 }
-.form table.column:nth-child(1) tr td:nth-child(1),.form table.column:nth-child(3) tr td:nth-child(1),.form table.column:nth-child(4) tr td:nth-child(1){
+.form table.column:nth-child(1) tr td:nth-child(1){
+	width:105px;
+}
+.form table.column:nth-child(3) tr td:nth-child(1),.form table.column:nth-child(4) tr td:nth-child(1){
 	width:84px;
 }
 .form table.column:nth-child(2) tr td:nth-child(1){

@@ -33,16 +33,16 @@ var ThinkPHP = {
     <tr><td>支付方式：</td><td>{$Pay}</td></tr>
     <tr><td>默认方式：</td><td><select name="selectedPay" class="select">{$Pay2}</select></td></tr>
     <tr><td>订单状态：</td><td><select name="state" class="select">{$Ostate}</select></td><td>客户下单后，该订单在<a href="javascript:;" onclick="addTab('{:url('/order/index')}','订单管理')">订单管理</a>模块中显示的默认订单状态</td></tr>
-    <tr><td>订单查询：</td><td><div class="radio-box"><label><input type="radio" name="search" value="0" checked>关闭</label></div><div class="radio-box"><label><input type="radio" name="search" value="1">开启</label></div></td><td>在<a href="javascript:;" onclick="addTab('{:url('/system/index')}','系统设置')">系统设置</a>模块中开启“订单查询”后，此设置才可生效</td></tr>
-    <tr><td>发货通知：</td><td><div class="radio-box"><label><input type="radio" name="send" value="0" checked>关闭</label></div><div class="radio-box"><label><input type="radio" name="send" value="1">开启</label></div></td><td>为模拟发货通知，并非从数据库里提取的数据（不支持经典版模板）</td></tr>
-    <tr><td>验 证 码：</td><td><div class="radio-box"><label><input type="radio" name="cid" value="0" checked>关闭</label></div><div class="radio-box"><label><input type="radio" name="cid" value="1">开启</label></div></td></tr>
-    <tr><td>QQ登录：</td><td><div class="radio-box"><label><input type="radio" name="qq" value="0" checked>关闭</label></div><div class="radio-box"><label><input type="radio" name="qq" value="1">开启</label></div></td><td>开启后，使用QQ登录后才可下单</td></tr>
+    <tr><td>订单查询：</td><td><div class="radio-box"><label><input type="radio" name="search" value="0" {if condition="$One['search']==0"}checked{/if}>关闭</label></div><div class="radio-box"><label><input type="radio" name="search" value="1" {if condition="$One['search']==1"}checked{/if}>开启</label></div></td><td>在<a href="javascript:;" onclick="addTab('{:url('/system/index')}','系统设置')">系统设置</a>模块中开启“订单查询”后，此设置才可生效</td></tr>
+    <tr><td>发货通知：</td><td><div class="radio-box"><label><input type="radio" name="send" value="0" {if condition="$One['send']==0"}checked{/if}>关闭</label></div><div class="radio-box"><label><input type="radio" name="send" value="1" {if condition="$One['send']==1"}checked{/if}>开启</label></div></td><td>为模拟发货通知，并非从数据库里提取的数据（不支持经典版模板）</td></tr>
+    <tr><td>验 证 码：</td><td><div class="radio-box"><label><input type="radio" name="cid" value="0" {if condition="$One['cid']==0"}checked{/if}>关闭</label></div><div class="radio-box"><label><input type="radio" name="cid" value="1" {if condition="$One['cid']==1"}checked{/if}>开启</label></div></td></tr>
+    <tr><td>QQ登录：</td><td><div class="radio-box"><label><input type="radio" name="qq" value="0" {if condition="$One['qq']==0"}checked{/if}>关闭</label></div><div class="radio-box"><label><input type="radio" name="qq" value="1" {if condition="$One['qq']==1"}checked{/if}>开启</label></div></td><td>开启后，使用QQ登录后才可下单</td></tr>
     <tr><td>提示信息　</td></tr>
     <tr><td>提交成功：</td><td><textarea name="success" class="textarea">{$One['success']}</textarea></td><td>{oid}表示订单号</td></tr>
     <tr><td>支付成功：</td><td><textarea name="success2" class="textarea">{$One['success2']}</textarea></td><td>{oid}表示订单号</td></tr>
     <tr><td>频繁提交：</td><td><textarea name="often" class="textarea">{$One['often']}</textarea></td></tr>
-    <tr><td>调用代码：</td><td class="code tip"><input type="button" value="获取" onClick="window.open('{:url('/'.parse_name(request()->controller()).'/code',['id'=>input('get.id')])}','code')" class="btn btn-primary radius"> 点击获取后，会打开一个新页面，稍等一秒会返回此页面，即可看见调用代码</td></tr>
-    <tr><td></td><td class="tip">提交修改并生成模板后方能获取最新调用代码</td></tr>
+    <!--<tr><td>调用代码：</td><td class="code tip"><input type="button" value="获取" onClick="window.open('{:url('/'.parse_name(request()->controller()).'/code',['id'=>input('get.id')])}','code')" class="btn btn-primary radius"> 点击获取后，会打开一个新页面，稍等一秒会返回此页面，即可看见调用代码</td></tr>
+    <tr><td></td><td class="tip">提交修改并生成模板后方能获取最新调用代码</td></tr>-->
     <tr><td colspan="2" class="left"><input type="submit" value="确认修改" class="btn btn-primary radius"></td></tr>
   </table>
 </form>
