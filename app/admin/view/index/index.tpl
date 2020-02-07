@@ -30,7 +30,7 @@ var ThinkPHP = {
       <a class="logo navbar-logo f-l mr-10 hidden-xs" href="{:url('/'.parse_name(request()->controller()).'/index')}">{:config('system.copyright_top')}</a> <span class="logo navbar-slogan f-l mr-10 hidden-xs">V{$Version[0]}</span>
       <nav id="Hui-userbar" class="nav navbar-nav navbar-userbar hidden-xs">
         <ul class="cl">
-          <li>{$Admin['name']}（{$Admin['group']}） [<a href="javascript:;" onclick="addTab('{:url('/profile/index')}','个人资料')">个人资料</a>] [<a href="{:url('/login/logout')}">退出</a>] [<a href="https://item.taobao.com/item.htm?id=531038056831" target="_blank">赞助作者</a>]</li>
+          <li>{$Admin['name']}（{$Admin['group']}） [<a href="javascript:;" onclick="addTab('{:url('/profile/index')}','个人资料')">个人资料</a>] [<a href="javascript:;" onclick="addTab('{:url('/profile/login')}','登录记录')">登录记录</a>] [<a href="{:url('/login/logout')}">退出</a>] [<a href="https://item.taobao.com/item.htm?id=531038056831" target="_blank">赞助作者</a>]</li>
           <li id="Hui-skin" class="dropDown right dropDown_hover">
            <a href="javascript:;" class="dropDown_A" title="换肤"><i class="Hui-iconfont" style="font-size:18px">&#xe62a;</i></a>
             <ul class="dropDown-menu menu radius box-shadow">
