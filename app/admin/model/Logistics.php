@@ -117,7 +117,7 @@ class Logistics extends Model{
 	//验证重复
 	private function repeat($update=false,$name='',$code=''){
 		try {
-			$map['where'] = '(`name=:name` OR `code`=:code)';
+			$map['where'] = '(`name`=:name OR `code`=:code)';
 			$map['value'] = ['name'=>$name ? $name : Request::post('name'),'code'=>$code ? $code : Request::post('code')];
 			$object = $this->field('id')->where($map['where'],$map['value']);
 			return $update ? $object->where('id','<>',Request::get('id'))->find() : $object->find();
