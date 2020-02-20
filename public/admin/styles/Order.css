@@ -20,14 +20,14 @@
 	margin:-3px 10px;
 }
 
-.list table tr th.all .radio-box label .icheckbox-blue{
+.list table tr th.all .check-box label .icheckbox-blue{
 	margin:3px 0 0 0;
 }
-.list table tr td:nth-child(1) .radio-box{
+.list table tr td:nth-child(1) .check-box{
 	padding-right:0;
 	margin:0 0 0 6px;
 }
-.list table tr td:nth-child(1) .radio-box label span{
+.list table tr td:nth-child(1) .check-box label span{
 	visibility:hidden;
 }
 .list table tr th.all{

@@ -13,6 +13,7 @@
 
 <body>
 <form method="post" action="" class="form">
+  <input type="hidden" name="pass_key" value="{$PassKey}">
   <table>
     <tr><td colspan="2" style="text-align:center;">系统信息</td></tr>
     <tr><td>OpenID：</td><td><input type="text" name="openid" class="input-text"></td></tr>

@@ -15,11 +15,11 @@
 	background:url(../images/tablebg.gif);
 	font-weight:bold;
 }
-.list table tr td:nth-child(1) .radio-box{
+.list table tr td:nth-child(1) .check-box{
 	padding-right:0;
 	margin:0 0 0 6px;
 }
-.list table tr td:nth-child(1) .radio-box label span{
+.list table tr td:nth-child(1) .check-box label span{
 	visibility:hidden;
 }
 .list table tr.footer{
@@ -30,6 +30,6 @@
 .list table tr.footer td{
 	line-height:250%;
 }
-.list table tr.footer td .radio-box label .icheckbox-blue{
+.list table tr.footer td .check-box label .icheckbox-blue{
 	margin:4px 0 0 0;
 }

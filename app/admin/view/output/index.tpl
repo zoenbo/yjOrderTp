@@ -19,11 +19,11 @@
       {foreach name="value" key="k1" item="v1"}
       <tr class="title"><td colspan="4">{$k1}</td></tr>
       {foreach name="v1" key="k2" item="v2"}
-      <tr><td>{if condition="$key!='zip'"}<div class="radio-box"><label><input type="checkbox" name="files[]" value="{$v2['name']}" class="files"><span>.</span></label></div>{else/}-{/if}</td><td>{$v2['name']}</td><td>{$v2['size']}</td><td><a href="{:config('app.web_url')}{:config('app.output_dir')}{$v2['name']}">下载</a>/<a href="{:url('/'.parse_name(request()->controller()).'/delete',['id'=>$v2['name']])}">删除</a></td></tr>
+      <tr><td>{if condition="$key!='zip'"}<div class="check-box"><label><input type="checkbox" name="files[]" value="{$v2['name']}" class="files"><span>.</span></label></div>{else/}-{/if}</td><td>{$v2['name']}</td><td>{$v2['size']}</td><td><a href="{:config('app.web_url')}{:config('app.output_dir')}{$v2['name']}">下载</a>/<a href="{:url('/'.parse_name(request()->controller()).'/delete',['id'=>$v2['name']])}">删除</a></td></tr>
       {/foreach}
       {/foreach}
       {/foreach}
-      <tr class="footer"><td><div class="radio-box"><label><input type="checkbox" class="all">全选</label></div></td><td colspan="3"><div class="radio-box"><label><input type="checkbox" name="del" checked>打包完成后删除源文件</label></div><input type="submit" value="立即打包" class="btn btn-primary radius"></td></tr>
+      <tr class="footer"><td><div class="check-box"><label><input type="checkbox" class="all">全选</label></div></td><td colspan="3"><div class="check-box"><label><input type="checkbox" name="del" checked>打包完成后删除源文件</label></div><input type="submit" value="立即打包" class="btn btn-primary radius"></td></tr>
     </table>
   </form>
 </div>
