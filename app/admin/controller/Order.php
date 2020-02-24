@@ -327,9 +327,9 @@ class Order extends Base{
 				if ($object2){
 					foreach ($object2 as $v){
 						if ($id == 0){
-							$html .= '<option value="'.$v['id'].'" '.($v['selected']&&$flag ? 'selected' : '').' style="color:'.$v['color'].';" price="'.$v['price'].'">└—'.$v['name'].'（'.$v['price'].'元）</option>';
+							$html .= '<option value="'.$v['id'].'" '.($v['selected']&&$flag ? 'selected' : '').' style="color:'.($v['color'] ? $v['color'] : '#333').';" price="'.$v['price'].'">└—'.$v['name'].'（'.$v['price'].'元）</option>';
 						}else{
-							$html .= '<option value="'.$v['id'].'" '.($v['id']==$id ? 'selected' : '').' style="color:'.$v['color'].';" price="'.$v['price'].'">└—'.$v['name'].'（'.$v['price'].'元）</option>';
+							$html .= '<option value="'.$v['id'].'" '.($v['id']==$id ? 'selected' : '').' style="color:'.($v['color'] ? $v['color'] : '#333').';" price="'.$v['price'].'">└—'.$v['name'].'（'.$v['price'].'元）</option>';
 						}
 					}
 				}
