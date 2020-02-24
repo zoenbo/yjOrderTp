@@ -103,7 +103,7 @@ class Manager extends Model{
 			$data['order_permit'] = Request::post('order_permit');
 		}
 		$validate = new valid();
-		if ($validate->remove('admin_mail')->check($data)){
+		if ($validate->remove('admin_mail',true)->check($data)){
 			if ($this->repeat()) return '此帐号已存在！';
 			$data['pass'] = passEncode(Request::post('pass'));
 			unset($data['repass']);
