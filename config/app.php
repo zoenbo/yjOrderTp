@@ -1,6 +1,6 @@
 <?php
 return [
-	'version'=>'21.0|2019-02-06',  //版本
+	'version'=>'21.0|2020-02-06',  //版本
 	'page_size'=>50,  //默认每页条数
 	'output_dir'=>'data/output/',  //导出的数据路径
 	'upload_path'=>'uploads/',  //图片上传路径
