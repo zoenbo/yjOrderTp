@@ -1,22 +1,23 @@
 <?php
 return [
-	'openid'=>'owlp6t_835G2OwVxr09msFo72kII',  //激活码
+	'openid'=>'owlp6t_835G2OwVxr09msFo72kII',  //OpenID
 	'web_name'=>'昱杰订单管理系统',  //站点名称
 	'session_key'=>'zTU2lH9T9I7xZH2OsvHikvD28LeYRYwgzCbQjQbX',  //网站session key
-	'pass_key'=>'kAOAGpCM25b75cvp7dDyzAqs8uPftCcfEvdyiv8z',  //密码的盐
+	'pass_key'=>'',  //密码的盐
 	'reset_pass_key'=>'40SX0dkLUmN3Gi1QqEst5GoAWnkVnB00MRkCw6Dv',  //重置密码的密钥
 	'admin_mail'=>'1.',  //管理员邮箱
 	'www'=>'0',  //是否强制www
 	'https'=>'0',  //是否强制https
 	'manage_enter'=>'n.php',  //后台入口
 	'manage_skin'=>'default',  //后台皮肤
+	'index_php'=>'',  //隐藏index.php
 	'copyright_top'=>'昱杰多功能订单管理系统',  //左上角版权
 	'copyright_start'=>'<a href="https://www.yvjie.cn/" target="_blank">昱杰软件</a>版权所有',  //起始页版权
 	'copyright_footer'=>'Powered by <a href="https://www.yvjie.cn/" target="_blank">昱杰多功能订单系统</a> © 2015-2020',  //页面底部版权
 	'order_db'=>'1',  //订单入库
 	'order_time'=>'5',  //防刷单间隔
-	'order_search'=>'0',  //订单查询
-	'order_search_step'=>'0',  //跨模板查询
+	'order_search'=>'1',  //订单查询
+	'order_search_step'=>'1',  //跨模板查询
 	'alipay_appid'=>'',  //支付宝APPID
 	'alipay_merchant_private_key'=>'',  //支付宝应用私钥
 	'alipay_public_key'=>'',  //支付宝公钥

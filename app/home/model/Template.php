@@ -10,7 +10,7 @@ class Template extends Model{
 	public function one($id=0){
 		try {
 			$map['id'] = $id ? $id : Request::get('id');
-			return $this->field('name,uid,template,sid,product,field,pay,state,search,send,cid,qq,success,success2,often')->where($map)->find();
+			return $this->field('name,manager_id,template,template_style_id,product,field,pay,order_state_id,is_show_search,is_show_send,is_captcha,is_qq,success,success2,often')->where($map)->find();
 		} catch (Exception $e){
 			echo $e->getMessage();
 			return [];

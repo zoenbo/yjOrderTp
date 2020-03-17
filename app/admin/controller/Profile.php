@@ -24,7 +24,7 @@ class Profile extends Base{
 			$object['group'] = '超级管理员';
 		}else{
 			$PermitGroup = new model\PermitGroup();
-			$object2 = $PermitGroup->one($object['gid']);
+			$object2 = $PermitGroup->one($object['permit_group_id']);
 			$object['group'] = $object2 ? $object2['name'] : '此权限组已被删除';
 		}
 		View::assign(['One'=>$object]);

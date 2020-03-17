@@ -5,10 +5,10 @@ use Exception;
 use think\Model;
 use think\facade\Request;
 use think\facade\Config;
-use app\admin\validate\Psort as valid;
+use app\admin\validate\ProductSort as valid;
 
-class Psort extends Model{
-	private $tableName = 'Psort';
+class ProductSort extends Model{
+	private $tableName = 'Product_Sort';
 
 	//查询总记录
 	public function total(){

@@ -20,8 +20,8 @@
 {block name="form"}
 <form method="post" action="" class="form">
   <table>
-    <tr><td>下单模板：</td><td><select name="tid" class="select">{$Template}</select></td><td>只对模板中勾选的字段进行验证</td></tr>
-    <tr><td>订购产品：</td><td><select name="pid" class="select">{$Product}</select></td></tr>
+    <tr><td>下单模板：</td><td><select name="template_id" class="select">{$Template}</select></td><td>只对模板中勾选的字段进行验证</td></tr>
+    <tr><td>订购产品：</td><td><select name="product_id" class="select">{$Product}</select></td></tr>
     <tr><td>成交单价：</td><td><input type="text" name="price" class="input-text"></td></tr>
     <tr><td>订购数量：</td><td><input type="text" name="count" value="1" class="input-text"></td></tr>
     <tr><td>姓　　名：</td><td><input type="text" name="name" class="input-text"></td></tr>
@@ -40,9 +40,9 @@
     <tr><td>备　　注：</td><td><textarea name="note" class="textarea"></textarea></td></tr>
     <tr><td>电子邮箱：</td><td><input type="text" name="email" class="input-text"></td></tr>
     <tr><td>支付状态：</td><td><select name="pay" class="select">{foreach name="Pay" key="key" item="value"}<option value="{$key}">{$value}</option>{/foreach}</select></td></tr>
-    <tr><td>订单状态：</td><td>{$Ostate}</td></tr>
-    <tr><td>物流公司：</td><td><select name="lid" class="select">{$Logistics}</select></td></tr>
-    <tr><td>物流编号：</td><td><input type="text" name="logistics_id" class="input-text"></td></tr>
+    <tr><td>订单状态：</td><td>{$OrderState}</td></tr>
+    <tr><td>物流公司：</td><td><select name="logistics_id" class="select">{$Logistics}</select></td></tr>
+    <tr><td>物流编号：</td><td><input type="text" name="logistics_number" class="input-text"></td></tr>
     <tr><td colspan="2" class="left"><input type="submit" value="确认添加" class="btn btn-primary radius"></td></tr>
   </table>
 </form>

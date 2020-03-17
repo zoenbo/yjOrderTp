@@ -8,7 +8,7 @@
 .list table tr th.date{
 	width:160px;
 }
-.list table tr th.selected,.list table tr th.control{
+.list table tr th.is_default,.list table tr th.control{
 	width:80px;
 }
 .list table tr td input.input-text{

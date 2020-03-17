@@ -15,11 +15,11 @@ class PermitGroup extends Base{
 			$Permit = new model\Permit();
 			foreach ($object as $key=>$value){
 				$permitStr = '';
-				if ($value['pids']){
-					$object2 = $Permit->all2($value['pids']);
+				if ($value['permit_ids']){
+					$object2 = $Permit->all2($value['permit_ids']);
 					foreach ($object2 as $v){
 						$permitStr .= ''.$v['name'].'：<span class="blue">';
-						$object3 = $Permit->all5($value['pids'],$v['id']);
+						$object3 = $Permit->all5($value['permit_ids'],$v['id']);
 						foreach ($object3 as $v2){
 							$permitStr .= $v2['name'].'、';
 						}
@@ -56,7 +56,7 @@ class PermitGroup extends Base{
 				$object = $PermitGroup->modify();
 				return is_numeric($object) ? $this->success(Route::buildUrl('/'.parse_name(Request::controller()).'/index'),'权限组修改成功！') : $this->failed($object);
 			}
-			$this->permit($object['pids']);
+			$this->permit($object['permit_ids']);
 			View::assign(['One'=>$object]);
 			return $this->view();
 		}else{
@@ -64,11 +64,11 @@ class PermitGroup extends Base{
 		}
 	}
 	
-	public function selected(){
+	public function isDefault(){
 		if (Request::get('id')){
 			$PermitGroup = new model\PermitGroup();
 			if (!$PermitGroup->one()) return $this->failed('不存在此权限组！');
-			if (!$PermitGroup->selected()) return $this->failed('设置默认权限组失败！');
+			if (!$PermitGroup->isDefault()) return $this->failed('设置默认权限组失败！');
 			return $this->success(Config::get('app.prev_url'));
 		}else{
 			return $this->failed('非法操作！');
@@ -87,45 +87,21 @@ class PermitGroup extends Base{
 		}
 	}
 	
-	public function a(){
-		$Permit = new model\Permit();
-		$html = '';
-		$object = $Permit->all2();
-		if ($object){
-			//$html .= '<table cellspacing="0" style="border:1px solid #E5EDF0;">';
-			$html .= '<table class="list">';
-			foreach ($object as $value){
-				//$html .= '<tr><td style="background:#E5EDF0;font-weight:bold;text-align:right;padding:5px 0 5px 5px;width:104px;">'.$value['name'].'：</td><td style="border:1px solid #AFC2D9;padding:5px;">';
-				$html .= '<tr><td class="row1">'.$value['name'].'：</td><td>';
-				$object2 = $Permit->all3($value['id']);
-				if ($object2){
-					foreach ($object2 as $v){
-						$html .= $v['name'].'、';
-					}
-					$html = substr($html,0,-3);
-				}
-				$html .= '</td></tr>';
-			}
-			$html .= '</table>';
-		}
-		echo '<meta charset="utf-8">'.$html;
-	}
-	
 	private function permit($ids=[]){
 		$Permit = new model\Permit();
-		$selected = arrToStr($Permit->all4(),'id');
-		$ids = is_array($ids) ? $selected : $ids;
+		$is_default = arrToStr($Permit->all4(),'id');
+		$ids = is_array($ids) ? $is_default : $ids;
 		$html = '';
 		$object = $Permit->all2();
 		if ($object){
 			$html .= '<table>';
 			foreach ($object as $value){
 				$html .= '<tr>';
-				$html .= '<td><div class="check-box"><label'.(in_array($value['id'],explode(',',$selected)) ? ' class="red"' : '').'><input type="checkbox" name="pids[]" '.(in_array($value['id'],explode(',',$ids)) ? 'checked' : '').' value="'.$value['id'].'">'.$value['name'].'</label></div></td><td>';
+				$html .= '<td><div class="check-box"><label'.(in_array($value['id'],explode(',',$is_default)) ? ' class="red"' : '').'><input type="checkbox" name="permit_ids[]" '.(in_array($value['id'],explode(',',$ids)) ? 'checked' : '').' value="'.$value['id'].'">'.$value['name'].'</label></div></td><td>';
 				$object2 = $Permit->all3($value['id']);
 				if ($object2){
 					foreach ($object2 as $v){
-						$html .= '<div class="check-box"><label class="'.(in_array($v['id'],explode(',',$selected)) ? ' red' : 'blue').'"><input type="checkbox" name="pids[]" '.(in_array($v['id'],explode(',',$ids)) ? 'checked' : '').' value="'.$v['id'].'">'.$v['name'].'</label></div>';
+						$html .= '<div class="check-box"><label class="'.(in_array($v['id'],explode(',',$is_default)) ? ' red' : 'blue').'"><input type="checkbox" name="permit_ids[]" '.(in_array($v['id'],explode(',',$ids)) ? 'checked' : '').' value="'.$v['id'].'">'.$v['name'].'</label></div>';
 					}
 				}
 				$html .= '</td></tr>';

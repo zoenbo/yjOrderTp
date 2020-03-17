@@ -23,11 +23,11 @@
 <div class="list">
   <form method="post" action="{:url('/'.parse_name(request()->controller()).'/sort')}">
     <table>
-      <tr><th class="name">权限名称</th><th class="c">动作</th><th class="a">方法</th><th class="selected">是否默认</th><th class="sort"><input type="submit" value="排序" class="btn btn-primary radius"></th></tr>
+      <tr><th class="name">权限名称</th><th class="controller">模块</th><th class="action">子模块</th><th class="is_default">是否默认</th><th class="sort"><input type="submit" value="排序" class="btn btn-primary radius"></th></tr>
       {foreach name="All" key="key" item="value"}
-      <tr><td>{$value['name']|keyword}</td><td>{$value['c']|keyword}</td><td>{$value['a']|keyword}</td><td>{if condition="$value['selected']"}<span class="red">是</span> | <a href="{:url('/'.parse_name(request()->controller()).'/selected',['id'=>$value['id']])}">取消默认</a>{else/}<span class="green">否</span> | <a href="{:url('/'.parse_name(request()->controller()).'/selected',['id'=>$value['id']])}">设为默认</a>{/if}</td><td><input type="text" name="sort[{$value['id']}]" value="{$value['sort']}" class="input-text"></td></tr>
+      <tr><td>{$value['name']|keyword}</td><td>{$value['controller']|keyword}</td><td>{$value['action']|keyword}</td><td>{if condition="$value['is_default']"}<span class="red">是</span> | <a href="{:url('/'.parse_name(request()->controller()).'/isdefault',['id'=>$value['id']])}">取消默认</a>{else/}<span class="green">否</span> | <a href="{:url('/'.parse_name(request()->controller()).'/isdefault',['id'=>$value['id']])}">设为默认</a>{/if}</td><td><input type="text" name="sort[{$value['id']}]" value="{$value['sort']}" class="input-text"></td></tr>
         {foreach name="value['obj']" key="k" item="v"}
-        <tr><td class="blue">{$v['name']|keyword}</td><td>{$v['c']|keyword}</td><td>{$v['a']|keyword}</td><td>{if condition="$v['selected']"}<span class="red">是</span> | <a href="{:url('/'.parse_name(request()->controller()).'/selected',['id'=>$v['id']])}">取消默认</a>{else/}<span class="green">否</span> | <a href="{:url('/'.parse_name(request()->controller()).'/selected',['id'=>$v['id']])}">设为默认</a>{/if}</td><td><input type="text" name="sort[{$v['id']}]" value="{$v['sort']}" class="input-text"></td></tr>
+        <tr><td class="blue">{$v['name']|keyword}</td><td>{$v['controller']|keyword}</td><td>{$v['action']|keyword}</td><td>{if condition="$v['is_default']"}<span class="red">是</span> | <a href="{:url('/'.parse_name(request()->controller()).'/isdefault',['id'=>$v['id']])}">取消默认</a>{else/}<span class="green">否</span> | <a href="{:url('/'.parse_name(request()->controller()).'/isdefault',['id'=>$v['id']])}">设为默认</a>{/if}</td><td><input type="text" name="sort[{$v['id']}]" value="{$v['sort']}" class="input-text"></td></tr>
         {/foreach}
       {/foreach}
     </table>

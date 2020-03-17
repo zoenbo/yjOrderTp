@@ -5,11 +5,11 @@ use Exception;
 use think\Model;
 use think\facade\Request;
 use think\facade\Config;
-use app\admin\validate\Ostate as valid;
+use app\admin\validate\TemplateStyle as valid;
 
-class Ostate extends Model{
-	private $tableName = 'Ostate';
-	
+class TemplateStyle extends Model{
+	private $tableName = 'Template_Style';
+
 	//查询总记录
 	public function total(){
 		return $this->where($this->map()['field'],$this->map()['condition'],$this->map()['value'])->count();
@@ -18,9 +18,9 @@ class Ostate extends Model{
 	//查询所有
 	public function all($firstRow){
 		try {
-			return $this->field('id,name,color,sort,selected,date')
+			return $this->field('id,bg_color,border_color,button_color,date')
 						->where($this->map()['field'],$this->map()['condition'],$this->map()['value'])
-						->order(['sort'=>'ASC'])
+						->order(['date'=>'DESC','id'=>'DESC'])
 						->limit($firstRow,Config::get('app.page_size'))
 						->select()
 						->toArray();
@@ -31,11 +31,9 @@ class Ostate extends Model{
 	}
 	
 	//查询所有（不分页）
-	public function all2($level=0){
+	public function all2(){
 		try {
-			$map = [];
-			if ($level == 3) $map['id'] = 1;
-			return $this->field('id,name,color,selected')->where($map)->order(['sort'=>'ASC'])->select()->toArray();
+			return $this->field('id')->order(['id'=>'ASC'])->select()->toArray();
 		} catch (Exception $e){
 			echo $e->getMessage();
 			return [];
@@ -46,7 +44,7 @@ class Ostate extends Model{
 	public function one($id=0){
 		try {
 			$map['id'] = $id ? $id : Request::get('id');
-			return $this->field('name,color,selected')->where($map)->find();
+			return $this->field('bg_color,border_color,button_color')->where($map)->find();
 		} catch (Exception $e){
 			echo $e->getMessage();
 			return [];
@@ -56,46 +54,34 @@ class Ostate extends Model{
 	//添加
 	public function add(){
 		$data = [
-			'name'=>Request::post('name'),
-			'color'=>Request::post('color'),
-			'sort'=>$this->nextId(),
+			'bg_color'=>Request::post('bg_color'),
+			'border_color'=>Request::post('border_color'),
+			'button_color'=>Request::post('button_color'),
 			'date'=>time()
 		];
 		$validate = new valid();
 		if ($validate->check($data)){
-			if ($this->repeat()) return '此订单状态已存在！';
 			return $this->insertGetId($data);
 		}else{
 			return $validate->getError();
 		}
 	}
-
+	
 	//修改
 	public function modify(){
 		$data = [
-			'name'=>Request::post('name'),
-			'color'=>Request::post('color')
+			'bg_color'=>Request::post('bg_color'),
+			'border_color'=>Request::post('border_color'),
+			'button_color'=>Request::post('button_color')
 		];
 		$validate = new valid();
 		if ($validate->check($data)){
-			if ($this->repeat(true)) return '此订单状态已存在！';
 			return $this->where(['id'=>Request::get('id')])->update($data);
 		}else{
 			return $validate->getError();
 		}
 	}
 	
-	//设置默认
-	public function selected(){
-		$this->where(['selected'=>1])->update(['selected'=>0]);
-		return $this->where(['id'=>Request::get('id')])->update(['selected'=>1]);
-	}
-	
-	//排序
-	public function sort($id,$sort){
-		return $this->where(['id'=>$id])->update(['sort'=>$sort]);
-	}
-
 	//删除
 	public function remove(){
 		try {
@@ -108,32 +94,10 @@ class Ostate extends Model{
 		}
 	}
 	
-	//验证重复
-	private function repeat($update=false){
-		try {
-			$object = $this->field('id')->where(['name'=>Request::post('name')]);
-			return $update ? $object->where('id','<>',Request::get('id'))->find() : $object->find();
-		} catch (Exception $e){
-			echo $e->getMessage();
-			return [];
-		}
-	}
-	
-	//自增ID
-	private function nextId(){
-		try {
-			$object = $this->query("SHOW TABLE STATUS FROM `".Config::get('database.connections.mysql.database')."` LIKE '".Config::get('database.connections.mysql.prefix').strtolower($this->tableName)."'");
-			return $object[0]['Auto_increment'];
-		} catch (Exception $e){
-			echo $e->getMessage();
-			return [];
-		}
-	}
-	
 	//搜索
 	private function map(){
 		return [
-			'field'=>'name',
+			'field'=>'bg_color|border_color|button_color',
 			'condition'=>'LIKE',
 			'value'=>'%'.Request::get('keyword').'%'
 		];

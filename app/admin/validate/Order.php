@@ -5,8 +5,8 @@ use think\Validate;
 
 class Order extends Validate{
 	protected $rule = [
-		'tid'=>'require',
-		'pid'=>'require',
+		'template_id'=>'require',
+		'product_id'=>'require',
 		'price'=>'require|regex:/^\d+(\.\d+)?$/',
 		'count'=>'require|number',
 		'name'=>'require|min:2|max:20',
@@ -23,12 +23,12 @@ class Order extends Validate{
 		'post'=>'regex:/^\d{6}$/',
 		'note'=>'max:255',
 		'email'=>'email',
-		'logistics_id'=>'max:30',
+		'logistics_number'=>'max:30',
 		'pay'=>'require|in:1,2,4,6',
 	];
 	protected $message = [
-		'tid'=>'请先在模板管理模块中添加一个模板！',
-		'pid'=>'请先在产品管理模块中添加一个产品！',
+		'template_id'=>'请先在模板管理模块中添加一个模板！',
+		'product_id'=>'请先在产品管理模块中添加一个产品！',
 		'price'=>'成交单价必须是数字！',
 		'count'=>'订购数量必须是数字！',
 		'name'=>'姓名不得小于2位或大于20位！',
@@ -45,7 +45,7 @@ class Order extends Validate{
 		'post'=>'邮政编码必须是6位的数字！',
 		'note'=>'备注不得大于250位！',
 		'email'=>'电子邮箱格式不合法！',
-		'logistics_id'=>'物流编号不得大于30位！',
+		'logistics_number'=>'物流编号不得大于30位！',
 		'pay'=>'支付方式有误，请重新选择！',
 	];
 }

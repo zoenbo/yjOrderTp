@@ -5,7 +5,6 @@ use think\Validate;
 
 class Order extends Validate{
 	protected $rule = [
-		'attr'=>'max:255',
 		'count'=>'require|number',
 		'name'=>'require|min:2|max:20',
 		'tel'=>'require|regex:/^[\d\-]{7,20}$/',
@@ -24,7 +23,6 @@ class Order extends Validate{
 		'pay'=>'require|in:1,2,4,6',
 	];
 	protected $message = [
-		'attr'=>'产品属性不得大于255位！',
 		'count'=>'订购数量必须是数字！',
 		'name'=>'姓名不得小于2位或大于20位！',
 		'tel'=>'联系电话必须是数字和-号，且不得小于7位或大于20位！',

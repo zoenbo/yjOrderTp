@@ -6,7 +6,7 @@ use think\Validate;
 class Product extends Validate{
 	protected $rule = [
 		'name'=>'require|max:30',
-		'sid'=>'require',
+		'product_sort_id'=>'require',
 		'price'=>'require|regex:/^\d+(\.\d+)?$/',
 		'price2'=>'regex:/^\d+(\.\d+)?$/',
 		'commission'=>'regex:/^\d+(\.\d+)?$/',
@@ -15,7 +15,7 @@ class Product extends Validate{
 	];
 	protected $message = [
 		'name'=>'产品名称不得为空或大于30位！',
-		'sid'=>'请先在产品分类模块中添加一个分类！',
+		'product_sort_id'=>'请先在产品分类模块中添加一个分类！',
 		'price'=>'产品价格必须是数字！',
 		'price2'=>'成本价必须是数字！',
 		'commission'=>'分销佣金必须是数字！',

@@ -12,14 +12,14 @@ class Product extends Base{
 		$Product = new model\Product();
 		$object = $Product->all($this->page($Product->total()));
 		if ($object){
-			$Psort = new model\Psort();
+			$ProductSort = new model\ProductSort();
 			foreach ($object as $key=>$value){
-				$object2 = $Psort->one($value['sid']);
+				$object2 = $ProductSort->one($value['product_sort_id']);
 				$object[$key]['psort'] = $object2 ? '<span style="color:'.$object2['color'].';">'.$object2['name'].'</span>' : '此分类已被删除';
 			}
 		}
 		View::assign(['All'=>$object]);
-		$this->psort(Request::get('sid'));
+		$this->psort(Request::get('product_sort_id'));
 		return $this->view();
 	}
 	
@@ -47,7 +47,7 @@ class Product extends Base{
 				$object = $Product->modify();
 				return is_numeric($object) ? $this->success(Route::buildUrl('/'.parse_name(Request::controller()).'/index'),'产品修改成功！') : $this->failed($object);
 			}
-			$this->psort($object['sid']);
+			$this->psort($object['product_sort_id']);
 			View::assign(['One'=>$object]);
 			return $this->view();
 		}else{
@@ -55,11 +55,11 @@ class Product extends Base{
 		}
 	}
 	
-	public function selected(){
+	public function isDefault(){
 		if (Request::get('id')){
 			$Product = new model\Product();
 			if (!$Product->one()) return $this->failed('不存在此产品！');
-			if (!$Product->selected()) return $this->failed('设置默认产品失败！');
+			if (!$Product->isDefault()) return $this->failed('设置默认产品失败！');
 			return $this->success(Config::get('app.prev_url'));
 		}else{
 			return $this->failed('非法操作！');
@@ -78,16 +78,16 @@ class Product extends Base{
 		return '';
 	}
 	 
-	public function viewed(){
+	public function isView(){
 		if (Request::get('id')){
 			if (Config::get('app.demo')) return $this->failed('演示站，无法设置显示状态！');
 			$Product = new model\Product();
 			$object = $Product->one();
 			if (!$object) return $this->failed('不存在此产品！');
-			if ($object['view'] == 0){
-				if (!$Product->view(1)) return $this->failed('设置产品前台显示失败！');
+			if ($object['is_view'] == 0){
+				if (!$Product->isView(1)) return $this->failed('设置产品前台显示失败！');
 			}else{
-				if (!$Product->view(0)) return $this->failed('取消产品前台显示失败！');
+				if (!$Product->isView(0)) return $this->failed('取消产品前台显示失败！');
 			}
 			return $this->success(Config::get('app.prev_url'));
 		}else{
@@ -109,10 +109,10 @@ class Product extends Base{
 	
 	private function psort($id=0){
 		$html = '';
-		$Psort = new model\Psort();
-		foreach ($Psort->all2() as $value){
+		$ProductSort = new model\ProductSort();
+		foreach ($ProductSort->all2() as $value){
 			$html .= '<option value="'.$value['id'].'" '.($value['id']==$id ? 'selected' : '').' style="color:'.$value['color'].';">'.$value['name'].'</option>';
 		}
-		View::assign(['Sort'=>$html]);
+		View::assign(['ProductSort'=>$html]);
 	}
 }

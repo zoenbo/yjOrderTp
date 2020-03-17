@@ -35,15 +35,15 @@ class District extends Model{
 	public function one($id=0){
 		try {
 			$map['id'] = $id ? $id : Request::get('id');
-			return $this->field('name,pid')->where($map)->find();
+			return $this->field('name,parent_id')->where($map)->find();
 		} catch (Exception $e){
 			echo $e->getMessage();
 			return [];
 		}
 	}
-	public function one2($pid){
+	public function one2($parent_id){
 		try {
-			$map['pid'] = $pid;
+			$map['parent_id'] = $parent_id;
 			return $this->field('id')->where($map)->find();
 		} catch (Exception $e){
 			echo $e->getMessage();
@@ -55,11 +55,11 @@ class District extends Model{
 	public function add(){
 		$data = [
 			'name'=>Request::post('name'),
-			'pid'=>Request::get('pid')
+			'parent_id'=>Request::get('parent_id')
 		];
 		$validate = new valid();
 		if ($validate->check($data)){
-			if ($this->repeat(Request::get('pid'))) return '此行政区划已存在！';
+			if ($this->repeat(Request::get('parent_id'))) return '此行政区划已存在！';
 			return $this->insertGetId($data);
 		}else{
 			return $validate->getError();
@@ -67,13 +67,13 @@ class District extends Model{
 	}
 	
 	//修改
-	public function modify($pid=0){
+	public function modify($parent_id=0){
 		$data = [
 			'name'=>Request::post('name')
 		];
 		$validate = new valid();
 		if ($validate->check($data)){
-			if ($this->repeat($pid,true)) return '此行政区划已存在！';
+			if ($this->repeat($parent_id,true)) return '此行政区划已存在！';
 			return $this->where(['id'=>Request::get('id')])->update($data);
 		}else{
 			return $validate->getError();
@@ -93,9 +93,9 @@ class District extends Model{
 	}
 	
 	//验证重复
-	private function repeat($pid=0,$update=false){
+	private function repeat($parent_id=0,$update=false){
 		try {
-			$object = $this->field('id')->where(['name'=>Request::post('name'),'pid'=>$pid]);
+			$object = $this->field('id')->where(['name'=>Request::post('name'),'parent_id'=>$parent_id]);
 			return $update ? $object->where('id','<>',Request::get('id'))->find() : $object->find();
 		} catch (Exception $e){
 			echo $e->getMessage();
@@ -105,8 +105,8 @@ class District extends Model{
 	
 	//搜索
 	private function map(){
-		$map['where'] = '`name` LIKE :name AND `pid`=:pid';
-		$map['value'] = ['name'=>'%'.Request::get('keyword').'%','pid'=>Request::get('pid',0)];
+		$map['where'] = '`name` LIKE :name AND `parent_id`=:parent_id';
+		$map['value'] = ['name'=>'%'.Request::get('keyword').'%','parent_id'=>Request::get('parent_id',0)];
 		return $map;
 	}
 }

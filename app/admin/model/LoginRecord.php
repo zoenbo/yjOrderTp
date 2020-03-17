@@ -18,7 +18,7 @@ class LoginRecord extends Model{
 	//查询所有
 	public function all($firstRow,$type=0){
 		try {
-			return $this->field('uid,ip,date')
+			return $this->field('manager_id,ip,date')
 						->where($this->map($type)['where'],$this->map($type)['value'])
 						->order(['date'=>'DESC'])
 						->limit($firstRow,Config::get('app.page_size'))
@@ -33,7 +33,7 @@ class LoginRecord extends Model{
 	//查询所有（不分页）
 	public function all2(){
 		try {
-			return $this->field('uid,ip,date')->order(['date'=>'DESC'])->select()->toArray();
+			return $this->field('manager_id,ip,date')->order(['date'=>'DESC'])->select()->toArray();
 		} catch (Exception $e){
 			echo $e->getMessage();
 			return [];
@@ -41,9 +41,9 @@ class LoginRecord extends Model{
 	}
 	
 	//添加
-	public function add($uid){
+	public function add($manager_id){
 		$data = [
-			'uid'=>$uid,
+			'manager_id'=>$manager_id,
 			'ip'=>get_userip(),
 			'date'=>time()
 		];
@@ -66,12 +66,12 @@ class LoginRecord extends Model{
 		$map['value']['keyword'] = '%'.Request::get('keyword').'%';
 		if ($type){
 			$session = Session::get(Config::get('system.session_key'));
-			$map['where'] .= ' AND `uid`=:uid';
-			$map['value']['uid'] = $session['id'];
+			$map['where'] .= ' AND `manager_id`=:manager_id';
+			$map['value']['manager_id'] = $session['id'];
 		}else{
-			if (Request::get('uid')){
-				$map['where'] .= ' AND `uid`=:uid';
-				$map['value']['uid'] = Request::get('uid');
+			if (Request::get('manager_id')){
+				$map['where'] .= ' AND `manager_id`=:manager_id';
+				$map['value']['manager_id'] = Request::get('manager_id');
 			}
 		}
 		return $map;

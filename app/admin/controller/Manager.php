@@ -9,7 +9,7 @@ use think\facade\View;
 
 class Manager extends Base{
 	private $level = [1=>['red','超级管理员'],2=>['green','普通管理员']];
-	private $activation = [['green','否'],['red','是']];
+	private $is_activation = [['green','否'],['red','是']];
 	private $order_permit = [0=>['',''],1=>['green','自己订单'],2=>['blue','自己订单 + 前台订单'],3=>['red','所有订单']];
 	private $qq = [['green','否'],['red','是']];
 
@@ -21,14 +21,14 @@ class Manager extends Base{
 			foreach ($object as $key=>$value){
 				$object[$key]['level_name'] = '<span class="'.$this->level[$value['level']][0].'">'.$this->level[$value['level']][1].'</span>';
 				$object[$key]['order_permit'] = $value['level']==1 ? '-' : '<span class="'.$this->order_permit[$value['order_permit']][0].'">'.$this->order_permit[$value['order_permit']][1].'</span>';
-				$object2 = $PermitGroup->one($value['gid']);
+				$object2 = $PermitGroup->one($value['permit_group_id']);
 				$object[$key]['group'] = $object2 ? $object2['name'] : '此权限组已被删除';
 			}
 		}
 		View::assign(['All'=>$object]);
-		$this->group(Request::get('gid'));
+		$this->permitGroup(Request::get('permit_group_id'));
 		$this->level1(Request::get('level'));
-		$this->activation1(Request::get('activation',-1));
+		$this->isActivation1(Request::get('is_activation',-1));
 		$this->orderPermit1(Request::get('order_permit'));
 		$this->qq1(Request::get('qq',-1));
 		return $this->view();
@@ -44,9 +44,9 @@ class Manager extends Base{
 				return $this->failed($object);
 			}
 		}
-		$this->group(0,1);
+		$this->permitGroup(0,1);
 		$this->level2(2);
-		$this->activation2(1);
+		$this->isActivation2(1);
 		$this->orderPermit2(1);
 		return $this->view();
 	}
@@ -61,9 +61,9 @@ class Manager extends Base{
 				$object = $Manager->modify();
 				return is_numeric($object) ? $this->success(Route::buildUrl('/'.parse_name(Request::controller()).'/index'),'管理员修改成功！') : $this->failed($object);
 			}
-			$this->group($object['gid'],1);
+			$this->permitGroup($object['permit_group_id'],1);
 			$this->level2($object['level']);
-			$this->activation2($object['activation']);
+			$this->isActivation2($object['is_activation']);
 			$this->orderPermit2($object['order_permit']);
 			View::assign(['One'=>$object]);
 			return $this->view();
@@ -72,16 +72,16 @@ class Manager extends Base{
 		}
 	}
 	
-	public function activation(){
+	public function isActivation(){
 		if (Request::get('id')){
 			$Manager = new model\Manager();
 			$object = $Manager->one();
 			if (!$object) return $this->failed('不存在此管理员！');
 			if (Request::get('id') == 1) return $this->failed('无法激活创始人！');
-			if ($object['activation'] == 0){
-				if (!$Manager->activation(1)) return $this->failed('管理员激活失败！');
+			if ($object['is_activation'] == 0){
+				if (!$Manager->isActivation(1)) return $this->failed('管理员激活失败！');
 			}else{
-				if (!$Manager->activation(0)) return $this->failed('管理员取消激活失败！');
+				if (!$Manager->isActivation(0)) return $this->failed('管理员取消激活失败！');
 			}
 			return $this->success(Config::get('app.prev_url'));
 		}else{
@@ -114,17 +114,17 @@ class Manager extends Base{
 		}
 	}
 
-	private function group($id=0,$flag=0){
+	private function permitGroup($id=0,$flag=0){
 		$html = '';
 		$PermitGroup = new model\PermitGroup();
 		foreach ($PermitGroup->all2() as $value){
 			if ($id == 0){
-				$html .= '<option value="'.$value['id'].'" '.($value['selected']&&$flag ? 'selected' : '').'>'.$value['name'].'</option>';
+				$html .= '<option value="'.$value['id'].'" '.($value['is_default']&&$flag ? 'selected' : '').'>'.$value['name'].'</option>';
 			}else{
 				$html .= '<option value="'.$value['id'].'" '.($value['id']==$id ? 'selected' : '').'>'.$value['name'].'</option>';
 			}
 		}
-		View::assign(['Group'=>$html]);
+		View::assign(['PermitGroup'=>$html]);
 	}
 
 	private function level1($id=0){
@@ -143,16 +143,16 @@ class Manager extends Base{
 		View::assign(['Level'=>$html]);
 	}
 
-	private function activation1($id=0){
+	private function isActivation1($id=0){
 		$html = '';
-		foreach ($this->activation as $key=>$value){
+		foreach ($this->is_activation as $key=>$value){
 			$html .= '<option value="'.$key.'" '.($key==$id ? 'selected' : '').' class="'.$value[0].'">'.$value[1].'</option>';
 		}
 		View::assign(['Activation'=>$html]);
 	}
 
-	private function activation2($id=0){
-		$html = '<div class="radio-box"><label class="red"><input type="radio" name="activation" value="1" '.($id==1 ? 'checked' : '').'>是</label></div><div class="radio-box"><label class="green"><input type="radio" name="activation" value="0" '.($id==0 ? 'checked' : '').'>否</label></div>';
+	private function isActivation2($id=0){
+		$html = '<div class="radio-box"><label class="red"><input type="radio" name="is_activation" value="1" '.($id==1 ? 'checked' : '').'>是</label></div><div class="radio-box"><label class="green"><input type="radio" name="is_activation" value="0" '.($id==0 ? 'checked' : '').'>否</label></div>';
 		View::assign(['Activation'=>$html]);
 	}
 

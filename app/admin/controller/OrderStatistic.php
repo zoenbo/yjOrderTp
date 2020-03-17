@@ -6,7 +6,7 @@ use think\facade\Request;
 use think\facade\View;
 use app\admin\model;
 
-class Ostatistic extends Base{
+class OrderStatistic extends Base{
 	public function index(){
 		$Order = new model\Order();
 
@@ -50,11 +50,11 @@ class Ostatistic extends Base{
 
 		$OrderController = new Order();
 		$OrderController->field(Request::get('field'));
-		$OrderController->manager(Request::get('uid',-1));
-		$OrderController->product(Request::get('pid'));
-		$OrderController->logistics(Request::get('lid'));
-		$OrderController->template(Request::get('tid'));
-		$OrderController->ostate(Request::get('state'));
+		$OrderController->manager(Request::get('manager_id',-1));
+		$OrderController->product(Request::get('product_id'));
+		$OrderController->logistics(Request::get('logistics_id'));
+		$OrderController->template(Request::get('template_id'));
+		$OrderController->orderState(Request::get('order_state_id'));
 		$OrderController->pay(Request::get('pay'));
 		$OrderController->alipayScene(Request::get('alipay_scene'));
 		$OrderController->wxpayScene(Request::get('wxpay_scene'));
@@ -164,11 +164,11 @@ class Ostatistic extends Base{
 		
 		$OrderController = new Order();
 		$OrderController->field(Request::get('field'));
-		$OrderController->manager(Request::get('uid',-1));
-		$OrderController->product(Request::get('pid'));
-		$OrderController->logistics(Request::get('lid'));
-		$OrderController->template(Request::get('tid'));
-		$OrderController->ostate(Request::get('state'));
+		$OrderController->manager(Request::get('manager_id',-1));
+		$OrderController->product(Request::get('product_id'));
+		$OrderController->logistics(Request::get('logistics_id'));
+		$OrderController->template(Request::get('template_id'));
+		$OrderController->orderState(Request::get('order_state_id'));
 		$OrderController->pay(Request::get('pay'));
 		$OrderController->alipayScene(Request::get('alipay_scene'));
 		$OrderController->wxpayScene(Request::get('wxpay_scene'));

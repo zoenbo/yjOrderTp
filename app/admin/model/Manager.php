@@ -17,7 +17,7 @@ class Manager extends Model{
 	//查询所有
 	public function all($firstRow){
 		try {
-			return $this->field('id,name,level,activation,gid,order_permit,qqau,date')
+			return $this->field('id,name,level,is_activation,permit_group_id,order_permit,qqau,date')
 						->where($this->map()['where'],$this->map()['value'])
 						->order(['date'=>'DESC'])
 						->limit($firstRow,Config::get('app.page_size'))
@@ -52,7 +52,7 @@ class Manager extends Model{
 			$validate = new valid();
 			if ($validate->scene('one')->check($data)){
 				$map['name'] = Request::post('name');
-				return $this->field('id,name,pass,level,activation,gid,order_permit,qqau')->where($map)->find();
+				return $this->field('id,name,pass,level,is_activation,permit_group_id,order_permit,qqau')->where($map)->find();
 			}else{
 				return $validate->getError();
 			}
@@ -66,7 +66,7 @@ class Manager extends Model{
 	public function qqlogin($qqau){
 		try {
 			$map['qqau'] = $qqau;
-			return $this->field('id,name,level,activation,gid,order_permit')->where($map)->find();
+			return $this->field('id,name,level,is_activation,permit_group_id,order_permit')->where($map)->find();
 		} catch (Exception $e){
 			echo $e->getMessage();
 			return [];
@@ -77,7 +77,7 @@ class Manager extends Model{
 	public function one($id=0){
 		try {
 			$map['id'] = $id ? $id : Request::get('id');
-			return $this->field('id,name,pass,level,activation,gid,order_permit,qqau,date')->where($map)->find();
+			return $this->field('id,name,pass,level,is_activation,permit_group_id,order_permit,qqau,date')->where($map)->find();
 		} catch (Exception $e){
 			echo $e->getMessage();
 			return [];
@@ -91,15 +91,15 @@ class Manager extends Model{
 			'pass'=>Request::post('pass'),
 			'repass'=>Request::post('repass'),
 			'level'=>Request::post('level'),
-			'activation'=>Request::post('activation'),
+			'is_activation'=>Request::post('is_activation'),
 			'date'=>time()
 		];
 		if (Request::post('level') == 1){
-			$data['gid'] = 0;
+			$data['permit_group_id'] = 0;
 			$data['order_permit'] = 0;
 		}else{
-			if (!Request::post('gid')) return '请先在权限组模块中添加一个权限组！';
-			$data['gid'] = Request::post('gid');
+			if (!Request::post('permit_group_id')) return '请先在权限组模块中添加一个权限组！';
+			$data['permit_group_id'] = Request::post('permit_group_id');
 			$data['order_permit'] = Request::post('order_permit');
 		}
 		$validate = new valid();
@@ -121,7 +121,7 @@ class Manager extends Model{
 			'repass'=>Request::post('admin_repass'),
 			'admin_mail'=>Request::post('admin_mail'),
 			'level'=>1,
-			'activation'=>1,
+			'is_activation'=>1,
 			'date'=>time()
 		];
 		$validate = new valid();
@@ -141,7 +141,7 @@ class Manager extends Model{
 		$data = [
 			'name'=>Request::post('name'),
 			'level'=>Request::post('level'),
-			'activation'=>Request::post('activation')
+			'is_activation'=>Request::post('is_activation')
 		];
 		if (Request::post('pass')){
 			$data['pass'] = Request::post('pass');
@@ -150,11 +150,11 @@ class Manager extends Model{
 			$scene[] = 'repass';
 		}
 		if (Request::post('level') == 1){
-			$data['gid'] = 0;
+			$data['permit_group_id'] = 0;
 			$data['order_permit'] = 0;
 		}else{
-			if (!Request::post('gid')) return '请先在权限组模块中添加一个权限组！';
-			$data['gid'] = Request::post('gid');
+			if (!Request::post('permit_group_id')) return '请先在权限组模块中添加一个权限组！';
+			$data['permit_group_id'] = Request::post('permit_group_id');
 			$data['order_permit'] = Request::post('order_permit');
 		}
 		$validate = new valid();
@@ -207,8 +207,8 @@ class Manager extends Model{
 	}
 
 	//激活和取消激活
-	public function activation($activation){
-		return $this->where(['id'=>Request::get('id')])->update(['activation'=>$activation]);
+	public function isActivation($is_activation){
+		return $this->where(['id'=>Request::get('id')])->update(['is_activation'=>$is_activation]);
 	}
 
 	//绑定和解绑QQ
@@ -247,9 +247,9 @@ class Manager extends Model{
 			$map['where'] .= ' AND `level`=:level';
 			$map['value']['level'] = Request::get('level');
 		}
-		if (Request::get('activation',-1) != -1){
-			$map['where'] .= ' AND `activation`=:activation';
-			$map['value']['activation'] = Request::get('activation');
+		if (Request::get('is_activation',-1) != -1){
+			$map['where'] .= ' AND `is_activation`=:is_activation';
+			$map['value']['is_activation'] = Request::get('is_activation');
 		}
 		if (Request::get('order_permit')){
 			$map['where'] .= ' AND `order_permit`=:order_permit';

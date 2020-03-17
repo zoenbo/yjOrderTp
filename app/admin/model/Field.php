@@ -15,7 +15,7 @@ class Field extends Model{
 	//查询所有
 	public function all($firstRow=0){
 		try {
-			return $this->field('id,name,selected')
+			return $this->field('id,name,is_default')
 						->where($this->map()['field'],$this->map()['condition'],$this->map()['value'])
 						->order(['id'=>'ASC'])
 						->limit($firstRow,Config::get('app.page_size'))
@@ -30,7 +30,7 @@ class Field extends Model{
 	//查询所有（不分页）
 	public function all2(){
 		try {
-			return $this->field('id,name,selected')->order(['id'=>'ASC'])->select()->toArray();
+			return $this->field('id,name,is_default')->order(['id'=>'ASC'])->select()->toArray();
 		} catch (Exception $e){
 			echo $e->getMessage();
 			return [];
@@ -40,7 +40,7 @@ class Field extends Model{
 	//查询所有（默认字段）
 	public function all3(){
 		try {
-			return $this->field('id')->where(['selected'=>1])->order(['id'=>'ASC'])->select()->toArray();
+			return $this->field('id')->where(['is_default'=>1])->order(['id'=>'ASC'])->select()->toArray();
 		} catch (Exception $e){
 			echo $e->getMessage();
 			return [];
@@ -51,7 +51,7 @@ class Field extends Model{
 	public function one($id=0){
 		try {
 			$map['id'] = $id ? $id : Request::get('id');
-			return $this->field('selected')->where($map)->find();
+			return $this->field('is_default')->where($map)->find();
 		} catch (Exception $e){
 			echo $e->getMessage();
 			return [];
@@ -59,8 +59,8 @@ class Field extends Model{
 	}
 	
 	//设置和取消默认
-	public function selected($selected){
-		return $this->where(['id'=>Request::get('id')])->update(['selected'=>$selected]);
+	public function isDefault($is_default){
+		return $this->where(['id'=>Request::get('id')])->update(['is_default'=>$is_default]);
 	}
 	
 	//搜索

@@ -8,7 +8,7 @@
 {/block}
 
 {block name="search"}
-<form method="get" action="" class="search">搜索：<select name="sid" class="select"><option value="0">查看所有分类</option>{$Sort}</select> <input type="text" name="keyword" value="{:input('get.keyword')}" class="input-text"><input type="submit" value="搜索" class="btn btn-primary radius"></form>
+<form method="get" action="" class="search">搜索：<select name="product_sort_id" class="select"><option value="0">查看所有分类</option>{$ProductSort}</select> <input type="text" name="keyword" value="{:input('get.keyword')}" class="input-text"><input type="submit" value="搜索" class="btn btn-primary radius"></form>
 {/block}
 
 {block name="tip"}
@@ -24,9 +24,9 @@
 <div class="list">
   <form method="post" action="{:url('/'.parse_name(request()->controller()).'/sort')}">
     <table>
-      <tr><th class="name">产品名称</th><th class="psort">产品分类</th><th class="price">产品价格</th><th class="sort"><input type="submit" value="排序" class="btn btn-primary radius"></th><th class="view">前台显示</th><th class="selected">是否默认</th><th class="date">添加时间</th><th class="control">操作</th></tr>
+      <tr><th class="name">产品名称</th><th class="psort">产品分类</th><th class="price">产品价格</th><th class="sort"><input type="submit" value="排序" class="btn btn-primary radius"></th><th class="is_view">前台显示</th><th class="is_default">是否默认</th><th class="date">添加时间</th><th class="control">操作</th></tr>
       {foreach name="All" key="key" item="value"}
-      <tr><td style="color:{$value['color']};">{$value['name']|keyword}</td><td>{$value['psort']}</td><td>{$value['price']|keyword}元</td><td><input type="text" name="sort[{$value['id']}]" value="{$value['sort']}" class="input-text"></td><td>{if condition="$value['view']==0"}<span class="green">否</span> | <a href="{:url('/'.parse_name(request()->controller()).'/viewed',['id'=>$value['id']])}">前台显示</a>{elseif condition="$value['view']==1"/}<span class="red">是</span> | <a href="{:url('/'.parse_name(request()->controller()).'/viewed',['id'=>$value['id']])}">取消显示</a>{/if}</td><td>{if condition="$value['selected']"}<span class="red">是</span>{else/}<a href="{:url('/'.parse_name(request()->controller()).'/selected',['id'=>$value['id']])}">设为默认</a>{/if}</td><td>{$value['date']|dateFormat}</td><td><a href="{:url('/'.parse_name(request()->controller()).'/update',['id'=>$value['id']])}">修改</a>/<a href="{:url('/'.parse_name(request()->controller()).'/delete',['id'=>$value['id']])}">删除</a></td></tr>
+      <tr><td style="color:{$value['color']};">{$value['name']|keyword}</td><td>{$value['psort']}</td><td>{$value['price']|keyword}元</td><td><input type="text" name="sort[{$value['id']}]" value="{$value['sort']}" class="input-text"></td><td>{if condition="$value['is_view']==0"}<span class="green">否</span> | <a href="{:url('/'.parse_name(request()->controller()).'/isview',['id'=>$value['id']])}">前台显示</a>{elseif condition="$value['is_view']==1"/}<span class="red">是</span> | <a href="{:url('/'.parse_name(request()->controller()).'/isview',['id'=>$value['id']])}">取消显示</a>{/if}</td><td>{if condition="$value['is_default']"}<span class="red">是</span>{else/}<a href="{:url('/'.parse_name(request()->controller()).'/isdefault',['id'=>$value['id']])}">设为默认</a>{/if}</td><td>{$value['date']|dateFormat}</td><td><a href="{:url('/'.parse_name(request()->controller()).'/update',['id'=>$value['id']])}">修改</a>/<a href="{:url('/'.parse_name(request()->controller()).'/delete',['id'=>$value['id']])}">删除</a></td></tr>
        {/foreach}
     </table>
   </form>

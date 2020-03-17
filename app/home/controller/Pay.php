@@ -35,7 +35,7 @@ class Pay extends Base{
 			if (strstr($_SERVER['HTTP_USER_AGENT'],'MicroMessenger')) return $this->view();
 			
 			$Product = new model\Product();
-			$object2 = $Product->one($object['pid']);
+			$object2 = $Product->one($object['product_id']);
 			include ROOT_PATH.'/extend/pay/alipay/autoload.php';
 			include ROOT_PATH.'/extend/Mobile_Detect.php';
 			$config = $this->alipayConfig();
@@ -76,11 +76,11 @@ class Pay extends Base{
 		if ($result){
 			if (Config::get('system.order_db') == '1'){
 				$Order = new model\Order();
-				$oid = explode('_',Request::param('out_trade_no'));
-				$object = $Order->one($oid[1]);
+				$order_id = explode('_',Request::param('out_trade_no'));
+				$object = $Order->one($order_id[1]);
 				$Template = new model\Template();
-				$object2 = $Template->one($object['tid']);
-				return $this->success(NULL,str_replace('{oid}',$oid[1],$object2['success2']),0,2);
+				$object2 = $Template->one($object['template_id']);
+				return $this->success(NULL,str_replace('{oid}',$order_id[1],$object2['success2']),0,2);
 			}
 		}else{
 			return $this->failed('很遗憾，订单支付失败，如果您确定已经付款，请联系客服解决！',0,2);
@@ -99,8 +99,8 @@ class Pay extends Base{
 		if ($result){
 			if (Config::get('system.order_db') == '1'){
 				$Order = new model\Order();
-				$oid = explode('_',Request::post('out_trade_no'));
-				$Order->modify($oid[1],3,Request::post('trade_no'),$this->payScene[0][json_decode(Request::post('fund_bill_list'))[0]->fundChannel],strtotime(Request::post('gmt_payment')));
+				$order_id = explode('_',Request::post('out_trade_no'));
+				$Order->modify($order_id[1],3,Request::post('trade_no'),$this->payScene[0][json_decode(Request::post('fund_bill_list'))[0]->fundChannel],strtotime(Request::post('gmt_payment')));
 				echo 'success';
 			}
 		}else{
@@ -128,14 +128,14 @@ class Pay extends Base{
 			if (!$object) return $this->failed('不存在此订单！');
 			if (in_array($object['pay'],$this->paid)) return $this->failed('此订单已支付！');
 			$Product = new model\Product();
-			$object2 = $Product->one($object['pid']);
+			$object2 = $Product->one($object['product_id']);
 
 			include ROOT_PATH.'/extend/Mobile_Detect.php';
 			$MobileDetect = new Mobile_Detect();
 			if ((!$MobileDetect->isMobile()&&!$MobileDetect->isTablet()) || (strstr($_SERVER['HTTP_USER_AGENT'],'MicroMessenger')&&strstr($_SERVER['HTTP_USER_AGENT'],'Windows'))){
 				$wxPayUnifiedOrder = $this->wxPayUnifiedOrder($object,$object2);
 				$wxPayUnifiedOrder->SetTrade_type('NATIVE');
-				$wxPayUnifiedOrder->SetProduct_id($object['pid']);
+				$wxPayUnifiedOrder->SetProduct_id($object['product_id']);
 				try {
 					View::assign([
 						'Url'=>urlencode(WxPayApi::unifiedOrder($wxPayUnifiedOrder)['code_url']),
@@ -211,8 +211,8 @@ class Pay extends Base{
 			$result = (array)simplexml_load_string(file_get_contents('php://input'),'SimpleXMLElement',LIBXML_NOCDATA);
 			if ($payNotifyCallBack->QueryOrder($result['transaction_id'])){
 				$Order = new model\Order();
-				$oid = explode('-',$result['out_trade_no']);
-				$Order->modify($oid[1],7,$result['transaction_id'],$this->payScene[1][$result['trade_type']],strtotime($result['time_end']));
+				$order_id = explode('-',$result['out_trade_no']);
+				$Order->modify($order_id[1],7,$result['transaction_id'],$this->payScene[1][$result['trade_type']],strtotime($result['time_end']));
 				echo '<xml><return_code><![CDATA[SUCCESS]]></return_code><return_msg><![CDATA[OK]]></return_msg></xml>';
 			}
 		}
@@ -221,18 +221,18 @@ class Pay extends Base{
 	public function wxpayAjax(){
 		if (Request::isAjax()){
 			$Order = new model\Order();
-			$object = $Order->one(Request::post('oid'));
+			$object = $Order->one(Request::post('order_id'));
 			echo $object['pay'];
 		}
 	}
 	
 	public function wxpayTip(){
-		if (Request::param('oid')){
+		if (Request::param('order_id')){
 			$Order = new model\Order();
 			$object = $Order->one(Request::param('oid'));
 			$Template = new model\Template();
-			$object2 = $Template->one($object['tid']);
-			return $this->success(NULL,str_replace('{oid}',Request::param('oid'),$object2['success2']),0,2);
+			$object2 = $Template->one($object['template_id']);
+			return $this->success(NULL,str_replace('{oid}',Request::param('order_id'),$object2['success2']),0,2);
 		}
 		return '';
 	}

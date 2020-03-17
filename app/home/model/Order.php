@@ -15,15 +15,15 @@ class Order extends Model{
 	public function all(){
 		try {
 			$map['recycle'] = 0;
-			if (Config::get('system.order_search_step') == '0') $map['tid'] = Request::get('tid');
+			if (Config::get('system.order_search_step') == '0') $map['template_id'] = Request::get('template_id');
 			if (Request::get('field') == 1){
-				$map['oid'] = Request::get('keyword');
+				$map['order_id'] = Request::get('keyword');
 			}elseif (Request::get('field') == 2){
 				$map['name'] = Request::get('keyword');
 			}elseif (Request::get('field') == 3){
 				$map['tel'] = Request::get('keyword');
 			}
-			return $this->field('id,oid,uid,tid,pid,attr,price,count,name,tel,province,city,county,town,address,post,note,email,ip,qqau,referrer,pay,state,lid,logistics_id,date')
+			return $this->field('id,order_id,manager_id,template_id,product_id,price,count,name,tel,province,city,county,town,address,post,note,email,ip,qqau,referrer,pay,order_state_id,logistics_id,logistics_number,date')
 						->where($map)
 						->order(['date'=>'DESC'])
 						->select()
@@ -35,10 +35,10 @@ class Order extends Model{
 	}
 	
 	//查询支付信息
-	public function one($oid=0){
+	public function one($order_id=0){
 		try {
-			$map['oid'] = $oid ? $oid : Request::param('oid');
-			return $this->field('tid,pid,price,count,pay')->where($map)->find();
+			$map['order_id'] = $order_id ? $order_id : Request::param('oid');
+			return $this->field('template_id,product_id,price,count,pay')->where($map)->find();
 		} catch (Exception $e){
 			echo $e->getMessage();
 			return [];
@@ -48,22 +48,22 @@ class Order extends Model{
 	//添加
 	public function add(){
 		$Template = new Template();
-		$object = $Template->one(Request::post('tid'));
+		$object = $Template->one(Request::post('template_id'));
 		if (!$object) return '此下单模板已被删除！';
 		$scene = ['count','pay'];
 		$data = [
 			'id'=>'',
-			'oid'=>time().rand(100,999),
-			'uid'=>$object['uid'],
-			'tid'=>Request::post('tid'),
-			'pid'=>Request::post('pid'),
+			'order_id'=>time().rand(100,999),
+			'manager_id'=>$object['manager_id'],
+			'template_id'=>Request::post('template_id'),
+			'product_id'=>Request::post('product_id'),
 			'referrer'=>Request::post('referrer'),
 			'pay'=>Request::post('pay'),
-			'state'=>$object['state'],
+			'order_state_id'=>$object['order_state_id'],
 			'ip'=>get_userip(),
 			'date'=>time()
 		];
-		$data['success'] = str_replace('{oid}',$data['oid'],$object['success']);
+		$data['success'] = str_replace('{oid}',$data['order_id'],$object['success']);
 		$fieldTemp = explode(',',$object['field']);
 		$data['count'] = in_array(1,$fieldTemp) ? Request::post('count') : 1;
 		if (in_array(2,$fieldTemp) || Request::post('name')){
@@ -131,7 +131,7 @@ class Order extends Model{
 		}
 		
 		$Product = new Product();
-		$object2 = $Product->one(Request::post('pid'));
+		$object2 = $Product->one(Request::post('product_id'));
 
 		if ($object2){
 			$data['pro'] = $object2['name'];
@@ -140,7 +140,7 @@ class Order extends Model{
 			return '不存在此产品，或已被删除，无法下单！';
 		}
 		$data['admin_mail'] = $object2['email'];
-		if ($object['qq']){
+		if ($object['is_qq']){
 			$session = Session::get('QC_userData');
 			if (strlen($session['openid']) == 32){
 				$data['qqau'] = $session['openid'];
@@ -150,11 +150,11 @@ class Order extends Model{
 		}
 		$validate = new valid();
 		if ($validate->only($scene)->check($data)){
-			if ($object['cid']){
+			if ($object['is_captcha']){
 				$captcha = Config::get('captcha');
-				if (isset($captcha[$object['cid']]) && !Captcha::check(Request::post('captcha'),$object['cid'])) return '验证码不正确！';
+				if (isset($captcha[$object['is_captcha']]) && !Captcha::check(Request::post('captcha'),$object['is_captcha'])) return '验证码不正确！';
 			}
-			if ($this->repeat($object['qq'])) return $object['often'];
+			if ($this->repeat($object['is_qq'])) return $object['often'];
 			if (Config::get('system.order_db') == '0') return $data;
 			$id = $this->save($data);
 			if ($id){
@@ -169,14 +169,14 @@ class Order extends Model{
 	}
 	
 	//修改支付状态
-	public function modify($oid,$pay,$pay_oid=0,$pay_scene='',$pay_date=''){
+	public function modify($order_id,$pay,$pay_id=0,$pay_scene='',$pay_date=''){
 		$data = [
 			'pay'=>$pay,
-			'pay_oid'=>$pay_oid,
+			'pay_id'=>$pay_id,
 			'pay_scene'=>$pay_scene,
 			'pay_date'=>$pay_date
 		];
-		return $this->where(['oid'=>$oid])->update($data);
+		return $this->where(['order_id'=>$order_id])->update($data);
 	}
 	
 	//验证重复

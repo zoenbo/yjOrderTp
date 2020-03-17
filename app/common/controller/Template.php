@@ -49,7 +49,7 @@ class Template{
     <form method="post" action="" target="_parent" class="form">
       <dl class="orderform">
         <dd>请认真填写订单信息，以便您尽快收到货物</dd>
-        <dd class="pro">订购产品：<select name="pid"></select></dd>
+        <dd class="pro">订购产品：<select name="product_id"></select></dd>
         <dd>订购数量：<input type="text" name="count" value="1" class="text"></dd>
         <dd>姓　　名：<input type="text" name="name" class="text"></dd>
         <dd>联系电话：<input type="text" name="tel" class="text"></dd>
@@ -84,7 +84,7 @@ class Template{
     
   <form method="get" action="" target="_blank" class="search">
       <dl>
-        <input type="hidden" name="tid" value="">
+        <input type="hidden" name="template_id" value="">
         <dd>订单查询</dd>
         <dd>查询方式：按 <label><input type="radio" name="field" value="1" checked>订单号</label> <label><input type="radio" name="field" value="2">姓名</label> <label><input type="radio" name="field" value="3">联系电话</label></dd>
         <dd>关 键 词：<input type="text" name="keyword" class="text"></dd>
@@ -130,7 +130,7 @@ class Template{
   <form method="post" action="" target="_parent" class="form">
     <dl class="orderform">
       <dd>请认真填写订单信息，以便您尽快收到货物</dd>
-      <dd class="pro">订购产品：<select name="pid"></select></dd>
+      <dd class="pro">订购产品：<select name="product_id"></select></dd>
       <dd>订购数量：<input type="text" name="count" value="1" class="text"></dd>
       <dd>姓　　名：<input type="text" name="name" class="text"></dd>
       <dd>联系电话：<input type="text" name="tel" class="text"></dd>
@@ -165,7 +165,7 @@ class Template{
   
   <form method="get" action="" target="_blank" class="search">
       <dl>
-        <input type="hidden" name="tid" value="">
+        <input type="hidden" name="template_id" value="">
         <dd>订单查询</dd>
         <dd>查询方式：按 <label><input type="radio" name="field" value="1" checked>订单号</label> <label><input type="radio" name="field" value="2">姓名</label> <label><input type="radio" name="field" value="3">联系电话</label></dd>
         <dd>关 键 词：<input type="text" name="keyword" class="text"></dd>
@@ -217,7 +217,7 @@ class Template{
   <form method="post" action="" target="_parent" class="form">
     <dl class="orderform">
       <dd class="center">请认真填写订单信息，以便您尽快收到货物</dd>
-      <dd class="pro"><span class="left">订购产品：</span><span class="right"><select name="pid"></select></span></dd>
+      <dd class="pro"><span class="left">订购产品：</span><span class="right"><select name="product_id"></select></span></dd>
       <dd><span class="left">订购数量：</span><span class="right"><input type="text" name="count" value="1" class="text"></span></dd>
       <dd><span class="left">姓　　名：</span><span class="right"><input type="text" name="name" class="text"></span></dd>
       <dd><span class="left">联系电话：</span><span class="right"><input type="text" name="tel" class="text"></span></dd>
@@ -253,7 +253,7 @@ class Template{
   
   <form method="get" action="" target="_blank" class="search">
     <dl>
-      <input type="hidden" name="tid" value="">
+      <input type="hidden" name="template_id" value="">
       <dd class="center">订单查询</dd>
       <dd><span class="left">查询方式：</span><span class="right">按 <label><input type="radio" name="field" value="1" checked>订单号</label> <label><input type="radio" name="field" value="2">姓名</label> <label><input type="radio" name="field" value="3">联系电话</label></span></dd>
       <dd><span class="left">关 键 词：</span><span class="right"><input type="text" name="keyword" class="text"></span></dd>
@@ -293,7 +293,7 @@ class Template{
   
   <form method="post" action="" target="_parent" class="form">
     <dl class="orderform">
-      <dd class="pro"><span class="left">订购产品：</span><span class="right"><select name="pid"></select></span></dd>
+      <dd class="pro"><span class="left">订购产品：</span><span class="right"><select name="product_id"></select></span></dd>
       <dd><span class="left">订购数量：</span><span class="right"><input type="text" name="count" value="1" class="text"></span></dd>
       <dd><span class="left">姓　　名：</span><span class="right"><input type="text" name="name" class="text"></span></dd>
       <dd><span class="left">联系电话：</span><span class="right"><input type="text" name="tel" class="text"></span></dd>
@@ -329,7 +329,7 @@ class Template{
   
   <form method="get" action="" target="_blank" class="search">
       <dl>
-        <input type="hidden" name="tid" value="">
+        <input type="hidden" name="template_id" value="">
       <dd class="center">订单查询</dd>
       <dd><span class="left">查询方式：</span><span class="right">按 <label><input type="radio" name="field" value="1" checked>订单号</label> <label><input type="radio" name="field" value="2">姓名</label> <label><input type="radio" name="field" value="3">联系电话</label></span></dd>
       <dd><span class="left">关 键 词：</span><span class="right"><input type="text" name="keyword" class="text"></span></dd>
@@ -369,7 +369,7 @@ class Template{
   
   <form method="post" action="" target="_parent" class="form">
     <dl class="orderform">
-      <dd class="pro"><span class="left">订购产品：</span><span class="right"><select name="pid"></select></span></dd>
+      <dd class="pro"><span class="left">订购产品：</span><span class="right"><select name="product_id"></select></span></dd>
       <dd><span class="left">订购数量：</span><span class="right"><input type="text" name="count" value="1" class="text"></span></dd>
       <dd><span class="left">姓　　名：</span><span class="right"><input type="text" name="name" class="text"></span></dd>
       <dd><span class="left">联系电话：</span><span class="right"><input type="text" name="tel" class="text"></span></dd>
@@ -405,7 +405,7 @@ class Template{
   
   <form method="get" action="" target="_blank" class="search">
       <dl>
-        <input type="hidden" name="tid" value="">
+        <input type="hidden" name="template_id" value="">
       <dd class="center">订单查询</dd>
       <dd><span class="left">查询方式：</span><span class="right">按 <label><input type="radio" name="field" value="1" checked>订单号</label> <label><input type="radio" name="field" value="2">姓名</label> <label><input type="radio" name="field" value="3">联系电话</label></span></dd>
       <dd><span class="left">关 键 词：</span><span class="right"><input type="text" name="keyword" class="text"></span></dd>
@@ -445,7 +445,7 @@ class Template{
   
   <form method="post" action="" target="_parent" class="form">
     <dl class="orderform">
-      <dd class="pro"><span class="left">订购产品：</span><span class="right"><select name="pid"></select></span></dd>
+      <dd class="pro"><span class="left">订购产品：</span><span class="right"><select name="product_id"></select></span></dd>
       <dd><span class="left">订购数量：</span><span class="right"><input type="text" name="count" value="1" class="text"></span></dd>
       <dd><span class="left">姓　　名：</span><span class="right"><input type="text" name="name" class="text"></span></dd>
       <dd><span class="left">联系电话：</span><span class="right"><input type="text" name="tel" class="text"></span></dd>
@@ -481,7 +481,7 @@ class Template{
   
   <form method="get" action="" target="_blank" class="search">
       <dl>
-        <input type="hidden" name="tid" value="">
+        <input type="hidden" name="template_id" value="">
       <dd class="center">订单查询</dd>
       <dd><span class="left">查询方式：</span><span class="right">按 <label><input type="radio" name="field" value="1" checked>订单号</label> <label><input type="radio" name="field" value="2">姓名</label> <label><input type="radio" name="field" value="3">联系电话</label></span></dd>
       <dd><span class="left">关 键 词：</span><span class="right"><input type="text" name="keyword" class="text"></span></dd>
@@ -507,17 +507,17 @@ class Template{
 		if ($object['template'] == 1){
 			$output = $templates[1];
 		}else{
-			$Style = new model\Style();
-			$styleObject = $Style->one($object['sid']);
+			$TemplateStyle = new model\TemplateStyle();
+			$styleObject = $TemplateStyle->one($object['template_style_id']);
 			if ($object['template'] == 0){
 				$output = $templates[0];
-				$output = preg_replace('/<style type="text\/css">[\w\W]*<\/style>/U','<style type="text/css">.order{width:'.($object['send'] ? 950 : 614).'px;background:'.$styleObject['bgcolor'].';border:1px solid '.$styleObject['bordercolor'].';}.order div.left{border-right:1px solid '.$styleObject['bordercolor'].';}.order div.left dl dd.submit input{background:'.$styleObject['buttoncolor'].';}.order div.left .buy,.order div.right .send{border-bottom:1px solid '.$styleObject['bordercolor'].';}</style>',$output);
-				$output = str_replace('<div class="right"><div class="send"></div><div class="list"><div class="list1"></div><div class="list2"></div></div></div>',$object['send'] ? '<div class="right"><div class="send"></div><div class="list"><div class="list1"></div><div class="list2"></div></div></div>' : '',$output);
+				$output = preg_replace('/<style type="text\/css">[\w\W]*<\/style>/U','<style type="text/css">.order{width:'.($object['is_show_send'] ? 950 : 614).'px;background:'.$styleObject['bg_color'].';border:1px solid '.$styleObject['border_color'].';}.order div.left{border-right:1px solid '.$styleObject['border_color'].';}.order div.left dl dd.submit input{background:'.$styleObject['button_color'].';}.order div.left .buy,.order div.right .send{border-bottom:1px solid '.$styleObject['border_color'].';}</style>',$output);
+				$output = str_replace('<div class="right"><div class="send"></div><div class="list"><div class="list1"></div><div class="list2"></div></div></div>',$object['is_show_send'] ? '<div class="right"><div class="send"></div><div class="list"><div class="list1"></div><div class="list2"></div></div></div>' : '',$output);
 			}elseif (in_array($object['template'],[2,3,4,5])){
 				$output = $templates[$object['template']];
-				$styleObject = $Style->one($object['sid']);
-				$output = preg_replace('/<style type="text\/css">[\w\W]*<\/style>/U','<style type="text/css">.order{background:'.$styleObject['bgcolor'].';border:1px solid '.$styleObject['bordercolor'].';}.order .buy{border-bottom:1px solid '.$styleObject['bordercolor'].';}.order dl dd.submit input{background:'.$styleObject['buttoncolor'].';}</style>',$output);
-				$output = preg_replace('/<div class="new"><\/div>/',$object['send'] ? '<div class="new"></div>' : '',$output);
+				$styleObject = $TemplateStyle->one($object['template_style_id']);
+				$output = preg_replace('/<style type="text\/css">[\w\W]*<\/style>/U','<style type="text/css">.order{background:'.$styleObject['bg_color'].';border:1px solid '.$styleObject['border_color'].';}.order .buy{border-bottom:1px solid '.$styleObject['border_color'].';}.order dl dd.submit input{background:'.$styleObject['button_color'].';}</style>',$output);
+				$output = preg_replace('/<div class="new"><\/div>/',$object['is_show_send'] ? '<div class="new"></div>' : '',$output);
 			}
 		}
 
@@ -528,7 +528,7 @@ class Template{
 		$Product = new model\Product();
 		if ($productTemp[0] == 0){
 			if ($productTemp[4] == 0){
-				$productHtml .= '<select name="pid">';
+				$productHtml .= '<select name="product_id">';
 				$productObject = $Product->all($productTemp[2]);
 				if ($productObject){
 					foreach ($productObject as $value){
@@ -540,16 +540,16 @@ class Template{
 				$productObject = $Product->all($productTemp[2]);
 				if ($productObject){
 					foreach ($productObject as $value){
-						$productHtml.= '<label style="color:'.$value['color'].';"><input type="radio" name="pid" value="'.$value['id'].'" '.($value['id']==$productTemp[3] ? 'checked' : '').' price="'.$value['price'].'">'.$value['name'].'（'.$value['price'].'元）</label><br>';
+						$productHtml.= '<label style="color:'.$value['color'].';"><input type="radio" name="product_id" value="'.$value['id'].'" '.($value['id']==$productTemp[3] ? 'checked' : '').' price="'.$value['price'].'">'.$value['name'].'（'.$value['price'].'元）</label><br>';
 					}
 				}
 			}
 		}elseif ($productTemp[0] == 1){
-			$Psort = new model\Psort();
-			$psortObject = $Psort->all($productTemp[1]);
+			$ProductSort = new model\ProductSort();
+			$psortObject = $ProductSort->all($productTemp[1]);
 			if ($psortObject){
 				if ($productTemp[4] == 0){
-					$productHtml .= '<select name="pid">';
+					$productHtml .= '<select name="product_id">';
 					foreach ($psortObject as $value){
 						$productHtml .= '<optgroup label="'.$value['name'].'" style="color:'.$value['color'].';">';
 						$productObject = $Product->all($productTemp[2],$value['id']);
@@ -567,7 +567,7 @@ class Template{
 						$productObject = $Product->all($productTemp[2],$value['id']);
 						if ($productObject){
 							foreach ($productObject as $v){
-								$productHtml .= '<label style="color:'.$v['color'].';"><input type="radio" name="pid" value="'.$v['id'].'" '.($v['id']==$productTemp[3] ? 'checked' : '').' price="'.$v['price'].'">'.$v['name'].'（'.$v['price'].'元）</label><br>';
+								$productHtml .= '<label style="color:'.$v['color'].';"><input type="radio" name="product_id" value="'.$v['id'].'" '.($v['id']==$productTemp[3] ? 'checked' : '').' price="'.$v['price'].'">'.$v['name'].'（'.$v['price'].'元）</label><br>';
 							}
 						}
 					}
@@ -583,16 +583,13 @@ class Template{
 			}
 		}
 
-		$dd = "\r\n    ".'<div class="fields"><input type="hidden" name="tid" value="'.$id.'">';
-		$dd .= "\r\n    ".'<input type="hidden" name="uid" value="'.Request::param('uid').'">';
+		$dd = "\r\n    ".'<div class="fields"><input type="hidden" name="template_id" value="'.$id.'">';
 		$dd .= "\r\n    ".'<input type="hidden" name="price">';
 		$dd .= "\r\n    ".'<input type="hidden" name="referrer">';
-		$dd .= "\r\n    ".'<input type="hidden" name="attr">';
 		$fieldTemp = explode(',',$object['field']);
 		if (in_array($object['template'],[0,1])){
 			$dd .= "\r\n	<dd>请认真填写订单信息，以便您尽快收到货物</dd>";
 			$dd .= "\r\n    ".'<dd class="pro"><span class="protext">订购产品：</span><span class="prolist">'.$productHtml.'</span></dd>';
-			$dd .= "\r\n    ".'<div class="attr"></div>';
 			$dd .= in_array(1,$fieldTemp) ? "\r\n    ".'<dd>订购数量：<input type="text" name="count" value="1" class="text"></dd>' : '<input type="hidden" name="count" value="1">';
 			$dd .= "\r\n    ".'<dd>总价合计：<span class="total"></span></dd>';
 			if (in_array(2,$fieldTemp)) $dd .= "\r\n    ".'<dd>姓　　名：<input type="text" name="name" class="text"></dd>';
@@ -639,14 +636,13 @@ class Template{
 			if (in_array(8,$fieldTemp)) $dd .= "\r\n    ".'<dd class="textarea"><span>备　　注：</span><textarea name="note"></textarea></dd>';
 			if (in_array(9,$fieldTemp)) $dd .= "\r\n    ".'<dd>电子邮箱：<input type="text" name="email" placeholder="选填，可接收物流信息" class="text"></dd>';
 			$dd .= "\r\n    ".($payHtml ? '<dd>支付方式：'.$payHtml.'</dd>' : '<input type="hidden" name="pay" value="'.$payTemp[0].'">');
-			if ($object['cid']){
+			if ($object['is_captcha']){
 				$captcha = Config::get('captcha');
-				if (isset($captcha[$object['cid']])) $dd .= "\r\n    ".'<dd class="captcha"><span>验 证 码：<input type="text" name="captcha" class="text2"></span> <img src="'.Config::get('app.web_url').Config::get('system.index_php').'common/captcha?id='.$object['cid'].'" alt="验证码" onClick="this.src=\''.Config::get('app.web_url').Config::get('system.index_php').'common/captcha?id='.$object['cid'].'&tm=\'+Math.random();" title="看不清？换一张"></dd>';
+				if (isset($captcha[$object['is_captcha']])) $dd .= "\r\n    ".'<dd class="captcha"><span>验 证 码：<input type="text" name="captcha" class="text2"></span> <img src="'.Config::get('app.web_url').Config::get('system.index_php').'common/captcha?id='.$object['is_captcha'].'" alt="验证码" onClick="this.src=\''.Config::get('app.web_url').Config::get('system.index_php').'common/captcha?id='.$object['is_captcha'].'&tm=\'+Math.random();" title="看不清？换一张"></dd>';
 			}
 		}elseif (in_array($object['template'],[2,3,4,5])){
 			$dd .= "\r\n    ".'<dd class="center">请认真填写订单信息，以便您尽快收到货物</dd>';
 			$dd .= "\r\n    ".'<dd class="pro"><span class="left">订购产品：</span><span class="right">'.$productHtml.'</span></dd>';
-			$dd .= "\r\n    ".'<div class="attr"></div>';
 			$dd .= in_array(1,$fieldTemp) ? "\r\n    ".'<dd><span class="left">订购数量：</span><span class="right"><input type="text" name="count" value="1" class="text"></span></dd>' : '<input type="hidden" name="count" value="1">';
 			$dd .= "\r\n    ".'<dd><span class="left">总价合计：</span><span class="right"><span class="total"></span></span></dd>';
 			if (in_array(2,$fieldTemp)) $dd .= "\r\n    ".'<dd><span class="left">姓　　名：</span><span class="right"><input type="text" name="name" class="text"></span></dd>';
@@ -695,15 +691,15 @@ class Template{
 			if (in_array(8,$fieldTemp)) $dd .= "\r\n    ".'<dd class="textarea"><span class="left">备　　注：</span><span class="right"><textarea name="note"></textarea></span></dd>';
 			if (in_array(9,$fieldTemp)) $dd .= "\r\n    ".'<dd><span class="left">电子邮箱：</span><span class="right"><input type="text" name="email" placeholder="选填，可接收物流信息" class="text"></span></dd>';
 			$dd .= "\r\n    ".($payHtml ? '<dd class="pay"><span class="left">支付方式：</span><span class="right">'.$payHtml.'</span></dd>' : '<input type="hidden" name="pay" value="'.$payTemp[0].'">');
-			if ($object['cid']){
+			if ($object['is_captcha']){
 				$captcha = Config::get('captcha');
-				if (isset($captcha[$object['cid']])){
+				if (isset($captcha[$object['is_captcha']])){
 					$dd .= "\r\n    ".'<dd><span class="left">验 证 码：</span><span class="right"><input type="text" name="captcha" class="text2"></span></dd>';
-					$dd .= "\r\n    ".'<dd class="captcha"><span class="left"></span><span class="right"><img src="'.Config::get('app.web_url').Config::get('system.index_php').'common/captcha?id='.$object['cid'].'" alt="验证码" onClick="this.src=\''.Config::get('app.web_url').Config::get('system.index_php').'common/captcha?id='.$object['cid'].'&tm=\'+Math.random();" title="看不清？换一张"></span></dd>';
+					$dd .= "\r\n    ".'<dd class="captcha"><span class="left"></span><span class="right"><img src="'.Config::get('app.web_url').Config::get('system.index_php').'common/captcha?id='.$object['is_captcha'].'" alt="验证码" onClick="this.src=\''.Config::get('app.web_url').Config::get('system.index_php').'common/captcha?id='.$object['is_captcha'].'&tm=\'+Math.random();" title="看不清？换一张"></span></dd>';
 				}
 			}
 		}
-		if ($object['qq'] == 0){
+		if ($object['is_qq'] == 0){
 			$dd .= "\r\n    ".'<dd class="info info1">请认真填写以上信息，然后点击下面的“立即提交订单”按钮以完成下单</dd>';
 			$dd .= "\r\n    ".'<dd class="submit"><input type="submit" value="立即提交订单"></dd>';
 		}else{
@@ -714,9 +710,9 @@ class Template{
 		$dd .= '</div>';
 		$output = str_replace('<title>填写订单</title>','<title>'.$object['name'].'</title>',$output);
 		$output = preg_replace('/<dl class="orderform">[\w\W]*<\/dl>/U','<dl>'.$dd."\r\n  </dl>",$output);
-		if ($object['search']){
+		if ($object['is_show_search']){
 			$output = preg_replace('/<form method="get" action="[\w\W]*"/U','<form method="get" action="'.Config::get('app.web_url').Config::get('system.index_php').'order/search.html"',$output);
-			$output = str_replace('<input type="hidden" name="tid" value="">','<input type="hidden" name="tid" value="'.$id.'">',$output);
+			$output = str_replace('<input type="hidden" name="template_id" value="">','<input type="hidden" name="template_id" value="'.$id.'">',$output);
 		}else{
 			$output = preg_replace('/<form method="get" action="" target="_blank" class="search">[\w\W]*<\/form>/','',$output);
 		}

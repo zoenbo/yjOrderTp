@@ -52,27 +52,27 @@ class Order extends Base{
 			$Manager = new model\Manager();
 			$Product = new model\Product();
 			$Logistics = new model\Logistics();
-			$Ostate = new model\Ostate();
+			$OrderState = new model\OrderState();
 			include ROOT_PATH.'/extend/QQWry.class.php';
 			$QQWry = QQWry::getInstance();
 			foreach ($object as $key=>$value){
-				if ($value['uid']){
-					$object2 = $Manager->one($value['uid']);
-					$object[$key]['admin'] = $object2 ? $object2['name'] : '此管理员已被删除';
+				if ($value['manager_id']){
+					$object2 = $Manager->one($value['manager_id']);
+					$object[$key]['manager'] = $object2 ? $object2['name'] : '此管理员已被删除';
 				}else{
-					$object[$key]['admin'] = '前台下单';
+					$object[$key]['manager'] = '前台下单';
 				}
-				$object3 = $Product->one($value['pid']);
+				$object3 = $Product->one($value['product_id']);
 				$object[$key]['pro'] = $object3 ? '<span style="color:'.$object3['color'].';">'.$object3['name'].'（'.$object3['price'].'元）</span>' : '此产品已被删除';
 				$object[$key]['total'] = number_format($value['price']*$value['count'],2,'.','');
 				$object[$key]['address'] = $value['province'].' '.$value['city'].' '.$value['county'].' '.$value['address'];
-				$object4 = $Logistics->one($value['lid']);
+				$object4 = $Logistics->one($value['logistics_id']);
 				$object[$key]['loginame'] = $object4 ? $object4['name'] : '';
 				$object[$key]['logicode'] = $object4 ? $object4['code'] : '';
-				$object5 = $Template->one($value['tid']);
+				$object5 = $Template->one($value['template_id']);
 				$object[$key]['template'] = $object5 ? $object5['name'] : '此模板已被删除';
-				$object6 = $Ostate->one($value['state']);
-				$object[$key]['state'] = $object6 ? '<span style="color:'.$object6['color'].';">'.$object6['name'].'</span>' : '此状态已被删除';
+				$object6 = $OrderState->one($value['order_state_id']);
+				$object[$key]['order_state'] = $object6 ? '<span style="color:'.$object6['color'].';">'.$object6['name'].'</span>' : '此状态已被删除';
 				$object[$key]['pay'] = Config::get('app.pay1')[$value['pay']];
 				if ($value['pay'] == 3){
 					$object[$key]['pay_scene'] = $this->payScene[0][$value['pay_scene']];
@@ -85,11 +85,11 @@ class Order extends Base{
 			}
 		}
 		$this->field(Request::get('field'));
-		$this->manager(Request::get('uid',-1));
-		$this->product(Request::get('pid'));
-		$this->logistics(Request::get('lid'));
-		$this->template(Request::get('tid'));
-		$this->ostate(Request::get('state'));
+		$this->manager(Request::get('manager_id',-1));
+		$this->product(Request::get('product_id'));
+		$this->logistics(Request::get('logistics_id'));
+		$this->template(Request::get('template_id'));
+		$this->orderState(Request::get('order_state_id'));
 		$this->pay(Request::get('pay'));
 		$this->alipayScene(Request::get('alipay_scene'));
 		$this->wxpayScene(Request::get('wxpay_scene'));
@@ -111,7 +111,7 @@ class Order extends Base{
 		$this->logistics(0,1);
 		$this->template(0,1);
 		$this->pay();
-		$this->ostate2();
+		$this->orderState2();
 		View::assign(['Pay'=>Config::get('app.pay1')]);
 		return $this->view();
 	}
@@ -143,12 +143,12 @@ class Order extends Base{
 			}
 			$object = $Order->one();
 			if (!$object) return $this->failed('不存在此订单，或没有此订单的管理权限！');
-			$this->product($object['pid']);
-			$this->logistics($object['lid'],1);
-			$this->template($object['tid'],1);
+			$this->product($object['product_id']);
+			$this->logistics($object['logistics_id'],1);
+			$this->template($object['template_id'],1);
 			$this->pay($object['pay']);
-			$this->ostate2($object['state']);
-			$object['payUrl'] = $this->payUrl($object['oid']);
+			$this->orderState2($object['order_state_id']);
+			$object['payUrl'] = $this->payUrl($object['order_id']);
 			View::assign(['One'=>$object,'Pay'=>Config::get('app.pay1')]);
 			return $this->view('order/update');
 		}else{
@@ -162,23 +162,23 @@ class Order extends Base{
 			$object = $Order->one();
 			if (!$object) return $this->failed('不存在此订单，或没有此订单的管理权限！');
 			
-			if ($object['uid']){
+			if ($object['manager_id']){
 				$Manager = new model\Manager();
-				$object2 = $Manager->one($object['uid']);
+				$object2 = $Manager->one($object['manager_id']);
 				$object['manager'] = $object2 ? $object2['name'] : '此管理员已被删除';
 			}else{
 				$object['manager'] = '前台下单';
 			}
 			
 			$Product = new model\Product();
-			$object3 = $Product->one($object['pid']);
+			$object3 = $Product->one($object['product_id']);
 			$object['product'] = $object3 ? '<span style="color:'.$object3['color'].';">'.$object3['name'].'（'.$object3['price'].'元）</span>' : '此产品已被删除';
 			
 			$object['total'] = number_format($object['price']*$object['count'],2,'.','');
 			
-			if ($object['lid']){
+			if ($object['logistics_id']){
 				$Logistics = new model\Logistics();
-				$object4 = $Logistics->one($object['lid']);
+				$object4 = $Logistics->one($object['logistics_id']);
 				$object['logistics_name'] = $object4 ? $object4['name'] : '此物流已被删除';
 				$object['logistics_code'] = $object4 ? $object4['code'] : '';
 			}else{
@@ -186,12 +186,12 @@ class Order extends Base{
 			}
 			
 			$Template = new model\Template();
-			$object5 = $Template->one($object['tid']);
+			$object5 = $Template->one($object['template_id']);
 			$object['template'] = $object5 ? $object5['name'] : '此模板已被删除';
 			
-			$Ostate = new model\Ostate();
-			$object6 = $Ostate->one($object['state']);
-			$object['state'] = $object6 ? '<span style="color:'.$object6['color'].';">'.$object6['name'].'</span>' : '此状态已被删除';
+			$OrderState = new model\OrderState();
+			$object6 = $OrderState->one($object['order_state_id']);
+			$object['order_state'] = $object6 ? '<span style="color:'.$object6['color'].';">'.$object6['name'].'</span>' : '此状态已被删除';
 
 			include ROOT_PATH.'/extend/QQWry.class.php';
 			$QQWry = QQWry::getInstance();
@@ -205,7 +205,7 @@ class Order extends Base{
 				$object['pay_scene'] = '';
 			}
 			$object['pay'] = Config::get('app.pay1')[$object['pay']];
-			$object['payUrl'] = $this->payUrl($object['oid']);
+			$object['payUrl'] = $this->payUrl($object['order_id']);
 			
 			View::assign(['One'=>$object]);
 			return $this->view('order/detail');
@@ -233,25 +233,25 @@ class Order extends Base{
 			$Manager = new model\Manager();
 			$Product = new model\Product();
 			$Logistics = new model\Logistics();
-			$Ostate = new model\Ostate();
+			$OrderState = new model\OrderState();
 			include ROOT_PATH.'/extend/QQWry.class.php';
 			$QQWry = QQWry::getInstance();
 			foreach ($object as $value){
-				if ($value['uid']){
-					$object2 = $Manager->one($value['uid']);
+				if ($value['manager_id']){
+					$object2 = $Manager->one($value['manager_id']);
 					$manager = $object2 ? $object2['name'] : '此管理员已被删除';
 				}else{
 					$manager = '前台下单';
 				}
-				$object3 = $Product->one($value['pid']);
-				if ($value['lid']){
-					$object4 = $Logistics->one($value['lid']);
+				$object3 = $Product->one($value['product_id']);
+				if ($value['logistics_id']){
+					$object4 = $Logistics->one($value['logistics_id']);
 					$loginame = $object4 ? $object4['name'] : '此物流已被删除';
 				}else{
 					$loginame = '';
 				}
-				$object5 = $Template->one($value['tid']);
-				$object6 = $Ostate->one($value['state']);
+				$object5 = $Template->one($value['template_id']);
+				$object6 = $OrderState->one($value['order_state_id']);
 				if ($value['pay'] == 3){
 					$pay_scene = $this->payScene[0][$value['pay_scene']];
 				}elseif ($value['pay'] == 7){
@@ -259,7 +259,7 @@ class Order extends Base{
 				}else{
 					$pay_scene = '';
 				}
-				$output .= "\r\n".'"'.$value['oid'].'","'.$manager.'","'.($object5 ? $object5['name'] : '此模板已被删除').'","'.$value['name'].'","'.($object3 ? $object3['name'].'（'.$object3['price'].'元）' : '此产品已被删除').'","'.$value['price'].'元","'.$value['count'].'","'.number_format($value['price']*$value['count'],2,'.','').'元","\''.$value['tel'].'","'.$value['province'].' '.$value['city'].' '.$value['county'].' '.$value['address'].'","\''.$value['post'].'","'.$value['note'].'","'.$value['email'].'","'.($value['ip'] ? $value['ip'].' -- '.$QQWry->getAddr($value['ip']) : '').'","'.htmlspecialchars_decode($value['referrer']).'","'.dateFormat($value['date']).'","'.Config::get('app.pay1')[$value['pay']].'","\''.$value['pay_oid'].'","'.$pay_scene.'","'.($value['pay_date'] ? dateFormat($value['pay_date']) : '').'","'.($object6 ? $object6['name'] : '此状态已被删除').'","'.$loginame.'","'.$value['logistics_id'].'",';
+				$output .= "\r\n".'"'.$value['order_id'].'","'.$manager.'","'.($object5 ? $object5['name'] : '此模板已被删除').'","'.$value['name'].'","'.($object3 ? $object3['name'].'（'.$object3['price'].'元）' : '此产品已被删除').'","'.$value['price'].'元","'.$value['count'].'","'.number_format($value['price']*$value['count'],2,'.','').'元","\''.$value['tel'].'","'.$value['province'].' '.$value['city'].' '.$value['county'].' '.$value['address'].'","\''.$value['post'].'","'.$value['note'].'","'.$value['email'].'","'.($value['ip'] ? $value['ip'].' -- '.$QQWry->getAddr($value['ip']) : '').'","'.htmlspecialchars_decode($value['referrer']).'","'.dateFormat($value['date']).'","'.Config::get('app.pay1')[$value['pay']].'","\''.$value['pay_id'].'","'.$pay_scene.'","'.($value['pay_date'] ? dateFormat($value['pay_date']) : '').'","'.($object6 ? $object6['name'] : '此状态已被删除').'","'.$loginame.'","'.$value['logistics_number'].'",';
 			}
 		}
 		$output = mb_convert_encoding($output,'GBK','UTF-8');
@@ -317,8 +317,8 @@ class Order extends Base{
 	
 	public function product($id=0,$flag=0){
 		$html = '';
-		$Psort = new model\Psort();
-		$object = $Psort->all2();
+		$ProductSort = new model\ProductSort();
+		$object = $ProductSort->all2();
 		if ($object){
 			$Product = new model\Product();
 			foreach ($object as $value){
@@ -327,7 +327,7 @@ class Order extends Base{
 				if ($object2){
 					foreach ($object2 as $v){
 						if ($id == 0){
-							$html .= '<option value="'.$v['id'].'" '.($v['selected']&&$flag ? 'selected' : '').' style="color:'.($v['color'] ? $v['color'] : '#333').';" price="'.$v['price'].'">└—'.$v['name'].'（'.$v['price'].'元）</option>';
+							$html .= '<option value="'.$v['id'].'" '.($v['is_default']&&$flag ? 'selected' : '').' style="color:'.($v['color'] ? $v['color'] : '#333').';" price="'.$v['price'].'">└—'.$v['name'].'（'.$v['price'].'元）</option>';
 						}else{
 							$html .= '<option value="'.$v['id'].'" '.($v['id']==$id ? 'selected' : '').' style="color:'.($v['color'] ? $v['color'] : '#333').';" price="'.$v['price'].'">└—'.$v['name'].'（'.$v['price'].'元）</option>';
 						}
@@ -355,7 +355,7 @@ class Order extends Base{
 		$object = $Template->all2();
 		foreach ($object as $value){
 			if ($id == 0){
-				$html .= '<option value="'.$value['id'].'" '.($value['selected']&&$flag ? 'selected' : '').'>'.$value['name'].'</option>';
+				$html .= '<option value="'.$value['id'].'" '.($value['is_default']&&$flag ? 'selected' : '').'>'.$value['name'].'</option>';
 			}else{
 				$html .= '<option value="'.$value['id'].'" '.($value['id']==$id ? 'selected' : '').'>'.$value['name'].'</option>';
 			}
@@ -363,34 +363,34 @@ class Order extends Base{
 		View::assign(['Template'=>$html]);
 	}
 	
-	public function ostate($id=0){
+	public function orderState($id=0){
 		$html = '';
-		$Ostate = new model\Ostate();
-		$object = $Ostate->all2();
+		$OrderState = new model\OrderState();
+		$object = $OrderState->all2();
 		foreach ($object as $value){
 			$html .= '<option value="'.$value['id'].'" '.($value['id']==$id ? 'selected' : '').' style="color:'.$value['color'].';">'.$value['name'].'</option>';
 		}
-		View::assign(['Ostate'=>$html]);
+		View::assign(['OrderState'=>$html]);
 	}
 	
-	private function ostate2($id=0){
+	private function orderState2($id=0){
 		$html = '';
-		$Ostate = new model\Ostate();
-		$object = $Ostate->all2();
+		$OrderState = new model\OrderState();
+		$object = $OrderState->all2();
 		foreach ($object as $value){
 			if ($id == 0){
-				$html .= '<label style="color:'.$value['color'].';"><input type="radio" name="state" value="'.$value['id'].'" '.($value['selected'] ? 'checked' : '').'>'.$value['name'].'</label>&nbsp;';
+				$html .= '<label style="color:'.$value['color'].';"><input type="radio" name="order_state_id" value="'.$value['id'].'" '.($value['is_default'] ? 'checked' : '').'>'.$value['name'].'</label>&nbsp;';
 			}else{
-				$html .= '<label style="color:'.$value['color'].';"><input type="radio" name="state" value="'.$value['id'].'" '.($value['id']==$id ? 'checked' : '').'>'.$value['name'].'</label>&nbsp;';
+				$html .= '<label style="color:'.$value['color'].';"><input type="radio" name="order_state_id" value="'.$value['id'].'" '.($value['id']==$id ? 'checked' : '').'>'.$value['name'].'</label>&nbsp;';
 			}
 		}
-		View::assign(['Ostate'=>$html]);
+		View::assign(['OrderState'=>$html]);
 	}
 	
-	private function payUrl($oid){
+	private function payUrl($order_id){
 		return [
-			'alipay'=>Config::get('app.web_url').Config::get('system.index_php').'pay/alipay/oid/'.$oid.'.html',
-			'wxpay'=>Config::get('app.web_url').Config::get('system.index_php').'pay/wxpay/oid/'.$oid.'.html'
+			'alipay'=>Config::get('app.web_url').Config::get('system.index_php').'pay/alipay/oid/'.$order_id.'.html',
+			'wxpay'=>Config::get('app.web_url').Config::get('system.index_php').'pay/wxpay/oid/'.$order_id.'.html'
 		];
 	}
 	
@@ -431,13 +431,13 @@ class Order extends Base{
 		$QQWry = QQWry::getInstance();
 		
 		$Product = new model\Product();
-		$object = $Product->one(Request::post('pid'));
+		$object = $Product->one(Request::post('product_id'));
 		
 		$Logistics = new model\Logistics();
-		$object2 = $Logistics->one(Request::post('lid'));
+		$object2 = $Logistics->one(Request::post('logistics_id'));
 		
-		$Ostate = new model\Ostate();
-   		$object3 = $Ostate->one(Request::post('state'));
+		$OrderState = new model\OrderState();
+   		$object3 = $OrderState->one(Request::post('order_state_id'));
 
 		$payScene = '';
 		if (Request::post('pay') == 3){
@@ -447,7 +447,7 @@ class Order extends Base{
 		}
 		
 		return str_replace([
-			'{oid}',
+			'{order_id}',
 			'{proname}',
 			'{proprice}',
 			'{procount}',
@@ -467,7 +467,7 @@ class Order extends Base{
 			'{alipay}',
 			'{wxpay}',
 			'{pay}',
-			'{pay_oid}',
+			'{pay_id}',
 			'{pay_scene}',
 			'{pay_date}',
 			'{state}',
@@ -476,7 +476,7 @@ class Order extends Base{
 			'{logiurl}',
 			'{date}'
 		],[
-			Request::post('oid'),
+			Request::post('order_id'),
 			$object ? $object['name'] : '',
 			$object ? $object['price'] : '',
 			Request::post('count'),
@@ -493,16 +493,16 @@ class Order extends Base{
 			Request::post('email'),
 			Request::post('ip').' '.$QQWry->getAddr(Request::post('ip')),
 			Request::post('referrer') ? '<a href="'.Request::post('referrer').'" target="_blank">'.Request::post('referrer').'</a>' : '直接进入',
-			Config::get('app.web_url').Config::get('system.index_php').'pay/alipay/oid/'.Request::post('oid').'.html',
-			Config::get('app.web_url').Config::get('system.index_php').'pay/wxpay/oid/'.Request::post('oid').'.html',
+			Config::get('app.web_url').Config::get('system.index_php').'pay/alipay/oid/'.Request::post('order_id').'.html',
+			Config::get('app.web_url').Config::get('system.index_php').'pay/wxpay/oid/'.Request::post('order_id').'.html',
 			Config::get('app.pay1')[Request::post('pay')],
-			Request::post('pay_oid'),
+			Request::post('pay_id'),
 			$payScene,
 			Request::post('pay_date') ? dateFormat(Request::post('pay_date')) : '',
 			$object3 ? '<span style="color:'.$object3['color'].';">'.$object3['name'].'</span>' : '',
 			$object2 ? $object2['name'] : '',
-			Request::post('logistics_id'),
-			'http://www.kuaidi100.com/chaxun?com='.($object2 ? $object2['code'] : '').'&nu='.Request::post('logistics_id'),
+			Request::post('logistics_number'),
+			'http://www.kuaidi100.com/chaxun?com='.($object2 ? $object2['code'] : '').'&nu='.Request::post('logistics_number'),
 			dateFormat(Request::post('date'))
 		],$content);
 	}

@@ -9,7 +9,7 @@
 <link rel="stylesheet" type="text/css" href="public/home/styles/{:request()->controller()}.css">
 <script type="text/javascript">
 $(function(){
-	var TIP = '{:url("/".parse_name(request()->controller())."/wxpayTip",["oid"=>input("oid")])}';
+	var TIP = '{:url("/".parse_name(request()->controller())."/wxpayTip",["order_id"=>input("oid")])}';
 	{if condition="$jsApiParameters"}
 	function jsApiCall(){
 		WeixinJSBridge.invoke(
@@ -38,7 +38,7 @@ $(function(){
 			type : 'POST',
 			url : '{:url("/".parse_name(request()->controller())."/wxpayAjax")}',
 			data : {
-				oid : '{:input("oid")}'
+				order_id : '{:input("oid")}'
 			},
 			success : function(data,textStatus,jqXHR){
 				if (data == 7) window.location.href = TIP;

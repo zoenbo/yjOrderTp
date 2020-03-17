@@ -2,7 +2,7 @@
 .list table tr th.id{
 	width:80px;
 }
-.list table tr th.bgcolor,.list table tr th.bordercolor,.list table tr th.buttoncolor{
+.list table tr th.bg_color,.list table tr th.border_color,.list table tr th.button_color{
 	width:200px;
 }
 .list table tr th.date{

@@ -33,8 +33,8 @@
 .list table tr th.all{
 	width:60px;
 }
-.list table tr th.oid,
-.list table tr th.admin,
+.list table tr th.order_id,
+.list table tr th.manager,
 .list table tr th.name{
 	width:85px;
 }
@@ -61,7 +61,7 @@
 .list table tr th.pay,
 .list table tr th.date,
 .list table tr th.pay_date,
-.list table tr th.state{
+.list table tr th.order_state{
 	width:80px;
 }
 .list table tr th.control{
@@ -76,6 +76,6 @@
 .list table tr th.pay_scene{
 	width:90px;
 }
-.list table tr th.pay_oid{
+.list table tr th.pay_id{
 	width:210px;
 }

@@ -3,8 +3,8 @@
 {block name="title"}行政区划{/block}
 
 {block name="nav"}
-{if condition="$Admin['level']==1||in_array($Permission[request()->controller()]['index'],$AdminPermit)"}<li><a href="{:url('/'.parse_name(request()->controller()).'/index',['pid'=>input('get.pid',0)])}">{if condition="$Map"}{$Map}{else/}一级区划{/if}</a></li>{/if}
-<li class="current"><a href="{:url('/'.parse_name(request()->controller()).'/add',['pid'=>input('get.pid',0)])}">添加</a></li>
+{if condition="$Admin['level']==1||in_array($Permission[request()->controller()]['index'],$AdminPermit)"}<li><a href="{:url('/'.parse_name(request()->controller()).'/index',['parent_id'=>input('get.parent_id',0)])}">{if condition="$Map"}{$Map}{else/}一级区划{/if}</a></li>{/if}
+<li class="current"><a href="{:url('/'.parse_name(request()->controller()).'/add',['parent_id'=>input('get.parent_id',0)])}">添加</a></li>
 {/block}
 
 {block name="form"}

@@ -13,10 +13,10 @@ class District extends Base{
 		foreach ($object as $key=>$value){
 			$object[$key]['child'] = $District->one2($value['id']);
 		}
-		View::assign([
-			'All'=>$object,
-			'Map'=>$this->whole(Request::get('pid')),
-			'ParentId'=>$District->one(Request::get('pid'))['pid']
+		View::assign(['All'=>$object]);
+		if (Request::get('parent_id',0)) View::assign([
+			'Map'=>$this->whole(Request::get('parent_id')),
+			'ParentId'=>$District->one(Request::get('parent_id'))['parent_id']
 		]);
 		return $this->view();
 	}
@@ -26,12 +26,12 @@ class District extends Base{
 			$District = new model\District();
 			$object = $District->add();
 			if (is_numeric($object)){
-				return $object>0 ? $this->success(Route::buildUrl('/'.parse_name(Request::controller()).'/index',['pid'=>Request::get('pid')]),'行政区划添加成功！') : $this->failed('行政区划添加失败！');
+				return $object>0 ? $this->success(Route::buildUrl('/'.parse_name(Request::controller()).'/index',['parent_id'=>Request::get('parent_id')]),'行政区划添加成功！') : $this->failed('行政区划添加失败！');
 			}else{
 				return $this->failed($object);
 			}
 		}
-		View::assign(['Map'=>$this->whole(Request::get('pid'))]);
+		View::assign(['Map'=>$this->whole(Request::get('parent_id'))]);
 		return $this->view();
 	}
 	
@@ -41,11 +41,11 @@ class District extends Base{
 			$object = $District->one();
 			if (!$object) return $this->failed('不存在此行政区划！');
 			if (Request::isPost()){
-				$object2 = $District->modify($object['pid']);
-				return is_numeric($object2) ? $this->success(Route::buildUrl('/'.parse_name(Request::controller()).'/index',['pid'=>$object['pid']]),'行政区划修改成功！') : $this->failed($object2);
+				$object2 = $District->modify($object['parent_id']);
+				return is_numeric($object2) ? $this->success(Route::buildUrl('/'.parse_name(Request::controller()).'/index',['parent_id'=>$object['parent_id']]),'行政区划修改成功！') : $this->failed($object2);
 			}
 			View::assign(['One'=>$object]);
-			View::assign(['Map'=>$this->whole($object['pid'])]);
+			View::assign(['Map'=>$this->whole($object['parent_id'])]);
 			return $this->view();
 		}else{
 			return $this->failed('非法操作！');
@@ -64,13 +64,13 @@ class District extends Base{
 		}
 	}
 	
-	private function whole($pid=0){
+	private function whole($parent_id=0){
 		$name = '';
 		$District = new model\District();
-		$object = $District->one($pid);
+		$object = $District->one($parent_id);
 		if ($object){
 			$name .= $object['name'];
-			if ($object['pid']) $name = $this->whole($object['pid']).' - '.$name;
+			if ($object['parent_id']) $name = $this->whole($object['parent_id']).' - '.$name;
 		}
 		return $name;
 	}

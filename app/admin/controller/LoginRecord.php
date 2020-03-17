@@ -17,13 +17,13 @@ class LoginRecord extends Base{
 			include ROOT_PATH.'/extend/QQWry.class.php';
 			$QQWry = QQWry::getInstance();
 			foreach ($object as $key=>$value){
-				$object2 = $Manager->one($value['uid']);
+				$object2 = $Manager->one($value['manager_id']);
 				$object[$key]['manager'] = $object2 ? $object2['name'] : '此管理员已被删除';
 				$object[$key]['ip'] = $value['ip'].' - '.$QQWry->getAddr($value['ip']);
 			}
 		}
 		View::assign(['All'=>$object]);
-		$this->manager(Request::get('uid'));
+		$this->manager(Request::get('manager_id'));
 		return $this->view();
 	}
 	
@@ -37,7 +37,7 @@ class LoginRecord extends Base{
 				$QQWry = QQWry::getInstance();
 				$Manager = new model\Manager();
 				foreach ($object as $value){
-					$object2 = $Manager->one($value['uid']);
+					$object2 = $Manager->one($value['manager_id']);
 					$output .= "\r\n".'"'.($object2 ? $object2['name'] : '此管理员已被删除').'","'.$value['ip'].' -- '.$QQWry->getAddr($value['ip']).'","'.dateFormat($value['date']).'",';
 				}
 			}

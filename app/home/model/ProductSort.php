@@ -4,7 +4,7 @@ namespace app\home\model;
 use Exception;
 use think\Model;
 
-class Psort extends Model{
+class ProductSort extends Model{
 	//查询所有（不分页）
 	public function all($ids=0){
 		try {

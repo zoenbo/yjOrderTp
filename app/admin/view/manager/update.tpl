@@ -20,7 +20,7 @@
     <tr><td>身　　份：</td><td>{$Level}</td></tr>
     <tr><td>是否激活：</td><td>{$Activation}</td></tr>
     <tbody class="permit">
-    <tr><td>权 限 组：</td><td><select name="gid" class="select">{$Group}</select></td></tr>
+    <tr><td>权 限 组：</td><td><select name="permit_group_id" class="select">{$PermitGroup}</select></td></tr>
     <tr><td>订单权限：</td><td>{$OrderPermit}</td><td>设置对普通管理员订单开放的权限，为普通管理员分配了订单模块的管理权限后，此设置才可生效（超级管理员不受限）</td></tr>
     </tbody>
     {/if}

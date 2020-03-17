@@ -30,15 +30,15 @@ class Permit extends Base{
 		return '';
 	}
 	
-	public function selected(){
+	public function isDefault(){
 		if (Request::get('id')){
 			$Permit = new model\Permit();
 			$object = $Permit->one();
 			if (!$object) return $this->failed('不存在此权限！');
-			if ($object['selected'] == 0){
-				if (!$Permit->selected(1)) return $this->failed('设置默认权限失败！');
+			if ($object['is_default'] == 0){
+				if (!$Permit->isDefault(1)) return $this->failed('设置默认权限失败！');
 			}else{
-				if (!$Permit->selected(0)) return $this->failed('取消默认权限失败！');
+				if (!$Permit->isDefault(0)) return $this->failed('取消默认权限失败！');
 			}
 			return $this->success(Config::get('app.prev_url'));
 		}else{
@@ -53,11 +53,11 @@ class Permit extends Base{
 		if ($object){
 			$output .= "'permit'=>[";
 			foreach ($object as $value){
-				$output .= "'".$value['c']."'=>['".strtolower($value['a'])."'=>".$value['id'];
+				$output .= "'".$value['controller']."'=>['".strtolower($value['action'])."'=>".$value['id'];
 				$object2 = $Permit->all3($value['id']);
 				if ($object2){
 					foreach ($object2 as $v){
-						$output .= ",'".strtolower($v['a'])."'=>".$v['id'];
+						$output .= ",'".strtolower($v['action'])."'=>".$v['id'];
 					}
 				}
 				$output .= '],';

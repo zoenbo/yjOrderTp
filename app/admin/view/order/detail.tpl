@@ -14,7 +14,7 @@
 
 {block name="form"}
 <table class="detail">
-  <tr><td class="n">订 单 号：</td><td>{$One['oid']}</td></tr>
+  <tr><td class="n">订 单 号：</td><td>{$One['order_id']}</td></tr>
   <tr><td class="n">下单管理员：</td><td>{$One['manager']}</td></tr>
   <tr><td class="n">下单模板：</td><td>{$One['template']}</td></tr>
   <tr><td class="n">订购产品：</td><td>{$One['product']}</td></tr>
@@ -29,7 +29,7 @@
   <tr><td class="n">备　　注：</td><td>{$One['note']}</td></tr>
   <tr><td class="n">电子邮箱：</td><td>{$One['email']}</td></tr>
   <tr><td class="n">支付方式：</td><td>{$One['pay']}</td></tr>
-  <tr><td class="n">支付订单号：</td><td>{$One['pay_oid']}</td></tr>
+  <tr><td class="n">支付订单号：</td><td>{$One['pay_id']}</td></tr>
   <tr><td class="n">支付场景：</td><td>{$One['pay_scene']}</td></tr>
   <tr><td class="n">支付时间：</td><td>{if condition="$One['pay_date']"}{$One['pay_date']|dateFormat}{/if}</td></tr>
   <tr><td class="n">支付链接：</td><td>支付宝 <a href="{$One['payUrl']['alipay']}" target="_blank">{$One['payUrl']['alipay']}</a><br>微信支付 <a href="{$One['payUrl']['wxpay']}" target="_blank">{$One['payUrl']['wxpay']}</a></td></tr>
@@ -37,9 +37,9 @@
   <tr><td class="n">QQ标识符：</td><td>{$One['qqau']}</td></tr>
   <tr><td class="n">下单来路：</td><td>{if condition="$One['referrer']"}<a href="{$One['referrer']}" target="_blank">{$One['referrer']}</a>{else/}直接进入{/if}</td></tr>
   <tr><td class="n">下单时间：</td><td>{$One['date']|dateFormat}</td></tr>
-  <tr><td class="n">订单状态：</td><td>{$One['state']}</td></tr>
-  <tr><td class="n">物流公司：</td><td>{$One['logistics']['name']}</td></tr>
-  <tr><td class="n">物流编号：</td><td>{$One['logistics_id']}{if condition="$One['logistics_name']&&$One['logistics_id']"}，<a href="http://www.kuaidi100.com/chaxun?com={$One['logistics_code']}&nu={$One['logistics_id']}" target="_blank">查询进度</a>{/if}</td></tr>
+  <tr><td class="n">订单状态：</td><td>{$One['order_state']}</td></tr>
+  <tr><td class="n">物流公司：</td><td>{$One['logistics_name']}</td></tr>
+  <tr><td class="n">物流编号：</td><td>{$One['logistics_number']}{if condition="$One['logistics_name']&&$One['logistics_number']"}，<a href="http://www.kuaidi100.com/chaxun?com={$One['logistics_code']}&nu={$One['logistics_number']}" target="_blank">查询进度</a>{/if}</td></tr>
   <tr><td colspan="2" class="center"><a href="{:url('/'.parse_name(request()->controller()).'/update',array('id'=>input('get.id'),'from'=>1))}">修改</a></td></tr>
 </table>
 {/block}

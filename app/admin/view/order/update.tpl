@@ -20,16 +20,16 @@
 
 {block name="form"}
 <form method="post" action="" class="form">
-  <input type="hidden" name="oid" value="{$One['oid']}">
+  <input type="hidden" name="order_id" value="{$One['order_id']}">
   <input type="hidden" name="ip" value="{$One['ip']}">
   <input type="hidden" name="referrer" value="{$One['referrer']}">
-  <input type="hidden" name="pay_oid" value="{$One['pay_oid']}">
+  <input type="hidden" name="pay_id" value="{$One['pay_id']}">
   <input type="hidden" name="pay_scene" value="{$One['pay_scene']}">
   <input type="hidden" name="pay_date" value="{$One['pay_date']}">
   <input type="hidden" name="date" value="{$One['date']}">
   <table>
-    <tr><td>下单模板：</td><td><select name="tid" class="select">{$Template}</select></td><td>只对模板中勾选的字段进行验证</td></tr>
-    <tr><td>订购产品：</td><td><select name="pid" class="select">{$Product}</select></td></tr>
+    <tr><td>下单模板：</td><td><select name="template_id" class="select">{$Template}</select></td><td>只对模板中勾选的字段进行验证</td></tr>
+    <tr><td>订购产品：</td><td><select name="product_id" class="select">{$Product}</select></td></tr>
     <tr><td>成交单价：</td><td><input type="text" name="price" value="{$One['price']}" class="input-text"></td></tr>
     <tr><td>订购数量：</td><td><input type="text" name="count" value="{$One['count']}" class="input-text"></td></tr>
     <tr><td>姓　　名：</td><td><input type="text" name="name" value="{$One['name']}" class="input-text"></td></tr>
@@ -44,9 +44,9 @@
     <tr><td>电子邮箱：</td><td><input type="text" name="email" value="{$One['email']}" class="input-text"></td></tr>
     <tr><td>支付状态：</td><td><select name="pay" class="select">{foreach name="Pay" key="key" item="value"}<option value="{$key}" {if condition="$key==$One['pay']"}selected{/if}>{$value}</option>{/foreach}</select></td></tr>
     <tr><td>支付链接：</td><td>支付宝 <a href="{$One['payUrl']['alipay']}" target="_blank">{$One['payUrl']['alipay']}</a><br>微信支付 <a href="{$One['payUrl']['wxpay']}" target="_blank">{$One['payUrl']['wxpay']}</a><br>可发送以上链接给客户进行网上支付</td></tr>
-    <tr><td>订单状态：</td><td>{$Ostate}</td></tr>
-    <tr><td>物流公司：</td><td><select name="lid" class="select">{$Logistics}</select></td></tr>
-    <tr><td>物流编号：</td><td><input type="text" name="logistics_id" value="{$One['logistics_id']}" class="input-text"></td></tr>
+    <tr><td>订单状态：</td><td>{$OrderState}</td></tr>
+    <tr><td>物流公司：</td><td><select name="logistics_id" class="select">{$Logistics}</select></td></tr>
+    <tr><td>物流编号：</td><td><input type="text" name="logistics_number" value="{$One['logistics_number']}" class="input-text"></td></tr>
     <tr><td>发送邮件：</td><td><div class="radio-box"><label><input type="radio" name="sendmail" value="0" checked>不发送</label></div><div class="radio-box"><label><input type="radio" name="sendmail" value="1">发送支付信息给客户</label></div><div class="radio-box"><label><input type="radio" name="sendmail" value="2">发送发货信息给客户</label></div></td></tr>
     <tr><td colspan="2" class="left"><input type="submit" value="确认修改" class="btn btn-primary radius"></td></tr>
   </table>

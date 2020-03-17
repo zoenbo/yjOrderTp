@@ -18,9 +18,9 @@
 {$Page}
 <div class="list">
   <table>
-    <tr><th class="name">字段名称</th><th class="selected">是否默认</th></tr>
+    <tr><th class="name">字段名称</th><th class="is_default">是否默认</th></tr>
     {foreach name="All" key="key" item="value"}
-    <tr><td>{$value['name']|keyword}</td><td>{if condition="$value['selected']"}<span class="red">是</span> | <a href="{:url('/'.parse_name(request()->controller()).'/selected',['id'=>$value['id']])}">取消默认</a>{else/}<span class="green">否</span> | <a href="{:url('/'.parse_name(request()->controller()).'/selected',['id'=>$value['id']])}">设为默认</a>{/if}</td></tr>
+    <tr><td>{$value['name']|keyword}</td><td>{if condition="$value['is_default']"}<span class="red">是</span> | <a href="{:url('/'.parse_name(request()->controller()).'/isdefault',['id'=>$value['id']])}">取消默认</a>{else/}<span class="green">否</span> | <a href="{:url('/'.parse_name(request()->controller()).'/isdefault',['id'=>$value['id']])}">设为默认</a>{/if}</td></tr>
     {/foreach}
   </table>
 </div>

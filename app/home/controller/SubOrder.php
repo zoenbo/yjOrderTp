@@ -16,9 +16,9 @@ class SubOrder extends Base{
 			if (is_array($object)){
 				$this->sendmail($object);
 				if (Request::post('pay') == 2){
-					return $this->success(Config::get('app.web_url').Config::get('system.index_php').'pay/alipay/oid/'.$object['oid'].'.html');
+					return $this->success(Config::get('app.web_url').Config::get('system.index_php').'pay/alipay/oid/'.$object['order_id'].'.html');
 				}elseif (Request::post('pay') == 6){
-					return $this->success(Config::get('app.web_url').Config::get('system.index_php').'pay/wxpay/oid/'.$object['oid'].'.html');
+					return $this->success(Config::get('app.web_url').Config::get('system.index_php').'pay/wxpay/oid/'.$object['order_id'].'.html');
 				}
 				return $this->success(NULL,$object['success'],0,2);
 			}else{
@@ -63,7 +63,7 @@ class SubOrder extends Base{
 	
 	private function mail($content,$object){
 		return str_replace([
-			'{oid}',
+			'{order_id}',
 			'{proname}',
 			'{proprice}',
 			'{procount}',
@@ -82,7 +82,7 @@ class SubOrder extends Base{
 			'{referrer}',
 			'{pay}'
 		],[
-			$object['oid'] ?? '',
+			$object['order_id'] ?? '',
 			$object['pro'] ?? '',
 			$object['price'] ?? '',
 			$object['count'] ?? '',

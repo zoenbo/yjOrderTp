@@ -50,38 +50,38 @@ var ThinkPHP = {
 
 <aside class="Hui-aside">
   <div class="menu_dropdown bk_2">
-    {if condition="$Admin['level']==1||array_intersect($AdminPermit,[$Permission['Order']['index'],$Permission['Recycle']['index'],$Permission['Ostatistic']['index'],$Permission['Ostate']['index'],$Permission['Logistics']['index']])"}
+    {if condition="$Admin['level']==1||array_intersect($AdminPermit,[$Permission['Order']['index'],$Permission['Recycle']['index'],$Permission['OrderStatistic']['index'],$Permission['OrderState']['index'],$Permission['Logistics']['index']])"}
     <dl>
       <dt>订单<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
       <dd>
         <ul>
           {if condition="$Admin['level']==1||in_array($Permission['Order']['index'],$AdminPermit)"}<li><a href="javascript:;" data-href="{:url('/order/index')}" data-title="订单管理">订单管理</a></li>{/if}
           {if condition="$Admin['level']==1||in_array($Permission['Recycle']['index'],$AdminPermit)"}<li><a href="javascript:;" data-href="{:url('/recycle/index')}" data-title="订单回收站">订单回收站</a></li>{/if}
-          {if condition="$Admin['level']==1||in_array($Permission['Ostatistic']['index'],$AdminPermit)"}<li><a href="javascript:;" data-href="{:url('/ostatistic/index')}" data-title="订单统计">订单统计</a></li>{/if}
-          {if condition="$Admin['level']==1||in_array($Permission['Ostate']['index'],$AdminPermit)"}<li><a href="javascript:;" data-href="{:url('/ostate/index')}" data-title="订单状态">订单状态</a></li>{/if}
+          {if condition="$Admin['level']==1||in_array($Permission['OrderStatistic']['index'],$AdminPermit)"}<li><a href="javascript:;" data-href="{:url('/order_statistic/index')}" data-title="订单统计">订单统计</a></li>{/if}
+          {if condition="$Admin['level']==1||in_array($Permission['OrderState']['index'],$AdminPermit)"}<li><a href="javascript:;" data-href="{:url('/order_state/index')}" data-title="订单状态">订单状态</a></li>{/if}
           {if condition="$Admin['level']==1||in_array($Permission['Logistics']['index'],$AdminPermit)"}<li><a href="javascript:;" data-href="{:url('/logistics/index')}" data-title="物流管理">物流管理</a></li>{/if}
         </ul>
       </dd>
     </dl>
     {/if}
-    {if condition="$Admin['level']==1||array_intersect($AdminPermit,[$Permission['Product']['index'],$Permission['Psort']['index']])"}
+    {if condition="$Admin['level']==1||array_intersect($AdminPermit,[$Permission['Product']['index'],$Permission['ProductSort']['index']])"}
     <dl>
       <dt>产品<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
       <dd>
         <ul>
           {if condition="$Admin['level']==1||in_array($Permission['Product']['index'],$AdminPermit)"}<li><a href="javascript:;" data-href="{:url('/product/index')}" data-title="产品管理">产品管理</a></li>{/if}
-          {if condition="$Admin['level']==1||in_array($Permission['Psort']['index'],$AdminPermit)"}<li><a href="javascript:;" data-href="{:url('/psort/index')}" data-title="产品分类">产品分类</a></li>{/if}
+          {if condition="$Admin['level']==1||in_array($Permission['ProductSort']['index'],$AdminPermit)"}<li><a href="javascript:;" data-href="{:url('/product_sort/index')}" data-title="产品分类">产品分类</a></li>{/if}
         </ul>
       </dd>
     </dl>
     {/if}
-    {if condition="$Admin['level']==1||array_intersect($AdminPermit,[$Permission['Template']['index'],$Permission['Style']['index'],$Permission['Field']['index']])"}
+    {if condition="$Admin['level']==1||array_intersect($AdminPermit,[$Permission['Template']['index'],$Permission['TemplateStyle']['index'],$Permission['Field']['index']])"}
     <dl>
       <dt>下单模板<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
       <dd>
         <ul>
           {if condition="$Admin['level']==1||in_array($Permission['Template']['index'],$AdminPermit)"}<li><a href="javascript:;" data-href="{:url('/template/index')}" data-title="模板管理">模板管理</a></li>{/if}
-          {if condition="$Admin['level']==1||in_array($Permission['Style']['index'],$AdminPermit)"}<li><a href="javascript:;" data-href="{:url('/style/index')}" data-title="模板样式">模板样式</a></li>{/if}
+          {if condition="$Admin['level']==1||in_array($Permission['TemplateStyle']['index'],$AdminPermit)"}<li><a href="javascript:;" data-href="{:url('/template_style/index')}" data-title="模板样式">模板样式</a></li>{/if}
           {if condition="$Admin['level']==1||in_array($Permission['Field']['index'],$AdminPermit)"}<li><a href="javascript:;" data-href="{:url('/field/index')}" data-title="下单字段">下单字段</a></li>{/if}
         </ul>
       </dd>

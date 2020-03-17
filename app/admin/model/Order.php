@@ -17,16 +17,16 @@ class Order extends Model{
 	}
 
 	//按订单状态查询总记录
-	public function total2($state=0){
+	public function total2($order_state_id=0){
 		$map['recycle'] = 0;
-		if ($state) $map['state'] = $state;
-		return $this->where($map)->where($this->uid())->count();
+		if ($order_state_id) $map['order_state_id'] = $order_state_id;
+		return $this->where($map)->where($this->managerId())->count();
 	}
 
 	//查询所有
 	public function all($firstRow){
 		try {
-			return $this->field('id,oid,uid,tid,pid,price,count,name,tel,province,city,county,town,address,post,note,email,ip,referrer,pay,pay_oid,pay_scene,pay_date,state,lid,logistics_id,date')
+			return $this->field('id,order_id,manager_id,template_id,product_id,price,count,name,tel,province,city,county,town,address,post,note,email,ip,referrer,pay,pay_id,pay_scene,pay_date,order_state_id,logistics_id,logistics_number,date')
 						->where($this->map()['where'],$this->map()['value'])
 						->order(['date'=>'DESC'])
 						->limit($firstRow,Config::get('app.page_size'))
@@ -41,7 +41,7 @@ class Order extends Model{
 	//查询所有（不分页）
 	public function all2(){
 		try {
-			return $this->field('id,oid,uid,tid,pid,price,count,name,tel,province,city,county,town,address,post,note,email,ip,referrer,pay,pay_oid,pay_scene,pay_date,state,lid,logistics_id,date')
+			return $this->field('id,order_id,manager_id,template_id,product_id,price,count,name,tel,province,city,county,town,address,post,note,email,ip,referrer,pay,pay_id,pay_scene,pay_date,order_state_id,logistics_id,logistics_number,date')
 						->where($this->map()['where'],$this->map()['value'])
 						->order(['date'=>'DESC'])
 						->select()
@@ -55,10 +55,10 @@ class Order extends Model{
 	//查询所有（不分页，IN）
 	public function all3(){
 		try {
-			return $this->field('id,oid,uid,tid,pid,price,count,name,tel,province,city,county,town,address,post,note,email,ip,referrer,pay,pay_oid,pay_scene,pay_date,state,lid,logistics_id,date')
+			return $this->field('id,order_id,manager_id,template_id,product_id,price,count,name,tel,province,city,county,town,address,post,note,email,ip,referrer,pay,pay_id,pay_scene,pay_date,order_state_id,logistics_id,logistics_number,date')
 						->where('id','IN',Request::post('ids'))
 						->where('recycle',Request::controller()=='Recycle' ? 1 : 0)
-						->where($this->uid())
+						->where($this->managerId())
 						->order(['date'=>'DESC'])
 						->select()
 						->toArray();
@@ -75,7 +75,7 @@ class Order extends Model{
 			$map['where'] .= ' AND `date`>=:date3 AND `date`<=:date4';
 			$map['value']['date3'] = strtotime($time1.' 00:00:00');
 			$map['value']['date4'] = strtotime($time2.' 23:59:59');
-			return $this->field('COUNT(CASE WHEN state=1 THEN id END) count1,SUM(CASE WHEN state=1 THEN price*count ELSE 0 END) sum1,COUNT(CASE WHEN state=2 THEN id END) count2,SUM(CASE WHEN state=2 THEN price*count ELSE 0 END) sum2,COUNT(CASE WHEN state=3 THEN id END) count3,SUM(CASE WHEN state=3 THEN price*count ELSE 0 END) sum3,COUNT(CASE WHEN state=4 THEN id END) count4,SUM(CASE WHEN state=4 THEN price*count ELSE 0 END) sum4')
+			return $this->field('COUNT(CASE WHEN order_state_id=1 THEN id END) count1,SUM(CASE WHEN order_state_id=1 THEN price*count ELSE 0 END) sum1,COUNT(CASE WHEN order_state_id=2 THEN id END) count2,SUM(CASE WHEN order_state_id=2 THEN price*count ELSE 0 END) sum2,COUNT(CASE WHEN order_state_id=3 THEN id END) count3,SUM(CASE WHEN order_state_id=3 THEN price*count ELSE 0 END) sum3,COUNT(CASE WHEN order_state_id=4 THEN id END) count4,SUM(CASE WHEN order_state_id=4 THEN price*count ELSE 0 END) sum4')
 						->where($map['where'],$map['value'])
 						->select()
 						->toArray();
@@ -107,7 +107,7 @@ class Order extends Model{
 					break;
 				default: $order = 'time';
 			}
-			$object = $this->field('COUNT(CASE WHEN state=1 THEN id END) count1,SUM(CASE WHEN state=1 THEN price*count ELSE 0 END) sum1,COUNT(CASE WHEN state=2 THEN id END) count2,SUM(CASE WHEN state=2 THEN price*count ELSE 0 END) sum2,COUNT(CASE WHEN state=3 THEN id END) count3,SUM(CASE WHEN state=3 THEN price*count ELSE 0 END) sum3,COUNT(CASE WHEN state=4 THEN id END) count4,SUM(CASE WHEN state=4 THEN price*count ELSE 0 END) sum4,FROM_UNIXTIME(date,"'.$time.'") time')
+			$object = $this->field('COUNT(CASE WHEN order_state_id=1 THEN id END) count1,SUM(CASE WHEN order_state_id=1 THEN price*count ELSE 0 END) sum1,COUNT(CASE WHEN order_state_id=2 THEN id END) count2,SUM(CASE WHEN order_state_id=2 THEN price*count ELSE 0 END) sum2,COUNT(CASE WHEN order_state_id=3 THEN id END) count3,SUM(CASE WHEN order_state_id=3 THEN price*count ELSE 0 END) sum3,COUNT(CASE WHEN order_state_id=4 THEN id END) count4,SUM(CASE WHEN order_state_id=4 THEN price*count ELSE 0 END) sum4,FROM_UNIXTIME(date,"'.$time.'") time')
 						->group('time')
 						->where($this->map()['where'],$this->map()['value'])
 						->order([$order=>'DESC']);
@@ -123,7 +123,7 @@ class Order extends Model{
 		try {
 			$map['id'] = $id ? $id : Request::get('id');
 			$map['recycle'] = Request::controller()=='Recycle' ? 1 : 0;
-			return $this->field('oid,uid,tid,pid,price,count,name,tel,province,city,county,town,address,post,note,email,ip,qqau,referrer,pay,pay_oid,pay_scene,pay_date,state,lid,logistics_id,date')->where($map)->where($this->uid())->find();
+			return $this->field('order_id,manager_id,template_id,product_id,price,count,name,tel,province,city,county,town,address,post,note,email,ip,qqau,referrer,pay,pay_id,pay_scene,pay_date,order_state_id,logistics_id,logistics_number,date')->where($map)->where($this->managerId())->find();
 		} catch (Exception $e){
 			echo $e->getMessage();
 			return [];
@@ -133,7 +133,7 @@ class Order extends Model{
 		try {
 			$map['id'] = Request::get('id');
 			$map['recycle'] = Request::controller()=='Recycle' ? 1 : 0;
-			return $this->field('uid')->where($map)->where($this->uid())->find();
+			return $this->field('manager_id')->where($map)->where($this->managerId())->find();
 		} catch (Exception $e){
 			echo $e->getMessage();
 			return [];
@@ -144,7 +144,7 @@ class Order extends Model{
 	public function older(){
 		try {
 			$map['recycle'] = 0;
-			return $this->field('date')->where($map)->where($this->uid())->order(['date'=>'ASC'])->find();
+			return $this->field('date')->where($map)->where($this->managerId())->order(['date'=>'ASC'])->find();
 		} catch (Exception $e){
 			echo $e->getMessage();
 			return [];
@@ -155,7 +155,7 @@ class Order extends Model{
 	public function newer(){
 		try {
 			$map['recycle'] = 0;
-			return $this->field('date')->where($map)->where($this->uid())->order(['date'=>'DESC'])->find();
+			return $this->field('date')->where($map)->where($this->managerId())->order(['date'=>'DESC'])->find();
 		} catch (Exception $e){
 			echo $e->getMessage();
 			return [];
@@ -164,15 +164,15 @@ class Order extends Model{
 
 	//添加
 	public function add(){
-		$scene = ['tid','pid','price','count'];
+		$scene = ['template_id','product_id','price','count'];
 		$session = Session::get(Config::get('system.session_key'));
 		$Template = new Template();
-		$object = $Template->one(Request::post('tid'));
+		$object = $Template->one(Request::post('template_id'));
 		$data = [
-			'oid'=>time().rand(100,999),
-			'tid'=>Request::post('tid'),
-			'pid'=>Request::post('pid'),
-			'uid'=>$session['id'],
+			'order_id'=>time().rand(100,999),
+			'template_id'=>Request::post('template_id'),
+			'product_id'=>Request::post('product_id'),
+			'manager_id'=>$session['id'],
 			'price' =>Request::post('price'),
 			'count'=>Request::post('count'),
 			'pay'=>Request::post('pay'),
@@ -258,10 +258,10 @@ class Order extends Model{
 			$data['email'] = Request::post('email');
 			$scene[] = 'email';
 		}
-		$data['state'] = Request::post('state');
-		$data['lid'] = Request::post('lid');
+		$data['order_state_id'] = Request::post('order_state_id');
 		$data['logistics_id'] = Request::post('logistics_id');
-		$scene[] = 'logistics_id';
+		$data['logistics_number'] = Request::post('logistics_number');
+		$scene[] = 'logistics_number';
 		$validate = new valid();
 		if ($validate->only($scene)->check($data)){
 			return $this->insertGetId($data);
@@ -272,11 +272,12 @@ class Order extends Model{
 
 	//修改
 	public function modify(){
-		$scene = ['tid','pid','price','count'];
+		$scene = ['template_id','product_id','price','count'];
 		$data = [
-			'tid'=>Request::post('tid'),
-			'pid'=>Request::post('pid'),
+			'template_id'=>Request::post('template_id'),
+			'product_id'=>Request::post('product_id'),
 			'price'=>Request::post('price'),
+			'count'=>Request::post('count'),
 			'name'=>Request::post('name'),
 			'tel'=>Request::post('tel'),
 			'province'=>Request::post('province2'),
@@ -290,12 +291,12 @@ class Order extends Model{
 			'count'=>Request::post('count'),
 		];
 		$data['pay'] = Request::post('pay');
-		$data['state'] = Request::post('state');
-		$data['lid'] = Request::post('lid');
+		$data['order_state_id'] = Request::post('order_state_id');
 		$data['logistics_id'] = Request::post('logistics_id');
-		$scene[] = 'logistics_id';
+		$data['logistics_number'] = Request::post('logistics_number');
+		$scene[] = 'logistics_number';
 		$Template = new Template();
-		$object2 = $Template->one(Request::post('tid'));
+		$object2 = $Template->one(Request::post('template_id'));
 		$fieldTemp = explode(',',$object2['field']);
 		if (in_array(2,$fieldTemp) || Request::post('name')) $scene[] = 'name';
 		if (in_array(3,$fieldTemp) || Request::post('tel')) $scene[] = 'tel';
@@ -311,7 +312,7 @@ class Order extends Model{
 		$map['recycle'] = Request::controller()=='Recycle' ? 1 : 0;
 		$validate = new valid();
 		if ($validate->only($scene)->check($data)){
-			return $this->where($map)->where($this->uid())->update($data);
+			return $this->where($map)->where($this->managerId())->update($data);
 		}else{
 			return $validate->getError();
 		}
@@ -319,18 +320,18 @@ class Order extends Model{
 
 	//回收
 	public function recycle(){
-		return Request::get('id') ? $this->where(['id'=>Request::get('id')])->where($this->uid())->update(['recycle'=>1]) : $this->where('id','IN',Request::post('ids'))->where($this->uid())->update(['recycle'=>1]);
+		return Request::get('id') ? $this->where(['id'=>Request::get('id')])->where($this->managerId())->update(['recycle'=>1]) : $this->where('id','IN',Request::post('ids'))->where($this->managerId())->update(['recycle'=>1]);
 	}
 
 	//还原
 	public function recover(){
-		return Request::get('id') ? $this->where(['id'=>Request::get('id')])->where($this->uid())->update(['recycle'=>0]) : $this->where('id','IN',Request::post('ids'))->where($this->uid())->update(['recycle'=>0]);
+		return Request::get('id') ? $this->where(['id'=>Request::get('id')])->where($this->managerId())->update(['recycle'=>0]) : $this->where('id','IN',Request::post('ids'))->where($this->managerId())->update(['recycle'=>0]);
 	}
 
 	//删除
 	public function remove(){
 		try {
-			$affected_rows = Request::get('id') ? $this->where(['id'=>Request::get('id')])->where($this->uid())->delete() : $this->where('id','IN',Request::post('ids'))->where($this->uid())->delete();
+			$affected_rows = Request::get('id') ? $this->where(['id'=>Request::get('id')])->where($this->managerId())->delete() : $this->where('id','IN',Request::post('ids'))->where($this->managerId())->delete();
 			if ($affected_rows) $this->execute('OPTIMIZE TABLE `'.Config::get('database.connections.mysql.prefix').strtolower($this->tableName).'`');
 			return $affected_rows;
 		} catch (Exception $e){
@@ -341,7 +342,7 @@ class Order extends Model{
 
 	//批量修改订单状态
 	public function state(){
-		return $this->where('id','IN',Request::post('ids'))->where($this->uid())->update(['state'=>Request::post('ostate')]);
+		return $this->where('id','IN',Request::post('ids'))->where($this->managerId())->update(['order_state_id'=>Request::post('order_state_id')]);
 	}
 
 	//批量修改物流
@@ -349,7 +350,7 @@ class Order extends Model{
 		foreach (explode("\r\n",Request::post('multi')) as $value){
 			$value = explode('|',$value);
 			if (count($value) != 3) return '批量修改格式有误！';
-			$this->where(['oid'=>$value[0]])->where($this->uid())->update([	'lid'=>$value[1],'logistics_id'=>$value[2]]);
+			$this->where(['order_id'=>$value[0]])->where($this->managerId())->update([	'logistics_id'=>$value[1],'logistics_number'=>$value[2]]);
 		}
 		return 1;
 	}
@@ -361,7 +362,7 @@ class Order extends Model{
 		if (Request::get('field') < 14){
 			$keyword = [];
 			$map['where'] .= ' AND (';
-			if (in_array(Request::get('field'),[0,1])) $keyword[] = 'oid';
+			if (in_array(Request::get('field'),[0,1])) $keyword[] = 'order_id';
 			if (in_array(Request::get('field'),[0,2])) $keyword[] = 'name';
 			if (in_array(Request::get('field'),[0,3])) $keyword[] = 'tel';
 			if (in_array(Request::get('field'),[0,4])) $keyword[] = 'province';
@@ -373,8 +374,8 @@ class Order extends Model{
 			if (in_array(Request::get('field'),[0,10])) $keyword[] = 'email';
 			if (in_array(Request::get('field'),[0,11])) $keyword[] = 'ip';
 			if (in_array(Request::get('field'),[0,12])) $keyword[] = 'referrer';
-			if (in_array(Request::get('field'),[0,13])) $keyword[] = 'logistics_id';
-			if (in_array(Request::get('field'),[0,14])) $keyword[] = 'pay_oid';
+			if (in_array(Request::get('field'),[0,13])) $keyword[] = 'logistics_number';
+			if (in_array(Request::get('field'),[0,14])) $keyword[] = 'pay_id';
 			foreach ($keyword as $value){
 				$map['where'] .= '`'.$value.'` LIKE :'.$value.' OR ';
 				$map['value'][$value] = '%'.Request::get('keyword').'%';
@@ -382,17 +383,17 @@ class Order extends Model{
 			$map['where'] = substr($map['where'], 0, -4);
 			$map['where'] .= ')';
 		}
-		if (Request::get('uid',-1) != -1){
-			$map['where'] .= ' AND `uid`=:uid';
-			$map['value']['uid'] = Request::get('uid');
+		if (Request::get('manager_id',-1) != -1){
+			$map['where'] .= ' AND `manager_id`=:manager_id';
+			$map['value']['manager_id'] = Request::get('manager_id');
 		}
-		if (Request::get('tid')){
-			$map['where'] .= ' AND `tid`=:tid';
-			$map['value']['tid'] = Request::get('tid');
+		if (Request::get('template_id')){
+			$map['where'] .= ' AND `template_id`=:template_id';
+			$map['value']['template_id'] = Request::get('template_id');
 		}
-		if (Request::get('pid')){
-			$map['where'] .= ' AND `pid`=:pid';
-			$map['value']['pid'] = Request::get('pid');
+		if (Request::get('product_id')){
+			$map['where'] .= ' AND `product_id`=:product_id';
+			$map['value']['product_id'] = Request::get('product_id');
 		}
 		if (Request::get('pay')){
 			$map['where'] .= ' AND `pay`=:pay';
@@ -409,13 +410,13 @@ class Order extends Model{
 				}
 			}
 		}
-		if (Request::get('state')){
-			$map['where'] .= ' AND `state`=:state';
-			$map['value']['state'] = Request::get('state');
+		if (Request::get('order_state_id')){
+			$map['where'] .= ' AND `order_state_id`=:order_state_id';
+			$map['value']['order_state_id'] = Request::get('order_state_id');
 		}
-		if (Request::get('lid')){
-			$map['where'] .= ' AND `lid`=:lid';
-			$map['value']['lid'] = Request::get('lid');
+		if (Request::get('logistics_id')){
+			$map['where'] .= ' AND `logistics_id`=:logistics_id';
+			$map['value']['logistics_id'] = Request::get('logistics_id');
 		}
 		if (Request::get('price1')){
 			$map['where'] .= ' AND `price`>=:price1';
@@ -458,16 +459,16 @@ class Order extends Model{
 			$map['value']['pay_date2'] = strtotime(Request::get('pay_date2').' 23:59:59');
 		}
 		$map['where'] .= ' AND `recycle`='.(Request::controller()=='Recycle' ? 1 : 0);
- 		$map['where'] .= ' AND '.$this->uid();
+ 		$map['where'] .= ' AND '.$this->managerId();
 		return $map;
 	}
 
 	//管理权限
-	private function uid(){
+	private function managerId(){
 		$session = Session::get(Config::get('system.session_key'));
 		$sqlWhere = [
-			1=>'`uid`='.$session['id'],
-			2=>'`uid` IN ('.$session['id'].',0)',
+			1=>'`manager_id`='.$session['id'],
+			2=>'`manager_id` IN ('.$session['id'].',0)',
 			3=>'1=1'
 		];
 		return $session['level']!=1 ? $sqlWhere[$session['order_permit']] : $sqlWhere[3];

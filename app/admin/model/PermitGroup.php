@@ -19,7 +19,7 @@ class PermitGroup extends Model{
 	//查询所有
 	public function all($firstRow){
 		try {
-			return $this->field('id,name,pids,selected,date')
+			return $this->field('id,name,permit_ids,is_default,date')
 						->where($this->map()['field'],$this->map()['condition'],$this->map()['value'])
 						->order(['date'=>'DESC'])
 						->limit($firstRow,Config::get('app.page_size'))
@@ -34,7 +34,7 @@ class PermitGroup extends Model{
 	//查询所有（不分页）
 	public function all2(){
 		try {
-			return $this->field('id,name,selected')->order(['date'=>'DESC'])->select()->toArray();
+			return $this->field('id,name,is_default')->order(['date'=>'DESC'])->select()->toArray();
 		} catch (Exception $e){
 			echo $e->getMessage();
 			return [];
@@ -45,7 +45,7 @@ class PermitGroup extends Model{
 	public function one($id=0){
 		try {
 			$map['id'] = $id ? $id : Request::get('id');
-			return $this->field('name,pids,selected')->where($map)->find();
+			return $this->field('name,permit_ids,is_default')->where($map)->find();
 		} catch (Exception $e){
 			echo $e->getMessage();
 			return [];
@@ -58,12 +58,12 @@ class PermitGroup extends Model{
 			'name'=>Request::post('name'),
 			'date'=>time()
 		];
-		$pids = Request::post('pids');
-		if ($pids){
-			asort($pids);
-			$data['pids'] = implode(',',$pids);
+		$permit_ids = Request::post('permit_ids');
+		if ($permit_ids){
+			asort($permit_ids);
+			$data['permit_ids'] = implode(',',$permit_ids);
 		}else{
-			$data['pids'] = '';
+			$data['permit_ids'] = '';
 		}
 		$validate = new valid();
 		if ($validate->check($data)){
@@ -79,12 +79,12 @@ class PermitGroup extends Model{
 		$data = [
 			'name'=>Request::post('name')
 		];
-		$pids = Request::post('pids');
-		if ($pids){
-			asort($pids);
-			$data['pids'] = implode(',',$pids);
+		$permit_ids = Request::post('permit_ids');
+		if ($permit_ids){
+			asort($permit_ids);
+			$data['permit_ids'] = implode(',',$permit_ids);
 		}else{
-			$data['pids'] = '';
+			$data['permit_ids'] = '';
 		}
 		$validate = new valid();
 		if ($validate->check($data)){
@@ -96,9 +96,9 @@ class PermitGroup extends Model{
 	}
 	
 	//设置默认
-	public function selected(){
-		$this->where(['selected'=>1])->update(['selected'=>0]);
-		return $this->where(['id'=>Request::get('id')])->update(['selected'=>1]);
+	public function isDefault(){
+		$this->where(['is_default'=>1])->update(['is_default'=>0]);
+		return $this->where(['id'=>Request::get('id')])->update(['is_default'=>1]);
 	}
 	
 	//删除

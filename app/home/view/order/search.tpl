@@ -13,9 +13,8 @@
   <p>共查询到{$Total}个订单：</p>
   {foreach name="All" key="key" item="value"}
   <table>
-    <tr><td class="n">订 单 号：</td><td>{$value['oid']}</td></tr>
+    <tr><td class="n">订 单 号：</td><td>{$value['order_id']}</td></tr>
     <tr><td class="n">订购产品：</td><td>{$value['product']}</td></tr>
-    <tr><td class="n">产品属性：</td><td>{$value['attr']}</td></tr>
     <tr><td class="n">成交单价：</td><td>{$value['price']}元</td></tr>
     <tr><td class="n">订购数量：</td><td>{$value['count']}</td></tr>
     <tr><td class="n">成交总价：</td><td>{$value['total']}元</td></tr>
@@ -31,9 +30,9 @@
     <tr><td class="n">QQ标识符：</td><td>{$value['qqau']}</td></tr>
     <tr><td class="n">下单来路：</td><td>{if condition="$value['referrer']=='小程序'"}小程序{elseif condition="$value['referrer']"/}<a href="{$value['referrer']}" target="_blank">{$value['referrer']}</a>{else/}直接进入{/if}</td></tr>
     <tr><td class="n">下单时间：</td><td>{$value['date']|dateFormat}</td></tr>
-    <tr><td class="n">订单状态：</td><td>{$value['state']}</td></tr>
+    <tr><td class="n">订单状态：</td><td>{$value['order_state']}</td></tr>
     <tr><td class="n">物流公司：</td><td>{$value['logistics_name']}</td></tr>
-    <tr><td class="n">物流编号：</td><td>{$value['logistics_id']}{if condition="$value['logistics_name']&&$value['logistics_id']"}，<a href="http://www.kuaidi100.com/chaxun?com={$value['logistics_code']}&nu={$value['logistics_id']}" target="_blank">查询进度</a>{/if}</td></tr>
+    <tr><td class="n">物流编号：</td><td>{$value['logistics_number']}{if condition="$value['logistics_name']&&$value['logistics_number']"}，<a href="http://www.kuaidi100.com/chaxun?com={$value['logistics_code']}&nu={$value['logistics_number']}" target="_blank">查询进度</a>{/if}</td></tr>
   </table>
   {/foreach}
 </div>

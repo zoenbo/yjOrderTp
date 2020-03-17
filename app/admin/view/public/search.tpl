@@ -1,1 +1,0 @@
-<form method="get" action="" id="search"><input type="hidden" name="c" value="{$Think.const.CONTROLLER_NAME}"><input type="hidden" name="a" value="{$Think.const.ACTION_NAME}">搜索：<input type="text" name="keyword" value="{$keyword}" class="input-text"><input type="submit" value="搜索" class="btn btn-primary radius"></form>

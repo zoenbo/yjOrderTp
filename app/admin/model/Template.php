@@ -18,7 +18,7 @@ class Template extends Model{
 	//查询所有
 	public function all($firstRow){
 		try {
-			return $this->field('id,name,uid,template,sid,state,search,send,cid,qq,selected,date')
+			return $this->field('id,name,manager_id,template,template_style_id,order_state_id,is_show_search,is_show_send,is_captcha,is_qq,is_default,date')
 						->where($this->map()['field'],$this->map()['condition'],$this->map()['value'])
 						->order(['date'=>'DESC'])
 						->limit($firstRow,Config::get('app.page_size'))
@@ -33,7 +33,7 @@ class Template extends Model{
 	//查询所有（不分页）
 	public function all2(){
 		try {
-			return $this->field('id,name,selected')->order(['date'=>'DESC'])->select()->toArray();
+			return $this->field('id,name,is_default')->order(['date'=>'DESC'])->select()->toArray();
 		} catch (Exception $e){
 			echo $e->getMessage();
 			return [];
@@ -44,7 +44,7 @@ class Template extends Model{
 	public function one($id=0){
 		try {
 			$map['id'] = $id ? $id : Request::get('id');
-			return $this->field('name,uid,template,sid,product,field,pay,state,search,send,cid,qq,success,success2,often,selected')->where($map)->find();
+			return $this->field('name,manager_id,template,template_style_id,product,field,pay,order_state_id,is_show_search,is_show_send,is_captcha,is_qq,success,success2,often,is_default')->where($map)->find();
 		} catch (Exception $e){
 			echo $e->getMessage();
 			return [];
@@ -55,16 +55,16 @@ class Template extends Model{
 	public function add(){
 		$data = [
 			'name'=>Request::post('name'),
-			'uid'=>Request::post('uid'),
+			'manager_id'=>Request::post('manager_id'),
 			'template'=>Request::post('template'),
-			'sid'=>Request::post('template')==1 ? 0 : Request::post('sid'),
+			'template_style_id'=>Request::post('template')==1 ? 0 : Request::post('template_style_id'),
 			'field'=>Request::post('field') ? implode(',',Request::post('field')) : '',
 			'pay'=>Request::post('pay') ? Request::post('selectedPay').'|'.implode(',',Request::post('pay')) : Request::post('selectedPay'),
-			'state'=>Request::post('state'),
-			'search'=>Request::post('search'),
-			'send'=>Request::post('template')==1 ? 0 : Request::post('send'),
-			'cid'=>Request::post('cid'),
-			'qq'=>Request::post('qq'),
+			'order_state_id'=>Request::post('order_state_id'),
+			'is_show_search'=>Request::post('is_show_search'),
+			'is_show_send'=>Request::post('template')==1 ? 0 : Request::post('is_show_send'),
+			'is_captcha'=>Request::post('is_captcha'),
+			'is_qq'=>Request::post('is_qq'),
 			'success'=>Request::post('success',NULL,'stripslashes'),
 			'success2'=>Request::post('success2',NULL,'stripslashes'),
 			'often'=>Request::post('often',NULL,'stripslashes'),
@@ -90,16 +90,16 @@ class Template extends Model{
 	public function modify(){
 		$data = [
 			'name'=>Request::post('name'),
-			'uid'=>Request::post('uid'),
+			'manager_id'=>Request::post('manager_id'),
 			'template'=>Request::post('template'),
-			'sid'=>Request::post('template')==1 ? 0 : Request::post('sid'),
+			'template_style_id'=>Request::post('template')==1 ? 0 : Request::post('template_style_id'),
 			'field'=>Request::post('field') ? implode(',',Request::post('field')) : '',
 			'pay'=>Request::post('pay') ? Request::post('selectedPay').'|'.implode(',',Request::post('pay')) : Request::post('selectedPay'),
-			'state'=>Request::post('state'),
-			'search'=>Request::post('search'),
-			'send'=>Request::post('template')==1 ? 0 : Request::post('send'),
-			'cid'=>Request::post('cid'),
-			'qq'=>Request::post('qq'),
+			'order_state_id'=>Request::post('order_state_id'),
+			'is_show_search'=>Request::post('is_show_search'),
+			'is_show_send'=>Request::post('template')==1 ? 0 : Request::post('is_show_send'),
+			'is_captcha'=>Request::post('is_captcha'),
+			'is_qq'=>Request::post('is_qq'),
 			'success'=>Request::post('success',NULL,'stripslashes'),
 			'success2'=>Request::post('success2',NULL,'stripslashes'),
 			'often'=>Request::post('often',NULL,'stripslashes')
@@ -121,9 +121,9 @@ class Template extends Model{
 	}
 
 	//设置默认
-	public function selected(){
-		$this->where(['selected'=>1])->update(['selected'=>0]);
-		return $this->where(['id'=>Request::get('id')])->update(['selected'=>1]);
+	public function isDefault(){
+		$this->where(['is_default'=>1])->update(['is_default'=>0]);
+		return $this->where(['id'=>Request::get('id')])->update(['is_default'=>1]);
 	}
 
 	//删除

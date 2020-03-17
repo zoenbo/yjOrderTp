@@ -12,9 +12,9 @@
 {$Page}
 <div class="list">
   <table>
-    <tr><th class="name">权限组</th><th class="permit">拥有权限</th><th class="selected">是否默认</th><th class="date">添加时间</th><th class="control">操作</th></tr>
+    <tr><th class="name">权限组</th><th class="permit">拥有权限</th><th class="is_default">是否默认</th><th class="date">添加时间</th><th class="control">操作</th></tr>
     {foreach name="All" key="key" item="value"}
-    <tr><td>{$value['name']|keyword}</td><td style="text-align:left;padding:5px;">{$value['permit']}</td><td>{if condition="$value['selected']"}<span class="red">是</span>{else/}<a href="{:url('/'.parse_name(request()->controller()).'/selected',['id'=>$value['id']])}">设为默认</a>{/if}</td><td>{$value['date']|dateFormat}</td><td><a href="{:url('/'.parse_name(request()->controller()).'/update',['id'=>$value['id']])}">修改</a>/<a href="{:url('/'.parse_name(request()->controller()).'/delete',['id'=>$value['id']])}">删除</a></td></tr>
+    <tr><td>{$value['name']|keyword}</td><td style="text-align:left;padding:5px;">{$value['permit']}</td><td>{if condition="$value['is_default']"}<span class="red">是</span>{else/}<a href="{:url('/'.parse_name(request()->controller()).'/isdefault',['id'=>$value['id']])}">设为默认</a>{/if}</td><td>{$value['date']|dateFormat}</td><td><a href="{:url('/'.parse_name(request()->controller()).'/update',['id'=>$value['id']])}">修改</a>/<a href="{:url('/'.parse_name(request()->controller()).'/delete',['id'=>$value['id']])}">删除</a></td></tr>
      {/foreach}
   </table>
 </div>

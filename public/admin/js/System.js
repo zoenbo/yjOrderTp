@@ -27,7 +27,8 @@
 			mimeTypes : '.jpg'
 		},
 		compress : false,
-		resize : false
+		resize : false,
+		duplicate : true
 	});
 	uploader.on('uploadSuccess',function(file,response){
 		$('.loginbg').html('上传成功');
@@ -51,7 +52,8 @@
 			mimeTypes : '.dat'
 		},
 		compress : false,
-		resize : false
+		resize : false,
+		duplicate : true
 	});
 	uploader2.on('uploadSuccess',function(file,response){
 		$('.qqwry').html('更新成功，当前IP数据库更新日期为：' + response._raw);

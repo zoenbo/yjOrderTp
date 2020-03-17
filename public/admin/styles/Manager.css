@@ -12,7 +12,7 @@
 .list table tr th.level{
 	width:90px;
 }
-.list table tr th.activation{
+.list table tr th.is_activation{
 	width:110px;
 }
 .list table tr th.qqau{

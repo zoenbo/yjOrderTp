@@ -12,9 +12,9 @@
 {block name="form"}
 <form method="post" action="" class="form">
   <table>
-    <tr><td>背景颜色：</td><td><input type="text" name="bgcolor" class="input-text"></td><td rowspan="3">颜色值可以为：表示颜色的英文单词，如red；16进制的颜色代码，如#FF0000；10进制的颜色代码，如rgb(255,0,0)。</td></tr>
-    <tr><td>边框颜色：</td><td><input type="text" name="bordercolor" class="input-text"></td></tr>
-    <tr><td>按钮颜色：</td><td><input type="text" name="buttoncolor" class="input-text"></td></tr>
+    <tr><td>背景颜色：</td><td><input type="text" name="bg_color" class="input-text"></td><td rowspan="3">颜色值可以为：表示颜色的英文单词，如red；16进制的颜色代码，如#FF0000；10进制的颜色代码，如rgb(255,0,0)。</td></tr>
+    <tr><td>边框颜色：</td><td><input type="text" name="border_color" class="input-text"></td></tr>
+    <tr><td>按钮颜色：</td><td><input type="text" name="button_color" class="input-text"></td></tr>
     <tr><td colspan="2" class="left"><input type="submit" value="确认添加" class="btn btn-primary radius"></td></tr>
   </table>
 </form>

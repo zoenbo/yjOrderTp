@@ -16,8 +16,8 @@
   <form method="get" action="">
     <label>帐号：<input type="text" name="keyword" value="{:input('get.keyword')}" class="input-text"></label>
     <label>身份：<select name="level" class="select"><option value="0">不限</option>{$Level}</select></label>
-    <label>是否激活：<select name="activation" class="select"><option value="-1">不限</option>{$Activation}</select></label>
-    <label>权限组：<select name="gid" class="select"><option value="0">不限</option>{$Group}</select></label>
+    <label>是否激活：<select name="is_activation" class="select"><option value="-1">不限</option>{$Activation}</select></label>
+    <label>权限组：<select name="permit_group_id" class="select"><option value="0">不限</option>{$PermitGroup}</select></label>
     <label>订单权限：<select name="order_permit" class="select"><option value="0">不限</option>{$OrderPermit}</select></label>
     <label>QQ绑定：<select name="qq" class="select"><option value="-1">不限</option>{$Qq}</select></label>
     <label>加入时间：<input type="text" name="date1" value="{:input('get.date1')}" class="date"> ～ <input type="text" name="date2" value="{:input('get.date2')}" class="date"></label>
@@ -31,9 +31,9 @@
 {$Page}
 <div class="list">
   <table>
-    <tr><th class="name">帐号</th><th class="level">身份</th><th class="activation">是否激活</th><th class="group">所属权限组</th><th class="order_permit">订单权限</th><th class="qqau">QQ绑定</th><th class="date">加入时间</th><th class="control">操作</th></tr>
+    <tr><th class="name">帐号</th><th class="level">身份</th><th class="is_activation">是否激活</th><th class="group">所属权限组</th><th class="order_permit">订单权限</th><th class="qqau">QQ绑定</th><th class="date">加入时间</th><th class="control">操作</th></tr>
     {foreach name="All" key="key" item="value"}
-    <tr><td>{$value['name']|keyword}</td><td>{if condition="$value['id']==1"}<span class="red">创始人</span>{else/}{$value['level_name']}{/if}</td><td>{if condition="$value['id']==1"}-{else/}{if condition="$value['activation']==0"}<span class="green">否</span> | <a href="{:url('/'.parse_name(request()->controller()).'/activation',['id'=>$value['id']])}">帮他激活</a>{elseif condition="$value['activation']==1"/}<span class="red">是</span> | <a href="{:url('/'.parse_name(request()->controller()).'/activation',['id'=>$value['id']])}">取消激活</a>{/if}{/if}</td><td>{if condition="$value['level']==1"}-{else/}{$value['group']}{/if}</td><td>{$value['order_permit']}</td><td>{if condition="$value['qqau']"}<span class="red">是</span> | <a href="{:url('/'.parse_name(request()->controller()).'/qq',['id'=>$value['id']])}">解除绑定</a>{else/}<span class="green">否</span>{/if}</td><td>{$value['date']|dateFormat}</td><td><a href="{:url('/'.parse_name(request()->controller()).'/update',['id'=>$value['id']])}">修改</a>/<a href="{:url('/'.parse_name(request()->controller()).'/delete',['id'=>$value['id']])}">删除</a></td></tr>
+    <tr><td>{$value['name']|keyword}</td><td>{if condition="$value['id']==1"}<span class="red">创始人</span>{else/}{$value['level_name']}{/if}</td><td>{if condition="$value['id']==1"}-{else/}{if condition="$value['is_activation']==0"}<span class="green">否</span> | <a href="{:url('/'.parse_name(request()->controller()).'/isactivation',['id'=>$value['id']])}">帮他激活</a>{elseif condition="$value['is_activation']==1"/}<span class="red">是</span> | <a href="{:url('/'.parse_name(request()->controller()).'/isactivation',['id'=>$value['id']])}">取消激活</a>{/if}{/if}</td><td>{if condition="$value['level']==1"}-{else/}{$value['group']}{/if}</td><td>{$value['order_permit']}</td><td>{if condition="$value['qqau']"}<span class="red">是</span> | <a href="{:url('/'.parse_name(request()->controller()).'/qq',['id'=>$value['id']])}">解除绑定</a>{else/}<span class="green">否</span>{/if}</td><td>{$value['date']|dateFormat}</td><td><a href="{:url('/'.parse_name(request()->controller()).'/update',['id'=>$value['id']])}">修改</a>/<a href="{:url('/'.parse_name(request()->controller()).'/delete',['id'=>$value['id']])}">删除</a></td></tr>
      {/foreach}
   </table>
 </div>

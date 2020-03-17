@@ -15,18 +15,17 @@ class Template extends Base{
 		$object = $Template->all($this->page($Template->total()));
 		if ($object){
 			$Manager = new model\Manager();
-			$Ostate = new model\Ostate();
+			$OrderState = new model\OrderState();
 			foreach ($object as $key=>$value){
-				if ($value['uid']){
-					$object2 = $Manager->one($value['uid']);
+				if ($value['manager_id']){
+					$object2 = $Manager->one($value['manager_id']);
 					$object[$key]['admin'] = $object2 ? $object2['name'] : '此管理员已被删除';
 				}else{
 					$object[$key]['admin'] = '不指定';
 				}
 				$object[$key]['template'] = $this->template[$value['template']];
-				$object3 = $Ostate->one($value['state']);
-				$object[$key]['state'] = $object3 ? '<span style="color:'.$object3['color'].';">'.$object3['name'].'</span>' : '此状态已被删除';
-				$object[$key]['captcha'] = $value['cid'] ? '添加' : '不添加';
+				$object3 = $OrderState->one($value['order_state_id']);
+				$object[$key]['order_state'] = $object3 ? '<span style="color:'.$object3['color'].';">'.$object3['name'].'</span>' : '此状态已被删除';
 			}
 		}
 		View::assign(['All'=>$object]);
@@ -45,12 +44,12 @@ class Template extends Base{
 		}
 		$this->template();
 		$this->manager();
-		$this->style();
+		$this->templateStyle();
 		$this->sort();
 		$this->product();
 		$this->field();
 		$this->pay();
-		$this->ostate();
+		$this->orderState();
 		return $this->view();
 	}
 	
@@ -65,8 +64,8 @@ class Template extends Base{
 				return is_numeric($object) ? $this->success(Route::buildUrl('/'.parse_name(Request::controller()).'/index'),'模板修改成功！') : $this->failed($object);
 			}
 			$this->template($object['template']);
-			$this->manager($object['uid']);
-			$this->style($object['sid']);
+			$this->manager($object['manager_id']);
+			$this->templateStyle($object['template_style_id']);
 
 			$product = explode('|',$object['product']);
 			$this->sort($product[1] ?? 0);
@@ -78,7 +77,7 @@ class Template extends Base{
 
 			$this->field($object['field']);
 			$this->pay($object['pay']);
-			$this->ostate($object['state']);
+			$this->orderState($object['order_state_id']);
 			View::assign(['One'=>$object]);
 			return $this->view();
 		}else{
@@ -117,15 +116,15 @@ class Template extends Base{
 	public function ajaxProduct(){
 		if (Request::isAjax()){
 			$Product = new model\Product();
-			echo json_encode($Product->all2(Request::post('sid')));
+			echo json_encode($Product->all2(Request::post('product_sort_id')));
 		}
 	}
 
-	public function selected(){
+	public function isDefault(){
 		if (Request::get('id')){
 			$Template = new model\Template();
 			if (!$Template->one()) return $this->failed('不存在此模板！');
-			if (!$Template->selected()) return $this->failed('设置默认模板失败！');
+			if (!$Template->isDefault()) return $this->failed('设置默认模板失败！');
 			return $this->success(Config::get('app.prev_url'));
 		}else{
 			return $this->failed('非法操作！');
@@ -149,28 +148,28 @@ class Template extends Base{
 		View::assign(['Manager'=>$html]);
 	}
 	
-	private function style($id=0){
+	private function templateStyle($id=0){
 		$html = '';
-		$Style = new model\Style();
-		foreach ($Style->all2() as $value){
+		$TemplateStyle = new model\TemplateStyle();
+		foreach ($TemplateStyle->all2() as $value){
 			$html .= '<option value="'.$value['id'].'" '.($value['id']==$id ? 'selected' : '').'>'.$value['id'].'号样式</option>';
 		}
-		View::assign(['Style'=>$html]);
+		View::assign(['TemplateStyle'=>$html]);
 	}
 	
 	private function sort($id=0){
 		$html = '';
-		$Psort = new model\Psort();
-		foreach ($Psort->all2() as $value){
+		$ProductSort = new model\ProductSort();
+		foreach ($ProductSort->all2() as $value){
 			$html .= '<option value="'.$value['id'].'" '.($value['id']==$id ? 'selected' : '').' style="color:'.$value['color'].';">'.$value['name'].'</option>';
 		}
-		View::assign(['Sort'=>$html]);
+		View::assign(['ProductSort'=>$html]);
 	}
 	
 	private function product($ids=''){
 		$html = '';
-		$Psort = new model\Psort();
-		$object = $Psort->all2();
+		$ProductSort = new model\ProductSort();
+		$object = $ProductSort->all2();
 		if ($object){
 			$Product = new model\Product();
 			foreach ($object as $value){
@@ -190,10 +189,10 @@ class Template extends Base{
 	private function field($ids=[]){
 		$html = '';
 		$Field = new model\Field();
-		$selected = arrToStr($Field->all3(),'id');
-		$ids = is_array($ids) ? $selected : $ids;
+		$is_default = arrToStr($Field->all3(),'id');
+		$ids = is_array($ids) ? $is_default : $ids;
 		foreach ($Field->all2() as $value){
-			$html .= '<div class="check-box"><label'.(in_array($value['id'],explode(',',$selected)) ? ' class="red"' : '').'><input type="checkbox" name="field[]" '.(in_array($value['id'],explode(',',$ids)) ? 'checked' : '').' value="'.$value['id'].'">'.$value['name'].'</label></div>';
+			$html .= '<div class="check-box"><label'.(in_array($value['id'],explode(',',$is_default)) ? ' class="red"' : '').'><input type="checkbox" name="field[]" '.(in_array($value['id'],explode(',',$ids)) ? 'checked' : '').' value="'.$value['id'].'">'.$value['name'].'</label></div>';
 		}
 		View::assign(['Field'=>$html]);
 	}
@@ -215,12 +214,12 @@ class Template extends Base{
 		]);
 	}
 
-	private function ostate($id=0){
+	private function orderState($id=0){
 		$html = '';
-		$Ostate = new model\Ostate();
-		foreach ($Ostate->all2() as $value){
+		$OrderState = new model\OrderState();
+		foreach ($OrderState->all2() as $value){
 			$html .= '<option value="'.$value['id'].'" '.($value['id']==$id ? 'selected' : '').' style="color:'.$value['color'].';">'.$value['name'].'</option>';
 		}
-		View::assign(['Ostate'=>$html]);
+		View::assign(['OrderState'=>$html]);
 	}
 }

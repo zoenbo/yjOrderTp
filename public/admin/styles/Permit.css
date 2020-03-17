@@ -2,10 +2,10 @@
 .list table tr th.name{
 	width:150px;
 }
-.list table tr th.c,.list table tr th.a,.list table tr th.sort{
+.list table tr th.controller,.list table tr th.action,.list table tr th.sort{
 	width:100px;
 }
-.list table tr th.selected{
+.list table tr th.is_default{
 	width:110px;
 }
 .list table tr td input.input-text{

@@ -4,7 +4,7 @@
 			type : 'POST',
 			url : DISTRICT,
 			data : {
-				pid : 0
+				parent_id : 0
 			},
 			success : function(data,textStatus,jqXHR){
 				$('input[name="province"],input[name="city"],input[name="county"],input[name="town"]').val('');
@@ -26,7 +26,7 @@
 				type : 'POST',
 				url : DISTRICT,
 				data : {
-					pid : $(this.options[this.selectedIndex]).val()
+					parent_id : $(this.options[this.selectedIndex]).val()
 				},
 				success : function(data,textStatus,jqXHR){
 					$.each($.parseJSON(data),function(index,value){
@@ -47,7 +47,7 @@
 				type : 'POST',
 				url : DISTRICT,
 				data : {
-					pid : $(this.options[this.selectedIndex]).val()
+					parent_id : $(this.options[this.selectedIndex]).val()
 				},
 				success : function(data,textStatus,jqXHR){
 					$.each($.parseJSON(data),function(index,value){
@@ -67,7 +67,7 @@
 				type : 'POST',
 				url : DISTRICT,
 				data : {
-					pid : $(this.options[this.selectedIndex]).val()
+					parent_id : $(this.options[this.selectedIndex]).val()
 				},
 				success : function(data,textStatus,jqXHR){
 					$.each($.parseJSON(data),function(index,value){
