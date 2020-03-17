@@ -88,7 +88,6 @@ class Template{
         <dd>订单查询</dd>
         <dd>查询方式：按 <label><input type="radio" name="field" value="1" checked>订单号</label> <label><input type="radio" name="field" value="2">姓名</label> <label><input type="radio" name="field" value="3">联系电话</label></dd>
         <dd>关 键 词：<input type="text" name="keyword" class="text"></dd>
-        <dd class="info info3">请填写查询关键词！</dd>
         <dd class="submit"><input type="submit" value="查询订单"></dd>
       </dl>
     </form>
@@ -170,7 +169,6 @@ class Template{
         <dd>订单查询</dd>
         <dd>查询方式：按 <label><input type="radio" name="field" value="1" checked>订单号</label> <label><input type="radio" name="field" value="2">姓名</label> <label><input type="radio" name="field" value="3">联系电话</label></dd>
         <dd>关 键 词：<input type="text" name="keyword" class="text"></dd>
-        <dd class="info info3">请填写查询关键词！</dd>
         <dd class="submit"><input type="submit" value="查询订单"></dd>
       </dl>
     </form>
@@ -259,7 +257,6 @@ class Template{
       <dd class="center">订单查询</dd>
       <dd><span class="left">查询方式：</span><span class="right">按 <label><input type="radio" name="field" value="1" checked>订单号</label> <label><input type="radio" name="field" value="2">姓名</label> <label><input type="radio" name="field" value="3">联系电话</label></span></dd>
       <dd><span class="left">关 键 词：</span><span class="right"><input type="text" name="keyword" class="text"></span></dd>
-      <dd class="info info3">请填写查询关键词！</dd>
       <dd class="submit"><input type="submit" value="查询订单"></dd>
     </dl>
   </form>
@@ -336,7 +333,6 @@ class Template{
       <dd class="center">订单查询</dd>
       <dd><span class="left">查询方式：</span><span class="right">按 <label><input type="radio" name="field" value="1" checked>订单号</label> <label><input type="radio" name="field" value="2">姓名</label> <label><input type="radio" name="field" value="3">联系电话</label></span></dd>
       <dd><span class="left">关 键 词：</span><span class="right"><input type="text" name="keyword" class="text"></span></dd>
-      <dd class="info info3">请填写查询关键词！</dd>
       <dd class="submit"><input type="submit" value="查询订单"></dd>
     </dl>
   </form>
@@ -413,7 +409,6 @@ class Template{
       <dd class="center">订单查询</dd>
       <dd><span class="left">查询方式：</span><span class="right">按 <label><input type="radio" name="field" value="1" checked>订单号</label> <label><input type="radio" name="field" value="2">姓名</label> <label><input type="radio" name="field" value="3">联系电话</label></span></dd>
       <dd><span class="left">关 键 词：</span><span class="right"><input type="text" name="keyword" class="text"></span></dd>
-      <dd class="info info3">请填写查询关键词！</dd>
       <dd class="submit"><input type="submit" value="查询订单"></dd>
     </dl>
   </form>
@@ -490,7 +485,6 @@ class Template{
       <dd class="center">订单查询</dd>
       <dd><span class="left">查询方式：</span><span class="right">按 <label><input type="radio" name="field" value="1" checked>订单号</label> <label><input type="radio" name="field" value="2">姓名</label> <label><input type="radio" name="field" value="3">联系电话</label></span></dd>
       <dd><span class="left">关 键 词：</span><span class="right"><input type="text" name="keyword" class="text"></span></dd>
-      <dd class="info info3">请填写查询关键词！</dd>
       <dd class="submit"><input type="submit" value="查询订单"></dd>
     </dl>
   </form>
