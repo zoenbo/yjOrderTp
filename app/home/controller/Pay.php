@@ -229,7 +229,7 @@ class Pay extends Base{
 	public function wxpayTip(){
 		if (Request::param('order_id')){
 			$Order = new model\Order();
-			$object = $Order->one(Request::param('oid'));
+			$object = $Order->one(Request::param('order_id'));
 			$Template = new model\Template();
 			$object2 = $Template->one($object['template_id']);
 			return $this->success(NULL,str_replace('{oid}',Request::param('order_id'),$object2['success2']),0,2);
