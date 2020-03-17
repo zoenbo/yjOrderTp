@@ -39,10 +39,10 @@
     <div class="radio-box"><label><input type="radio" name="type" value="2">删除选定订单</label></div>
     {/if}
     {else/}
-    {if condition="$Admin['level']==1||in_array($Permission['Recycle']['recover2'],$AdminPermit)"}
+    {if condition="$Admin['level']==1||in_array($Permission['OrderRecycle']['recover2'],$AdminPermit)"}
     <div class="radio-box"><label><input type="radio" name="type" value="3">还原选定订单</label></div>
     {/if}
-    {if condition="$Admin['level']==1||in_array($Permission['Recycle']['delete2'],$AdminPermit)"}
+    {if condition="$Admin['level']==1||in_array($Permission['OrderRecycle']['delete2'],$AdminPermit)"}
     <div class="radio-box"><label><input type="radio" name="type" value="4">删除选定订单</label></div>
     {/if}
     {/if}

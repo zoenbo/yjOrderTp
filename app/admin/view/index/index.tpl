@@ -50,13 +50,13 @@ var ThinkPHP = {
 
 <aside class="Hui-aside">
   <div class="menu_dropdown bk_2">
-    {if condition="$Admin['level']==1||array_intersect($AdminPermit,[$Permission['Order']['index'],$Permission['Recycle']['index'],$Permission['OrderStatistic']['index'],$Permission['OrderState']['index'],$Permission['Logistics']['index']])"}
+    {if condition="$Admin['level']==1||array_intersect($AdminPermit,[$Permission['Order']['index'],$Permission['OrderRecycle']['index'],$Permission['OrderStatistic']['index'],$Permission['OrderState']['index'],$Permission['Logistics']['index']])"}
     <dl>
       <dt>订单<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
       <dd>
         <ul>
           {if condition="$Admin['level']==1||in_array($Permission['Order']['index'],$AdminPermit)"}<li><a href="javascript:;" data-href="{:url('/order/index')}" data-title="订单管理">订单管理</a></li>{/if}
-          {if condition="$Admin['level']==1||in_array($Permission['Recycle']['index'],$AdminPermit)"}<li><a href="javascript:;" data-href="{:url('/recycle/index')}" data-title="订单回收站">订单回收站</a></li>{/if}
+          {if condition="$Admin['level']==1||in_array($Permission['OrderRecycle']['index'],$AdminPermit)"}<li><a href="javascript:;" data-href="{:url('/order_recycle/index')}" data-title="订单回收站">订单回收站</a></li>{/if}
           {if condition="$Admin['level']==1||in_array($Permission['OrderStatistic']['index'],$AdminPermit)"}<li><a href="javascript:;" data-href="{:url('/order_statistic/index')}" data-title="订单统计">订单统计</a></li>{/if}
           {if condition="$Admin['level']==1||in_array($Permission['OrderState']['index'],$AdminPermit)"}<li><a href="javascript:;" data-href="{:url('/order_state/index')}" data-title="订单状态">订单状态</a></li>{/if}
           {if condition="$Admin['level']==1||in_array($Permission['Logistics']['index'],$AdminPermit)"}<li><a href="javascript:;" data-href="{:url('/logistics/index')}" data-title="物流管理">物流管理</a></li>{/if}

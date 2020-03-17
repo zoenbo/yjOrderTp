@@ -31,11 +31,11 @@ class Order extends Base{
 						$this->checkPermit('Order','recycle2');
 						return $Order->recycle() ? $this->success(Route::buildUrl('/'.parse_name(Request::controller()).'/index'),'订单已被批量移入回收站！') : $this->failed('订单批量移入回收站失败！');
 					}elseif (Request::post('type') == 3){
-						$this->checkPermit('Recycle','recover2');
+						$this->checkPermit('OrderRecycle','recover2');
 						return $Order->recover() ? $this->success(Route::buildUrl('/'.parse_name(Request::controller()).'/index'),'订单批量还原成功！') : $this->failed('订单批量还原失败！');
 					}elseif (Request::post('type') == 4){
 						if (Config::get('app.demo')) return $this->failed('演示站，数据无法批量删除！');
-						$this->checkPermit('Recycle','remove2');
+						$this->checkPermit('OrderRecycle','remove2');
 						return $Order->remove() ? $this->success(Route::buildUrl('/'.parse_name(Request::controller()).'/index'),'订单批量删除成功！') : $this->failed('订单批量删除失败！');
 					}elseif (Request::post('type') == 5){
 						$this->checkPermit(Request::controller(),'state');

@@ -57,7 +57,7 @@ class Order extends Model{
 		try {
 			return $this->field('id,order_id,manager_id,template_id,product_id,price,count,name,tel,province,city,county,town,address,post,note,email,ip,referrer,pay,pay_id,pay_scene,pay_date,order_state_id,logistics_id,logistics_number,date')
 						->where('id','IN',Request::post('ids'))
-						->where('recycle',Request::controller()=='Recycle' ? 1 : 0)
+						->where('recycle',Request::controller()=='OrderRecycle' ? 1 : 0)
 						->where($this->managerId())
 						->order(['date'=>'DESC'])
 						->select()
@@ -122,7 +122,7 @@ class Order extends Model{
 	public function one($id=0){
 		try {
 			$map['id'] = $id ? $id : Request::get('id');
-			$map['recycle'] = Request::controller()=='Recycle' ? 1 : 0;
+			$map['recycle'] = Request::controller()=='OrderRecycle' ? 1 : 0;
 			return $this->field('order_id,manager_id,template_id,product_id,price,count,name,tel,province,city,county,town,address,post,note,email,ip,qqau,referrer,pay,pay_id,pay_scene,pay_date,order_state_id,logistics_id,logistics_number,date')->where($map)->where($this->managerId())->find();
 		} catch (Exception $e){
 			echo $e->getMessage();
@@ -132,7 +132,7 @@ class Order extends Model{
 	public function one2(){
 		try {
 			$map['id'] = Request::get('id');
-			$map['recycle'] = Request::controller()=='Recycle' ? 1 : 0;
+			$map['recycle'] = Request::controller()=='OrderRecycle' ? 1 : 0;
 			return $this->field('manager_id')->where($map)->where($this->managerId())->find();
 		} catch (Exception $e){
 			echo $e->getMessage();
@@ -309,7 +309,7 @@ class Order extends Model{
 		if (in_array(8,$fieldTemp) || Request::post('note')) $scene[] = 'note';
 		if (in_array(9,$fieldTemp) || Request::post('email')) $scene[] = 'email';
 		$map['id'] = Request::get('id');
-		$map['recycle'] = Request::controller()=='Recycle' ? 1 : 0;
+		$map['recycle'] = Request::controller()=='OrderRecycle' ? 1 : 0;
 		$validate = new valid();
 		if ($validate->only($scene)->check($data)){
 			return $this->where($map)->where($this->managerId())->update($data);
@@ -458,7 +458,7 @@ class Order extends Model{
 			$map['where'] .= ' AND `pay_date`<=:pay_date2';
 			$map['value']['pay_date2'] = strtotime(Request::get('pay_date2').' 23:59:59');
 		}
-		$map['where'] .= ' AND `recycle`='.(Request::controller()=='Recycle' ? 1 : 0);
+		$map['where'] .= ' AND `recycle`='.(Request::controller()=='OrderRecycle' ? 1 : 0);
  		$map['where'] .= ' AND '.$this->managerId();
 		return $map;
 	}

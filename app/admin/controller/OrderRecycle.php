@@ -5,7 +5,7 @@ use think\facade\Request;
 use think\facade\Config;
 use app\admin\model;
 
-class Recycle extends Order{
+class OrderRecycle extends Order{
 	public function add(){
 		
 	}
