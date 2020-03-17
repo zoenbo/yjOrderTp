@@ -44,8 +44,8 @@ class OrderStatistic extends Base{
 		//总计
 		$old = $Order->older();
 		$new = $Order->newer();
-		$data['add']['time1'] = date('Y-m-d',$old['date']);
-		$data['add']['time2'] = date('Y-m-d',$new['date']);
+		$data['add']['time1'] = date('Y-m-d',$old ? $old['date'] : 0);
+		$data['add']['time2'] = date('Y-m-d',$new ? $new['date'] : 0);
 		$data['add']['data'] = $this->diyTime($Order->diyTime($data['add']['time1'],$data['add']['time2']));
 
 		$OrderController = new Order();
