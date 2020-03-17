@@ -20,13 +20,12 @@ $(function(){
 	}
 	
 	var a = $('form.form').Validform({
-		tiptype : function(msg,o,cssctl){
-			var objtip = $('.info1');
-			cssctl(objtip,o.type);
-			objtip.text(msg);
+		tiptype : function(msg){
+			tip(msg);
 		},
 		showAllError : false,
 		dragonfly : true,
+		tipSweep : true,
 		ignoreHidden : true,
 		datatype : {
 			'province' : function(gets){
@@ -137,13 +136,12 @@ $(function(){
 	}]);
 	
 	$('.search').Validform({
-		tiptype : function(msg,o,cssctl){
-			var objtip = $('.info3');
-			cssctl(objtip,o.type);
-			objtip.text(msg);
+		tiptype : function(msg){
+			tip(msg);
 		},
 		showAllError : false,
-		dragonfly : true
+		dragonfly : true,
+		tipSweep : true
 	}).addRule([{
 		ele : 'input[name=keyword]',
 		datatype : '*',
@@ -235,5 +233,13 @@ $(function(){
 			pro = $('.pro label input:checked');
 		}
 		$('.total').html('<span class="price">' + (pro.attr('price') * $('input[name=count]').val()) + '元</span>');
+	}
+	
+	function tip(tip){
+		if (tip == '通过信息验证！') return;
+		$('.tip').html(tip).show();
+		var t = setTimeout(function(){
+			$('.tip').hide();
+		},3000);
 	}
 });

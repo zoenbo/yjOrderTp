@@ -67,13 +67,6 @@ select optgroup{
 	font-weight:bold;
 	font:120% Microsoft YaHei, 微软雅黑, SimSun, 宋体, Arial, Verdana;
 }
-.order div.left dl dd.smsverify input.button{
-	border:none;
-	cursor:pointer;
-	color:#FFF;
-	font-weight:bold;
-	font:100% Microsoft YaHei, 微软雅黑, SimSun, 宋体, Arial, Verdana;
-}
 .order div.left dl dd.submit img{
 	cursor:pointer;
 }
@@ -134,4 +127,20 @@ select optgroup{
 }
 .order div.right .send{
 	background:url(../images/send.gif) no-repeat left center;
+}
+
+.tip{
+	width:480px;
+	max-width:80%;
+	background:rgba(50,50,51,.88);
+	transform:translate3d(-50%,-50%,0);
+	padding:16px;
+	color:#fff;
+	text-align:center;
+	border-radius:4px;
+	position:fixed;
+	top:50%;
+	left:50%;
+	display:none;
+	font-family:"宋体";
 }

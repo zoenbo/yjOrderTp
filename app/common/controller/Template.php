@@ -100,6 +100,7 @@ class Template{
 </div>
 
 <script type="text/javascript" src="public/home/js/Visit.js"></script>
+<div class="tip"></div>
 </body>
 </html>',
 			'<!doctype html>
@@ -178,6 +179,7 @@ class Template{
 </div>
 
 <script type="text/javascript" src="public/home/js/Visit.js"></script>
+<div class="tip"></div>
 </body>
 </html>',
 			'<!doctype html>
@@ -266,6 +268,7 @@ class Template{
 </div>
 
 <script type="text/javascript" src="public/home/js/Visit.js"></script>
+<div class="tip"></div>
 </body>
 </html>',
 			'<!doctype html>
@@ -342,6 +345,7 @@ class Template{
 </div>
 
 <script type="text/javascript" src="public/home/js/Visit.js"></script>
+<div class="tip"></div>
 </body>
 </html>',
 			'<!doctype html>
@@ -418,6 +422,7 @@ class Template{
 </div>
 
 <script type="text/javascript" src="public/home/js/Visit.js"></script>
+<div class="tip"></div>
 </body>
 </html>',
 			'<!doctype html>
@@ -494,6 +499,7 @@ class Template{
 </div>
 
 <script type="text/javascript" src="public/home/js/Visit.js"></script>
+<div class="tip"></div>
 </body>
 </html>'
 		];
@@ -700,10 +706,8 @@ class Template{
 			}
 		}
 		if ($object['is_qq'] == 0){
-			$dd .= "\r\n    ".'<dd class="info info1">请认真填写以上信息，然后点击下面的“立即提交订单”按钮以完成下单</dd>';
 			$dd .= "\r\n    ".'<dd class="submit"><input type="submit" value="立即提交订单"></dd>';
 		}else{
-			$dd .= "\r\n    ".'<dd class="info info1" style="display:none;">请认真填写以上信息，然后点击下面的“立即提交订单”按钮以完成下单</dd>';
 			$dd .= "\r\n    ".'<dd class="info info2">为防止刷单，本站需登录QQ才能下单，登录后即可看见提交按钮</dd>';
 			$dd .= "\r\n    ".'<dd class="submit"><input type="submit" value="立即提交订单" style="display:none;"> <img src="'.Config::get('app.web_url').'public/home/images/qq_login.png" alt="QQ登录" onClick="window.open(\''.Config::get('app.web_url').Config::get('system.index_php').'common/qq\',\'qq\')"></dd>';
 		}
