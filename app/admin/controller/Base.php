@@ -41,10 +41,12 @@ class Base extends \app\common\controller\Base{
 	}
 
 	//权限验证
-	protected function checkPermit($c,$a){
+	protected function checkPermit($controller,$action){
 		$session = Session::get(Config::get('system.session_key'));
-		$permit = Config::get('permit.permit');
-		if ($session['level']!=1 && isset($permit[$c][$a]) && !in_array($permit[$c][$a],explode(',',$session['permit']))) $this->error('权限不足！');
+		if ($session && $session['level']!=1){
+			$currentPermitManageId = Config::get('permit_manage.'.$controller.'.'.strtolower($action),0);
+			if ($currentPermitManageId && !in_array($currentPermitManageId,$session['permit_manage'])) in_array(strtolower($action),['index','main']) ? $this->error('权限不足！',0,2) : $this->error('权限不足！');
+		}
 	}
 
 	//模板引入方法重写
