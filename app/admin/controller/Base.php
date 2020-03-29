@@ -13,20 +13,7 @@ class Base extends \app\common\controller\Base{
 	protected function initialize(){
 		parent::initialize();
 		$this->checkLogin();
-		if (Session::has(Config::get('system.session_key'))){
-			$this->checkPermit(Request::controller(),strtolower(Request::action()));
-			$this->publicAssign();
-		}
-	}
-
-	//注入公共变量
-	protected function publicAssign(){
-		$session = Session::get(Config::get('system.session_key'));
-		View::assign([
-			'Admin'=>$session,
-			'AdminPermit'=>explode(',',$session['permit']),
-			'Permission'=>Config::get('permit.permit')
-		]);
+		$this->checkPermit(Request::controller(),strtolower(Request::action()));
 	}
 
 	//登录验证

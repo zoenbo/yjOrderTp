@@ -4,9 +4,9 @@
 
 {block name="nav"}
 <li class="current"><a href="{:url('/'.parse_name(request()->controller()).'/index')}">列表</a></li>
-{if condition="$Admin['level']==1||in_array($Permission[request()->controller()]['optimize'],$AdminPermit)"}<li><a href="{:url('/'.parse_name(request()->controller()).'/optimize')}">优化表</a></li>{/if}
-{if condition="$Admin['level']==1||in_array($Permission[request()->controller()]['repairautoindex'],$AdminPermit)"}<li><a href="{:url('/'.parse_name(request()->controller()).'/repairAutoindex')}">修复Autoindex</a></li>{/if}
-{if condition="$Admin['level']==1||in_array($Permission[request()->controller()]['schema'],$AdminPermit)"}<li><a href="{:url('/'.parse_name(request()->controller()).'/schema')}">更新表缓存</a></li>{/if}
+{if condition="session(config('system.session_key').'.level')==1||in_array(config('permit_manage.'.request()->controller().'.optimize'),session(config('system.session_key').'.permit_manage'))"}<li><a href="{:url('/'.parse_name(request()->controller()).'/optimize')}">优化表</a></li>{/if}
+{if condition="session(config('system.session_key').'.level')==1||in_array(config('permit_manage.'.request()->controller().'.repairautoindex'),session(config('system.session_key').'.permit_manage'))"}<li><a href="{:url('/'.parse_name(request()->controller()).'/repairAutoindex')}">修复Autoindex</a></li>{/if}
+{if condition="session(config('system.session_key').'.level')==1||in_array(config('permit_manage.'.request()->controller().'.schema'),session(config('system.session_key').'.permit_manage'))"}<li><a href="{:url('/'.parse_name(request()->controller()).'/schema')}">更新表缓存</a></li>{/if}
 {/block}
 
 {block name="search"}{/block}

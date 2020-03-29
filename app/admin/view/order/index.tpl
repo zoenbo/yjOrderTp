@@ -7,8 +7,8 @@
 {block name="nav"}
 <li class="current"><a href="{:url('/'.parse_name(request()->controller()).'/index')}">列表</a></li>
 {if condition="request()->controller()=='Order'"}
-{if condition="$Admin['level']==1||in_array($Permission[request()->controller()]['add'],$AdminPermit)"}<li><a href="{:url('/'.parse_name(request()->controller()).'/add')}">添加</a></li>{/if}
-{if condition="$Admin['level']==1||in_array($Permission[request()->controller()]['multi'],$AdminPermit)"}<li><a href="{:url('/'.parse_name(request()->controller()).'/multi')}">批量修改物流</a></li>{/if}
+{if condition="session(config('system.session_key').'.level')==1||in_array(config('permit_manage.'.request()->controller().'.add'),session(config('system.session_key').'.permit_manage'))"}<li><a href="{:url('/'.parse_name(request()->controller()).'/add')}">添加</a></li>{/if}
+{if condition="session(config('system.session_key').'.level')==1||in_array(config('permit_manage.'.request()->controller().'.multi'),session(config('system.session_key').'.permit_manage'))"}<li><a href="{:url('/'.parse_name(request()->controller()).'/multi')}">批量修改物流</a></li>{/if}
 {/if}
 {/block}
 
@@ -30,23 +30,23 @@
   <h3>批量操作</h3>
   <form method="post" action="" class="multi_form">
     <input type="hidden" name="ids">
-    {if condition="$Admin['level']==1||in_array($Permission[request()->controller()]['output'],$AdminPermit)"}
+    {if condition="session(config('system.session_key').'.level')==1||in_array(config('permit_manage.'.request()->controller().'.output'),session(config('system.session_key').'.permit_manage'))"}
     <div class="radio-box"><label><input type="radio" name="type" value="0" checked>导出当前所有订单</label></div>
     <div class="radio-box"><label><input type="radio" name="type" value="1">导出选定订单</label></div>
     {/if}
     {if condition="request()->controller()=='Order'"}
-    {if condition="$Admin['level']==1||in_array($Permission[request()->controller()]['recycle2'],$AdminPermit)"}
+    {if condition="session(config('system.session_key').'.level')==1||in_array(config('permit_manage.'.request()->controller().'.recycle2'),session(config('system.session_key').'.permit_manage'))"}
     <div class="radio-box"><label><input type="radio" name="type" value="2">删除选定订单</label></div>
     {/if}
     {else/}
-    {if condition="$Admin['level']==1||in_array($Permission['OrderRecycle']['recover2'],$AdminPermit)"}
+    {if condition="session(config('system.session_key').'.level')==1||in_array(config('permit_manage.OrderRecycle.recover2'),session(config('system.session_key').'.permit_manage'))"}
     <div class="radio-box"><label><input type="radio" name="type" value="3">还原选定订单</label></div>
     {/if}
-    {if condition="$Admin['level']==1||in_array($Permission['OrderRecycle']['delete2'],$AdminPermit)"}
+    {if condition="session(config('system.session_key').'.level')==1||in_array(config('permit_manage.OrderRecycle.delete2'),session(config('system.session_key').'.permit_manage'))"}
     <div class="radio-box"><label><input type="radio" name="type" value="4">删除选定订单</label></div>
     {/if}
     {/if}
-    {if condition="$Admin['level']==1||in_array($Permission[request()->controller()]['state'],$AdminPermit)"}
+    {if condition="session(config('system.session_key').'.level')==1||in_array(config('permit_manage.'.request()->controller().'.state'),session(config('system.session_key').'.permit_manage'))"}
     <div class="radio-box"><label><input type="radio" name="type" value="5">修改订单状态：</label></div><select name="order_state_id" class="select">{$OrderState}</select>
     {/if}
     <input type="submit" value="确认操作" class="btn btn-primary radius multi">

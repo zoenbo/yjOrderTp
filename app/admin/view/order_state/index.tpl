@@ -4,7 +4,7 @@
 
 {block name="nav"}
 <li class="current"><a href="{:url('/'.parse_name(request()->controller()).'/index')}">列表</a></li>
-{if condition="$Admin['level']==1||in_array($Permission[request()->controller()]['add'],$AdminPermit)"}<li><a href="{:url('/'.parse_name(request()->controller()).'/add')}">添加</a></li>{/if}
+{if condition="session(config('system.session_key').'.level')==1||in_array(config('permit_manage.'.request()->controller().'.add'),session(config('system.session_key').'.permit_manage'))"}<li><a href="{:url('/'.parse_name(request()->controller()).'/add')}">添加</a></li>{/if}
 {/block}
 
 {block name="tip"}

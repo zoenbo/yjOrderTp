@@ -4,7 +4,7 @@
 
 {block name="nav"}
 <li class="current"><a href="{:url('/'.parse_name(request()->controller()).'/index')}">列表</a></li>
-{if condition="$Admin['level']==1||in_array($Permission[request()->controller()]['output'],$AdminPermit)"}<li><a href="{:url('/'.parse_name(request()->controller()).'/output')}">导出并清空</a></li>{/if}
+{if condition="session(config('system.session_key').'.level')==1||in_array(config('permit_manage.'.request()->controller().'.output'),session(config('system.session_key').'.permit_manage'))"}<li><a href="{:url('/'.parse_name(request()->controller()).'/output')}">导出并清空</a></li>{/if}
 {/block}
 
 {block name="search"}

@@ -4,9 +4,9 @@
 {block name="head"}<link rel="stylesheet" type="text/css" href="public/base/EasyUI/themes/default/easyui.css">{/block}
 
 {block name="nav"}
-{if condition="$Admin['level']==1||in_array($Permission[request()->controller()]['index'],$AdminPermit)"}<li><a href="{:url('/'.parse_name(request()->controller()).'/index')}">概况</a></li>{/if}
-{if condition="$Admin['level']==1||in_array($Permission[request()->controller()]['day'],$AdminPermit)"}<li><a href="{:url('/'.parse_name(request()->controller()).'/day')}">按天</a></li>{/if}
-{if condition="$Admin['level']==1||in_array($Permission[request()->controller()]['month'],$AdminPermit)"}<li><a href="{:url('/'.parse_name(request()->controller()).'/month')}">按月</a></li>{/if}
+{if condition="session(config('system.session_key').'.level')==1||in_array(config('permit_manage.'.request()->controller().'.index'),session(config('system.session_key').'.permit_manage'))"}<li><a href="{:url('/'.parse_name(request()->controller()).'/index')}">概况</a></li>{/if}
+{if condition="session(config('system.session_key').'.level')==1||in_array(config('permit_manage.'.request()->controller().'.day'),session(config('system.session_key').'.permit_manage'))"}<li><a href="{:url('/'.parse_name(request()->controller()).'/day')}">按天</a></li>{/if}
+{if condition="session(config('system.session_key').'.level')==1||in_array(config('permit_manage.'.request()->controller().'.month'),session(config('system.session_key').'.permit_manage'))"}<li><a href="{:url('/'.parse_name(request()->controller()).'/month')}">按月</a></li>{/if}
 <li class="current"><a href="{:url('/'.parse_name(request()->controller()).'/year')}">按年</a></li>
 {/block}
 
