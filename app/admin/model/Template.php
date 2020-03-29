@@ -8,8 +8,6 @@ use think\facade\Config;
 use app\admin\validate\Template as valid;
 
 class Template extends Model{
-	private $tableName = 'Template';
-
 	//查询总记录
 	public function total(){
 		return $this->where($this->map()['field'],$this->map()['condition'],$this->map()['value'])->count();
@@ -130,7 +128,7 @@ class Template extends Model{
 	public function remove(){
 		try {
 			$affected_rows = $this->where(['id'=>Request::get('id')])->delete();
-			if ($affected_rows) $this->execute('OPTIMIZE TABLE `'.Config::get('database.connections.mysql.prefix').strtolower($this->tableName).'`');
+			if ($affected_rows) $this->execute('OPTIMIZE TABLE `'.$this->getTable().'`');
 			return $affected_rows;
 		} catch (Exception $e){
 			echo $e->getMessage();

@@ -9,8 +9,6 @@ use think\facade\Session;
 use app\admin\validate\Order as valid;
 
 class Order extends Model{
-	private $tableName = 'Order';
-
 	//查询总记录
 	public function total(){
 		return $this->where($this->map()['where'],$this->map()['value'])->count();
@@ -75,7 +73,7 @@ class Order extends Model{
 			$map['where'] .= ' AND `date`>=:date3 AND `date`<=:date4';
 			$map['value']['date3'] = strtotime($time1.' 00:00:00');
 			$map['value']['date4'] = strtotime($time2.' 23:59:59');
-			return $this->field('COUNT(CASE WHEN order_state_id=1 THEN id END) count1,SUM(CASE WHEN order_state_id=1 THEN price*count ELSE 0 END) sum1,COUNT(CASE WHEN order_state_id=2 THEN id END) count2,SUM(CASE WHEN order_state_id=2 THEN price*count ELSE 0 END) sum2,COUNT(CASE WHEN order_state_id=3 THEN id END) count3,SUM(CASE WHEN order_state_id=3 THEN price*count ELSE 0 END) sum3,COUNT(CASE WHEN order_state_id=4 THEN id END) count4,SUM(CASE WHEN order_state_id=4 THEN price*count ELSE 0 END) sum4')
+			return $this->field('COUNT(CASE WHEN `order_state_id`=1 THEN `id` END) `count1`,SUM(CASE WHEN `order_state_id`=1 THEN `price`*`count` ELSE 0 END) `sum1`,COUNT(CASE WHEN `order_state_id`=2 THEN `id` END) `count2`,SUM(CASE WHEN `order_state_id`=2 THEN `price`*`count` ELSE 0 END) `sum2`,COUNT(CASE WHEN `order_state_id`=3 THEN `id` END) `count3`,SUM(CASE WHEN `order_state_id`=3 THEN `price`*`count` ELSE 0 END) `sum3`,COUNT(CASE WHEN `order_state_id`=4 THEN `id` END) `count4`,SUM(CASE WHEN `order_state_id`=4 THEN `price`*`count` ELSE 0 END) `sum4`')
 						->where($map['where'],$map['value'])
 						->select()
 						->toArray();
@@ -84,7 +82,7 @@ class Order extends Model{
 			return [];
 		}
 	}
-
+	
 	//按天、月、年统计
 	public function dayMonthYear($time,$firstRow=-1){
 		try {
@@ -107,7 +105,7 @@ class Order extends Model{
 					break;
 				default: $order = 'time';
 			}
-			$object = $this->field('COUNT(CASE WHEN order_state_id=1 THEN id END) count1,SUM(CASE WHEN order_state_id=1 THEN price*count ELSE 0 END) sum1,COUNT(CASE WHEN order_state_id=2 THEN id END) count2,SUM(CASE WHEN order_state_id=2 THEN price*count ELSE 0 END) sum2,COUNT(CASE WHEN order_state_id=3 THEN id END) count3,SUM(CASE WHEN order_state_id=3 THEN price*count ELSE 0 END) sum3,COUNT(CASE WHEN order_state_id=4 THEN id END) count4,SUM(CASE WHEN order_state_id=4 THEN price*count ELSE 0 END) sum4,FROM_UNIXTIME(date,"'.$time.'") time')
+			$object = $this->field('COUNT(CASE WHEN `order_state_id`=1 THEN `id` END) `count1`,SUM(CASE WHEN `order_state_id`=1 THEN `price`*`count` ELSE 0 END) `sum1`,COUNT(CASE WHEN `order_state_id`=2 THEN `id` END) `count2`,SUM(CASE WHEN `order_state_id`=2 THEN `price`*`count` ELSE 0 END) `sum2`,COUNT(CASE WHEN `order_state_id`=3 THEN `id` END) `count3`,SUM(CASE WHEN `order_state_id`=3 THEN `price`*`count` ELSE 0 END) `sum3`,COUNT(CASE WHEN `order_state_id`=4 THEN `id` END) `count4`,SUM(CASE WHEN `order_state_id`=4 THEN `price`*`count` ELSE 0 END) `sum4`,FROM_UNIXTIME(`date`,\''.$time.'\') `time`')
 						->group('time')
 						->where($this->map()['where'],$this->map()['value'])
 						->order([$order=>'DESC']);
@@ -332,7 +330,7 @@ class Order extends Model{
 	public function remove(){
 		try {
 			$affected_rows = Request::get('id') ? $this->where(['id'=>Request::get('id')])->where($this->managerId())->delete() : $this->where('id','IN',Request::post('ids'))->where($this->managerId())->delete();
-			if ($affected_rows) $this->execute('OPTIMIZE TABLE `'.Config::get('database.connections.mysql.prefix').strtolower($this->tableName).'`');
+			if ($affected_rows) $this->execute('OPTIMIZE TABLE `'.$this->getTable().'`');
 			return $affected_rows;
 		} catch (Exception $e){
 			echo $e->getMessage();

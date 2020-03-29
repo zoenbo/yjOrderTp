@@ -220,7 +220,7 @@ class Manager extends Model{
 	public function remove(){
 		try {
 			$affected_rows = $this->where(['id'=>Request::get('id')])->delete();
-			if ($affected_rows) $this->execute('OPTIMIZE TABLE `'.Config::get('database.connections.mysql.prefix').strtolower($this->tableName).'`');
+			if ($affected_rows) $this->execute('OPTIMIZE TABLE `'.$this->getTable().'`');
 			return $affected_rows;
 		} catch (Exception $e){
 			echo $e->getMessage();
@@ -256,9 +256,9 @@ class Manager extends Model{
 			$map['value']['order_permit'] = Request::get('order_permit');
 		}
 		if (Request::get('qq', -1) == 0) {
-			$map['where'] .= " AND `qqau`=''";
+			$map['where'] .= ' AND `qqau`=\'\'';
 		} elseif (Request::get('qq') == 1) {
-			$map['where'] .= " AND `qqau`<>''";
+			$map['where'] .= ' AND `qqau`<>\'\'';
 		}
 		if (Request::get('date1')){
 			$map['where'] .= ' AND `date`>=:date1';

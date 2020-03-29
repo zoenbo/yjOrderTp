@@ -7,8 +7,6 @@ use think\facade\Request;
 use think\facade\Config;
 
 class Visit extends Model{
-	private $tableName = 'Visit';
-
 	//查询所有（不分页）
 	public function all(){
 		try {
@@ -69,7 +67,7 @@ class Visit extends Model{
 	//清空表
 	public function truncate(){
 		try {
-			return $this->execute('TRUNCATE `'.Config::get('database.connections.mysql.prefix').strtolower($this->tableName).'`');
+			return $this->execute('TRUNCATE `'.$this->getTable().'`');
 		} catch (Exception $e){
 			echo $e->getMessage();
 			return [];

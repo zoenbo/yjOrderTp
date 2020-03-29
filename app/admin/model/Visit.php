@@ -8,8 +8,6 @@ use think\facade\Config;
 use think\facade\Session;
 
 class Visit extends Model{
-	private $tableName = 'Visit';
-
 	//查询总记录
 	public function total(){
 		return $this->where($this->map()['where'],$this->map()['value'])->count();
@@ -43,7 +41,7 @@ class Visit extends Model{
 	//清空表
 	public function truncate(){
 		try {
-			return $this->execute('TRUNCATE `'.Config::get('database.connections.mysql.prefix').strtolower($this->tableName).'`');
+			return $this->execute('TRUNCATE `'.$this->getTable().'`');
 		} catch (Exception $e){
 			echo $e->getMessage();
 			return [];

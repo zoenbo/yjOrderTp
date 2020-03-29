@@ -9,7 +9,7 @@ class Common extends Model{
 	//数据表信息
 	public function info(){
 		try {
-			return $this->query('SHOW TABLE STATUS FROM `'.Config::get('database.connections.mysql.database')."` LIKE '".Config::get('database.connections.mysql.prefix')."%'");
+			return $this->query('SHOW TABLE STATUS FROM `'.Config::get('database.connections.mysql.database').'` LIKE \''.Config::get('database.connections.mysql.prefix').'%\'');
 		} catch (Exception $e){
 			echo $e->getMessage();
 			return [];
