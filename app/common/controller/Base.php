@@ -1,6 +1,7 @@
 <?php
 namespace app\common\controller;
 
+use function think\_runtime;
 use Page;
 use think\facade\Config;
 use think\facade\View;
