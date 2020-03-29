@@ -51,7 +51,6 @@ class Permit extends Base{
 		$object = $Permit->all2();
 		$output = '<?php return [';
 		if ($object){
-			$output .= "'permit'=>[";
 			foreach ($object as $value){
 				$output .= "'".$value['controller']."'=>['".strtolower($value['action'])."'=>".$value['id'];
 				$object2 = $Permit->all3($value['id']);
@@ -62,9 +61,9 @@ class Permit extends Base{
 				}
 				$output .= '],';
 			}
-			$output = substr($output,0,-1).']';
+			$output = substr($output,0,-1);
 		}
 		$output .= '];';
-		return file_put_contents(ROOT_PATH.'/'.Config::get('app.config_path_admin').'/permit.php',$output) ? $this->success(Route::buildUrl('/'.parse_name(Request::controller()).'/index'),'配置文件更新成功！') : $this->failed('配置文件更新失败！');
+		return file_put_contents(ROOT_PATH.'/'.Config::get('app.config_path_admin').'/permit_manage.php',$output) ? $this->success(Route::buildUrl('/'.parse_name(Request::controller()).'/index'),'配置文件更新成功！') : $this->failed('配置文件更新失败！');
 	}
 }
