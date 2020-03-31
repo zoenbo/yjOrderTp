@@ -3,6 +3,7 @@ return [
 	'version'=>'22.0|2020-03-17',  //版本
 	'page_size'=>50,  //默认每页条数
 	'output_dir'=>'data/output/',  //导出的数据路径
+	'upload_path'=>'uploads/',  //图片上传路径
 	'qqwry'=>ROOT_PATH.'/data/qqwry.dat',  //IP数据库
 
 	'prev_url'=>$_SERVER['HTTP_REFERER'] ?? '',  //上一页地址
