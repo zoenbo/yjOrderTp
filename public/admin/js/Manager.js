@@ -14,7 +14,7 @@
 		}
 	}
 	
-	$('input.date').datebox({
+	if ($('input.date').length) $('input.date').datebox({
 		width : 115,
 		height : 30,
 		editable : false
