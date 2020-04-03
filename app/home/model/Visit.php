@@ -36,7 +36,7 @@ class Visit extends Model{
 	public function one(){
 		try {
 			return $this->field('id')
-						->where(['ip'=>get_userip(),'url'=>Request::post('url',NULL,'stripslashes')])
+						->where(['ip'=>getUserIp(),'url'=>Request::post('url',NULL,'stripslashes')])
 						->where('date1','>=',strtotime(date('Y-m-d').' 00:00:00'))
 						->where('date2','<=',strtotime(date('Y-m-d').' 23:59:59'))
 						->find();
@@ -49,7 +49,7 @@ class Visit extends Model{
 	//添加
 	public function add(){
 		$data = [
-			'ip'=>get_userip(),
+			'ip'=>getUserIp(),
 			'url'=>Request::post('url',NULL,'stripslashes'),
 			'count'=>1,
 			'date1'=>time(),

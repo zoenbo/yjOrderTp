@@ -174,7 +174,7 @@ class Order extends Model{
 			'price' =>Request::post('price'),
 			'count'=>Request::post('count'),
 			'pay'=>Request::post('pay'),
-			'ip'=>get_userip(),
+			'ip'=>getUserIp(),
 			'date'=>time()
 		];
 		$fieldTemp = explode(',',$object['field']);

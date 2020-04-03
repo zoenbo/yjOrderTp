@@ -183,14 +183,18 @@ function getKey($length){
 }
 
 //透过代理获取用户真实IP
-function get_userip(){
+function getUserIp(){
 	$ip = '';
 	if (isset($_SERVER['HTTP_X_FORWARDED_FOR']) && $_SERVER['HTTP_X_FORWARDED_FOR'] && strcasecmp($_SERVER['HTTP_X_FORWARDED_FOR'],'unknown')){
 		$ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
 	}elseif (isset($_SERVER['REMOTE_ADDR']) && $_SERVER['REMOTE_ADDR'] && strcasecmp($_SERVER['REMOTE_ADDR'],'unknown')){
 		$ip = $_SERVER['REMOTE_ADDR'];
 	}
-	if (false !== strpos($ip,',')) $ip = reset(explode(',',$ip));
+	if (false !== strpos($ip,',')){
+		$array = explode(',',$ip);
+		$ip = reset($array);
+	}
+	if ($ip == '::1') $ip = '127.0.0.1';
 	return $ip;
 }
 

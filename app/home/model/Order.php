@@ -60,7 +60,7 @@ class Order extends Model{
 			'referrer'=>Request::post('referrer'),
 			'pay'=>Request::post('pay'),
 			'order_state_id'=>$object['order_state_id'],
-			'ip'=>get_userip(),
+			'ip'=>getUserIp(),
 			'date'=>time()
 		];
 		$data['success'] = str_replace('{oid}',$data['order_id'],$object['success']);
@@ -183,7 +183,7 @@ class Order extends Model{
 	private function repeat($qq){
 		try {
 			$map['where'] = '`recycle`=:recycle AND `date`>=:date AND (`ip`=:ip';
-			$map['value'] = ['ip'=>get_userip(),'recycle'=>0,'date'=>time()-Config::get('system.order_time')*60];
+			$map['value'] = ['ip'=>getUserIp(),'recycle'=>0,'date'=>time()-Config::get('system.order_time')*60];
 			if ($qq){
 				$session = Session::get('QC_userData');
 				$map['where'] .= ' OR `qqau`=:qqau';

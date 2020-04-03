@@ -42,7 +42,7 @@ class LoginRecord extends Model{
 	public function add($manager_id){
 		$data = [
 			'manager_id'=>$manager_id,
-			'ip'=>get_userip(),
+			'ip'=>getUserIp(),
 			'date'=>time()
 		];
 		return $this->insertGetId($data);
