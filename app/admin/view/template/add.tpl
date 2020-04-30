@@ -1,8 +1,8 @@
 {extend name="../../common/view/base/form" /}
 
 {block name="title"}模板管理{/block}
-{block name="head"}<script type="text/javascript" src="public/admin/js/{:request()->controller()}.js"></script>
-<link rel="stylesheet" type="text/css" href="public/admin/styles/{:request()->controller()}.css">
+{block name="head"}<script type="text/javascript" src="public/admin/js/{:request()->controller()}.js?{:staticCache()}"></script>
+<link rel="stylesheet" type="text/css" href="public/admin/styles/{:request()->controller()}.css?{:staticCache()}">
 <script type="text/javascript">
 var ThinkPHP = {
 	AJAX : '{:url("/".parse_name(request()->controller())."/ajaxProduct")}'

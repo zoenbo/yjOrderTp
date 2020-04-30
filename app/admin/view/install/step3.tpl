@@ -4,11 +4,11 @@
 <meta charset="utf-8">
 <title>昱杰订单管理系统（ThinkPHP版）-系统安装-第3步</title>
 <base href="{:config('app.web_url')}">
-<script type="text/javascript" src="public/base/jquery.js"></script>
-<script type="text/javascript" src="public/base/H-ui.admin/h-ui/js/H-ui.min.js"></script>
-<link rel="stylesheet" type="text/css" href="public/base/H-ui.admin/h-ui/css/H-ui.min.css">
-<link rel="stylesheet" type="text/css" href="public/base/styles/Basic.css">
-<link rel="stylesheet" type="text/css" href="public/admin/styles/{:request()->controller()}.css">
+<script type="text/javascript" src="public/base/jquery.js?{:staticCache()}"></script>
+<script type="text/javascript" src="public/base/H-ui.admin/h-ui/js/H-ui.min.js?{:staticCache()}"></script>
+<link rel="stylesheet" type="text/css" href="public/base/H-ui.admin/h-ui/css/H-ui.min.css?{:staticCache()}">
+<link rel="stylesheet" type="text/css" href="public/base/styles/Basic.css?{:staticCache()}">
+<link rel="stylesheet" type="text/css" href="public/admin/styles/{:request()->controller()}.css?{:staticCache()}">
 </head>
 
 <body>
@@ -18,7 +18,7 @@
     <tr><td colspan="2" style="text-align:center;">系统信息</td></tr>
     <tr><td>OpenID：</td><td><input type="text" name="openid" class="input-text"></td></tr>
     <tr><td></td><td class="tip">请使用微信扫一扫如下二维码或直接搜索“yvjie_cn”关注我们的公众号，回复“bind:{$Code}”获取您的OpenID，此操作完全免费，仅仅是为了统计使用量情况，感谢您的配合（请不要取消关注，否则将无法登录系统后台）</td></tr>
-    <tr><td colspan="2" style="text-align:center;"><img src="public/admin/images/wx.jpg" alt="昱杰软件" style="width:200px;"></td></tr>
+    <tr><td colspan="2" style="text-align:center;"><img src="public/admin/images/wx.jpg?{:staticCache()}" alt="昱杰软件" style="width:200px;"></td></tr>
     <tr><td>网站名称：</td><td><input type="text" name="web_name" class="input-text" placeholder="显示在后台起始页和后台所有网页的标题中，中英文均可"></td></tr>
     <tr><td>后台入口：</td><td><input type="text" name="manage_enter" class="input-text" placeholder="英文、数字、英文+数字.php，如abc.php、abc123.php"></td></tr>
     <tr><td></td><td class="tip">说明：默认为admin.php，但为了不让其他人猜解到后台入口，请设置一个不太为人知的入口（.php不能省略）。</td></tr>

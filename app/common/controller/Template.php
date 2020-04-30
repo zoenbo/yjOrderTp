@@ -14,16 +14,16 @@ class Template{
 <meta charset="utf-8">
 <title>填写订单</title>
 <base href="'.Config::get('app.web_url').'">
-<script type="text/javascript" src="public/base/jquery.js"></script>
+<script type="text/javascript" src="public/base/jquery.js?'.staticCache().'"></script>
 </head>
 
 <body>
-<script type="text/javascript" src="public/base/jquery.cookie.js"></script>
-<script type="text/javascript" src="public/base/Validform.js"></script>
-<script type="text/javascript" src="public/base/Address.js"></script>
-<script type="text/javascript" src="public/base/sha1.js"></script>
-<script type="text/javascript" src="public/home/js/Order.js"></script>
-<link rel="stylesheet" type="text/css" href="public/home/styles/Order1.css">
+<script type="text/javascript" src="public/base/jquery.cookie.js?'.staticCache().'"></script>
+<script type="text/javascript" src="public/base/Validform.js?'.staticCache().'"></script>
+<script type="text/javascript" src="public/base/Address.js?'.staticCache().'"></script>
+<script type="text/javascript" src="public/base/sha1.js?'.staticCache().'"></script>
+<script type="text/javascript" src="public/home/js/Order.js?'.staticCache().'"></script>
+<link rel="stylesheet" type="text/css" href="public/home/styles/Order1.css?'.staticCache().'">
 <script type="text/javascript">var DISTRICT="'.Config::get('app.web_url').Config::get('system.index_php').'common/district";</script>
 <style type="text/css">
 .order{
@@ -78,7 +78,7 @@ class Template{
         <dd class="captcha"><span>验 证 码：<input type="text" name="captcha" class="text2"></span> <img src="'.Config::get('system.index_php').'common/captcha2" onClick="this.src=\''.Config::get('system.index_php').'common/captcha2?tm=\'+Math.random();" alt="验证码" title="看不清？换一张"></dd>
         <dd class="info info1">请认真填写以上信息，然后点击下面的“立即提交订单”按钮以完成下单</dd>
         <dd class="info info2">为防止刷单，本站需登录QQ才能下单，登录后即可看见提交按钮</dd>
-        <dd class="submit"><input type="submit" value="立即提交订单"> <img src="public/home/images/qq_login.png" alt="QQ登录" onClick="window.open(\''.Config::get('system.index_php').'common/qq\',\'qq\')"></dd>
+        <dd class="submit"><input type="submit" value="立即提交订单"> <img src="public/home/images/qq_login.png?'.staticCache().'" alt="QQ登录" onClick="window.open(\''.Config::get('system.index_php').'common/qq\',\'qq\')"></dd>
       </dl>
     </form>
     
@@ -98,7 +98,7 @@ class Template{
   <p style="clear:both"></p>
 </div>
 
-<script type="text/javascript" src="public/home/js/Visit.js"></script>
+<script type="text/javascript" src="public/home/js/Visit.js?'.staticCache().'"></script>
 <div class="tip"></div>
 </body>
 </html>',
@@ -108,16 +108,16 @@ class Template{
 <meta charset="utf-8">
 <title>填写订单</title>
 <base href="'.Config::get('app.web_url').'">
-<script type="text/javascript" src="public/base/jquery.js"></script>
+<script type="text/javascript" src="public/base/jquery.js?'.staticCache().'"></script>
 </head>
 
 <body>
-<script type="text/javascript" src="public/base/jquery.cookie.js"></script>
-<script type="text/javascript" src="public/base/Validform.js"></script>
-<script type="text/javascript" src="public/base/Address.js"></script>
-<script type="text/javascript" src="public/base/sha1.js"></script>
-<script type="text/javascript" src="public/home/js/Order.js"></script>
-<link rel="stylesheet" type="text/css" href="public/home/styles/Order2.css">
+<script type="text/javascript" src="public/base/jquery.cookie.js?'.staticCache().'"></script>
+<script type="text/javascript" src="public/base/Validform.js?'.staticCache().'"></script>
+<script type="text/javascript" src="public/base/Address.js?'.staticCache().'"></script>
+<script type="text/javascript" src="public/base/sha1.js?'.staticCache().'"></script>
+<script type="text/javascript" src="public/home/js/Order.js?'.staticCache().'"></script>
+<link rel="stylesheet" type="text/css" href="public/home/styles/Order2.css?'.staticCache().'">
 <script type="text/javascript">var DISTRICT="'.Config::get('app.web_url').Config::get('system.index_php').'common/district";</script>
 <style type="text/css">
 .order{
@@ -159,7 +159,7 @@ class Template{
       <dd class="captcha"><span>验 证 码：<input type="text" name="captcha" class="text2"></span> <img src="'.Config::get('system.index_php').'common/captcha2" onClick="this.src=\''.Config::get('system.index_php').'common/captcha2?tm=\'+Math.random();" alt="验证码" title="看不清？换一张"></dd>
       <dd class="info info1">请认真填写以上信息，然后点击下面的“立即提交订单”按钮以完成下单</dd>
       <dd class="info info2">为防止刷单，本站需登录QQ才能下单，登录后即可看见提交按钮</dd>
-      <dd class="submit"><input type="submit" value="立即提交订单"> <img src="public/home/images/qq_login.png" alt="QQ登录" onClick="window.open(\''.Config::get('system.index_php').'common/qq\',\'qq\')"></dd>
+      <dd class="submit"><input type="submit" value="立即提交订单"> <img src="public/home/images/qq_login.png?'.staticCache().'" alt="QQ登录" onClick="window.open(\''.Config::get('system.index_php').'common/qq\',\'qq\')"></dd>
     </dl>
   </form>
   
@@ -176,7 +176,7 @@ class Template{
   <p>&nbsp;</p>
 </div>
 
-<script type="text/javascript" src="public/home/js/Visit.js"></script>
+<script type="text/javascript" src="public/home/js/Visit.js?'.staticCache().'"></script>
 <div class="tip"></div>
 </body>
 </html>',
@@ -187,16 +187,16 @@ class Template{
 <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0">
 <title>填写订单</title>
 <base href="'.Config::get('app.web_url').'">
-<script type="text/javascript" src="public/base/jquery.js"></script>
+<script type="text/javascript" src="public/base/jquery.js?'.staticCache().'"></script>
 </head>
 
 <body>
-<script type="text/javascript" src="public/base/jquery.cookie.js"></script>
-<script type="text/javascript" src="public/base/Validform.js"></script>
-<script type="text/javascript" src="public/base/Address.js"></script>
-<script type="text/javascript" src="public/base/sha1.js"></script>
-<script type="text/javascript" src="public/home/js/Order.js"></script>
-<link rel="stylesheet" type="text/css" href="public/home/styles/Order3.css">
+<script type="text/javascript" src="public/base/jquery.cookie.js?'.staticCache().'"></script>
+<script type="text/javascript" src="public/base/Validform.js?'.staticCache().'"></script>
+<script type="text/javascript" src="public/base/Address.js?'.staticCache().'"></script>
+<script type="text/javascript" src="public/base/sha1.js?'.staticCache().'"></script>
+<script type="text/javascript" src="public/home/js/Order.js?'.staticCache().'"></script>
+<link rel="stylesheet" type="text/css" href="public/home/styles/Order3.css?'.staticCache().'">
 <script type="text/javascript">var DISTRICT="'.Config::get('app.web_url').Config::get('system.index_php').'common/district";</script>
 <style type="text/css">
 .order{
@@ -247,7 +247,7 @@ class Template{
       <dd class="captcha"><span class="left"></span><span class="right"><img src="'.Config::get('system.index_php').'common/captcha2" onClick="this.src=\''.Config::get('system.index_php').'common/captcha2?tm=\'+Math.random();" alt="验证码" title="看不清？换一张"></span></dd>
       <dd class="info info1">请认真填写以上信息，然后点击下面的“立即提交订单”按钮以完成下单</dd>
       <dd class="info info2">为防止刷单，本站需登录QQ才能下单，登录后即可看见提交按钮</dd>
-      <dd class="submit"><input type="submit" value="立即提交订单"> <img src="public/home/images/qq_login.png" alt="QQ登录" onClick="window.open(\''.Config::get('system.index_php').'common/qq\',\'qq\')"></dd>
+      <dd class="submit"><input type="submit" value="立即提交订单"> <img src="public/home/images/qq_login.png?'.staticCache().'" alt="QQ登录" onClick="window.open(\''.Config::get('system.index_php').'common/qq\',\'qq\')"></dd>
     </dl>
   </form>
   
@@ -264,7 +264,7 @@ class Template{
   <div class="new"></div>
 </div>
 
-<script type="text/javascript" src="public/home/js/Visit.js"></script>
+<script type="text/javascript" src="public/home/js/Visit.js?'.staticCache().'"></script>
 <div class="tip"></div>
 </body>
 </html>',
@@ -275,16 +275,16 @@ class Template{
 <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0">
 <title>填写订单</title>
 <base href="'.Config::get('app.web_url').'">
-<script type="text/javascript" src="public/base/jquery.js"></script>
+<script type="text/javascript" src="public/base/jquery.js?'.staticCache().'"></script>
 </head>
 
 <body>
-<script type="text/javascript" src="public/base/jquery.cookie.js"></script>
-<script type="text/javascript" src="public/base/Validform.js"></script>
-<script type="text/javascript" src="public/base/Address.js"></script>
-<script type="text/javascript" src="public/base/sha1.js"></script>
-<script type="text/javascript" src="public/home/js/Order.js"></script>
-<link rel="stylesheet" type="text/css" href="public/home/styles/Order3.css">
+<script type="text/javascript" src="public/base/jquery.cookie.js?'.staticCache().'"></script>
+<script type="text/javascript" src="public/base/Validform.js?'.staticCache().'"></script>
+<script type="text/javascript" src="public/base/Address.js?'.staticCache().'"></script>
+<script type="text/javascript" src="public/base/sha1.js?'.staticCache().'"></script>
+<script type="text/javascript" src="public/home/js/Order.js?'.staticCache().'"></script>
+<link rel="stylesheet" type="text/css" href="public/home/styles/Order3.css?'.staticCache().'">
 <script type="text/javascript">var DISTRICT="'.Config::get('app.web_url').Config::get('system.index_php').'common/district";</script>
 <style type="text/css">.order{background:#FFFFFF;border:3px solid #FC4400;}.order .buy{border-bottom:1px solid #FC4400;}.order dl dd.submit input{background:#FF6633;}</style>
 
@@ -323,7 +323,7 @@ class Template{
       <dd class="captcha"><span class="left"></span><span class="right"><img src="'.Config::get('system.index_php').'common/captcha2" onClick="this.src=\''.Config::get('system.index_php').'common/captcha2?tm=\'+Math.random();" alt="验证码" title="看不清？换一张"></span></dd>
       <dd class="info info1">请认真填写以上信息，然后点击下面的“立即提交订单”按钮以完成下单</dd>
       <dd class="info info2">为防止刷单，本站需登录QQ才能下单，登录后即可看见提交按钮</dd>
-      <dd class="submit"><input type="submit" value="立即提交订单"> <img src="public/home/images/qq_login.png" alt="QQ登录" onClick="window.open(\''.Config::get('system.index_php').'common/qq\',\'qq\')"></dd>
+      <dd class="submit"><input type="submit" value="立即提交订单"> <img src="public/home/images/qq_login.png?'.staticCache().'" alt="QQ登录" onClick="window.open(\''.Config::get('system.index_php').'common/qq\',\'qq\')"></dd>
     </dl>
   </form>
   
@@ -340,7 +340,7 @@ class Template{
   <div class="new"></div>
 </div>
 
-<script type="text/javascript" src="public/home/js/Visit.js"></script>
+<script type="text/javascript" src="public/home/js/Visit.js?'.staticCache().'"></script>
 <div class="tip"></div>
 </body>
 </html>',
@@ -351,16 +351,16 @@ class Template{
 <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0">
 <title>填写订单</title>
 <base href="'.Config::get('app.web_url').'">
-<script type="text/javascript" src="public/base/jquery.js"></script>
+<script type="text/javascript" src="public/base/jquery.js?'.staticCache().'"></script>
 </head>
 
 <body>
-<script type="text/javascript" src="public/base/jquery.cookie.js"></script>
-<script type="text/javascript" src="public/base/Validform.js"></script>
-<script type="text/javascript" src="public/base/Address.js"></script>
-<script type="text/javascript" src="public/base/sha1.js"></script>
-<script type="text/javascript" src="public/home/js/Order.js"></script>
-<link rel="stylesheet" type="text/css" href="public/home/styles/Order4.css">
+<script type="text/javascript" src="public/base/jquery.cookie.js?'.staticCache().'"></script>
+<script type="text/javascript" src="public/base/Validform.js?'.staticCache().'"></script>
+<script type="text/javascript" src="public/base/Address.js?'.staticCache().'"></script>
+<script type="text/javascript" src="public/base/sha1.js?'.staticCache().'"></script>
+<script type="text/javascript" src="public/home/js/Order.js?'.staticCache().'"></script>
+<link rel="stylesheet" type="text/css" href="public/home/styles/Order4.css?'.staticCache().'">
 <script type="text/javascript">var DISTRICT="'.Config::get('app.web_url').Config::get('system.index_php').'common/district";</script>
 <style type="text/css">.order{background:#FFF;border:1px solid #FC4400;}.order .buy{border-bottom:1px solid #FC4400;}.order dl dd.submit input{background:#F63;}</style>
 
@@ -399,7 +399,7 @@ class Template{
       <dd class="captcha"><span class="left"></span><span class="right"><img src="'.Config::get('system.index_php').'common/captcha2" onClick="this.src=\''.Config::get('system.index_php').'common/captcha2?tm=\'+Math.random();" alt="验证码" title="看不清？换一张"></span></dd>
       <dd class="info info1">请认真填写以上信息，然后点击下面的“立即提交订单”按钮以完成下单</dd>
       <dd class="info info2">为防止刷单，本站需登录QQ才能下单，登录后即可看见提交按钮</dd>
-      <dd class="submit"><input type="submit" value="立即提交订单"> <img src="public/home/images/qq_login.png" alt="QQ登录" onClick="window.open(\''.Config::get('system.index_php').'common/qq\',\'qq\')"></dd>
+      <dd class="submit"><input type="submit" value="立即提交订单"> <img src="public/home/images/qq_login.png?'.staticCache().'" alt="QQ登录" onClick="window.open(\''.Config::get('system.index_php').'common/qq\',\'qq\')"></dd>
     </dl>
   </form>
   
@@ -416,7 +416,7 @@ class Template{
   <div class="new"></div>
 </div>
 
-<script type="text/javascript" src="public/home/js/Visit.js"></script>
+<script type="text/javascript" src="public/home/js/Visit.js?'.staticCache().'"></script>
 <div class="tip"></div>
 </body>
 </html>',
@@ -427,16 +427,16 @@ class Template{
 <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0">
 <title>填写订单</title>
 <base href="'.Config::get('app.web_url').'">
-<script type="text/javascript" src="public/base/jquery.js"></script>
+<script type="text/javascript" src="public/base/jquery.js?'.staticCache().'"></script>
 </head>
 
 <body>
-<script type="text/javascript" src="public/base/jquery.cookie.js"></script>
-<script type="text/javascript" src="public/base/Validform.js"></script>
-<script type="text/javascript" src="public/base/Address.js"></script>
-<script type="text/javascript" src="public/base/sha1.js"></script>
-<script type="text/javascript" src="public/home/js/Order.js"></script>
-<link rel="stylesheet" type="text/css" href="public/home/styles/Order5.css">
+<script type="text/javascript" src="public/base/jquery.cookie.js?'.staticCache().'"></script>
+<script type="text/javascript" src="public/base/Validform.js?'.staticCache().'"></script>
+<script type="text/javascript" src="public/base/Address.js?'.staticCache().'"></script>
+<script type="text/javascript" src="public/base/sha1.js?'.staticCache().'"></script>
+<script type="text/javascript" src="public/home/js/Order.js?'.staticCache().'"></script>
+<link rel="stylesheet" type="text/css" href="public/home/styles/Order5.css?'.staticCache().'">
 <script type="text/javascript">var DISTRICT="'.Config::get('app.web_url').Config::get('system.index_php').'common/district";</script>
 <style type="text/css">.order{background:#FFF;border:1px solid #FFF;}.order .buy{border-bottom:1px solid #FFF;}.order dl dd.submit input{background:#BE0F22;}</style>
 
@@ -475,7 +475,7 @@ class Template{
       <dd class="captcha"><span class="left"></span><span class="right"><img src="'.Config::get('system.index_php').'common/captcha2" onClick="this.src=\''.Config::get('system.index_php').'common/captcha2?tm=\'+Math.random();" alt="验证码" title="看不清？换一张"></span></dd>
       <dd class="info info1">请认真填写以上信息，然后点击下面的“立即提交订单”按钮以完成下单</dd>
       <dd class="info info2">为防止刷单，本站需登录QQ才能下单，登录后即可看见提交按钮</dd>
-      <dd class="submit"><input type="submit" value="立即提交订单"> <img src="public/home/images/qq_login.png" alt="QQ登录" onClick="window.open(\''.Config::get('system.index_php').'common/qq\',\'qq\')"></dd>
+      <dd class="submit"><input type="submit" value="立即提交订单"> <img src="public/home/images/qq_login.png?'.staticCache().'" alt="QQ登录" onClick="window.open(\''.Config::get('system.index_php').'common/qq\',\'qq\')"></dd>
     </dl>
   </form>
   
@@ -492,7 +492,7 @@ class Template{
   <div class="new"></div>
 </div>
 
-<script type="text/javascript" src="public/home/js/Visit.js"></script>
+<script type="text/javascript" src="public/home/js/Visit.js?'.staticCache().'"></script>
 <div class="tip"></div>
 </body>
 </html>'
@@ -703,7 +703,7 @@ class Template{
 			$dd .= "\r\n    ".'<dd class="submit"><input type="submit" value="立即提交订单"></dd>';
 		}else{
 			$dd .= "\r\n    ".'<dd class="info info2">为防止刷单，本站需登录QQ才能下单，登录后即可看见提交按钮</dd>';
-			$dd .= "\r\n    ".'<dd class="submit"><input type="submit" value="立即提交订单" style="display:none;"> <img src="'.Config::get('app.web_url').'public/home/images/qq_login.png" alt="QQ登录" onClick="window.open(\''.Config::get('app.web_url').Config::get('system.index_php').'common/qq\',\'qq\')"></dd>';
+			$dd .= "\r\n    ".'<dd class="submit"><input type="submit" value="立即提交订单" style="display:none;"> <img src="'.Config::get('app.web_url').'public/home/images/qq_login.png?'.staticCache().'" alt="QQ登录" onClick="window.open(\''.Config::get('app.web_url').Config::get('system.index_php').'common/qq\',\'qq\')"></dd>';
 		}
 		$dd .= '</div>';
 		$output = str_replace('<title>填写订单</title>','<title>'.$object['name'].'</title>',$output);

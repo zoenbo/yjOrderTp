@@ -1,7 +1,7 @@
 {extend name="../../common/view/base/list" /}
 
 {block name="title"}管理员{/block}
-{block name="head"}<link rel="stylesheet" type="text/css" href="public/base/EasyUI/themes/default/easyui.css">{/block}
+{block name="head"}<link rel="stylesheet" type="text/css" href="public/base/EasyUI/themes/default/easyui.css?{:staticCache()}">{/block}
 
 {block name="nav"}
 <li class="current"><a href="{:url('/'.parse_name(request()->controller()).'/index')}">列表</a></li>
@@ -42,7 +42,7 @@
 <p class="nothing">没有找到您搜索的管理员</p>
 {/if}
 
-<script type="text/javascript" src="public/base/EasyUI/jquery.easyui.min.js"></script>
-<script type="text/javascript" src="public/base/EasyUI/locale/easyui-lang-zh_CN.js"></script>
-<script type="text/javascript" src="public/admin/js/{:request()->controller()}.js"></script>
+<script type="text/javascript" src="public/base/EasyUI/jquery.easyui.min.js?{:staticCache()}"></script>
+<script type="text/javascript" src="public/base/EasyUI/locale/easyui-lang-zh_CN.js?{:staticCache()}"></script>
+<script type="text/javascript" src="public/admin/js/{:request()->controller()}.js?{:staticCache()}"></script>
 {/block}

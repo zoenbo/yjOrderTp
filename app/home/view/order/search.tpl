@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0">
 <title>{:config('system.web_name')}-订单查询</title>
 <base href="{:config('app.web_url')}">
-<link rel="stylesheet" type="text/css" href="public/home/styles/{:request()->controller()}.css">
+<link rel="stylesheet" type="text/css" href="public/home/styles/{:request()->controller()}.css?{:staticCache()}">
 </head>
 
 <body>
@@ -37,7 +37,7 @@
   {/foreach}
 </div>
 
-<script type="text/javascript" src="public/home/js/Visit.js"></script>
-{if condition="config('app.demo')"}<p style="display:none;"><script language="javascript" type="text/javascript" src="//js.users.51.la/19104960.js"></script><noscript><img alt="&#x6211;&#x8981;&#x5566;&#x514D;&#x8D39;&#x7EDF;&#x8BA1;" src="//img.users.51.la/19104960.asp"></noscript></p>{/if}
+<script type="text/javascript" src="public/home/js/Visit.js?{:staticCache()}"></script>
+{if condition="config('app.demo')"}<p style="display:none;"><script language="javascript" type="text/javascript" src="//js.users.51.la/19104960.js?{:staticCache()}"></script><noscript><img alt="&#x6211;&#x8981;&#x5566;&#x514D;&#x8D39;&#x7EDF;&#x8BA1;" src="//img.users.51.la/19104960.asp"></noscript></p>{/if}
 </body>
 </html>

@@ -4,10 +4,10 @@
 <meta charset="utf-8">
 <title>{:config('system.web_name')}</title>
 <base href="{:config('app.web_url')}">
-<link rel="stylesheet" type="text/css" href="public/base/H-ui.admin/h-ui/css/H-ui.min.css">
-<link rel="stylesheet" type="text/css" href="public/base/H-ui.admin/h-ui.admin/css/H-ui.admin.css">
-<link rel="stylesheet" type="text/css" href="public/base/H-ui.admin/lib/Hui-iconfont/1.0.8/iconfont.css">
-<link rel="stylesheet" type="text/css" href="public/base/H-ui.admin/h-ui.admin/skin/{:config('system.manage_skin')}/skin.css" id="skin">
+<link rel="stylesheet" type="text/css" href="public/base/H-ui.admin/h-ui/css/H-ui.min.css?{:staticCache()}">
+<link rel="stylesheet" type="text/css" href="public/base/H-ui.admin/h-ui.admin/css/H-ui.admin.css?{:staticCache()}">
+<link rel="stylesheet" type="text/css" href="public/base/H-ui.admin/lib/Hui-iconfont/1.0.8/iconfont.css?{:staticCache()}">
+<link rel="stylesheet" type="text/css" href="public/base/H-ui.admin/h-ui.admin/skin/{:config('system.manage_skin')}/skin.css?{:staticCache()}" id="skin">
 <script type="text/javascript">
 var ThinkPHP = {
 	'H-ui-skin' : '{:config("system.manage_skin")}'
@@ -172,9 +172,9 @@ var ThinkPHP = {
   </div>
 </section>
 
-<script type="text/javascript" src="public/base/jquery.js"></script>
-<script type="text/javascript" src="public/base/H-ui.admin/lib/layer/2.4/layer.js"></script>
-<script type="text/javascript" src="public/base/H-ui.admin/h-ui/js/H-ui.min.js"></script>
-<script type="text/javascript" src="public/base/H-ui.admin/h-ui.admin/js/H-ui.admin.js"></script>
+<script type="text/javascript" src="public/base/jquery.js?{:staticCache()}"></script>
+<script type="text/javascript" src="public/base/H-ui.admin/lib/layer/2.4/layer.js?{:staticCache()}"></script>
+<script type="text/javascript" src="public/base/H-ui.admin/h-ui/js/H-ui.min.js?{:staticCache()}"></script>
+<script type="text/javascript" src="public/base/H-ui.admin/h-ui.admin/js/H-ui.admin.js?{:staticCache()}"></script>
 </body>
 </html>

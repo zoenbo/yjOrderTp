@@ -1,8 +1,8 @@
 {extend name="../../common/view/base/form" /}
 
 {block name="title"}{if condition="request()->controller()=='Order'"}订单管理{else/}订单回收站{/if}{/block}
-{block name="head"}<script type="text/javascript" src="public/admin/js/Order2.js"></script>
-<link rel="stylesheet" type="text/css" href="public/admin/styles/Order.css">
+{block name="head"}<script type="text/javascript" src="public/admin/js/Order2.js?{:staticCache()}"></script>
+<link rel="stylesheet" type="text/css" href="public/admin/styles/Order.css?{:staticCache()}">
 <style type="text/css">
 .form table tr td:nth-child(1){
 	width:80px;

@@ -210,3 +210,14 @@ function databaseSchema(){
 	closedir($handler);
 	return true;
 }
+
+//静态资源缓存后缀生成
+function staticCache(){
+	if (Config::get('static.cache')){
+		return Config::get('static.cache');
+	}else{
+		$staticCache = time();
+		file_put_contents(ROOT_PATH.'/'.Config::get('app.config_path').'/static.php','<?php return [\'cache\'=>'.$staticCache.'];');
+		return $staticCache;
+	}
+}

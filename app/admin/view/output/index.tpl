@@ -1,7 +1,7 @@
 {extend name="../../common/view/base/list" /}
 
 {block name="title"}导出的数据{/block}
-{block name="head"}<script type="text/javascript" src="public/admin/js/{:request()->controller()}.js"></script>{/block}
+{block name="head"}<script type="text/javascript" src="public/admin/js/{:request()->controller()}.js?{:staticCache()}"></script>{/block}
 
 {block name="nav"}
 <li class="current"><a href="{:url('/'.parse_name(request()->controller()).'/index')}">列表</a></li>

@@ -1,7 +1,7 @@
 {extend name="../../common/view/base/form" /}
 
 {block name="title"}数据库备份{/block}
-{block name="head"}<link rel="stylesheet" type="text/css" href="public/admin/styles/{:request()->controller()}.css">{/block}
+{block name="head"}<link rel="stylesheet" type="text/css" href="public/admin/styles/{:request()->controller()}.css?{:staticCache()}">{/block}
 
 {block name="nav"}
 <li class="current"><a href="{:url('/'.parse_name(request()->controller()).'/index')}">备份</a></li>

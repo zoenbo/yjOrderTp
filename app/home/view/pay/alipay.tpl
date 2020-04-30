@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0">
 <title>{:config('system.web_name')}-支付宝支付</title>
 <base href="{:config('app.web_url')}">
-<link rel="stylesheet" type="text/css" href="public/home/styles/{:request()->controller()}.css">
+<link rel="stylesheet" type="text/css" href="public/home/styles/{:request()->controller()}.css?{:staticCache()}">
 </head>
 
 <body>

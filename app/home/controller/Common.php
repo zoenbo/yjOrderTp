@@ -45,7 +45,7 @@ class Common extends Base{
 		$callback = $qc->qq_callback();
 		$openid = $qc->get_openid();
 		if ($callback && $openid){
-			echo '<script type="text/javascript" src="'.Config::get('app.web_url').'public/base/jquery.js"></script><script type="text/javascript">$(function(){$(".info2",window.opener.document).hide();$(".submit img",window.opener.document).hide();$(".info1",window.opener.document).show();$(".submit input",window.opener.document).show();window.close();});</script>';
+			echo '<script type="text/javascript" src="'.Config::get('app.web_url').'public/base/jquery.js?'.staticCache().'"></script><script type="text/javascript">$(function(){$(".info2",window.opener.document).hide();$(".submit img",window.opener.document).hide();$(".info1",window.opener.document).show();$(".submit input",window.opener.document).show();window.close();});</script>';
 		}
 	}
 	

@@ -4,12 +4,12 @@
 <meta charset="utf-8">
 <title>{:config('system.web_name')}-重置密码</title>
 <base href="{:config('app.web_url')}">
-<script type="text/javascript" src="public/base/jquery.js"></script>
-<script type="text/javascript" src="public/base/H-ui.admin/h-ui/js/H-ui.min.js"></script>
-<script type="text/javascript" src="public/admin/js/{:request()->controller()}.js"></script>
-<link rel="stylesheet" type="text/css" href="public/base/H-ui.admin/h-ui/css/H-ui.min.css">
-<link rel="stylesheet" type="text/css" href="public/base/styles/Basic.css">
-<link rel="stylesheet" type="text/css" href="public/admin/styles/{:request()->controller()}.css">
+<script type="text/javascript" src="public/base/jquery.js?{:staticCache()}"></script>
+<script type="text/javascript" src="public/base/H-ui.admin/h-ui/js/H-ui.min.js?{:staticCache()}"></script>
+<script type="text/javascript" src="public/admin/js/{:request()->controller()}.js?{:staticCache()}"></script>
+<link rel="stylesheet" type="text/css" href="public/base/H-ui.admin/h-ui/css/H-ui.min.css?{:staticCache()}">
+<link rel="stylesheet" type="text/css" href="public/base/styles/Basic.css?{:staticCache()}">
+<link rel="stylesheet" type="text/css" href="public/admin/styles/{:request()->controller()}.css?{:staticCache()}">
 </head>
 
 <body>

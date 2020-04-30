@@ -1,7 +1,7 @@
 {extend name="../../common/view/base/list" /}
 
 {block name="title"}订单统计{/block}
-{block name="head"}<link rel="stylesheet" type="text/css" href="public/base/EasyUI/themes/default/easyui.css">{/block}
+{block name="head"}<link rel="stylesheet" type="text/css" href="public/base/EasyUI/themes/default/easyui.css?{:staticCache()}">{/block}
 
 {block name="nav"}
 {if condition="session(config('system.session_key').'.level')==1||in_array(config('permit_manage.'.request()->controller().'.index'),session(config('system.session_key').'.permit_manage'))"}<li><a href="{:url('/'.parse_name(request()->controller()).'/index')}">概况</a></li>{/if}
@@ -51,8 +51,8 @@
 <p class="nothing">暂无统计数据，订单管理模块中存在订单数据才会显示统计数据</p>
 {/if}
 
-<script type="text/javascript" src="public/base/EasyUI/jquery.easyui.min.js"></script>
-<script type="text/javascript" src="public/base/EasyUI/locale/easyui-lang-zh_CN.js"></script>
-<script type="text/javascript" src="public/base/jquery.freezeheader.js"></script>
-<script type="text/javascript" src="public/admin/js/{:request()->controller()}.js"></script>
+<script type="text/javascript" src="public/base/EasyUI/jquery.easyui.min.js?{:staticCache()}"></script>
+<script type="text/javascript" src="public/base/EasyUI/locale/easyui-lang-zh_CN.js?{:staticCache()}"></script>
+<script type="text/javascript" src="public/base/jquery.freezeheader.js?{:staticCache()}"></script>
+<script type="text/javascript" src="public/admin/js/{:request()->controller()}.js?{:staticCache()}"></script>
 {/block}

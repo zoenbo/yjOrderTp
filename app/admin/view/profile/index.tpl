@@ -1,7 +1,7 @@
 {extend name="../../common/view/base/form" /}
 
 {block name="title"}个人资料{/block}
-{block name="head"}<link rel="stylesheet" type="text/css" href="public/admin/styles/{:request()->controller()}.css">{/block}
+{block name="head"}<link rel="stylesheet" type="text/css" href="public/admin/styles/{:request()->controller()}.css?{:staticCache()}">{/block}
 
 {block name="nav"}
 <li class="current"><a href="{:url('/'.parse_name(request()->controller()).'/index')}">个人资料</a></li>

@@ -1,8 +1,8 @@
 {extend name="../../common/view/base/list" /}
 
 {block name="title"}{if condition="request()->controller()=='Order'"}订单管理{else/}订单回收站{/if}{/block}
-{block name="basecss"}<link rel="stylesheet" type="text/css" href="public/admin/styles/Order.css">{/block}
-{block name="head"}<link rel="stylesheet" type="text/css" href="public/base/EasyUI/themes/default/easyui.css">{/block}
+{block name="basecss"}<link rel="stylesheet" type="text/css" href="public/admin/styles/Order.css?{:staticCache()}">{/block}
+{block name="head"}<link rel="stylesheet" type="text/css" href="public/base/EasyUI/themes/default/easyui.css?{:staticCache()}">{/block}
 
 {block name="nav"}
 <li class="current"><a href="{:url('/'.parse_name(request()->controller()).'/index')}">列表</a></li>
@@ -70,7 +70,7 @@
 <p class="nothing">没有找到您搜索的订单</p>
 {/if}
 
-<script type="text/javascript" src="public/base/EasyUI/jquery.easyui.min.js"></script>
-<script type="text/javascript" src="public/base/EasyUI/locale/easyui-lang-zh_CN.js"></script>
-<script type="text/javascript" src="public/admin/js/Order.js"></script>
+<script type="text/javascript" src="public/base/EasyUI/jquery.easyui.min.js?{:staticCache()}"></script>
+<script type="text/javascript" src="public/base/EasyUI/locale/easyui-lang-zh_CN.js?{:staticCache()}"></script>
+<script type="text/javascript" src="public/admin/js/Order.js?{:staticCache()}"></script>
 {/block}

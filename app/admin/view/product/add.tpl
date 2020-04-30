@@ -1,9 +1,9 @@
 {extend name="../../common/view/base/form" /}
 
 {block name="title"}产品管理{/block}
-{block name="head"}<script type="text/javascript" src="public/base/jquery.colorpicker.js"></script>
-<script type="text/javascript" src="public/admin/js/{:request()->controller()}.js"></script>
-<link rel="stylesheet" type="text/css" href="public/admin/styles/{:request()->controller()}.css">{/block}
+{block name="head"}<script type="text/javascript" src="public/base/jquery.colorpicker.js?{:staticCache()}"></script>
+<script type="text/javascript" src="public/admin/js/{:request()->controller()}.js?{:staticCache()}"></script>
+<link rel="stylesheet" type="text/css" href="public/admin/styles/{:request()->controller()}.css?{:staticCache()}">{/block}
 
 {block name="nav"}
 {if condition="session(config('system.session_key').'.level')==1||in_array(config('permit_manage.'.request()->controller().'.index'),session(config('system.session_key').'.permit_manage'))"}<li><a href="{:url('/'.parse_name(request()->controller()).'/index')}">列表</a></li>{/if}

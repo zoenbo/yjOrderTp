@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0">
 <title>{:config('system.web_name')}-微信支付</title>
 <base href="{:config('app.web_url')}">
-<script type="text/javascript" src="public/base/jquery.js"></script>
-<link rel="stylesheet" type="text/css" href="public/home/styles/{:request()->controller()}.css">
+<script type="text/javascript" src="public/base/jquery.js?{:staticCache()}"></script>
+<link rel="stylesheet" type="text/css" href="public/home/styles/{:request()->controller()}.css?{:staticCache()}">
 <script type="text/javascript">
 $(function(){
 	var TIP = '{:url("/".parse_name(request()->controller())."/wxpayTip",["order_id"=>input("oid")])}';
