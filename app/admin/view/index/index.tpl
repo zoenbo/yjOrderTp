@@ -8,7 +8,7 @@
 <link rel="stylesheet" type="text/css" href="public/base/H-ui/iconfont/iconfont.min.css?{:staticCache()}">
 <link rel="stylesheet" type="text/css" href="public/base/H-ui.admin/H-ui.admin.css?{:staticCache()}">
 <script type="text/javascript">
-var ThinkPHP = {
+let ThinkPHP = {
 	'H-ui-skin' : '{:config("system.manage_skin")}'
 };
 </script>

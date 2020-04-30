@@ -69,11 +69,11 @@ class Template extends Model{
 			'date'=>time()
 		];
 		if (Request::post('protype') == 0){
-			if (!is_array(Request::post('pid1'))) return '请至少选择一个产品！';
-			$data['product'] = '0|'.Request::post('sort1').'|'.implode(',',Request::post('pid1')).'|'.Request::post('selected1').'|'.Request::post('viewtype');
+			if (!is_array(Request::post('product_ids1'))) return '请至少选择一个产品！';
+			$data['product'] = '0|'.Request::post('sort1').'|'.implode(',',Request::post('product_ids1')).'|'.Request::post('selected1').'|'.Request::post('viewtype');
 		}elseif (Request::post('protype') == 1){
-			if (!is_array(Request::post('pid2'))) return '请至少选择一个产品！';
-			$data['product'] = '1|'.Request::post('sort2').'|'.implode(',',Request::post('pid2')).'|'.Request::post('selected2').'|'.Request::post('viewtype');
+			if (!is_array(Request::post('product_ids2'))) return '请至少选择一个产品！';
+			$data['product'] = '1|'.Request::post('sort2').'|'.implode(',',Request::post('product_ids2')).'|'.Request::post('selected2').'|'.Request::post('viewtype');
 		}
 		$validate = new valid();
 		if ($validate->check($data)){
@@ -103,11 +103,11 @@ class Template extends Model{
 			'often'=>Request::post('often',NULL,'stripslashes')
 		];
 		if (Request::post('protype') == 0){
-			if (!is_array(Request::post('pid1'))) return '请至少选择一个产品！';
-			$data['product'] = '0|'.Request::post('sort1').'|'.implode(',',Request::post('pid1')).'|'.Request::post('selected1').'|'.Request::post('viewtype');
+			if (!is_array(Request::post('product_ids1'))) return '请至少选择一个产品！';
+			$data['product'] = '0|'.Request::post('sort1').'|'.implode(',',Request::post('product_ids1')).'|'.Request::post('selected1').'|'.Request::post('viewtype');
 		}elseif (Request::post('protype') == 1){
-			if (!is_array(Request::post('pid2'))) return '请至少选择一个产品！';
-			$data['product'] = '1|'.Request::post('sort2').'|'.implode(',',Request::post('pid2')).'|'.Request::post('selected2').'|'.Request::post('viewtype');
+			if (!is_array(Request::post('product_ids2'))) return '请至少选择一个产品！';
+			$data['product'] = '1|'.Request::post('sort2').'|'.implode(',',Request::post('product_ids2')).'|'.Request::post('selected2').'|'.Request::post('viewtype');
 		}
 		$validate = new valid();
 		if ($validate->check($data)){

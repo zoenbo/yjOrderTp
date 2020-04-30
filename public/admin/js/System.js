@@ -1,18 +1,20 @@
 ﻿$(function(){
-	$('.header li').click(function(){
-		$('.header li').removeClass('current');
+	let $headerLi = $('.header li');
+	$headerLi.on('click',function(){
+		$headerLi.removeClass('current');
 		$(this).addClass('current');
-		$('.form .column').hide();
-		$('.form .column').eq($(this).index()).show();
+		let $column = $('.form .column');
+		$column.hide();
+		$column.eq($(this).index()).show();
 		
-		if ($(this).index() == 1){
+		if ($(this).index() === 1){
 			uploader.refresh();
-		}else if ($(this).index() == $('.header li').length-1){
+		}else if ($(this).index() === $('.header li').length-1){
 			uploader2.refresh();
 		}
 	});
 	
-	var uploader = WebUploader.create({
+	let uploader = WebUploader.create({
 		auto : true,
 		server : ThinkPHP['UPLOAD'],
 		pick : {
@@ -30,14 +32,14 @@
 		resize : false,
 		duplicate : true
 	});
-	uploader.on('uploadSuccess',function(file,response){
+	uploader.on('uploadSuccess',function(){
 		$('.loginbg').html('上传成功');
 	});
 	uploader.on('error',function(code,maxSize,file){
 		uploadValidate(code,maxSize,file);
 	});
 	
-	var uploader2 = WebUploader.create({
+	let uploader2 = WebUploader.create({
 		auto : true,
 		server : ThinkPHP['UPLOAD2'],
 		pick : {

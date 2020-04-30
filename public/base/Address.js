@@ -1,55 +1,78 @@
 ﻿$(function(){
-	if ($('select.province').length){
+	let $provinceSelect = $('select.province'),
+		$citySelect = $('select.city'),
+		$countySelect = $('select.county'),
+		$townSelect = $('select.town'),
+		$province = $('input[name=province]'),
+		$city = $('input[name=city]'),
+		$county = $('input[name=county]'),
+		$town = $('input[name=town]');
+
+	if ($provinceSelect.length){
 		$.ajax({
 			type : 'POST',
 			url : DISTRICT,
 			data : {
 				parent_id : 0
 			},
-			success : function(data,textStatus,jqXHR){
-				$('input[name="province"],input[name="city"],input[name="county"],input[name="town"]').val('');
+			success : function(data){
+				$province.val('');
+				$city.val('');
+				$county.val('');
+				$town.val('');
 				$.each($.parseJSON(data),function(index,value){
-					$('select.province').append('<option value="' + value.id + '">' + value.name + '</option>');
+					$provinceSelect.append('<option value="' + value.id + '">' + value.name + '</option>');
 				});
 			}
 		});
 	}
 	
-	$('select.province').change(function(){
-		$('select.city').empty().append('<option value="0">城市</option>');
-		$('select.county').empty().append('<option value="0">区/县</option>');
-		$('select.town').empty().append('<option value="0">乡镇/街道（若不清楚，可不选）</option>');
-		$('input[name="province"],input[name="city"],input[name="county"],input[name="town"]').val('');
-		if ($(this.options[this.selectedIndex]).val() != '0'){
-			$('input[name="province"]').val($(this.options[this.selectedIndex]).text());
+	$provinceSelect.on('change',function(){
+		$citySelect.empty().append('<option value="0">城市</option>');
+		$countySelect.empty().append('<option value="0">区/县</option>');
+		$townSelect.empty().append('<option value="0">乡镇/街道（若不清楚，可不选）</option>');
+
+		$province.val('');
+		$city.val('');
+		$county.val('');
+		$town.val('');
+
+		let $selected = $(this).find('option:selected');
+		if ($selected.val() !== '0'){
+			$province.val($selected.text());
 			$.ajax({
 				type : 'POST',
 				url : DISTRICT,
 				data : {
-					parent_id : $(this.options[this.selectedIndex]).val()
+					parent_id : $selected.val()
 				},
-				success : function(data,textStatus,jqXHR){
+				success : function(data){
 					$.each($.parseJSON(data),function(index,value){
-						$('select.city').append('<option value="' + value.id + '">' + value.name + '</option>');
+						$citySelect.append('<option value="' + value.id + '">' + value.name + '</option>');
 					});
 				}
 			});
 		}
 	});
 	
-	$('select.city').change(function(){
-		$('select.county').empty().append('<option value="0">区/县</option>');
-		$('select.town').empty().append('<option value="0">乡镇/街道（若不清楚，可不选）</option>');
-		$('input[name="city"],input[name="county"],input[name="town"]').val('');
-		if ($(this.options[this.selectedIndex]).val() != '0'){
-			$('input[name="city"]').val($(this.options[this.selectedIndex]).text());
+	$citySelect.on('change',function(){
+		$countySelect.empty().append('<option value="0">区/县</option>');
+		$townSelect.empty().append('<option value="0">乡镇/街道（若不清楚，可不选）</option>');
+
+		$city.val('');
+		$county.val('');
+		$town.val('');
+
+		let $selected = $(this).find('option:selected');
+		if ($selected.val() !== '0'){
+			$city.val($selected.text());
 			$.ajax({
 				type : 'POST',
 				url : DISTRICT,
 				data : {
-					parent_id : $(this.options[this.selectedIndex]).val()
+					parent_id : $selected.val()
 				},
-				success : function(data,textStatus,jqXHR){
+				success : function(data){
 					$.each($.parseJSON(data),function(index,value){
 						$('select.county').append('<option value="' + value.id + '">' + value.name + '</option>');
 					});
@@ -58,18 +81,22 @@
 		}
 	});
 	
-	$('select.county').change(function(){
-		$('select.town').empty().append('<option value="0">乡镇/街道（若不清楚，可不选）</option>');
-		$('input[name="county"],input[name="town"]').val('');
-		if ($(this.options[this.selectedIndex]).val() != '0'){
-			$('input[name="county"]').val($(this.options[this.selectedIndex]).text());
+	$countySelect.on('change',function(){
+		$townSelect.empty().append('<option value="0">乡镇/街道（若不清楚，可不选）</option>');
+
+		$county.val('');
+		$town.val('');
+
+		let $selected = $(this).find('option:selected');
+		if ($selected.val() !== '0'){
+			$county.val($selected.text());
 			$.ajax({
 				type : 'POST',
 				url : DISTRICT,
 				data : {
-					parent_id : $(this.options[this.selectedIndex]).val()
+					parent_id : $selected.val()
 				},
-				success : function(data,textStatus,jqXHR){
+				success : function(data){
 					$.each($.parseJSON(data),function(index,value){
 						$('select.town').append('<option value="' + value.id + '">' + value.name + '</option>');
 					});
@@ -78,10 +105,9 @@
 		}
 	});
 	
-	$('select.town').change(function(){
-		$('input[name="town"]').val('');
-		if ($(this.options[this.selectedIndex]).val() != '0'){
-			$('input[name="town"]').val($(this.options[this.selectedIndex]).text());
-		}
+	$townSelect.on('change',function(){
+		$town.val('');
+		let $selected = $(this).find('option:selected');
+		if ($selected.val() !== '0') $town.val($selected.text());
 	});
 });

@@ -1,30 +1,29 @@
 ﻿$(function(){
-	$('.tools .multi').click(function(){
+	$('.tools .multi').on('click',function(){
 		switch ($('.tools input[name=type]:checked').val()){
 			case '2':
-			  return confirm('确定将所选的订单移入到回收站么？');
-			  break;
+				return confirm('确定将所选的订单移入到回收站么？');
 			case '3':
-			  return confirm('确定将所选的订单还原到订单管理模块么？');
-			  break;
+				return confirm('确定将所选的订单还原到订单管理模块么？');
 			case '4':
-			  return confirm('【注意】订单回收站中的订单一旦批量删除，无法恢复，您确定进行此操作？');
-			  break;
+				return confirm('【注意】订单回收站中的订单一旦批量删除，无法恢复，您确定进行此操作？');
 		}
 	});
-	
-	$('.list input.all').on('ifChecked',function(){
+
+	let $all = $('.list input.all'),
+		$id = $('.list input[name=id]');
+	$all.on('ifChecked',function(){
 		$('.list input[name=id]').each(function(){
 			$(this).iCheck('check');
 		});
 		checked();
 	}).on('ifUnchecked',function(){
-		$('.list input[name=id]').each(function(){
+		$id.each(function(){
 			$(this).iCheck('uncheck');
 		});
 		checked();
 	});
-	$('.list input[name=id]').on('ifChecked',function(){
+	$id.on('ifChecked',function(){
 		check();
 		checked();
 	}).on('ifUnchecked',function(){
@@ -32,49 +31,55 @@
 		checked();
 	});
 	function check(){
-		if ($('.list input[name=id]:checked').length == 0){
-			$('.list input.all').iCheck('uncheck');
-			$('.list input.all').iCheck('determinate');
-		}else if ($('.list input[name=id]:checked').length == $('.list input[name=id]').length){
-			$('.list input.all').iCheck('check');
+		let $idChecked = $('.list input[name=id]:checked');
+		if ($idChecked.length === 0){
+			$all.iCheck('uncheck');
+			$all.iCheck('determinate');
+		}else if ($idChecked.length === $id.length){
+			$all.iCheck('check');
 		}else{
-			$('.list input.all').iCheck('indeterminate');
+			$all.iCheck('indeterminate');
 		}
 	}
 	function checked(){
-		var ids = '';
+		let ids = '';
 		$('.list input[name=id]:checked').each(function(){
 			ids += $(this).val() + ',';
 		});
 		$('.tools input[name=ids]').val(ids.substring(0,ids.length-1));
 	}
-	
+
 	$('.tools input.number').numberspinner({
 		width : 80,
 		height : 30,
 		min : 0
 	});
-	
+
 	$('.tools input.date').datebox({
 		width : 115,
 		height : 30,
 		editable : false
 	});
-	
+
 	pay($('.tools select[name=pay] option:selected').val());
-	$('.tools select[name=pay]').click(function(){
+	$('.tools select[name=pay]').on('click',function(){
 		pay($(this).val());
 	});
 	function pay(val){
-		if (val == '3'){
-			$('.tools .alipay_scene').show();
-			$('.tools .wxpay_scene').hide();
-		}else if (val == '7'){
-			$('.tools .alipay_scene').hide();
-			$('.tools .wxpay_scene').show();
-		}else{
-			$('.tools .alipay_scene').hide();
-			$('.tools .wxpay_scene').hide();
+		let $alipayScene = $('.tools .alipay_scene'),
+			$wxpayScene = $('.tools .wxpay_scene');
+		switch (val){
+			case '3':
+				$alipayScene.show();
+				$wxpayScene.hide();
+				break;
+			case '7':
+				$alipayScene.hide();
+				$wxpayScene.show();
+				break;
+			default:
+				$alipayScene.hide();
+				$wxpayScene.hide();
 		}
 	}
 });

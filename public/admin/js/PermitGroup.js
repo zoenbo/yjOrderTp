@@ -1,20 +1,21 @@
 ﻿$(function(){
-	$('.all').click(function(){
-		$('input[type=checkbox]').each(function(){
+	let $permitManageCheckbox = $('.permit_manage input[type=checkbox]');
+	$('.all').on('click',function(){
+		$permitManageCheckbox.each(function(){
 			$(this).iCheck('check');
 		});
 	});
-	$('.no').click(function(){
-		$('input[type=checkbox]').each(function(){
+	$('.no').on('click',function(){
+		$permitManageCheckbox.each(function(){
 			$(this).iCheck('uncheck');
 		});
 	});
-	$('.selected').click(function(){
-		$('input[type=checkbox]').each(function(){
+	$('.default').on('click',function(){
+		$permitManageCheckbox.each(function(){
 			$(this).iCheck('uncheck');
 		});
-		$('label.red').each(function(){
-			$(this).find('input').iCheck('check');
+		$('.permit_manage label.red input[type=checkbox]').each(function(){
+			$(this).iCheck('check');
 		});
 	});
 });

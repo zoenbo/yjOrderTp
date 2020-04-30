@@ -24,7 +24,7 @@ class Template{
 <script type="text/javascript" src="public/base/sha1.js?'.staticCache().'"></script>
 <script type="text/javascript" src="public/home/js/Order.js?'.staticCache().'"></script>
 <link rel="stylesheet" type="text/css" href="public/home/styles/Order1.css?'.staticCache().'">
-<script type="text/javascript">var DISTRICT="'.Config::get('app.web_url').Config::get('system.index_php').'common/district";</script>
+<script type="text/javascript">let DISTRICT="'.Config::get('app.web_url').Config::get('system.index_php').'common/district";</script>
 <style type="text/css">
 .order{
     width:950px;
@@ -118,7 +118,7 @@ class Template{
 <script type="text/javascript" src="public/base/sha1.js?'.staticCache().'"></script>
 <script type="text/javascript" src="public/home/js/Order.js?'.staticCache().'"></script>
 <link rel="stylesheet" type="text/css" href="public/home/styles/Order2.css?'.staticCache().'">
-<script type="text/javascript">var DISTRICT="'.Config::get('app.web_url').Config::get('system.index_php').'common/district";</script>
+<script type="text/javascript">let DISTRICT="'.Config::get('app.web_url').Config::get('system.index_php').'common/district";</script>
 <style type="text/css">
 .order{
     background-color:#423628;
@@ -197,7 +197,7 @@ class Template{
 <script type="text/javascript" src="public/base/sha1.js?'.staticCache().'"></script>
 <script type="text/javascript" src="public/home/js/Order.js?'.staticCache().'"></script>
 <link rel="stylesheet" type="text/css" href="public/home/styles/Order3.css?'.staticCache().'">
-<script type="text/javascript">var DISTRICT="'.Config::get('app.web_url').Config::get('system.index_php').'common/district";</script>
+<script type="text/javascript">let DISTRICT="'.Config::get('app.web_url').Config::get('system.index_php').'common/district";</script>
 <style type="text/css">
 .order{
     background:#EBF7FF;
@@ -285,7 +285,7 @@ class Template{
 <script type="text/javascript" src="public/base/sha1.js?'.staticCache().'"></script>
 <script type="text/javascript" src="public/home/js/Order.js?'.staticCache().'"></script>
 <link rel="stylesheet" type="text/css" href="public/home/styles/Order3.css?'.staticCache().'">
-<script type="text/javascript">var DISTRICT="'.Config::get('app.web_url').Config::get('system.index_php').'common/district";</script>
+<script type="text/javascript">let DISTRICT="'.Config::get('app.web_url').Config::get('system.index_php').'common/district";</script>
 <style type="text/css">.order{background:#FFFFFF;border:3px solid #FC4400;}.order .buy{border-bottom:1px solid #FC4400;}.order dl dd.submit input{background:#FF6633;}</style>
 
 <div class="order">
@@ -361,7 +361,7 @@ class Template{
 <script type="text/javascript" src="public/base/sha1.js?'.staticCache().'"></script>
 <script type="text/javascript" src="public/home/js/Order.js?'.staticCache().'"></script>
 <link rel="stylesheet" type="text/css" href="public/home/styles/Order4.css?'.staticCache().'">
-<script type="text/javascript">var DISTRICT="'.Config::get('app.web_url').Config::get('system.index_php').'common/district";</script>
+<script type="text/javascript">let DISTRICT="'.Config::get('app.web_url').Config::get('system.index_php').'common/district";</script>
 <style type="text/css">.order{background:#FFF;border:1px solid #FC4400;}.order .buy{border-bottom:1px solid #FC4400;}.order dl dd.submit input{background:#F63;}</style>
 
 <div class="order">
@@ -437,7 +437,7 @@ class Template{
 <script type="text/javascript" src="public/base/sha1.js?'.staticCache().'"></script>
 <script type="text/javascript" src="public/home/js/Order.js?'.staticCache().'"></script>
 <link rel="stylesheet" type="text/css" href="public/home/styles/Order5.css?'.staticCache().'">
-<script type="text/javascript">var DISTRICT="'.Config::get('app.web_url').Config::get('system.index_php').'common/district";</script>
+<script type="text/javascript">let DISTRICT="'.Config::get('app.web_url').Config::get('system.index_php').'common/district";</script>
 <style type="text/css">.order{background:#FFF;border:1px solid #FFF;}.order .buy{border-bottom:1px solid #FFF;}.order dl dd.submit input{background:#BE0F22;}</style>
 
 <div class="order">

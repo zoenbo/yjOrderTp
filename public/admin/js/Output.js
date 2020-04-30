@@ -1,23 +1,31 @@
 $(function(){
-	$('.list input.all').on('ifChecked',function(){
-		$('.list input.files').each(function(){
+	let $all = $('.list input.all'),
+		$files = $('.list input.files');
+
+	$all.on('ifChecked',function(){
+		$files.each(function(){
 			$(this).iCheck('check');
 		});
 	}).on('ifUnchecked',function(){
-		$('.list input.files').each(function(){
+		$files.each(function(){
 			$(this).iCheck('uncheck');
 		});
 	});
-	
-	$('.list input.files').on('ifChecked',check).on('ifUnchecked',check);
+
+	$files.on('ifChecked',function(){
+		check();
+	}).on('ifUnchecked',function(){
+		check();
+	});
 	function check(){
-		if ($('.list input.files:checked').length == 0){
-			$('.list input.all').iCheck('uncheck');
-			$('.list input.all').iCheck('determinate');
-		}else if ($('.list input.files:checked').length == $('.list input.files').length){
-			$('.list input.all').iCheck('check');
+		let $filesChecked = $('.list input.files:checked');
+		if ($filesChecked.length === 0){
+			$all.iCheck('uncheck');
+			$all.iCheck('determinate');
+		}else if ($filesChecked.length === $files.length){
+			$all.iCheck('check');
 		}else{
-			$('.list input.all').iCheck('indeterminate');
+			$all.iCheck('indeterminate');
 		}
 	}
 });

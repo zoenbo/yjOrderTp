@@ -6,7 +6,7 @@
 <link rel="stylesheet" type="text/css" href="public/base/webuploader/style.css?{:staticCache()}">
 <link rel="stylesheet" type="text/css" href="public/admin/styles/{:request()->controller()}.css?{:staticCache()}">
 <script type="text/javascript">
-var ThinkPHP = {
+let ThinkPHP = {
 	UPLOAD : '{:url("/common/loginbg")}',
 	UPLOAD2 : '{:url("/common/qqwry")}'
 };

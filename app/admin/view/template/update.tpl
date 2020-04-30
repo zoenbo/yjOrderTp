@@ -4,7 +4,7 @@
 {block name="head"}<script type="text/javascript" src="public/admin/js/{:request()->controller()}.js?{:staticCache()}"></script>
 <link rel="stylesheet" type="text/css" href="public/admin/styles/{:request()->controller()}.css?{:staticCache()}">
 <script type="text/javascript">
-var ThinkPHP = {
+let ThinkPHP = {
 	AJAX : '{:url("/".parse_name(request()->controller())."/ajaxProduct")}'
 };
 </script>{/block}
@@ -24,9 +24,9 @@ var ThinkPHP = {
     <tr class="style"><td>皮肤样式：</td><td><select name="template_style_id" class="select">{$TemplateStyle}</select></td><td>手机版2和手机版3推荐使用11号皮肤样式，手机版4推荐使用12号皮肤样式</td></tr>
     <tr><td>产品分类：</td><td><div class="radio-box"><label><input type="radio" name="protype" value="0" {if condition="$One['protype']==0"}checked{/if}>单分类</label></div><div class="radio-box"><label><input type="radio" name="protype" value="1" {if condition="$One['protype']==1"}checked{/if}>多分类</label></div></td></tr>
     <tr class="pro1"><td>选择分类：</td><td><select name="sort1" class="select">{$ProductSort}</select></td></tr>
-    <tr class="pro1 pid1"><td>选择产品：</td><td><input type="hidden" name="pro" value="{$One['pro']}"><input type="hidden" name="proselected" value="{$One['proselected']}"><select name="pid1[]" multiple class="select"></select></td><td>可按住ctrl进行多选，生成的下单页只显示勾选且在<a href="javascript:;" onclick="window.parent.addTab('{:url('/product/index')}','产品管理')">产品管理</a>模块中设置了前台显示的产品</td></tr>
+    <tr class="pro1 product_ids1"><td>选择产品：</td><td><input type="hidden" name="pro" value="{$One['pro']}"><input type="hidden" name="proselected" value="{$One['proselected']}"><select name="product_ids1[]" multiple class="select"></select></td><td>可按住ctrl进行多选，生成的下单页只显示勾选且在<a href="javascript:;" onclick="window.parent.addTab('{:url('/product/index')}','产品管理')">产品管理</a>模块中设置了前台显示的产品</td></tr>
     <tr class="pro1"><td>默认产品：</td><td><select name="selected1" class="select"></select></td></tr>
-    <tr class="pro2 pid2"><td>选择产品：</td><td><input type="hidden" name="sort2"><select name="pid2[]" multiple class="select">{$Product}</select></td><td>可按住ctrl进行多选，生成的下单页只显示勾选且在<a href="javascript:;" onclick="window.parent.addTab('{:url('/product/index')}','产品管理')">产品管理</a>模块中设置了前台显示的产品</td></tr>
+    <tr class="pro2 product_ids2"><td>选择产品：</td><td><input type="hidden" name="sort2"><select name="product_ids2[]" multiple class="select">{$Product}</select></td><td>可按住ctrl进行多选，生成的下单页只显示勾选且在<a href="javascript:;" onclick="window.parent.addTab('{:url('/product/index')}','产品管理')">产品管理</a>模块中设置了前台显示的产品</td></tr>
     <tr class="pro2"><td>默认产品：</td><td><select name="selected2" class="select"></select></td></tr>
     <tr><td>产品显示：</td><td><div class="radio-box"><label><input type="radio" name="viewtype" value="1" {if condition="$One['viewtype']==1"}checked{/if}>单选按钮</label></div><div class="radio-box"><label><input type="radio" name="viewtype" value="0" {if condition="$One['viewtype']==0"}checked{/if}>下拉框</label></div></td></tr>
     <tr><td>下单字段：</td><td class="field">{$Field}<p style="margin:10px 0 0 0;"><input type="button" value="全选" class="btn btn-primary radius all"> <input type="button" value="全部不选" class="btn btn-primary radius no"> <input type="button" value="默认字段" class="btn btn-primary radius selected"></p></td><td>红色部分为默认字段</td></tr>

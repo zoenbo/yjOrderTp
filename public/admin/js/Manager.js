@@ -4,17 +4,19 @@
 		permit($(this).val());
 	});
 	function permit(val){
+		let $permit = $('.permit');
 		switch (val){
 			case '1':
-			  $('.permit').hide();
-			  break;
+				$permit.hide();
+				break;
 			case '2':
-			  $('.permit').show();
-			  break;
+				$permit.show();
+				break;
 		}
 	}
-	
-	if ($('input.date').length) $('input.date').datebox({
+
+	let $date = $('input.date');
+	if ($date.length) $date.datebox({
 		width : 115,
 		height : 30,
 		editable : false

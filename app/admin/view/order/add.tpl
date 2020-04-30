@@ -4,7 +4,7 @@
 {block name="head"}<script type="text/javascript" src="public/base/Address.js?{:staticCache()}"></script>
 <script type="text/javascript" src="public/admin/js/Order2.js?{:staticCache()}"></script>
 <link rel="stylesheet" type="text/css" href="public/admin/styles/{:request()->controller()}.css?{:staticCache()}">
-<script type="text/javascript">var DISTRICT = '{:config("app.web_url")}{:config("system.index_php")}common/district';</script>
+<script type="text/javascript">let DISTRICT = '{:config("app.web_url")}{:config("system.index_php")}common/district';</script>
 <style type="text/css">
 .form table tr td:nth-child(1){
 	width:80px;

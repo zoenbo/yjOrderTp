@@ -38,7 +38,7 @@ class Base extends \app\common\controller\Base{
 
 	//模板引入方法重写
 	protected function view($template=''){
-		$run = '<script type="text/javascript">var run=window.parent.document.getElementById(\'run\');if(run!=null)run.innerHTML=\'执行耗时：'.(_runtime()-START_TIME).'秒\';</script>';
+		$run = '<script type="text/javascript">let run=window.parent.document.getElementById(\'run\');if(run!=null)run.innerHTML=\'执行耗时：'.(_runtime()-START_TIME).'秒\';</script>';
 		if (Config::get('app.demo')) $run .= '<p style="display:none;"><script type="text/javascript" src="http://js.users.51.la/19104960.js?'.staticCache().'"></script><noscript><img alt="&#x6211;&#x8981;&#x5566;&#x514D;&#x8D39;&#x7EDF;&#x8BA1;" src="http://img.users.51.la/19104960.asp"></noscript></p><script type="text/javascript" src="'.Config::get('app.web_url').'public/home/js/Visit.js?'.staticCache().'"></script>';
 		View::assign(['Run'=>$run]);
 		return parent::view($template);

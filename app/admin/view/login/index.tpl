@@ -9,7 +9,7 @@
 <link rel="stylesheet" type="text/css" href="public/base/styles/Basic.css?{:staticCache()}">
 <link rel="stylesheet" type="text/css" href="public/admin/styles/{:request()->controller()}.css?{:staticCache()}">
 <script type="text/javascript">
-var ThinkPHP = {
+let ThinkPHP = {
 	AJAX : '{:url("/".parse_name(request()->controller())."/ajax")}'
 };
 </script>

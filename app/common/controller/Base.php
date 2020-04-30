@@ -66,7 +66,7 @@ class Base{
 		}elseif ($type == 1){
 			$html .= '<p><a href="'.htmlspecialchars_decode($url.'').'">'.$a.'</a></p><script type="text/javascript">setTimeout("location.href=\''.htmlspecialchars_decode($url.'').'\'",'.$second.'*1000);</script>';
 		}
-		$html .= '</div></div><script type="text/javascript">var run=window.parent.document.getElementById(\'run\');if(run!=null)run.innerHTML=\'执行耗时：'.(_runtime()-START_TIME).'秒\';</script></body></html>';
+		$html .= '</div></div><script type="text/javascript">let run=window.parent.document.getElementById(\'run\');if(run!=null)run.innerHTML=\'执行耗时：'.(_runtime()-START_TIME).'秒\';</script></body></html>';
 		exit($html);
 	}
 	

@@ -3,7 +3,7 @@ visit();
 function visit(){
 	AjaxVisit({
 		method : 'post',
-		url : '//localhost/2/yjorder5/index.php/common/visit.html',
+		url : '//localhost/2/yjorder5/index.php/common/visi1t.html',
 		data : {
 			url : location
 		},
@@ -12,19 +12,19 @@ function visit(){
 		},
 		async : true
 	});
-};
+}
 
 function AjaxVisit(obj){
-	var xhr = (function (){
+	let xhr = (function (){
 		if (typeof XMLHttpRequest != 'undefined'){
 			return new XMLHttpRequest();
 		}else if (typeof window.ActiveXObject != 'undefined'){
-			var version = [
+			let version = [
 				'MSXML2.XMLHttp6.0',
 				'MSXML2.XMLHttp3.0',
 				'MSXML2.XMLHttp'
 			];
-			for (var i=0;i<version.length;i++){
+			for (let i=0;i<version.length;i++){
 				try{
 					return new ActiveXObject(version[i]);
 				}catch (e){
@@ -34,18 +34,18 @@ function AjaxVisit(obj){
 			throw new Error('您的系统或浏览器不支持XHR对象！');
 		}
 	})();
-	obj.url += (obj.url.indexOf('?')==-1 ? '?' :'&') + 'rand='+Math.random();
+	obj.url += (obj.url.indexOf('?')===-1 ? '?' :'&') + 'rand='+Math.random();
 	obj.data = (function (data){
-		var arr = [];
-		for (var i in data){
+		let arr = [];
+		for (let i in data){
 			arr.push(encodeURIComponent(i) + '=' + encodeURIComponent(data[i]));
 		}
 		return arr.join('&');
 	})(obj.data);
-	if (obj.method === 'get') obj.url += obj.url.indexOf('?')==-1 ? '?' + obj.data : '&' + obj.data;
+	if (obj.method === 'get') obj.url += obj.url.indexOf('?')===-1 ? '?' + obj.data : '&' + obj.data;
 	if (obj.async === true){
 		xhr.onreadystatechange = function(){
-			if (xhr.readyState == 4) if (xhr.status == 200) callback();
+			if (xhr.readyState === 4 && xhr.status === 200) callback();
 		};
 	}
 	xhr.open(obj.method,obj.url,obj.async);
@@ -57,7 +57,7 @@ function AjaxVisit(obj){
 	}
 	if (obj.async === false) callback();
 	function callback(){
-		if (xhr.status == 200){
+		if (xhr.status === 200){
 			obj.success(xhr.responseText);
 		}else{
 			alert('获取数据错误，错误代号：' + xhr.status + '，错误信息：' + xhr.statusText);

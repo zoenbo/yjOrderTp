@@ -1,10 +1,11 @@
 ﻿$(function(){
-	if ($('div.list').length){
-		var width = 0;
-		$.each($('div.list th'),function(index,value){
+	let $list = $('div.list');
+	if ($list.length){
+		let width = 0;
+		$.each($('div.list th'),function(){
 			if (typeof($(this).attr('class')) != 'undefined') width += $(this).width() + 1;
 		});
-		$('div.list').width(width + 31);
+		$list.width(width + 31);
 	}
 	
 	$('.check-box input,.radio-box input').iCheck({

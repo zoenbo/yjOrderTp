@@ -142,5 +142,5 @@ select optgroup{
 	top:50%;
 	left:50%;
 	display:none;
-	font-family:"宋体";
+	font-family:"宋体",serif;
 }
