@@ -4,7 +4,7 @@ body{
 }
 .tip{
 	margin:15px 29px;
-	font-family:"宋体";
+	font-family:"宋体",serif;
 }
 .tip h3{
 	color:#5A98DE;
@@ -40,4 +40,10 @@ body{
 .tip div a{
 	text-decoration:underline;
 	color:#666;
+	font-size:12px;
+}
+@media(max-width:767px){
+	.tip div a{
+		font-size:14px;
+	}
 }
