@@ -4,10 +4,9 @@
 <meta charset="utf-8">
 <title>{:config('system.web_name')}</title>
 <base href="{:config('app.web_url')}">
-<link rel="stylesheet" type="text/css" href="public/base/H-ui.admin/h-ui/css/H-ui.min.css?{:staticCache()}">
-<link rel="stylesheet" type="text/css" href="public/base/H-ui.admin/h-ui.admin/css/H-ui.admin.css?{:staticCache()}">
-<link rel="stylesheet" type="text/css" href="public/base/H-ui.admin/lib/Hui-iconfont/1.0.8/iconfont.css?{:staticCache()}">
-<link rel="stylesheet" type="text/css" href="public/base/H-ui.admin/h-ui.admin/skin/{:config('system.manage_skin')}/skin.css?{:staticCache()}" id="skin">
+<link rel="stylesheet" type="text/css" href="public/base/H-ui/H-ui.min.css?{:staticCache()}">
+<link rel="stylesheet" type="text/css" href="public/base/H-ui/iconfont/iconfont.min.css?{:staticCache()}">
+<link rel="stylesheet" type="text/css" href="public/base/H-ui.admin/H-ui.admin.css?{:staticCache()}">
 <script type="text/javascript">
 var ThinkPHP = {
 	'H-ui-skin' : '{:config("system.manage_skin")}'
@@ -15,7 +14,7 @@ var ThinkPHP = {
 </script>
 </head>
 
-<body>
+<body class="{:config('system.manage_skin')}">
 {if condition="config('app.demo')"}
 <style type="text/css">
 .a{position:absolute;z-index:100000;width:100%;text-align:center;}
@@ -30,7 +29,7 @@ var ThinkPHP = {
       <a class="logo navbar-logo f-l mr-10 hidden-xs" href="{:url('/'.parse_name(request()->controller()).'/index')}">{:config('system.copyright_top')}</a> <span class="logo navbar-slogan f-l mr-10 hidden-xs">V{$Version[0]}</span>
       <nav id="Hui-userbar" class="nav navbar-nav navbar-userbar hidden-xs">
         <ul class="cl">
-          <li>{:session(config('system.session_key').'.name')}（{:session(config('system.session_key').'.permit_group')}） [<a href="javascript:;" onclick="addTab('{:url('/profile/index')}','个人资料')">个人资料</a>] [<a href="javascript:;" onclick="addTab('{:url('/profile/login')}','登录记录')">登录记录</a>] [<a href="{:url('/login/logout')}">退出</a>] [<a href="https://item.taobao.com/item.htm?id=531038056831" target="_blank">赞助作者</a>]</li>
+          <li>{:session(config('system.session_key').'.name')}（{:session(config('system.session_key').'.permit_group')}） [<a href="javascript:;" onclick="window.parent.addTab('{:url('/profile/index')}','个人资料')">个人资料</a>] [<a href="javascript:;" onclick="window.parent.addTab('{:url('/profile/login')}','登录记录')">登录记录</a>] [<a href="{:url('/login/logout')}">退出</a>] [<a href="https://item.taobao.com/item.htm?id=531038056831" target="_blank">赞助作者</a>]</li>
           <li id="Hui-skin" class="dropDown right dropDown_hover">
            <a href="javascript:;" class="dropDown_A" title="换肤"><i class="Hui-iconfont" style="font-size:18px">&#xe62a;</i></a>
             <ul class="dropDown-menu menu radius box-shadow">
@@ -173,8 +172,7 @@ var ThinkPHP = {
 </section>
 
 <script type="text/javascript" src="public/base/jquery.js?{:staticCache()}"></script>
-<script type="text/javascript" src="public/base/H-ui.admin/lib/layer/2.4/layer.js?{:staticCache()}"></script>
-<script type="text/javascript" src="public/base/H-ui.admin/h-ui/js/H-ui.min.js?{:staticCache()}"></script>
-<script type="text/javascript" src="public/base/H-ui.admin/h-ui.admin/js/H-ui.admin.js?{:staticCache()}"></script>
+<script type="text/javascript" src="public/base/H-ui/H-ui.min.js?{:staticCache()}"></script>
+<script type="text/javascript" src="public/base/H-ui.admin/H-ui.admin.js?{:staticCache()}"></script>
 </body>
 </html>

@@ -11,4 +11,6 @@
 		checkboxClass: 'icheckbox-blue',
 		radioClass: 'iradio-blue',
 	});
+
+	$('.input-text,.textarea').Huifocusblur();
 });

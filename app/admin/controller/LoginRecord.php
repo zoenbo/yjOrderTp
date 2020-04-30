@@ -45,7 +45,7 @@ class LoginRecord extends Base{
 			$file = Config::get('app.output_dir').'login_'.date('YmdHis').'.csv';
 			if (file_put_contents(ROOT_PATH.'/'.$file,$output)){
 				$LoginRecord->truncate();
-				return $this->success(NULL,'文件生成成功！<a href="'.Config::get('app.web_url').$file.'">下载</a> <a href="javascript:;" onclick="addTab(\''.Route::buildUrl('/output/index').'\',\'导出的数据\')">去管理文件</a> <a href="'.Route::buildUrl('/'.parse_name(Request::controller()).'/index').'">返回</a>',0,2);
+				return $this->success(NULL,'文件生成成功！<a href="'.Config::get('app.web_url').$file.'">下载</a> <a href="javascript:;" onclick="window.parent.addTab(\''.Route::buildUrl('/output/index').'\',\'导出的数据\')">去管理文件</a> <a href="'.Route::buildUrl('/'.parse_name(Request::controller()).'/index').'">返回</a>',0,2);
 			}else{
 				return $this->failed('文件生成失败，请检查'.Config::get('app.output_dir').'目录权限！');
 			}

@@ -10,7 +10,7 @@
 <table class="tip">
   <tr><th colspan="2">技巧提示</th></tr>
   <tr><td class="num">1、</td><td>以黑色字体显示的权限为模块的主权限，以蓝色字体显示的权限为此模块中的子权限，分页中的总条数为主权限的总条数；</td></tr>
-  <tr><td class="num">2、</td><td>可在<a href="javascript:;" onclick="addTab('{:url('/permit_group/index')}','权限组')">权限组</a>模块中的添加和修改中为相应的权限组分配权限；</td></tr>
+  <tr><td class="num">2、</td><td>可在<a href="javascript:;" onclick="window.parent.addTab('{:url('/permit_group/index')}','权限组')">权限组</a>模块中的添加和修改中为相应的权限组分配权限；</td></tr>
   <tr><td class="num">3、</td><td>超级管理员不受权限的限制；</td></tr>
   <tr><td class="num">4、</td><td>您可将权限设置为默认权限，在添加权限组时，将自动勾选上默认权限；</td></tr>
   <tr><td class="num">5、</td><td>您还可对权限进行排序操作，在添加或修改权限组时，权限列表将以您设置的顺序进行显示。</td></tr>

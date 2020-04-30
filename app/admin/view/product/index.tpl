@@ -14,7 +14,7 @@
 {block name="tip"}
 <table class="tip">
   <tr><th colspan="2">技巧提示</th></tr>
-  <tr><td class="num">1、</td><td>此模块中的“是否默认”设置仅在后台添加订单时有效，前台订单页面中的默认产品请在<a href="javascript:;" onclick="addTab('{:url('/template/index')}','模板管理')">模板管理</a>模块中进行设置。</td></tr>
+  <tr><td class="num">1、</td><td>此模块中的“是否默认”设置仅在后台添加订单时有效，前台订单页面中的默认产品请在<a href="javascript:;" onclick="window.parent.addTab('{:url('/template/index')}','模板管理')">模板管理</a>模块中进行设置。</td></tr>
 </table>
 {/block}
 

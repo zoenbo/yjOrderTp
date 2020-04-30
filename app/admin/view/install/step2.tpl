@@ -2,11 +2,12 @@
 <html lang="zh-cn">
 <head>
 <meta charset="utf-8">
-<title>昱杰订单管理系统（ThinkPHP版）-系统安装-第1步</title>
+<title>昱杰订单管理系统（ThinkPHP版）-系统安装-第2步</title>
 <base href="{:config('app.web_url')}">
 <script type="text/javascript" src="public/base/jquery.js?{:staticCache()}"></script>
-<script type="text/javascript" src="public/base/H-ui.admin/h-ui/js/H-ui.min.js?{:staticCache()}"></script>
-<link rel="stylesheet" type="text/css" href="public/base/H-ui.admin/h-ui/css/H-ui.min.css?{:staticCache()}">
+<script type="text/javascript" src="public/base/H-ui/H-ui.min.js?{:staticCache()}"></script>
+<script type="text/javascript" src="public/{:app('http')->getName()}/js/Common.js?{:staticCache()}"></script>
+<link rel="stylesheet" type="text/css" href="public/base/H-ui/H-ui.min.css?{:staticCache()}">
 <link rel="stylesheet" type="text/css" href="public/base/styles/Basic.css?{:staticCache()}">
 <link rel="stylesheet" type="text/css" href="public/admin/styles/{:request()->controller()}.css?{:staticCache()}">
 <style type="text/css">

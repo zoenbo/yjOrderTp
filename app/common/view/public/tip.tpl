@@ -5,16 +5,8 @@
 <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0">
 <title>{:config('system.web_name')}-提示</title>
 <base href="{:config('app.web_url')}">
-<script type="text/javascript" src="public/base/jquery.js?{:staticCache()}"></script>
-<script type="text/javascript" src="public/base/H-ui.admin/h-ui/js/H-ui.min.js?{:staticCache()}"></script>
-<script type="text/javascript" src="public/base/H-ui.admin/h-ui.admin/js/H-ui.admin.js?{:staticCache()}"></script>
-<link rel="stylesheet" type="text/css" href="public/base/H-ui.admin/h-ui/css/H-ui.min.css?{:staticCache()}">
+<link rel="stylesheet" type="text/css" href="public/base/H-ui/H-ui.min.css?{:staticCache()}">
 <link rel="stylesheet" type="text/css" href="public/base/styles/Tip.css?{:staticCache()}">
-<script type="text/javascript">
-var ThinkPHP = {
-	'H-ui-skin' : '{:config("system.manage_skin")}'
-};
-</script>
 </head>
 
 <body>

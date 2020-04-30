@@ -23,9 +23,9 @@
       <dd class="red">6、本升级方法为常规方法，一般情况下会升级成功，如不成功，请联系作者协助解决。</dd>
       <dd class="blue">升级成功后，请注意：</dd>
       <dd class="blue">1、为了确保您的数据安全，请检查Bak目录的bak_n.sql是否被删除；</dd>
-      <dd class="blue">2、请在<a href="javascript:;" onclick="addTab('{:url('/Template/index')}','模板管理')">模板管理</a>模块中重新生成下单页；</dd>
-      <dd class="blue">3、会取消掉所有默认权限，请重新在<a href="javascript:;" onclick="addTab('{:url('/Permit/index')}','权限管理')">权限管理</a>模块中进行勾选；</dd>
-      <dd class="blue">4、有一些版本的升级，如果增加了模块，可能会（但不一定）打乱权限控制的顺序，请重新在<a href="javascript:;" onclick="addTab('{:url('/Manager/index')}','管理员')">管理员</a>模块中为管理员分配权限。</dd>
+      <dd class="blue">2、请在<a href="javascript:;" onclick="window.parent.addTab('{:url('/Template/index')}','模板管理')">模板管理</a>模块中重新生成下单页；</dd>
+      <dd class="blue">3、会取消掉所有默认权限，请重新在<a href="javascript:;" onclick="window.parent.addTab('{:url('/Permit/index')}','权限管理')">权限管理</a>模块中进行勾选；</dd>
+      <dd class="blue">4、有一些版本的升级，如果增加了模块，可能会（但不一定）打乱权限控制的顺序，请重新在<a href="javascript:;" onclick="window.parent.addTab('{:url('/Manager/index')}','管理员')">管理员</a>模块中为管理员分配权限。</dd>
       <dd>如果您阅读完以上注意事项，并且准备就绪后，请点击以下按钮备份配置文件</dd>
       <dd><input type="submit" value="确认备份" class="btn btn-primary radius"></dd>
     </dl>
