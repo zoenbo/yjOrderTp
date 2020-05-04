@@ -26,5 +26,12 @@ body{
 .tip p a{
 	text-decoration:underline;
 	color:#666;
+}
+.tip p.location a{
 	font-size:12px;
+}
+@media(max-width:767px){
+	.tip p.location a{
+		font-size:14px;
+	}
 }

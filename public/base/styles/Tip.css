@@ -14,8 +14,6 @@ body{
 	font-weight:bold;
 }
 .tip div{
-	clear:both;
-	margin-bottom:10px;
 	padding:53px 10px 40px 10px;
 	text-align:center;
 	border-top:4px solid #DEEFFA;
@@ -40,10 +38,12 @@ body{
 .tip div a{
 	text-decoration:underline;
 	color:#666;
+}
+.tip div p.location a{
 	font-size:12px;
 }
 @media(max-width:767px){
-	.tip div a{
+	.tip div p.location a{
 		font-size:14px;
 	}
 }
