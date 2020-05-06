@@ -1,4 +1,4 @@
-﻿《昱杰订单管理系统（ThinkPHP版）》采用PHP+MySql+ThinkPHP开发，本系统运行环境为：PHP7.1+、MySQL5.5+，PHP需开启curl、gd2、mbstring、openssl、pdo等扩展（如果不清楚如何开启PHP扩展，请自行查阅相关文档），另外本系统的所有目录及文件权限需设置为777。
+﻿《昱杰订单管理系统（ThinkPHP版）》采用PHP+MySql+ThinkPHP开发，本系统运行环境为：PHP7.1+、MySQL5.5+，PHP需开启curl、gd2、mbstring、openssl、pdo_mysql等扩展（如果不清楚如何开启PHP扩展，请自行查阅相关文档），另外本系统的所有目录及文件权限需设置为777。
 
 第一次使用本系统，在浏览器中输入“http://您的域名/admin.php/install”进行安装，根据提示输入相关信息即可完成安装，系统安装和使用的常见问题请见：https://mp.weixin.qq.com/s/ecNJ4ozJy_fX5lmYfZGA3g。
 
