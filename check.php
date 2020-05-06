@@ -59,12 +59,11 @@ $(function(){
 <form method="post" action="" class="form">
   <table>
     <tr><td>PHP版本：</td><td>最低版本要求为7.1.0，当前版本为<?php echo phpversion();?>，<?php echo version_compare(PHP_VERSION,'7.1.0','>=') ? '<span class="green">支持</span>' : '<span class="red">不支持</span>';?></td></tr>
-    <tr><td>MySQL版本：</td><td><?php if (version_compare(PHP_VERSION,'7.1.0','<')){?>请先解决PHP版本过低的问题<?php }elseif (!extension_loaded('pdo') || !extension_loaded('pdo_mysql')){?>请先开启pdo和pdo_mysql扩展<?php }else{?><span class="mysql_version"></span><input type="text" name="host" class="input-text" placeholder="MySQL服务器地址"><input type="text" name="user" class="input-text" placeholder="MySQL用户名"><input type="text" name="password" class="input-text" placeholder="MySQL密码"><input type="button" value="查看" class="btn btn-primary radius"><?php }?></td></tr>
+    <tr><td>MySQL版本：</td><td><?php if (version_compare(PHP_VERSION,'7.1.0','<')){?>请先解决PHP版本过低的问题<?php }elseif (!extension_loaded('pdo_mysql')){?>请先开启pdo_mysql扩展<?php }else{?><span class="mysql_version"></span><input type="text" name="host" class="input-text" placeholder="MySQL服务器地址"><input type="text" name="user" class="input-text" placeholder="MySQL用户名"><input type="text" name="password" class="input-text" placeholder="MySQL密码"><input type="button" value="查看" class="btn btn-primary radius"><?php }?></td></tr>
     <tr><td>curl扩展：</td><td><?php echo extension_loaded('curl') ? '<span class="green">支持</span>' : '<span class="red">不支持</span>';?></td></tr>
     <tr><td>gd2扩展：</td><td><?php echo extension_loaded('gd') ? '<span class="green">支持</span>' : '<span class="red">不支持</span>';?></td></tr>
     <tr><td>mbstring扩展：</td><td><?php echo extension_loaded('mbstring') ? '<span class="green">支持</span>' : '<span class="red">不支持</span>';?></td></tr>
     <tr><td>openssl扩展：</td><td><?php echo extension_loaded('openssl') ? '<span class="green">支持</span>' : '<span class="red">不支持</span>';?></td></tr>
-    <tr><td>pdo扩展：</td><td><?php echo extension_loaded('pdo') ? '<span class="green">支持</span>' : '<span class="red">不支持</span>';?></td></tr>
     <tr><td>pdo_mysql扩展：</td><td><?php echo extension_loaded('pdo_mysql') ? '<span class="green">支持</span>' : '<span class="red">不支持</span>';?></td></tr>
   </table>
 </form>
