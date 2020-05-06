@@ -38,13 +38,23 @@ https://www.yvjie.cn/product/demo.html
 
 ## 三、系统源码获取及安装
 
-您可从GitHub中下载到本系统最新版源码：https://github.com/HeroTianTYJ/yjOrderTp。
+我们提供了三个官方途径获取本系统的最新版源码。
 
-本系统运行环境为：PHP7.1+、MySQL、curl、gd2、mbstring、openssl、pdo，下载后，将源码放置到支持运行本系统的环境下，在浏览器中输入“ http://您的域名/admin.php/install ”即可进行安装。
+1、GitHub：https://github.com/HeroTianTYJ/yjOrderTp （进入GitHub页面，点击右侧的“Clone or download”的绿色按钮，然后点击“Download ZIP”即可进行下载，国内用户下载速度可能会稍慢）；
+
+2、码云：https://gitee.com/tyj568/yjOrderTp （进入码云页面，点击右侧的“克隆/下载”的橙色按钮，然后点击“下载ZIP”，输入验证码后即可进行下载，国内用户下载速度正常）；
+
+3、百度网盘：https://pan.baidu.com/s/1ueBeIikr3eHFG2Jn8NCTeg ，提取码：mmdm（下载方法不用赘述，百度网盘相信大家都会使用）。
+
+另外站长之家、A5下载等源码平台也收录了本系统的源码，但可能会收录不及时，因此我们不能保证源码平台中的源码为最新版。
+
+本系统运行环境为：PHP7.1+、MySQL5.5+，PHP需开启curl、gd2、mbstring、openssl、pdo等扩展（如果不清楚如何开启PHP扩展，请自行查阅相关文档），另外本系统的所有目录及文件权限需设置为777。
 
 为了统计系统使用量，安装时需要根据页面提示关注我们的微信公众号，回复相应的消息来获取您的openid，在安装表单中输入后即可完成安装，系统使用期间请不要取关公众号，否则将无法登录后台。
 
 这是我们做的唯一限制，仅仅是为了统计系统使用量，为了这一限制的有效性，我们对系统源码中的两个文件做了加密处理，其它源码完全开源，基本上不会影响您进行二次开发。希望这一限制不会给您带来不便，并希望得到您的理解。
+
+系统安装和使用的其它常见问题请见：https://mp.weixin.qq.com/s/ecNJ4ozJy_fX5lmYfZGA3g 。
 
 ## 四、增值业务
 
