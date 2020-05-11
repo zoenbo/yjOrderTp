@@ -35,9 +35,7 @@
 	uploader.on('uploadSuccess',function(){
 		$('.loginbg').html('上传成功');
 	});
-	uploader.on('error',function(code,maxSize,file){
-		uploadValidate(code,maxSize,file);
-	});
+	uploader.on('error',uploadValidate);
 	
 	let uploader2 = WebUploader.create({
 		auto : true,
@@ -60,7 +58,5 @@
 	uploader2.on('uploadSuccess',function(file,response){
 		$('.qqwry').html('更新成功，当前IP数据库更新日期为：' + response._raw);
 	});
-	uploader2.on('error',function(code,maxSize,file){
-		uploadValidate(code,maxSize,file);
-	});
+	uploader2.on('error',uploadValidate);
 });
