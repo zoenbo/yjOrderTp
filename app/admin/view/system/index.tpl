@@ -1,9 +1,9 @@
 {extend name="../../common/view/base/form" /}
 
 {block name="title"}系统设置{/block}
-{block name="head"}<script type="text/javascript" src="public/base/webuploader/html5.js?{:staticCache()}"></script>
+{block name="head"}<script type="text/javascript" src="public/base/webuploader/webuploader.html5.min.js?{:staticCache()}"></script>
 <script type="text/javascript" src="public/admin/js/{:request()->controller()}.js?{:staticCache()}"></script>
-<link rel="stylesheet" type="text/css" href="public/base/webuploader/style.css?{:staticCache()}">
+<link rel="stylesheet" type="text/css" href="public/base/webuploader/webuploader.min.css?{:staticCache()}">
 <link rel="stylesheet" type="text/css" href="public/admin/styles/{:request()->controller()}.css?{:staticCache()}">
 <script type="text/javascript">
 let ThinkPHP = {
