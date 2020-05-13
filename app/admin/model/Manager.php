@@ -149,13 +149,15 @@ class Manager extends Model{
 			$scene[] = 'pass';
 			$scene[] = 'repass';
 		}
-		if (Request::post('level') == 1){
-			$data['permit_group_id'] = 0;
-			$data['order_permit'] = 0;
-		}else{
-			if (!Request::post('permit_group_id')) return '请先在权限组模块中添加一个权限组！';
-			$data['permit_group_id'] = Request::post('permit_group_id');
-			$data['order_permit'] = Request::post('order_permit');
+		if (Request::get('id') != 1){
+			if (Request::post('level') == 1){
+				$data['permit_group_id'] = 0;
+				$data['order_permit'] = 0;
+			}else{
+				if (!Request::post('permit_group_id')) return '请先在权限组模块中添加一个权限组！';
+				$data['permit_group_id'] = Request::post('permit_group_id');
+				$data['order_permit'] = Request::post('order_permit');
+			}
 		}
 		$validate = new valid();
 		if ($validate->only($scene)->check($data)){
