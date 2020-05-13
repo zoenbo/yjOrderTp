@@ -171,6 +171,13 @@ let ThinkPHP = {
   </div>
 </section>
 
+<div class="contextMenu" id="Huiadminmenu">
+  <ul>
+    <li id="closethis">关闭当前</li>
+    <li id="closeall">关闭全部</li>
+  </ul>
+</div>
+
 <script type="text/javascript" src="public/base/jquery.js?{:staticCache()}"></script>
 <script type="text/javascript" src="public/base/H-ui/H-ui.min.js?{:staticCache()}"></script>
 <script type="text/javascript" src="public/base/H-ui.admin/H-ui.admin.js?{:staticCache()}"></script>
