@@ -5,7 +5,7 @@
 <title>{:config('system.web_name')}</title>
 <base href="{:config('app.web_url')}">
 <link rel="stylesheet" type="text/css" href="public/base/styles/Basic.css?{:staticCache()}">
-<link rel="stylesheet" type="text/css" href="public/admin/styles/Main.css?{:staticCache()}">
+<link rel="stylesheet" type="text/css" href="public/admin/styles/{:request()->controller()}.css?{:staticCache()}">
 </head>
 
 <body>
