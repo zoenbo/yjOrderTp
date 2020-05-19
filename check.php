@@ -23,7 +23,7 @@ if ($_POST){
 <base href="<?php echo $webUrl;?>">
 <script type="text/javascript" src="public/base/jquery.js"></script>
 <script type="text/javascript" src="public/base/H-ui/H-ui.min.js"></script>
-<script type="text/javascript" src="public/admin/js/Common.js"></script>
+<script type="text/javascript" src="public/base/Common.js"></script>
 <link rel="stylesheet" type="text/css" href="public/base/H-ui/H-ui.min.css">
 <link rel="stylesheet" type="text/css" href="public/base/styles/Basic.css">
 <script type="text/javascript">
@@ -63,6 +63,7 @@ $(function(){
     <tr><td>curl扩展：</td><td><?php echo extension_loaded('curl') ? '<span class="green">支持</span>' : '<span class="red">不支持</span>';?></td></tr>
     <tr><td>gd2扩展：</td><td><?php echo extension_loaded('gd') ? '<span class="green">支持</span>' : '<span class="red">不支持</span>';?></td></tr>
     <tr><td>mbstring扩展：</td><td><?php echo extension_loaded('mbstring') ? '<span class="green">支持</span>' : '<span class="red">不支持</span>';?></td></tr>
+    <tr><td>mysqli扩展：</td><td><?php echo extension_loaded('mysqli') ? '<span class="green">支持</span>' : '<span class="red">不支持</span>';?></td></tr>
     <tr><td>openssl扩展：</td><td><?php echo extension_loaded('openssl') ? '<span class="green">支持</span>' : '<span class="red">不支持</span>';?></td></tr>
     <tr><td>pdo_mysql扩展：</td><td><?php echo extension_loaded('pdo_mysql') ? '<span class="green">支持</span>' : '<span class="red">不支持</span>';?></td></tr>
   </table>
