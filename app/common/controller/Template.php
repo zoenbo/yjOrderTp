@@ -613,6 +613,7 @@ class Template{
 				$dd .= "\r\n    ".'<dd>乡镇/街道：<input type="text" name="town2" class="text" style="width:435px;" placeholder="若不清楚，可留空"></dd>';
 				$dd .= "\r\n    ".'</div>';
 			}elseif (in_array(4,$fieldTemp)){
+				$dd .= "\r\n    ".'<dd>所在地区：<input type="radio" name="type" value="a" checked style="display:none;"></dd>';
 				$dd .= "\r\n    ".'<div id="aa">';
 				$dd .= "\r\n    ".'<input type="hidden" name="province">';
 				$dd .= "\r\n    ".'<input type="hidden" name="city">';
@@ -624,6 +625,7 @@ class Template{
 				$dd .= "\r\n    ".'<dd>　　　　　<select class="select town"><option value="0">乡镇/街道（若不清楚，可不选）</option></select></dd>';
 				$dd .= "\r\n    ".'</div>';
 			}elseif (in_array(5,$fieldTemp)){
+				$dd .= "\r\n    ".'<dd>所在地区：<input type="radio" name="type" value="b" checked style="display:none;"></dd>';
 				$dd .= "\r\n    ".'<div id="bb">';
 				$dd .= "\r\n    ".'<dd>省　　份：<input type="text" name="province2" class="text"></dd>';
 				$dd .= "\r\n    ".'<dd>城　　市：<input type="text" name="city2" class="text"></dd>';
@@ -668,6 +670,7 @@ class Template{
 				$dd .= "\r\n    ".'<dd><span class="left">乡镇/街道：</span><span class="right"><input type="text" name="town2" class="text" placeholder="若不清楚，可留空"></span></dd>';
 				$dd .= "\r\n    ".'</div>';
 			}elseif (in_array(4,$fieldTemp)){
+				$dd .= "\r\n    ".'<dd><span class="left">所在地区：</span><span class="right"><input type="radio" name="type" value="a" checked style="display:none;"></span></dd>';
 				$dd .= "\r\n    ".'<div id="aa">';
 				$dd .= "\r\n    ".'<input type="hidden" name="province">';
 				$dd .= "\r\n    ".'<input type="hidden" name="city">';
@@ -679,6 +682,7 @@ class Template{
 				$dd .= "\r\n    ".'<dd><span class="left"></span><span class="right"><select class="select town"><option value="0">乡镇/街道（若不清楚，可不选）</option></select></span></dd>';
 				$dd .= "\r\n    ".'</div>';
 			}elseif (in_array(5,$fieldTemp)){
+				$dd .= "\r\n    ".'<dd><span class="left">所在地区：</span><span class="right"><input type="radio" name="type" value="b" checked style="display:none;"></span></dd>';
 				$dd .= "\r\n    ".'<div id="bb">';
 				$dd .= "\r\n    ".'<dd><span class="left">省　　份：</span><span class="right"><input type="text" name="province2" class="text"></span></dd>';
 				$dd .= "\r\n    ".'<dd><span class="left">城　　市：</span><span class="right"><input type="text" name="city2" class="text"></span></dd>';
