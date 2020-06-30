@@ -1,11 +1,12 @@
 <?php
 namespace app\admin\model;
 
-use Exception;
-use think\Model;
-use think\facade\Request;
-use think\facade\Config;
 use app\admin\validate\Template as valid;
+use Exception;
+use think\facade\Config;
+use think\facade\Db;
+use think\facade\Request;
+use think\Model;
 
 class Template extends Model{
 	//查询总记录
@@ -128,7 +129,7 @@ class Template extends Model{
 	public function remove(){
 		try {
 			$affected_rows = $this->where(['id'=>Request::get('id')])->delete();
-			if ($affected_rows) $this->execute('OPTIMIZE TABLE `'.$this->getTable().'`');
+			if ($affected_rows) Db::execute('OPTIMIZE TABLE `'.$this->getTable().'`');
 			return $affected_rows;
 		} catch (Exception $e){
 			echo $e->getMessage();

@@ -2,9 +2,9 @@
 namespace app\admin\model;
 
 use Exception;
-use think\Model;
-use think\facade\Request;
 use think\facade\Config;
+use think\facade\Request;
+use think\Model;
 
 class Field extends Model{
 	//查询总记录

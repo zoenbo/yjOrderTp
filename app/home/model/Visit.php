@@ -2,6 +2,7 @@
 namespace app\home\model;
 
 use Exception;
+use think\facade\Db;
 use think\Model;
 use think\facade\Request;
 use think\facade\Config;
@@ -67,7 +68,7 @@ class Visit extends Model{
 	//清空表
 	public function truncate(){
 		try {
-			return $this->execute('TRUNCATE `'.$this->getTable().'`');
+			return Db::execute('TRUNCATE `'.$this->getTable().'`');
 		} catch (Exception $e){
 			echo $e->getMessage();
 			return [];

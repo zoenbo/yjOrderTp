@@ -1,11 +1,12 @@
 <?php
 namespace app\admin\model;
 
-use Exception;
-use think\Model;
-use think\facade\Request;
-use think\facade\Config;
 use app\admin\validate\OrderState as valid;
+use Exception;
+use think\facade\Config;
+use think\facade\Db;
+use think\facade\Request;
+use think\Model;
 
 class OrderState extends Model{
 	//查询总记录
@@ -98,7 +99,7 @@ class OrderState extends Model{
 	public function remove(){
 		try {
 			$affected_rows = $this->where(['id'=>Request::get('id')])->delete();
-			if ($affected_rows) $this->execute('OPTIMIZE TABLE `'.$this->getTable().'`');
+			if ($affected_rows) Db::execute('OPTIMIZE TABLE `'.$this->getTable().'`');
 			return $affected_rows;
 		} catch (Exception $e){
 			echo $e->getMessage();
@@ -120,7 +121,7 @@ class OrderState extends Model{
 	//自增ID
 	private function nextId(){
 		try {
-			$object = $this->query('SHOW TABLE STATUS FROM `'.Config::get('database.connections.mysql.database').'` LIKE \''.$this->getTable().'\'');
+			$object = Db::query('SHOW TABLE STATUS FROM `'.Config::get('database.connections.mysql.database').'` LIKE \''.$this->getTable().'\'');
 			return $object[0]['Auto_increment'];
 		} catch (Exception $e){
 			echo $e->getMessage();

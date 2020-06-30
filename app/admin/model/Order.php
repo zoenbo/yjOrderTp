@@ -1,12 +1,13 @@
 <?php
 namespace app\admin\model;
 
-use Exception;
-use think\Model;
-use think\facade\Request;
-use think\facade\Config;
-use think\facade\Session;
 use app\admin\validate\Order as valid;
+use Exception;
+use think\facade\Config;
+use think\facade\Db;
+use think\facade\Request;
+use think\facade\Session;
+use think\Model;
 
 class Order extends Model{
 	//查询总记录
@@ -330,7 +331,7 @@ class Order extends Model{
 	public function remove(){
 		try {
 			$affected_rows = Request::get('id') ? $this->where(['id'=>Request::get('id')])->where($this->managerId())->delete() : $this->where('id','IN',Request::post('ids'))->where($this->managerId())->delete();
-			if ($affected_rows) $this->execute('OPTIMIZE TABLE `'.$this->getTable().'`');
+			if ($affected_rows) Db::execute('OPTIMIZE TABLE `'.$this->getTable().'`');
 			return $affected_rows;
 		} catch (Exception $e){
 			echo $e->getMessage();

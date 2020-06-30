@@ -200,15 +200,23 @@ function getUserIp(){
 
 //生成数据表缓存
 function databaseSchema(){
-	if (trim(Console::call('optimize:schema',['--db',Config::get('database.connections.mysql.database')])->fetch())!='<info>Succeed!</info>') return false;
-	$handler = opendir(Config::get('database.connections.mysql.schema_cache_path'));
-	while (!!$name = readdir($handler)){
-		if (!in_array($name,['.','..']) && strstr($name,Config::get('database.connections.mysql.database').'.'.Config::get('database.connections.mysql.prefix'))===false){
-			if (!unlink(Config::get('database.connections.mysql.schema_cache_path').$name)) return false;
-		}
-	}
-	closedir($handler);
-	return true;
+    if (trim(Console::call('optimize:schema', ['--connection','mysql'])->fetch()) != '<info>Succeed!</info>') {
+        return false;
+    }
+    $mysql = Config::get('database.connections.mysql');
+    if (!is_dir($mysql['schema_cache_path'])) {
+        return true;
+    }
+    $handler = opendir($mysql['schema_cache_path']);
+    while (!!$name = readdir($handler)) {
+        if (!in_array($name, ['.', '..']) && strstr($name, $mysql['database'] . '.' . $mysql['prefix']) === false) {
+            if (!unlink($mysql['schema_cache_path'] . $name)) {
+                return false;
+            }
+        }
+    }
+    closedir($handler);
+    return true;
 }
 
 //静态资源缓存后缀生成

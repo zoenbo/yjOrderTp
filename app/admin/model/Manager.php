@@ -3,6 +3,7 @@ namespace app\admin\model;
 
 use app\admin\validate\Manager as valid;
 use Exception;
+use think\facade\Db;
 use think\facade\Config;
 use think\facade\Request;
 use think\facade\Session;
@@ -222,7 +223,7 @@ class Manager extends Model{
 	public function remove(){
 		try {
 			$affected_rows = $this->where(['id'=>Request::get('id')])->delete();
-			if ($affected_rows) $this->execute('OPTIMIZE TABLE `'.$this->getTable().'`');
+			if ($affected_rows) Db::execute('OPTIMIZE TABLE `'.$this->getTable().'`');
 			return $affected_rows;
 		} catch (Exception $e){
 			echo $e->getMessage();

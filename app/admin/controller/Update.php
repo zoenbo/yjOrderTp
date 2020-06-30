@@ -7,7 +7,8 @@ use think\facade\Request;
 use think\facade\Route;
 use think\facade\View;
 
-class Update extends Base{
+class Update extends Base
+{
 	protected function initialize(){
 		if (file_exists(ROOT_PATH.'/data/install.lock')) $this->error('安装锁定，已经安装过了，如果您确定要进行升级，请到服务器上删除：./data/install.lock。',0,2);
 	}

@@ -2,15 +2,16 @@
 namespace app\admin\model;
 
 use Exception;
-use think\Model;
-use think\facade\Request;
 use think\facade\Config;
+use think\facade\Db;
+use think\facade\Request;
+use think\Model;
 
 class Permit extends Model{
 	//查询总记录（主权限）
 	public function total(){
 		try {
-			$total = $this->query('SELECT COUNT(*) count FROM `'.$this->getTable().'` WHERE `parent_id`=0 AND (`name` LIKE \'%'.Request::get('keyword').'%\' OR `controller` LIKE \'%'.Request::get('keyword').'%\' OR `action` LIKE \'%'.Request::get('keyword').'%\' OR `id` IN (SELECT `parent_id` FROM `'.$this->getTable().'` WHERE `name` LIKE \'%'.Request::get('keyword').'%\' OR `controller` LIKE \'%'.Request::get('keyword').'%\' OR `action` LIKE \'%'.Request::get('keyword').'%\'))');
+			$total = Db::query('SELECT COUNT(*) count FROM `'.$this->getTable().'` WHERE `parent_id`=0 AND (`name` LIKE \'%'.Request::get('keyword').'%\' OR `controller` LIKE \'%'.Request::get('keyword').'%\' OR `action` LIKE \'%'.Request::get('keyword').'%\' OR `id` IN (SELECT `parent_id` FROM `'.$this->getTable().'` WHERE `name` LIKE \'%'.Request::get('keyword').'%\' OR `controller` LIKE \'%'.Request::get('keyword').'%\' OR `action` LIKE \'%'.Request::get('keyword').'%\'))');
 			return $total[0]['count'];
 		} catch (Exception $e){
 			echo $e->getMessage();
@@ -21,7 +22,7 @@ class Permit extends Model{
 	//查询所有（主权限）
 	public function all($firstRow){
 		try {
-			return $this->query('SELECT `id`,`name`,`controller`,`action`,`is_default`,`parent_id`,`sort` FROM `'.$this->getTable().'` WHERE `parent_id`=0 AND (`name` LIKE \'%'.Request::get('keyword').'%\' OR `controller` LIKE \'%'.Request::get('keyword').'%\' OR `action` LIKE \'%'.Request::get('keyword').'%\' OR `id` IN (SELECT `parent_id` FROM `'.$this->getTable().'` WHERE `name` LIKE \'%'.Request::get('keyword').'%\' OR `controller` LIKE \'%'.Request::get('keyword').'%\' OR `action` LIKE \'%'.Request::get('keyword').'%\')) ORDER BY `sort` ASC LIMIT '.$firstRow.','.Config::get('app.page_size'));
+			return Db::query('SELECT `id`,`name`,`controller`,`action`,`is_default`,`parent_id`,`sort` FROM `'.$this->getTable().'` WHERE `parent_id`=0 AND (`name` LIKE \'%'.Request::get('keyword').'%\' OR `controller` LIKE \'%'.Request::get('keyword').'%\' OR `action` LIKE \'%'.Request::get('keyword').'%\' OR `id` IN (SELECT `parent_id` FROM `'.$this->getTable().'` WHERE `name` LIKE \'%'.Request::get('keyword').'%\' OR `controller` LIKE \'%'.Request::get('keyword').'%\' OR `action` LIKE \'%'.Request::get('keyword').'%\')) ORDER BY `sort` ASC LIMIT '.$firstRow.','.Config::get('app.page_size'));
 		} catch (Exception $e){
 			echo $e->getMessage();
 			return [];
