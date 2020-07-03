@@ -196,7 +196,7 @@ INSERT INTO `yjorder_permit`(`id`,`name`,`controller`,`action`,`is_default`,`par
 INSERT INTO `yjorder_permit`(`id`,`name`,`controller`,`action`,`is_default`,`parent_id`,`sort`) VALUES('93','运行状态','','state','0','89','93');
 INSERT INTO `yjorder_permit`(`id`,`name`,`controller`,`action`,`is_default`,`parent_id`,`sort`) VALUES('94','数据表状态','Db','index','0','0','94');
 INSERT INTO `yjorder_permit`(`id`,`name`,`controller`,`action`,`is_default`,`parent_id`,`sort`) VALUES('95','优化表','','optimize','0','94','95');
-INSERT INTO `yjorder_permit`(`id`,`name`,`controller`,`action`,`is_default`,`parent_id`,`sort`) VALUES('96','修复Autoindex','','repairautoindex','0','94','96');
+INSERT INTO `yjorder_permit`(`id`,`name`,`controller`,`action`,`is_default`,`parent_id`,`sort`) VALUES('96','修复AutoIncrement','','repairautoincrement','0','94','96');
 INSERT INTO `yjorder_permit`(`id`,`name`,`controller`,`action`,`is_default`,`parent_id`,`sort`) VALUES('97','更新表缓存','','schema','0','94','97');
 INSERT INTO `yjorder_permit`(`id`,`name`,`controller`,`action`,`is_default`,`parent_id`,`sort`) VALUES('98','数据库备份','Dbbak','index','0','0','98');
 

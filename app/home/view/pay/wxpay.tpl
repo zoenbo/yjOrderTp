@@ -16,9 +16,7 @@ $(function(){
 			'getBrandWCPayRequest',
 			{$jsApiParameters},
 			function(res){
-				//WeixinJSBridge.log(res.err_msg);
-				//alert(res.err_code+res.err_desc+res.err_msg);
-				if (res.err_msg=='get_brand_wcpay_request:ok') window.location.href = TIP;
+				if (res.err_msg === 'get_brand_wcpay_request:ok') window.location.href = TIP;
 			}
 		);
 	}
@@ -38,10 +36,10 @@ $(function(){
 			type : 'POST',
 			url : '{:url("/".parse_name(request()->controller())."/wxpayAjax")}',
 			data : {
-				order_id : '{:input("oid")}'
+				oid : '{:input("oid")}'
 			},
-			success : function(data,textStatus,jqXHR){
-				if (data == 7) window.location.href = TIP;
+			success : function(data){
+				if (data === '7') window.location.href = TIP;
 			}
 		});
 	},1000);
@@ -53,7 +51,7 @@ $(function(){
 <body>
 {if condition="$Url"}
 <div class="pay">
-  <p><img src="{:config('system.index_php')}pay/wxpayimg?data={$Url}" alt="微信扫码支付"></p>
+  <p><img src="{:config('system.index_php')}pay/wxpayImg?data={$Url}" alt="微信扫码支付"></p>
   <p>请使用微信扫一扫进行扫码支付</p>
 </div>
 {/if}

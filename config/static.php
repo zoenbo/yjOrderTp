@@ -1,1 +1,3 @@
-<?php return ['cache'=>1588210605];
+<?php
+
+return ['cache' => 1588210605];

@@ -29,16 +29,16 @@ let ThinkPHP = {
       <a class="logo navbar-logo f-l mr-10 hidden-xs" href="{:url('/'.parse_name(request()->controller()).'/index')}">{:config('system.copyright_top')}</a> <span class="logo navbar-slogan f-l mr-10 hidden-xs">V{$Version[0]}</span>
       <nav id="Hui-userbar" class="nav navbar-nav navbar-userbar hidden-xs">
         <ul class="cl">
-          <li>{:session(config('system.session_key').'.name')}（{:session(config('system.session_key').'.permit_group')}） [<a href="javascript:;" onclick="window.parent.addTab('{:url('/profile/index')}','个人资料')">个人资料</a>] [<a href="javascript:;" onclick="window.parent.addTab('{:url('/profile/login')}','登录记录')">登录记录</a>] [<a href="{:url('/login/logout')}">退出</a>] [<a href="https://item.taobao.com/item.htm?id=531038056831" target="_blank">赞助作者</a>]</li>
+          <li>{:session(config('system.session_key').'.name')}（{:session(config('system.session_key').'.permit_group')}） [<a href="javascript:" onclick="window.parent.addTab('{:url('/profile/index')}','个人资料')">个人资料</a>] [<a href="javascript:" onclick="window.parent.addTab('{:url('/profile/login')}','登录记录')">登录记录</a>] [<a href="{:url('/login/logout')}">退出</a>] [<a href="https://item.taobao.com/item.htm?id=531038056831" target="_blank">赞助作者</a>]</li>
           <li id="Hui-skin" class="dropDown right dropDown_hover">
-           <a href="javascript:;" class="dropDown_A" title="换肤"><i class="Hui-iconfont" style="font-size:18px">&#xe62a;</i></a>
+           <a href="javascript:" class="dropDown_A" title="换肤"><i class="Hui-iconfont" style="font-size:18px">&#xe62a;</i></a>
             <ul class="dropDown-menu menu radius box-shadow">
-              <li><a href="javascript:;" data-val="default" title="黑色">黑色</a></li>
-              <li><a href="javascript:;" data-val="blue" title="蓝色">蓝色</a></li>
-              <li><a href="javascript:;" data-val="green" title="绿色">绿色</a></li>
-              <li><a href="javascript:;" data-val="red" title="红色">红色</a></li>
-              <li><a href="javascript:;" data-val="yellow" title="黄色">黄色</a></li>
-              <li><a href="javascript:;" data-val="orange" title="绿色">橙色</a></li>
+              <li><a href="javascript:" data-val="default" title="黑色">黑色</a></li>
+              <li><a href="javascript:" data-val="blue" title="蓝色">蓝色</a></li>
+              <li><a href="javascript:" data-val="green" title="绿色">绿色</a></li>
+              <li><a href="javascript:" data-val="red" title="红色">红色</a></li>
+              <li><a href="javascript:" data-val="yellow" title="黄色">黄色</a></li>
+              <li><a href="javascript:" data-val="orange" title="绿色">橙色</a></li>
             </ul>
           </li>
         </ul>
@@ -54,11 +54,11 @@ let ThinkPHP = {
       <dt>订单<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
       <dd>
         <ul>
-          {if condition="session(config('system.session_key').'.level')==1||in_array(config('permit_manage.Order.index'),session(config('system.session_key').'.permit_manage'))"}<li><a href="javascript:;" data-href="{:url('/order/index')}" data-title="订单管理">订单管理</a></li>{/if}
-          {if condition="session(config('system.session_key').'.level')==1||in_array(config('permit_manage.OrderRecycle.index'),session(config('system.session_key').'.permit_manage'))"}<li><a href="javascript:;" data-href="{:url('/order_recycle/index')}" data-title="订单回收站">订单回收站</a></li>{/if}
-          {if condition="session(config('system.session_key').'.level')==1||in_array(config('permit_manage.OrderStatistic.index'),session(config('system.session_key').'.permit_manage'))"}<li><a href="javascript:;" data-href="{:url('/order_statistic/index')}" data-title="订单统计">订单统计</a></li>{/if}
-          {if condition="session(config('system.session_key').'.level')==1||in_array(config('permit_manage.OrderState.index'),session(config('system.session_key').'.permit_manage'))"}<li><a href="javascript:;" data-href="{:url('/order_state/index')}" data-title="订单状态">订单状态</a></li>{/if}
-          {if condition="session(config('system.session_key').'.level')==1||in_array(config('permit_manage.Logistics.index'),session(config('system.session_key').'.permit_manage'))"}<li><a href="javascript:;" data-href="{:url('/logistics/index')}" data-title="物流管理">物流管理</a></li>{/if}
+          {if condition="session(config('system.session_key').'.level')==1||in_array(config('permit_manage.Order.index'),session(config('system.session_key').'.permit_manage'))"}<li><a href="javascript:" data-href="{:url('/order/index')}" data-title="订单管理">订单管理</a></li>{/if}
+          {if condition="session(config('system.session_key').'.level')==1||in_array(config('permit_manage.OrderRecycle.index'),session(config('system.session_key').'.permit_manage'))"}<li><a href="javascript:" data-href="{:url('/order_recycle/index')}" data-title="订单回收站">订单回收站</a></li>{/if}
+          {if condition="session(config('system.session_key').'.level')==1||in_array(config('permit_manage.OrderStatistic.index'),session(config('system.session_key').'.permit_manage'))"}<li><a href="javascript:" data-href="{:url('/order_statistic/index')}" data-title="订单统计">订单统计</a></li>{/if}
+          {if condition="session(config('system.session_key').'.level')==1||in_array(config('permit_manage.OrderState.index'),session(config('system.session_key').'.permit_manage'))"}<li><a href="javascript:" data-href="{:url('/order_state/index')}" data-title="订单状态">订单状态</a></li>{/if}
+          {if condition="session(config('system.session_key').'.level')==1||in_array(config('permit_manage.Logistics.index'),session(config('system.session_key').'.permit_manage'))"}<li><a href="javascript:" data-href="{:url('/logistics/index')}" data-title="物流管理">物流管理</a></li>{/if}
         </ul>
       </dd>
     </dl>
@@ -68,8 +68,8 @@ let ThinkPHP = {
       <dt>产品<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
       <dd>
         <ul>
-          {if condition="session(config('system.session_key').'.level')==1||in_array(config('permit_manage.Product.index'),session(config('system.session_key').'.permit_manage'))"}<li><a href="javascript:;" data-href="{:url('/product/index')}" data-title="产品管理">产品管理</a></li>{/if}
-          {if condition="session(config('system.session_key').'.level')==1||in_array(config('permit_manage.ProductSort.index'),session(config('system.session_key').'.permit_manage'))"}<li><a href="javascript:;" data-href="{:url('/product_sort/index')}" data-title="产品分类">产品分类</a></li>{/if}
+          {if condition="session(config('system.session_key').'.level')==1||in_array(config('permit_manage.Product.index'),session(config('system.session_key').'.permit_manage'))"}<li><a href="javascript:" data-href="{:url('/product/index')}" data-title="产品管理">产品管理</a></li>{/if}
+          {if condition="session(config('system.session_key').'.level')==1||in_array(config('permit_manage.ProductSort.index'),session(config('system.session_key').'.permit_manage'))"}<li><a href="javascript:" data-href="{:url('/product_sort/index')}" data-title="产品分类">产品分类</a></li>{/if}
         </ul>
       </dd>
     </dl>
@@ -79,9 +79,9 @@ let ThinkPHP = {
       <dt>下单模板<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
       <dd>
         <ul>
-          {if condition="session(config('system.session_key').'.level')==1||in_array(config('permit_manage.Template.index'),session(config('system.session_key').'.permit_manage'))"}<li><a href="javascript:;" data-href="{:url('/template/index')}" data-title="模板管理">模板管理</a></li>{/if}
-          {if condition="session(config('system.session_key').'.level')==1||in_array(config('permit_manage.TemplateStyle.index'),session(config('system.session_key').'.permit_manage'))"}<li><a href="javascript:;" data-href="{:url('/template_style/index')}" data-title="模板样式">模板样式</a></li>{/if}
-          {if condition="session(config('system.session_key').'.level')==1||in_array(config('permit_manage.Field.index'),session(config('system.session_key').'.permit_manage'))"}<li><a href="javascript:;" data-href="{:url('/field/index')}" data-title="下单字段">下单字段</a></li>{/if}
+          {if condition="session(config('system.session_key').'.level')==1||in_array(config('permit_manage.Template.index'),session(config('system.session_key').'.permit_manage'))"}<li><a href="javascript:" data-href="{:url('/template/index')}" data-title="模板管理">模板管理</a></li>{/if}
+          {if condition="session(config('system.session_key').'.level')==1||in_array(config('permit_manage.TemplateStyle.index'),session(config('system.session_key').'.permit_manage'))"}<li><a href="javascript:" data-href="{:url('/template_style/index')}" data-title="模板样式">模板样式</a></li>{/if}
+          {if condition="session(config('system.session_key').'.level')==1||in_array(config('permit_manage.Field.index'),session(config('system.session_key').'.permit_manage'))"}<li><a href="javascript:" data-href="{:url('/field/index')}" data-title="下单字段">下单字段</a></li>{/if}
         </ul>
       </dd>
     </dl>
@@ -99,9 +99,9 @@ let ThinkPHP = {
       <dt>数据<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
       <dd>
         <ul>
-          {if condition="session(config('system.session_key').'.level')==1||in_array(config('permit_manage.Visit.index'),session(config('system.session_key').'.permit_manage'))"}<li><a href="javascript:;" data-href="{:url('/visit/index')}" data-title="访问统计">访问统计</a></li>{/if}
-          {if condition="session(config('system.session_key').'.level')==1||in_array(config('permit_manage.Output.index'),session(config('system.session_key').'.permit_manage'))"}<li><a href="javascript:;" data-href="{:url('/output/index')}" data-title="导出的数据">导出的数据</a></li>{/if}
-          {if condition="session(config('system.session_key').'.level')==1||in_array(config('permit_manage.District.index'),session(config('system.session_key').'.permit_manage'))"}<li><a href="javascript:;" data-href="{:url('/district/index')}" data-title="行政区划">行政区划</a></li>{/if}
+          {if condition="session(config('system.session_key').'.level')==1||in_array(config('permit_manage.Visit.index'),session(config('system.session_key').'.permit_manage'))"}<li><a href="javascript:" data-href="{:url('/visit/index')}" data-title="访问统计">访问统计</a></li>{/if}
+          {if condition="session(config('system.session_key').'.level')==1||in_array(config('permit_manage.Output.index'),session(config('system.session_key').'.permit_manage'))"}<li><a href="javascript:" data-href="{:url('/output/index')}" data-title="导出的数据">导出的数据</a></li>{/if}
+          {if condition="session(config('system.session_key').'.level')==1||in_array(config('permit_manage.District.index'),session(config('system.session_key').'.permit_manage'))"}<li><a href="javascript:" data-href="{:url('/district/index')}" data-title="行政区划">行政区划</a></li>{/if}
         </ul>
       </dd>
     </dl>
@@ -111,10 +111,10 @@ let ThinkPHP = {
       <dt>管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
       <dd>
         <ul>
-          {if condition="session(config('system.session_key').'.level')==1||in_array(config('permit_manage.Manager.index'),session(config('system.session_key').'.permit_manage'))"}<li><a href="javascript:;" data-href="{:url('/manager/index')}" data-title="管理员">管理员</a></li>{/if}
-          {if condition="session(config('system.session_key').'.level')==1||in_array(config('permit_manage.LoginRecord.index'),session(config('system.session_key').'.permit_manage'))"}<li><a href="javascript:;" data-href="{:url('/login_record/index')}" data-title="登录记录">登录记录</a></li>{/if}
-          {if condition="session(config('system.session_key').'.level')==1||in_array(config('permit_manage.PermitGroup.index'),session(config('system.session_key').'.permit_manage'))"}<li><a href="javascript:;" data-href="{:url('/permit_group/index')}" data-title="权限组">权限组</a></li>{/if}
-          {if condition="session(config('system.session_key').'.level')==1||in_array(config('permit_manage.Permit.index'),session(config('system.session_key').'.permit_manage'))"}<li><a href="javascript:;" data-href="{:url('/permit/index')}" data-title="权限管理">权限管理</a></li>{/if}
+          {if condition="session(config('system.session_key').'.level')==1||in_array(config('permit_manage.Manager.index'),session(config('system.session_key').'.permit_manage'))"}<li><a href="javascript:" data-href="{:url('/manager/index')}" data-title="管理员">管理员</a></li>{/if}
+          {if condition="session(config('system.session_key').'.level')==1||in_array(config('permit_manage.LoginRecord.index'),session(config('system.session_key').'.permit_manage'))"}<li><a href="javascript:" data-href="{:url('/login_record/index')}" data-title="登录记录">登录记录</a></li>{/if}
+          {if condition="session(config('system.session_key').'.level')==1||in_array(config('permit_manage.PermitGroup.index'),session(config('system.session_key').'.permit_manage'))"}<li><a href="javascript:" data-href="{:url('/permit_group/index')}" data-title="权限组">权限组</a></li>{/if}
+          {if condition="session(config('system.session_key').'.level')==1||in_array(config('permit_manage.Permit.index'),session(config('system.session_key').'.permit_manage'))"}<li><a href="javascript:" data-href="{:url('/permit/index')}" data-title="权限管理">权限管理</a></li>{/if}
         </ul>
       </dd>
     </dl>
@@ -124,10 +124,10 @@ let ThinkPHP = {
       <dt>系统<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
       <dd>
         <ul>
-          {if condition="session(config('system.session_key').'.level')==1||in_array(config('permit_manage.System.index'),session(config('system.session_key').'.permit_manage'))"}<li><a href="javascript:;" data-href="{:url('/system/index')}" data-title="系统设置">系统设置</a></li>{/if}
-          {if condition="session(config('system.session_key').'.level')==1||in_array(config('permit_manage.ValidateFile.index'),session(config('system.session_key').'.permit_manage'))"}<li><a href="javascript:;" data-href="{:url('/validate_file/index')}" data-title="生成验证文件">生成验证文件</a></li>{/if}
-          {if condition="session(config('system.session_key').'.level')==1||in_array(config('permit_manage.Smtp.index'),session(config('system.session_key').'.permit_manage'))"}<li><a href="javascript:;" data-href="{:url('/smtp/index')}" data-title="SMTP服务器">SMTP服务器</a></li>{/if}
-          {if condition="session(config('system.session_key').'.level')==1"}<li><a href="javascript:;" data-href="{:url('/update/index')}" data-title="系统升级">系统升级</a></li>{/if}
+          {if condition="session(config('system.session_key').'.level')==1||in_array(config('permit_manage.System.index'),session(config('system.session_key').'.permit_manage'))"}<li><a href="javascript:" data-href="{:url('/system/index')}" data-title="系统设置">系统设置</a></li>{/if}
+          {if condition="session(config('system.session_key').'.level')==1||in_array(config('permit_manage.ValidateFile.index'),session(config('system.session_key').'.permit_manage'))"}<li><a href="javascript:" data-href="{:url('/validate_file/index')}" data-title="生成验证文件">生成验证文件</a></li>{/if}
+          {if condition="session(config('system.session_key').'.level')==1||in_array(config('permit_manage.Smtp.index'),session(config('system.session_key').'.permit_manage'))"}<li><a href="javascript:" data-href="{:url('/smtp/index')}" data-title="SMTP服务器">SMTP服务器</a></li>{/if}
+          {if condition="session(config('system.session_key').'.level')==1"}<li><a href="javascript:" data-href="{:url('/update/index')}" data-title="系统升级">系统升级</a></li>{/if}
         </ul>
       </dd>
     </dl>
@@ -137,8 +137,8 @@ let ThinkPHP = {
       <dt>数据库<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
       <dd>
         <ul>
-          {if condition="session(config('system.session_key').'.level')==1||in_array(config('permit_manage.Db.index'),session(config('system.session_key').'.permit_manage'))"}<li><a href="javascript:;" data-href="{:url('/db/index')}" data-title="数据表状态">数据表状态</a></li>{/if}
-          {if condition="session(config('system.session_key').'.level')==1||in_array(config('permit_manage.Dbbak.index'),session(config('system.session_key').'.permit_manage'))"}<li><a href="javascript:;" data-href="{:url('/dbbak/index')}" data-title="数据库备份">数据库备份</a></li>{/if}
+          {if condition="session(config('system.session_key').'.level')==1||in_array(config('permit_manage.Db.index'),session(config('system.session_key').'.permit_manage'))"}<li><a href="javascript:" data-href="{:url('/db/index')}" data-title="数据表状态">数据表状态</a></li>{/if}
+          {if condition="session(config('system.session_key').'.level')==1||in_array(config('permit_manage.Dbbak.index'),session(config('system.session_key').'.permit_manage'))"}<li><a href="javascript:" data-href="{:url('/dbbak/index')}" data-title="数据库备份">数据库备份</a></li>{/if}
         </ul>
       </dd>
     </dl>
@@ -146,7 +146,7 @@ let ThinkPHP = {
   </div>
 </aside>
 
-<div class="dislpayArrow"><a class="pngfix" href="javascript:;" onClick="displaynavbar(this)"></a></div>
+<div class="displayArrow"><a class="pngfix" href="javascript:" onClick="displaynavbar(this)"></a></div>
 
 <section class="Hui-article-box">
   <div id="Hui-tabNav" class="Hui-tabNav">
@@ -156,7 +156,7 @@ let ThinkPHP = {
       </ul>
     </div>
     
-    <div class="Hui-tabNav-more btn-group"><a id="js-tabNav-prev" class="btn radius btn-default size-S" href="javascript:;"><i class="Hui-iconfont">&#xe6d4;</i></a><a id="js-tabNav-next" class="btn radius btn-default size-S" href="javascript:;"><i class="Hui-iconfont">&#xe6d7;</i></a></div>
+    <div class="Hui-tabNav-more btn-group"><a id="js-tabNav-prev" class="btn radius btn-default size-S" href="javascript:"><i class="Hui-iconfont">&#xe6d4;</i></a><a id="js-tabNav-next" class="btn radius btn-default size-S" href="javascript:"><i class="Hui-iconfont">&#xe6d7;</i></a></div>
   </div>
   
   <div id="iframe_box" class="Hui-article" style="bottom:35px;">

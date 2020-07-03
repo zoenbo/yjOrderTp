@@ -1,5 +1,5 @@
-$(function(){
-	$('input[name=color]').colorpicker({
-		fillcolor : true
-	});
+$(function () {
+  $('input[name=color]').colorpicker({
+    fillcolor: true
+  });
 });

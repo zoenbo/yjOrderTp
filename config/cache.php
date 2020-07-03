@@ -1,1 +1,6 @@
-<?php return ['default'=>'file','stores'=>['file'=>['type'=>'File']]];
+<?php
+
+return [
+    'default' => 'file',
+    'stores' => ['file' => ['type' => 'File']]
+];

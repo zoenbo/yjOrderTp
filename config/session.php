@@ -1,1 +1,3 @@
-<?php return ['expire'=>86400];
+<?php
+
+return ['expire' => 86400];

@@ -9,7 +9,7 @@
 <script type="text/javascript" src="public/base/Common.js?{:staticCache()}"></script>
 <link rel="stylesheet" type="text/css" href="public/base/H-ui/H-ui.min.css?{:staticCache()}">
 <link rel="stylesheet" type="text/css" href="public/base/styles/Basic.css?{:staticCache()}">
-{block name="basecss"}<link rel="stylesheet" type="text/css" href="public/{:app('http')->getName()}/styles/{:request()->controller()}.css?{:staticCache()}">{/block}
+{block name="base_css"}<link rel="stylesheet" type="text/css" href="public/{:app('http')->getName()}/styles/{:request()->controller()}.css?{:staticCache()}">{/block}
 {block name="head"}{/block}
 </head>
 

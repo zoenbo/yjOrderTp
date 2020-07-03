@@ -15,12 +15,12 @@
   <table>
     {foreach name="All" key="key" item="value"}
     {if condition="($key+1)%4==1"}<tr>{/if}
-    <td>{if condition="$value['Name']"}<div class="check-box"><label><input type="checkbox" name="tablename[]" value="{$value['Name']}">{$value['Name']}</label></div>{/if}</td>
+    <td>{if condition="$value['Name']"}<div class="check-box"><label><input type="checkbox" name="table_name[]" value="{$value['Name']}">{$value['Name']}</label></div>{/if}</td>
     {if condition="($key+1)%4==0"}</tr>{/if}
     {/foreach}
   </table>
   <table>
-    <tr><td>分　　卷：</td><td><input type="text" name="filesize" value="2000" class="input-text"></td><td>（KB，填0为不分卷）</td></tr>
+    <tr><td>分　　卷：</td><td><input type="text" name="file_size" value="2000" class="input-text"></td><td>（KB，填0为不分卷）</td></tr>
     <tr><td colspan="2" class="left"><input type="submit" value="确认备份" class="btn btn-primary radius"></td></tr>
   </table>
 </form>

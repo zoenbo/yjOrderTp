@@ -16,6 +16,6 @@
     <tr><td>状态名称：</td><td><input type="text" name="name" value="{$One['name']}" class="input-text"></td></tr>
     <tr><td>状态颜色：</td><td><input type="text" name="color" value="{$One['color']}" class="input-text"></td><td>留空则为黑色，颜色值可以为：表示颜色的英文单词，如red；16进制的颜色代码，如#FF0000；10进制的颜色代码，如rgb(255,0,0)。</td></tr>
     <tr><td colspan="2" class="left"><input type="submit" value="确认修改" class="btn btn-primary radius"></td></tr>
-  </td>
+  </table>
 </form>
 {/block}

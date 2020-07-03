@@ -1,5 +1,5 @@
 @charset "utf-8";
-.list table tr th.name,.list table tr th.psort{
+.list table tr th.name,.list table tr th.product_sort{
 	width:250px;
 }
 .list table tr th.price{

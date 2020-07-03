@@ -13,7 +13,7 @@
 <link rel="stylesheet" type="text/css" href="public/admin/styles/Login.css?{:staticCache()}">
 <script type="text/javascript">
 let ThinkPHP = {
-	AJAX : '{:url("/".parse_name(request()->controller())."/qqajax")}'
+	AJAX : '{:url("/".parse_name(request()->controller())."/qqAjax")}'
 };
 </script>
 <style type="text/css">

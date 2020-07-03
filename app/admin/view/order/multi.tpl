@@ -11,7 +11,7 @@
 {block name="form"}
 <form method="post" action="" class="form">
   <table>
-    <tr><td>修改物流：</td><td><textarea name="multi" class="textarea"></textarea></td><td>格式：订单号|物流ID|物流编号，每一行代表一个订单，物流ID请在<a href="javascript:;" onclick="window.parent.addTab('{:url('/logistics/index')}','物流管理')">物流管理</a>模块中查询</td></tr>
+    <tr><td>修改物流：</td><td><textarea name="multi" class="textarea"></textarea></td><td>格式：订单号|物流ID|物流编号，每一行代表一个订单，物流ID请在<a href="javascript:" onclick="window.parent.addTab('{:url('/logistics/index')}','物流管理')">物流管理</a>模块中查询</td></tr>
     <tr><td colspan="2" class="left"><input type="submit" value="确认修改" class="btn btn-primary radius"></td></tr>
   </table>
 </form>

@@ -5,7 +5,10 @@
 .list table tr th.rows{
 	width:70px;
 }
-.list table tr th.autoindex,.list table tr th.size,.list table tr th.free{
+.list table tr th.auto_increment{
+	width:120px;
+}
+.list table tr th.size,.list table tr th.free{
 	width:100px;
 }
 .list table tr.tj{

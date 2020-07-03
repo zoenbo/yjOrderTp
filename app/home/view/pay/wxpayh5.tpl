@@ -17,8 +17,8 @@ $(function(){
 			data : {
 				order_id : '{:input("oid")}'
 			},
-			success : function(data,textStatus,jqXHR){
-				if (data == 7) window.location.href = TIP;
+			success : function(data){
+				if (data === '7') window.location.href = TIP;
 			}
 		});
 	},1000);

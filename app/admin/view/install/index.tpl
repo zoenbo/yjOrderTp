@@ -53,7 +53,7 @@
       <p>（正文完）</p>
       <p style="text-align:right;">昱杰软件</p>
     </div>
-    <p class="center button"><input type="submit" value="我同意" class="btn btn-primary radius"> <input type="button" value="我不同意" class="btn btn-primary radius" onClick="javascript:window.opener=null;window.open('','_self');window.close();"></p>
+    <p class="center button"><input type="submit" value="我同意" class="btn btn-primary radius"> <input type="button" value="我不同意" class="btn btn-primary radius" onClick="window.opener=null;window.open('','_self');window.close();"></p>
   </form>
 </div>
 </body>

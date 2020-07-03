@@ -7,20 +7,20 @@
 <link rel="stylesheet" type="text/css" href="public/admin/styles/{:request()->controller()}.css?{:staticCache()}">
 <script type="text/javascript">
 let ThinkPHP = {
-	UPLOAD : '{:url("/common/loginbg")}',
+	UPLOAD : '{:url("/common/loginBg")}',
 	UPLOAD2 : '{:url("/common/qqwry")}'
 };
 </script>{/block}
 
 {block name="nav"}
-<li class="current"><a href="javascript:;">系统信息</a></li>
-<li><a href="javascript:;">版权信息</a></li>
-<li><a href="javascript:;">订单设置</a></li>
-<li><a href="javascript:;">支付宝</a></li>
-<li><a href="javascript:;">微信支付</a></li>
-<li><a href="javascript:;">QQ登录</a></li>
-<li><a href="javascript:;">邮件设置</a></li>
-<li><a href="javascript:;">IP数据库</a></li>
+<li class="current"><a href="javascript:">系统信息</a></li>
+<li><a href="javascript:">版权信息</a></li>
+<li><a href="javascript:">订单设置</a></li>
+<li><a href="javascript:">支付宝</a></li>
+<li><a href="javascript:">微信支付</a></li>
+<li><a href="javascript:">QQ登录</a></li>
+<li><a href="javascript:">邮件设置</a></li>
+<li><a href="javascript:">IP数据库</a></li>
 {/block}
 
 {block name="form"}
@@ -28,7 +28,7 @@ let ThinkPHP = {
   <table class="column" style="display:block;">
     <tr><td>OpenID：</td><td><input type="text" name="openid" value="{:config('system.openid')}" class="input-text"></td></tr>
     <tr><td>站点名称：</td><td><input type="text" name="web_name" value="{:config('system.web_name')}" class="input-text"></td></tr>
-    <tr><td>管理员邮箱：</td><td><input type="text" name="admin_mail" value="{:config('system.admin_mail')}" class="input-text"></td><td>多个邮箱请用“,”隔开，不得与<a href="javascript:;" onclick="window.parent.addTab('{:url('/smtp/index')}','SMTP服务器')">SMTP服务器</a>模块中的邮箱重复。<a href="https://www.yvjie.cn/help/detail.html?id=1" target="_blank">如何设置短信提醒？</a></td></tr>
+    <tr><td>管理员邮箱：</td><td><input type="text" name="admin_mail" value="{:config('system.admin_mail')}" class="input-text"></td><td>多个邮箱请用“,”隔开，不得与<a href="javascript:" onclick="window.parent.addTab('{:url('/smtp/index')}','SMTP服务器')">SMTP服务器</a>模块中的邮箱重复。<a href="https://www.yvjie.cn/help/detail.html?id=1" target="_blank">如何设置短信提醒？</a></td></tr>
     <tr><td>访问模式：</td><td><div class="check-box"><label><input type="checkbox" name="www" value="1" {if condition="config('system.www')==1"}checked{/if}>强制www访问</label></div><div class="check-box"><label><input type="checkbox" name="https" value="1" {if condition="config('system.https')==1"}checked{/if}>强制https访问</label></div></td><td>开启强制www访问前，请先确保您的主域名加上www后可以访问；开启强制https访问前，请先确保您的网站支持https访问。以上两项若不能确保，请先咨询客服人员，若在不能确保的情况下开启，会导致网站无法访问。变更设置后可能需要重新登录。</td></tr>
     <tr><td>后台入口：</td><td><input type="text" name="manage_enter" value="{:config('system.manage_enter')}" class="input-text"></td><td>修改后会自动跳转到新入口</td></tr>
     <tr><td>后台皮肤：</td><td><select name="manage_skin" class="select">{$Skin}</select></td></tr>
@@ -64,7 +64,7 @@ let ThinkPHP = {
     <tr><td></td><td class="tip">2-2、点击微信公众平台中的“微信支付”，即可获取MCHID（即微信支付商户号）；</td></tr>
     <tr><td></td><td class="tip">2-3、KEY（即微信支付商户API密钥），请<a href="https://pay.weixin.qq.com/index.php/core/cert/api_cert" target="_blank">点击此处</a>进行设置；</td></tr>
     <tr><td></td><td class="tip">3-1、登录微信公众平台，然后点击“设置 - 公众号设置 - 功能设置”，将“{:request()->server('HTTP_HOST')}”分别填入“JS接口安全域名”和“网页授权域名”设置项中，保存即可；</td></tr>
-    <tr><td></td><td class="tip">3-2、如需验证网站所属权，请<a href="javascript:;" onclick="window.parent.addTab('{:url('/validate_file/index')}','生成验证文件')">点击此处</a>；</td></tr>
+    <tr><td></td><td class="tip">3-2、如需验证网站所属权，请<a href="javascript:" onclick="window.parent.addTab('{:url('/validate_file/index')}','生成验证文件')">点击此处</a>；</td></tr>
     <tr><td></td><td class="tip">4-1、<a href="https://pay.weixin.qq.com/index.php/extend/pay_setting" target="_blank">点击此处</a>登录到微信支付商户平台的开发配置中；</td></tr>
     <tr><td></td><td class="tip">4-2、在“支付授权目录”设置项中添加{:config('app.web_url')}pay/wxpay/oid/、{:config('app.web_url')}index.php/pay/wxpay/oid/；</td></tr>
     <tr><td></td><td class="tip">4-3、在“扫码回调链接”设置项中输入{:config('app.web_url')}{:config('system.index_php')}pay/wxpayReturn。</td></tr>

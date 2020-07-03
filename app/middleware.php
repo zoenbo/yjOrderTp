@@ -1,5 +1,5 @@
 <?php
+
 return [
-	'think\middleware\SessionInit',
-	//'\think\middleware\TraceDebug',
+    'think\middleware\SessionInit'
 ];

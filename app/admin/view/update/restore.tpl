@@ -6,8 +6,8 @@
 {block name="nav"}
 <li><a href="{:url('/'.parse_name(request()->controller()).'/index')}">备份配置文件</a></li>
 <li class="current"><a href="{:url('/'.parse_name(request()->controller()).'/restore')}">还原配置文件</a></li>
-<li><a href="{:url('/'.parse_name(request()->controller()).'/dbbak')}">备份数据库</a></li>
-<li><a href="{:url('/'.parse_name(request()->controller()).'/dbupdate')}">升级数据库</a></li>
+<li><a href="{:url('/'.parse_name(request()->controller()).'/dbBak')}">备份数据库</a></li>
+<li><a href="{:url('/'.parse_name(request()->controller()).'/dbUpdate')}">升级数据库</a></li>
 {/block}
 
 {block name="form"}
