@@ -45,7 +45,10 @@ class Order extends Model
     public function one($orderId = 0)
     {
         try {
-            $map['order_id'] = $orderId ? $orderId : Request::param('oid');
+            $map = [
+                'order_id' => $orderId ? $orderId : Request::param('oid'),
+                'recycle' => 0
+            ];
             return $this->field('template_id,product_id,price,count,pay')->where($map)->find();
         } catch (Exception $e) {
             echo $e->getMessage();
