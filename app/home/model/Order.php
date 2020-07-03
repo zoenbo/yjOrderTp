@@ -102,10 +102,10 @@ class Order extends Model
                 $scene[] = 'county';
                 $scene[] = 'town';
             } elseif (Request::post('type') == 'b') {
-                $data['province'] = Request::post('province2');
-                $data['city'] = Request::post('city2');
-                $data['county'] = Request::post('county2');
-                $data['town'] = Request::post('town2');
+                $data['province'] = $data['province2'] = Request::post('province2');
+                $data['city'] = $data['city2'] = Request::post('city2');
+                $data['county'] = $data['county2'] = Request::post('county2');
+                $data['town'] = $data['town2'] = Request::post('town2');
                 $scene[] = 'province2';
                 $scene[] = 'city2';
                 $scene[] = 'county2';
@@ -121,10 +121,10 @@ class Order extends Model
             $scene[] = 'county';
             $scene[] = 'town';
         } elseif (in_array(5, $fieldTemp)) {
-            $data['province'] = Request::post('province2');
-            $data['city'] = Request::post('city2');
-            $data['county'] = Request::post('county2');
-            $data['town'] = Request::post('town2');
+            $data['province'] = $data['province2'] = Request::post('province2');
+            $data['city'] = $data['city2'] = Request::post('city2');
+            $data['county'] = $data['county2'] = Request::post('county2');
+            $data['town'] = $data['town2'] = Request::post('town2');
             $scene[] = 'province2';
             $scene[] = 'city2';
             $scene[] = 'county2';
