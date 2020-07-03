@@ -462,7 +462,7 @@ class Order extends Model
     {
         $map['where'] = '1=1';
         $map['value'] = [];
-        if (Request::get('field') < 14) {
+        if (Request::get('field') <= 14) {
             $keyword = [];
             $map['where'] .= ' AND (';
             if (in_array(Request::get('field'), [0, 1])) {
