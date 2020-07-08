@@ -1,5 +1,6 @@
 <?php
 
+use app\admin\model;
 use think\facade\Config;
 use think\facade\Console;
 use think\facade\Request;
@@ -243,22 +244,12 @@ function getUserIp()
 //生成数据表缓存
 function databaseSchema()
 {
-    if (trim(Console::call('optimize:schema', ['--connection','mysql'])->fetch()) != '<info>Succeed!</info>') {
-        return false;
-    }
-    $mysql = Config::get('database.connections.mysql');
-    if (!is_dir($mysql['schema_cache_path'])) {
-        return true;
-    }
-    $handler = opendir($mysql['schema_cache_path']);
-    while (!!$name = readdir($handler)) {
-        if (!in_array($name, ['.', '..']) && strstr($name, $mysql['database'] . '.' . $mysql['prefix']) === false) {
-            if (!unlink($mysql['schema_cache_path'] . $name)) {
-                return false;
-            }
+    $Common = new model\Common();
+    foreach ($Common->info() as $value) {
+        if (trim(Console::call('optimize:schema', ['--table', $value['Name']])->fetch()) != '<info>Succeed!</info>') {
+            return false;
         }
     }
-    closedir($handler);
     return true;
 }
 
