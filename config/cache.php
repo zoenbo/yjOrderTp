@@ -5,7 +5,7 @@ return [
     'stores' => [
         'file' => [
             'type' => 'File',
-            'path' => app()->getRuntimePath() . 'schema' . DIRECTORY_SEPARATOR
+            'path' => app()->getRuntimePath() . 'cache' . DIRECTORY_SEPARATOR
         ]
     ]
 ];
