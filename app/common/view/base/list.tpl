@@ -19,9 +19,11 @@
   
   <ul>
     {block name="nav"}{/block}
+    <p style="clear:both"></p>
   </ul>
   
   {block name="search"}<form method="get" action="" class="search">搜索：<input type="text" name="keyword" value="{:input('get.keyword')}" class="input-text"><input type="submit" value="搜索" class="btn btn-primary radius"></form>{/block}
+  <p style="clear:both"></p>
 </div>
 
 {block name="tip"}{/block}

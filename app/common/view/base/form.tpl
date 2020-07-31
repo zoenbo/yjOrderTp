@@ -18,6 +18,7 @@
   
   <ul>
     {block name="nav"}{/block}
+    <p style="clear:both"></p>
   </ul>
 </div>
 
