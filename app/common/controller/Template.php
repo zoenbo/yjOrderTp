@@ -698,7 +698,8 @@ class Template
                     ';}.order div.left{border-right:1px solid ' . $styleObject['border_color'] .
                     ';}.order div.left dl dd.submit input{background:' . $styleObject['button_color'] .
                     ';}.order div.left .buy,.order div.right .send{border-bottom:1px solid ' .
-                    $styleObject['border_color'] . ';}</style>',
+                    $styleObject['border_color'] . ';}.order dl dd .layui-form-select dl dd.layui-this{background:' .
+                    $styleObject['select_current_bg_color'] . ';}</style>',
                     $output
                 );
                 $output = str_replace(
@@ -719,7 +720,8 @@ class Template
                     '<style type="text/css">.order{background:' . $styleObject['bg_color'] . ';border:1px solid ' .
                     $styleObject['border_color'] . ';}.order .buy{border-bottom:1px solid ' .
                     $styleObject['border_color'] . ';}.order dl dd.submit input{background:' .
-                    $styleObject['button_color'] . ';}</style>',
+                    $styleObject['button_color'] . ';}.order dl dd .layui-form-select dl dd.layui-this{background:' .
+                    $styleObject['select_current_bg_color'] . ';}</style>',
                     $output
                 );
                 $output = preg_replace(

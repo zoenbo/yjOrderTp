@@ -21,7 +21,7 @@ let ThinkPHP = {
   <table>
     <tr><td>模 板 名：</td><td><input type="text" name="name" class="input-text"></td><td>用于区分其它模板</td></tr>
     <tr><td>指定代理：</td><td><select name="manager_id" lay-search><option value="0">不指定</option>{$Manager}</select></td></tr>
-    <tr><td>使用模板：</td><td><select name="template" lay-search>{$Template}</select></td><td><span class="view"></span>　　经典版不支持皮肤样式的定义</td></tr>
+    <tr><td>使用模板：</td><td><select name="template" lay-filter="template" lay-search>{$Template}</select></td><td><span class="view"></span>　　经典版不支持皮肤样式的定义</td></tr>
     <tr class="style"><td>皮肤样式：</td><td><select name="template_style_id" lay-search>{$TemplateStyle}</select></td><td>手机版2和手机版3推荐使用11号皮肤样式，手机版4推荐使用12号皮肤样式</td></tr>
     <tr><td>产品分类：</td><td><div class="radio-box"><label><input type="radio" name="product_type" value="0" checked>单分类</label></div><div class="radio-box"><label><input type="radio" name="product_type" value="1">多分类</label></div></td></tr>
     <tr class="pro1"><td>选择分类：</td><td><select name="sort1" lay-search>{$ProductSort}</select></td></tr>

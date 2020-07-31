@@ -21,7 +21,7 @@ class TemplateStyle extends Model
     public function all($firstRow)
     {
         try {
-            return $this->field('id,bg_color,border_color,button_color,date')
+            return $this->field('id,bg_color,border_color,button_color,select_current_bg_color,date')
                 ->where($this->map()['field'], $this->map()['condition'], $this->map()['value'])
                 ->order(['date' => 'DESC', 'id' => 'DESC'])
                 ->limit($firstRow, Config::get('app.page_size'))
@@ -49,7 +49,7 @@ class TemplateStyle extends Model
     {
         try {
             $map['id'] = $id ? $id : Request::get('id');
-            return $this->field('bg_color,border_color,button_color')->where($map)->find();
+            return $this->field('bg_color,border_color,button_color,select_current_bg_color')->where($map)->find();
         } catch (Exception $e) {
             echo $e->getMessage();
             return [];
@@ -63,6 +63,7 @@ class TemplateStyle extends Model
             'bg_color' => Request::post('bg_color'),
             'border_color' => Request::post('border_color'),
             'button_color' => Request::post('button_color'),
+            'select_current_bg_color' => Request::post('select_current_bg_color'),
             'date' => time()
         ];
         $validate = new valid();
@@ -79,7 +80,8 @@ class TemplateStyle extends Model
         $data = [
             'bg_color' => Request::post('bg_color'),
             'border_color' => Request::post('border_color'),
-            'button_color' => Request::post('button_color')
+            'button_color' => Request::post('button_color'),
+            'select_current_bg_color' => Request::post('select_current_bg_color')
         ];
         $validate = new valid();
         if ($validate->check($data)) {
@@ -108,7 +110,7 @@ class TemplateStyle extends Model
     private function map()
     {
         return [
-            'field' => 'bg_color|border_color|button_color',
+            'field' => 'bg_color|border_color|button_color|select_current_bg_color',
             'condition' => 'LIKE',
             'value' => '%' . Request::get('keyword') . '%'
         ];

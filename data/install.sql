@@ -268,21 +268,22 @@ CREATE TABLE `yjorder_template_style` (
   `bg_color` char(20) NOT NULL DEFAULT '',
   `border_color` char(20) NOT NULL DEFAULT '',
   `button_color` char(20) NOT NULL DEFAULT '',
+  `select_current_bg_color` char(20) NOT NULL DEFAULT '',
   `date` int(10) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
-INSERT INTO `yjorder_template_style`(`id`,`bg_color`,`border_color`,`button_color`,`date`) VALUES('1','#EBFFEF','#0F3','#0C3','1441424358');
-INSERT INTO `yjorder_template_style`(`id`,`bg_color`,`border_color`,`button_color`,`date`) VALUES('2','#EBF7FF','#B8E3FF','#09F','1441424358');
-INSERT INTO `yjorder_template_style`(`id`,`bg_color`,`border_color`,`button_color`,`date`) VALUES('3','#FFF0F0','#FFD9D9','#F66','1441424358');
-INSERT INTO `yjorder_template_style`(`id`,`bg_color`,`border_color`,`button_color`,`date`) VALUES('4','#FFF7EB','#FFE3B8','#F90','1441424358');
-INSERT INTO `yjorder_template_style`(`id`,`bg_color`,`border_color`,`button_color`,`date`) VALUES('5','#EBFFFF','#A6FFFF','#099','1441424358');
-INSERT INTO `yjorder_template_style`(`id`,`bg_color`,`border_color`,`button_color`,`date`) VALUES('6','#F2FFF9','#B2FFD9','#0C6','1441424358');
-INSERT INTO `yjorder_template_style`(`id`,`bg_color`,`border_color`,`button_color`,`date`) VALUES('7','#E6FAFF','#B2F0FF','#0CF','1441424358');
-INSERT INTO `yjorder_template_style`(`id`,`bg_color`,`border_color`,`button_color`,`date`) VALUES('8','#FFEBF0','#FFCCD9','#F36','1441424358');
-INSERT INTO `yjorder_template_style`(`id`,`bg_color`,`border_color`,`button_color`,`date`) VALUES('9','#FFF4ED','#FFD9BF','#F60','1441424358');
-INSERT INTO `yjorder_template_style`(`id`,`bg_color`,`border_color`,`button_color`,`date`) VALUES('10','#F2FFFF','#BFFFFF','#3CC','1441424358');
-INSERT INTO `yjorder_template_style`(`id`,`bg_color`,`border_color`,`button_color`,`date`) VALUES('11','#FFF','#FC4400','#F63','1487560660');
-INSERT INTO `yjorder_template_style`(`id`,`bg_color`,`border_color`,`button_color`,`date`) VALUES('12','#FFF','#FFF','#BE0F22','1576467626');
+) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+INSERT INTO `yjorder_template_style`(`id`,`bg_color`,`border_color`,`button_color`,`select_current_bg_color`,`date`) VALUES('1','#EBFFEF','#0F3','#0C3','#0C3','1441424358');
+INSERT INTO `yjorder_template_style`(`id`,`bg_color`,`border_color`,`button_color`,`select_current_bg_color`,`date`) VALUES('2','#EBF7FF','#B8E3FF','#09F','#09F','1441424358');
+INSERT INTO `yjorder_template_style`(`id`,`bg_color`,`border_color`,`button_color`,`select_current_bg_color`,`date`) VALUES('3','#FFF0F0','#FFD9D9','#F66','#F66','1441424358');
+INSERT INTO `yjorder_template_style`(`id`,`bg_color`,`border_color`,`button_color`,`select_current_bg_color`,`date`) VALUES('4','#FFF7EB','#FFE3B8','#F90','#F90','1441424358');
+INSERT INTO `yjorder_template_style`(`id`,`bg_color`,`border_color`,`button_color`,`select_current_bg_color`,`date`) VALUES('5','#EBFFFF','#A6FFFF','#099','#099','1441424358');
+INSERT INTO `yjorder_template_style`(`id`,`bg_color`,`border_color`,`button_color`,`select_current_bg_color`,`date`) VALUES('6','#F2FFF9','#B2FFD9','#0C6','#0C6','1441424358');
+INSERT INTO `yjorder_template_style`(`id`,`bg_color`,`border_color`,`button_color`,`select_current_bg_color`,`date`) VALUES('7','#E6FAFF','#B2F0FF','#0CF','#0CF','1441424358');
+INSERT INTO `yjorder_template_style`(`id`,`bg_color`,`border_color`,`button_color`,`select_current_bg_color`,`date`) VALUES('8','#FFEBF0','#FFCCD9','#F36','#F36','1441424358');
+INSERT INTO `yjorder_template_style`(`id`,`bg_color`,`border_color`,`button_color`,`select_current_bg_color`,`date`) VALUES('9','#FFF4ED','#FFD9BF','#F60','#F60','1441424358');
+INSERT INTO `yjorder_template_style`(`id`,`bg_color`,`border_color`,`button_color`,`select_current_bg_color`,`date`) VALUES('10','#F2FFFF','#BFFFFF','#3CC','#3CC','1441424358');
+INSERT INTO `yjorder_template_style`(`id`,`bg_color`,`border_color`,`button_color`,`select_current_bg_color`,`date`) VALUES('11','#FFF','#FC4400','#F63','#F63','1487560660');
+INSERT INTO `yjorder_template_style`(`id`,`bg_color`,`border_color`,`button_color`,`select_current_bg_color`,`date`) VALUES('12','#FFF','#FFF','#BE0F22','#BE0F22','1576467626');
 
 CREATE TABLE `yjorder_visit` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
