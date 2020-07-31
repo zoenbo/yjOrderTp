@@ -4,8 +4,10 @@ $(function () {
   if ($price.val() === '') {
     $price.val($productId.find('option:selected').attr('price'));
   }
-  $productId.on('change', function () {
-    $price.val($(this).find('option:selected').attr('price'));
+  layui.use(['form'], function () {
+    layui.form.on('select(product_id)', function (data) {
+      $price.val($(data.elem).find('option:selected').attr('price'));
+    });
   });
 
   type($('input[name=type]:checked').val());

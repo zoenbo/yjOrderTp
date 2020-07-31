@@ -8,7 +8,7 @@
 {/block}
 
 {block name="search"}
-<form method="get" action="" class="search">搜索：<select name="manager_id" class="select"><option value="0">查看所有管理员</option>{$Manager}</select> <input type="text" name="keyword" value="{:input('get.keyword')}" class="input-text"><input type="submit" value="搜索" class="btn btn-primary radius"></form>
+<form method="get" action="" class="search layui-form">搜索：<select name="manager_id" lay-search><option value="0">查看所有管理员</option>{$Manager}</select> <input type="text" name="keyword" value="{:input('get.keyword')}" class="input-text"><input type="submit" value="搜索" class="btn btn-primary radius"></form>
 {/block}
 
 {block name="list"}

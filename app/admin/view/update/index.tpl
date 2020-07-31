@@ -11,7 +11,7 @@
 {/block}
 
 {block name="form"}
-<form method="post" action="" class="form">
+<form method="post" action="" class="form layui-form">
   <table>
     <tr><td>{$Version}</td></tr>
     <tr><td>升级前，请先认真阅读以下注意事项，确认无误后再进行备份操作</td></tr>

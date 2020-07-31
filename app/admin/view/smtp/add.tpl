@@ -10,7 +10,7 @@
 {/block}
 
 {block name="form"}
-<form method="post" action="" class="form">
+<form method="post" action="" class="form layui-form">
   <table>
     <tr><td>SMTP服务器：</td><td><input type="text" name="smtp" class="input-text"></td></tr>
     <tr><td>SMTP端口：</td><td><input type="text" name="port" value="25" class="input-text"></td></tr>

@@ -9,7 +9,7 @@
 {/block}
 
 {block name="form"}
-<form method="post" action="" class="form">
+<form method="post" action="" class="form layui-form">
   <table>
     <tr><td>批量添加：</td><td><textarea name="multi" class="textarea"></textarea></td><td>格式：公司名称|公司代码，每一行代表一个物流公司，<a href="https://www.yvjie.cn/help/detail.html?id=3" target="_blank">点击此处</a>查询或下载公司代码</td></tr>
     <tr><td colspan="2" class="left"><input type="submit" value="确认添加" class="btn btn-primary radius"></td></tr>

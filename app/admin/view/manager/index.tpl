@@ -13,13 +13,13 @@
 {block name="tools"}
 <div class="tools">
   <h3>高级搜索</h3>
-  <form method="get" action="">
+  <form method="get" action="" class="layui-form">
     <label>帐号：<input type="text" name="keyword" value="{:input('get.keyword')}" class="input-text"></label>
-    <label>身份：<select name="level" class="select"><option value="0">不限</option>{$Level}</select></label>
-    <label>是否激活：<select name="is_activation" class="select"><option value="-1">不限</option>{$IsActivation}</select></label>
-    <label>权限组：<select name="permit_group_id" class="select"><option value="0">不限</option>{$PermitGroup}</select></label>
-    <label>订单权限：<select name="order_permit" class="select"><option value="0">不限</option>{$OrderPermit}</select></label>
-    <label>QQ绑定：<select name="qq" class="select"><option value="-1">不限</option>{$Qq}</select></label>
+    <label>身份：<select name="level" lay-search><option value="0">不限</option>{$Level}</select></label>
+    <label>是否激活：<select name="is_activation" lay-search><option value="-1">不限</option>{$IsActivation}</select></label>
+    <label>权限组：<select name="permit_group_id" lay-search><option value="0">不限</option>{$PermitGroup}</select></label>
+    <label>订单权限：<select name="order_permit" lay-search><option value="0">不限</option>{$OrderPermit}</select></label>
+    <label>QQ绑定：<select name="qq" lay-search><option value="-1">不限</option>{$Qq}</select></label>
     <label>加入时间：<input type="text" name="date1" value="{:input('get.date1')}" class="date"> ～ <input type="text" name="date2" value="{:input('get.date2')}" class="date"></label>
     <label><input type="submit" value="搜索" class="btn btn-primary radius"></label>
   </form>

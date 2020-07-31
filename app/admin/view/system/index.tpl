@@ -24,14 +24,14 @@ let ThinkPHP = {
 {/block}
 
 {block name="form"}
-<form method="post" action="" class="form">
+<form method="post" action="" class="form layui-form">
   <table class="column" style="display:block;">
     <tr><td>OpenID：</td><td><input type="text" name="openid" value="{:config('system.openid')}" class="input-text"></td></tr>
     <tr><td>站点名称：</td><td><input type="text" name="web_name" value="{:config('system.web_name')}" class="input-text"></td></tr>
     <tr><td>管理员邮箱：</td><td><input type="text" name="admin_mail" value="{:config('system.admin_mail')}" class="input-text"></td><td>多个邮箱请用“,”隔开，不得与<a href="javascript:" onclick="window.parent.addTab('{:url('/smtp/index')}','SMTP服务器')">SMTP服务器</a>模块中的邮箱重复。<a href="https://www.yvjie.cn/help/detail.html?id=1" target="_blank">如何设置短信提醒？</a></td></tr>
     <tr><td>访问模式：</td><td><div class="check-box"><label><input type="checkbox" name="www" value="1" {if condition="config('system.www')==1"}checked{/if}>强制www访问</label></div><div class="check-box"><label><input type="checkbox" name="https" value="1" {if condition="config('system.https')==1"}checked{/if}>强制https访问</label></div></td><td>开启强制www访问前，请先确保您的主域名加上www后可以访问；开启强制https访问前，请先确保您的网站支持https访问。以上两项若不能确保，请先咨询客服人员，若在不能确保的情况下开启，会导致网站无法访问。变更设置后可能需要重新登录。</td></tr>
     <tr><td>后台入口：</td><td><input type="text" name="manage_enter" value="{:config('system.manage_enter')}" class="input-text"></td><td>修改后会自动跳转到新入口</td></tr>
-    <tr><td>后台皮肤：</td><td><select name="manage_skin" class="select">{$Skin}</select></td></tr>
+    <tr><td>后台皮肤：</td><td><select name="manage_skin" lay-search>{$Skin}</select></td></tr>
     <tr><td>隐藏index.php：</td><td><div class="radio-box"><label><input type="radio" name="index_php" value="" {if condition="config('system.index_php')==''"}checked{/if}>是</label></div><div class="radio-box"><label><input type="radio" name="index_php" value="index.php/" {if condition="config('system.index_php')=='index.php/'"}checked{/if}>否</label></div></td><td>设置前台的访问地址中是否隐藏掉index.php，开启此设置，服务器需支持伪静态，若开启后导致前台无法访问，请联系您的服务商解决</td></tr>
   </table>
   <table class="column">

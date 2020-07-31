@@ -20,7 +20,7 @@
 {/block}
 
 {block name="form"}
-<form method="post" action="" class="form">
+<form method="post" action="" class="form layui-form">
   <table>
     <tr><td colspan="3" class="left tip">请将您需要调用的下单页的页面与本系统放置同一域名下，否则下单页无法自适应高度</td></tr>
     <tr><td>调用代码1：</td><td>&lt;div style="width:{if condition="$One['template']==0"}{if condition="$One['is_show_send']==0"}616px{elseif condition="$One['is_show_send']==1"/}952px{/if}{elseif condition="$One['template']==1"/}600px{else/}100%{/if};margin:0 auto;"&gt;&lt;a name="order"&gt;&lt;/a&gt;&lt;iframe src="{:config('app.web_url')}{:config('system.index_php')}id/{:input('get.id')}.html" frameborder="0" style="width:100%;"&gt;&lt;/iframe&gt;&lt;/div&gt;&lt;script type="text/javascript" src="{:config('app.web_url')}public/home/js/FrameAuto.js?{:staticCache()}"&gt;&lt;/script&gt;</td><td>如果您的页面中引入了JQuery，请调用此代码，此代码可在<a href="https://www.yvjie.cn/web.php" target="_blank">《昱杰单页制作系统》</a>中调用</td></tr>

@@ -60,7 +60,6 @@ class Template extends Base
         $this->manager();
         $this->templateStyle();
         $this->sort();
-        $this->product();
         $this->field();
         $this->pay();
         $this->orderState();
@@ -90,9 +89,8 @@ class Template extends Base
 
             $product = explode('|', $object['product']);
             $this->sort($product[1] ?? 0);
-            $this->product($product[0] == 0 ? 0 : $product[2]);
             $object['product_type'] = $product[0];
-            $object['pro'] = $product[2] ?? '';
+            $object['product_ids'] = $product[2] ?? '';
             $object['product_selected'] = $product[3] ?? '';
             $object['view_type'] = $product[4] ?? 1;
 
@@ -150,9 +148,50 @@ class Template extends Base
     public function ajaxProduct()
     {
         if (Request::isAjax()) {
+            $data = [];
             $Product = new model\Product();
-            echo json_encode($Product->all2(Request::post('product_sort_id')));
+            foreach ($Product->all2(Request::post('product_sort_id')) as $key => $value) {
+                $data[$key]['value'] = $value['id'];
+                $data[$key]['name'] = $value['name'];
+                $data[$key]['selected'] = in_array($value['id'], explode(',', Request::post('product_ids1')));
+                $data[$key]['color'] = $value['color'];
+            }
+            return json_encode($data);
         }
+        return '';
+    }
+
+    public function ajaxProduct2()
+    {
+        if (Request::isAjax()) {
+            $data = [];
+            $ProductSort = new model\ProductSort();
+            $object = $ProductSort->all2();
+            if ($object) {
+                $Product = new model\Product();
+                foreach ($object as $key => $value) {
+                    $data[$key]['name'] = $value['name'];
+                    $data[$key]['color'] = $value['color'];
+                    $object2 = $Product->all2($value['id']);
+                    if ($object2) {
+                        foreach ($object2 as $k => $v) {
+                            $data[$key]['children'][$k]['value'] = $v['id'];
+                            $data[$key]['children'][$k]['name'] = $v['name'];
+                            $data[$key]['children'][$k]['selected'] =
+                                in_array($v['id'], explode(',', Request::post('product_ids2')));
+                            $data[$key]['children'][$k]['color'] = $v['color'];
+                            $data[$key]['children'][$k]['parent_value'] = $value['id'];
+                            $data[$key]['children'][$k]['parent_name'] = $value['name'];
+                            $data[$key]['children'][$k]['parent_color'] = $value['color'];
+                        }
+                    } else {
+                        $data[$key]['children'][0] = ['name' => '此分类下暂无产品', 'disabled' => true];
+                    }
+                }
+            }
+            return json_encode($data);
+        }
+        return '';
     }
 
     public function isDefault()
@@ -213,30 +252,6 @@ class Template extends Base
                 ' style="color:' . $value['color'] . ';">' . $value['name'] . '</option>';
         }
         View::assign(['ProductSort' => $html]);
-    }
-
-    private function product($ids = '')
-    {
-        $html = '';
-        $ProductSort = new model\ProductSort();
-        $object = $ProductSort->all2();
-        if ($object) {
-            $Product = new model\Product();
-            foreach ($object as $value) {
-                $html .= '<optgroup label="' . $value['name'] . '" style="color:' . $value['color'] . ';" value="' .
-                    $value['id'] . '">';
-                $object2 = $Product->all2($value['id']);
-                if ($object2) {
-                    foreach ($object2 as $v) {
-                        $html .= '<option value="' . $v['id'] . '" ' . (in_array($v['id'], explode(',', $ids)) ?
-                                'selected' : '') . ' style="color:' . ($v['color'] ? $v['color'] : '#000') . ';">└—' .
-                            $v['name'] . '（' . $v['price'] . '元）</option>';
-                    }
-                }
-                $html .= '</optgroup>';
-            }
-        }
-        View::assign(['Product' => $html]);
     }
 
     private function field($ids = [])

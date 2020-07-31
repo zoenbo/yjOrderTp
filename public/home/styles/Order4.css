@@ -30,11 +30,12 @@ select optgroup{
 	display:inline-block;
 	overflow:hidden;
 	cursor:pointer;
-}
-.order dl .attr dd span.right label{
 	margin:0 5px 0 0;
 }
-.order dl dd input.text,.order dl dd select,.order dl dd.textarea textarea{
+.order dl dd.pro span.right label{
+	margin:0;
+}
+.order dl dd input.text,.order dl dd.textarea textarea{
 	background:#fff;
 	border:1px solid #ccc;
 	border-radius:2px;
@@ -44,6 +45,7 @@ select optgroup{
 	text-indent:12px;
 	width:100%;
 	font-size:14px;
+	box-sizing:border-box;
 }
 .order dl dd input.text2{
 	background:#fff;
@@ -56,8 +58,24 @@ select optgroup{
 	width:25%;
 	font-size:14px;
 }
-.order dl dd select{
-	text-indent:6px;
+.order dl dd .layui-form-select{
+	margin:0 0 5px 0;
+	width:100%;
+}
+.order dl dd .layui-form-select dl.layui-anim{
+	min-width:100%;
+	margin:0;
+	top:48px;
+}
+.order dl dd .layui-form-selectup dl.layui-anim{
+	top:auto;
+	bottom:44px;
+}
+.order dl dd .layui-input,.order dl dd .layui-select{
+	border-radius:5px;
+	height:46px;
+	line-height:46px;
+	border-color:#CCC;
 }
 .order dl dd.textarea textarea{
 	height:60px;
@@ -77,6 +95,14 @@ select optgroup{
 	color:#FFF;
 	font-weight:bold;
 	font-size:120%;
+}
+.order dl dd.sms_verify input.button{
+	height:40px;
+	border:none;
+	cursor:pointer;
+	color:#FFF;
+	font-weight:bold;
+	font-size:100%;
 }
 .order dl dd.submit img{
 	cursor:pointer;

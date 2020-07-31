@@ -18,7 +18,7 @@
 </head>
 
 <body>
-<form method="post" action="" class="form">
+<form method="post" action="" class="form layui-form">
   <table>
     <tr><td colspan="2" style="text-align:center;">数据库信息</td></tr>
     <tr><td>数据库服务器：</td><td><input type="text" name="db_host" value="127.0.0.1" class="input-text"></td></tr>

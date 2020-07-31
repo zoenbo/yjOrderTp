@@ -23,8 +23,9 @@ class Template
 <script type="text/javascript" src="public/base/jquery.cookie.js?' . staticCache() . '"></script>
 <script type="text/javascript" src="public/base/ValidForm.js?' . staticCache() . '"></script>
 <script type="text/javascript" src="public/base/Address.js?' . staticCache() . '"></script>
-<script type="text/javascript" src="public/base/sha1.js?' . staticCache() . '"></script>
+<script type="text/javascript" src="public/base/LayUI/LayUI.js?' . staticCache() . '"></script>
 <script type="text/javascript" src="public/home/js/Order.js?' . staticCache() . '"></script>
+<link rel="stylesheet" type="text/css" href="public/base/LayUI/LayUI.css?' . staticCache() . '">
 <link rel="stylesheet" type="text/css" href="public/home/styles/Order1.css?' . staticCache() . '">
 <script type="text/javascript">let DISTRICT="' . Config::get('app.web_url') . Config::get('system.index_php') .
             'common/district";</script>
@@ -43,13 +44,16 @@ class Template
 .order .left .buy,.order .right .send{
     border-bottom:1px solid #B8E3FF;
 }
+.order dl dd .layui-form-select dl dd.layui-this{
+	background:#09F;
+}
 </style>
 
 <div class="order">
   <div class="left">
     <div class="buy"></div>
     
-    <form method="post" action="" target="_parent" class="form">
+    <form method="post" action="" target="_parent" class="form layui-form">
       <dl class="order_form">
         <dd>请认真填写订单信息，以便您尽快收到货物</dd>
         <dd class="pro">订购产品：<select name="product_id"></select></dd>
@@ -63,10 +67,10 @@ class Template
 		<input type="hidden" name="city">
 		<input type="hidden" name="county">
 		<input type="hidden" name="town">
-		<dd>　　　　　<select class="select province"><option value="0">省份</option></select></dd>
-		<dd>　　　　　<select class="select city"><option value="0">城市</option></select></dd>
-		<dd>　　　　　<select class="select county"><option value="0">区/县</option></select></dd>
-		<dd>　　　　　<select class="select town"><option value="0">乡镇/街道（若不清楚，可不选）</option></select></dd>
+        <dd>　　　　　<select class="province" lay-filter="province"><option value="0">省份</option></select></dd>
+        <dd>　　　　　<select class="city" lay-filter="city"><option value="0">城市</option></select></dd>
+        <dd>　　　　　<select class="county" lay-filter="county"><option value="0">区/县</option></select></dd>
+        <dd>　　　　　<select class="town" lay-filter="town"><option value="0">乡镇/街道（若不清楚，可不选）</option></select></dd>
 		</div>
 		<div id="bb">
 		<dd>省　　份：<input type="text" name="province2" class="text"></dd>
@@ -84,7 +88,6 @@ class Template
         <dd class="captcha"><span>验 证 码：<input type="text" name="captcha" class="text2"></span> <img src="' .
             Config::get('system.index_php') . 'common/captcha2" onClick="this.src=\'' . Config::get('system.index_php')
             . 'common/captcha2?tm=\'+Math.random();" alt="验证码" title="看不清？换一张"></dd>
-        <dd class="info info1">请认真填写以上信息，然后点击下面的“立即提交订单”按钮以完成下单</dd>
         <dd class="info info2">为防止刷单，本站需登录QQ才能下单，登录后即可看见提交按钮</dd>
         <dd class="submit"><input type="submit" value="立即提交订单"> <img src="public/home/images/qq_login.png?' .
             staticCache() . '" alt="QQ登录" onClick="window.open(\'' . Config::get('system.index_php') .
@@ -129,8 +132,9 @@ class Template
 <script type="text/javascript" src="public/base/jquery.cookie.js?' . staticCache() . '"></script>
 <script type="text/javascript" src="public/base/ValidForm.js?' . staticCache() . '"></script>
 <script type="text/javascript" src="public/base/Address.js?' . staticCache() . '"></script>
-<script type="text/javascript" src="public/base/sha1.js?' . staticCache() . '"></script>
+<script type="text/javascript" src="public/base/LayUI/LayUI.js?' . staticCache() . '"></script>
 <script type="text/javascript" src="public/home/js/Order.js?' . staticCache() . '"></script>
+<link rel="stylesheet" type="text/css" href="public/base/LayUI/LayUI.css?' . staticCache() . '">
 <link rel="stylesheet" type="text/css" href="public/home/styles/Order2.css?' . staticCache() . '">
 <script type="text/javascript">let DISTRICT="' . Config::get('app.web_url') . Config::get('system.index_php') .
             'common/district";</script>
@@ -142,7 +146,7 @@ class Template
 </style>
 
 <div class="order">
-  <form method="post" action="" target="_parent" class="form">
+  <form method="post" action="" target="_parent" class="form layui-form">
     <dl class="order_form">
       <dd>请认真填写订单信息，以便您尽快收到货物</dd>
       <dd class="pro">订购产品：<select name="product_id"></select></dd>
@@ -156,10 +160,10 @@ class Template
 	  <input type="hidden" name="city">
 	  <input type="hidden" name="county">
 	  <input type="hidden" name="town">
-	  <dd>　　　　　<select class="select province"><option value="0">省份</option></select></dd>
-	  <dd>　　　　　<select class="select city"><option value="0">城市</option></select></dd>
-	  <dd>　　　　　<select class="select county"><option value="0">区/县</option></select></dd>
-	  <dd>　　　　　<select class="select town"><option value="0">乡镇/街道（若不清楚，可不选）</option></select></dd>
+      <dd>　　　　　<select class="province" lay-filter="province"><option value="0">省份</option></select></dd>
+      <dd>　　　　　<select class="city" lay-filter="city"><option value="0">城市</option></select></dd>
+      <dd>　　　　　<select class="county" lay-filter="county"><option value="0">区/县</option></select></dd>
+      <dd>　　　　　<select class="town" lay-filter="town"><option value="0">乡镇/街道（若不清楚，可不选）</option></select></dd>
 	  </div>
 	  <div id="bb">
 	  <dd>省　　份：<input type="text" name="province2" class="text"></dd>
@@ -177,7 +181,6 @@ class Template
       <dd class="captcha"><span>验 证 码：<input type="text" name="captcha" class="text2"></span> <img src="' .
             Config::get('system.index_php') . 'common/captcha2" onClick="this.src=\'' . Config::get('system.index_php')
             . 'common/captcha2?tm=\'+Math.random();" alt="验证码" title="看不清？换一张"></dd>
-      <dd class="info info1">请认真填写以上信息，然后点击下面的“立即提交订单”按钮以完成下单</dd>
       <dd class="info info2">为防止刷单，本站需登录QQ才能下单，登录后即可看见提交按钮</dd>
       <dd class="submit"><input type="submit" value="立即提交订单"> <img src="public/home/images/qq_login.png?' .
             staticCache() . '" alt="QQ登录" onClick="window.open(\'' . Config::get('system.index_php') .
@@ -218,8 +221,9 @@ class Template
 <script type="text/javascript" src="public/base/jquery.cookie.js?' . staticCache() . '"></script>
 <script type="text/javascript" src="public/base/ValidForm.js?' . staticCache() . '"></script>
 <script type="text/javascript" src="public/base/Address.js?' . staticCache() . '"></script>
-<script type="text/javascript" src="public/base/sha1.js?' . staticCache() . '"></script>
+<script type="text/javascript" src="public/base/LayUI/LayUI.js?' . staticCache() . '"></script>
 <script type="text/javascript" src="public/home/js/Order.js?' . staticCache() . '"></script>
+<link rel="stylesheet" type="text/css" href="public/base/LayUI/LayUI.css?' . staticCache() . '">
 <link rel="stylesheet" type="text/css" href="public/home/styles/Order3.css?' . staticCache() . '">
 <script type="text/javascript">let DISTRICT="' . Config::get('app.web_url') . Config::get('system.index_php') .
             'common/district";</script>
@@ -234,12 +238,15 @@ class Template
 .order dl dd.submit input{
     background:#09F;
 }
+.order dl dd .layui-form-select dl dd.layui-this{
+	background:#09F;
+}
 </style>
 
 <div class="order">
   <div class="buy"></div>
   
-  <form method="post" action="" target="_parent" class="form">
+  <form method="post" action="" target="_parent" class="form layui-form">
     <dl class="order_form">
       <dd class="center">请认真填写订单信息，以便您尽快收到货物</dd>
       <dd class="pro"><span class="left">订购产品：</span><span class="right"><select name="product_id"></select></span></dd>
@@ -255,14 +262,14 @@ class Template
 	  <input type="hidden" name="city">
 	  <input type="hidden" name="county">
 	  <input type="hidden" name="town">
-      <dd><span class="left"></span><span class="right"><select class="select province"><option value="0">省份</option>' .
-            '</select></span></dd>
-      <dd><span class="left"></span><span class="right"><select class="select city"><option value="0">城市</option>' .
-            '</select></span></dd>
-      <dd><span class="left"></span><span class="right"><select class="select county"><option value="0">区/县</option>' .
-            '</select></span></dd>
-      <dd><span class="left"></span><span class="right"><select class="select town"><option value="0">乡镇/街道（若不清楚，可不选）' .
-            '</option></select></span></dd>
+      <dd><span class="left"></span><span class="right"><select class="province" lay-filter="province">' .
+                '<option value="0">省份</option></select></span></dd>
+      <dd><span class="left"></span><span class="right"><select class="city" lay-filter="city">' .
+                '<option value="0">城市</option></select></span></dd>
+      <dd><span class="left"></span><span class="right"><select class="county" lay-filter="county">' .
+                '<option value="0">区/县</option></select></span></dd>
+      <dd><span class="left"></span><span class="right"><select class="town" lay-filter="town">' .
+                '<option value="0">乡镇/街道（若不清楚，可不选）</option></select></span></dd>
 	  </div>
 	  <div id="bb">
       <dd><span class="left">省　　份：</span><span class="right"><input type="text" name="province2" class="text"></span>' .
@@ -290,7 +297,6 @@ class Template
       <dd class="captcha"><span class="left"></span><span class="right"><img src="' . Config::get('system.index_php') .
             'common/captcha2" onClick="this.src=\'' . Config::get('system.index_php') .
             'common/captcha2?tm=\'+Math.random();" alt="验证码" title="看不清？换一张"></span></dd>
-      <dd class="info info1">请认真填写以上信息，然后点击下面的“立即提交订单”按钮以完成下单</dd>
       <dd class="info info2">为防止刷单，本站需登录QQ才能下单，登录后即可看见提交按钮</dd>
       <dd class="submit"><input type="submit" value="立即提交订单"> <img src="public/home/images/qq_login.png?' .
             staticCache() . '" alt="QQ登录" onClick="window.open(\'' . Config::get('system.index_php') .
@@ -333,8 +339,9 @@ class Template
 <script type="text/javascript" src="public/base/jquery.cookie.js?' . staticCache() . '"></script>
 <script type="text/javascript" src="public/base/ValidForm.js?' . staticCache() . '"></script>
 <script type="text/javascript" src="public/base/Address.js?' . staticCache() . '"></script>
-<script type="text/javascript" src="public/base/sha1.js?' . staticCache() . '"></script>
+<script type="text/javascript" src="public/base/LayUI/LayUI.js?' . staticCache() . '"></script>
 <script type="text/javascript" src="public/home/js/Order.js?' . staticCache() . '"></script>
+<link rel="stylesheet" type="text/css" href="public/base/LayUI/LayUI.css?' . staticCache() . '">
 <link rel="stylesheet" type="text/css" href="public/home/styles/Order3.css?' . staticCache() . '">
 <script type="text/javascript">let DISTRICT="' . Config::get('app.web_url') . Config::get('system.index_php') .
             'common/district";</script>
@@ -347,14 +354,17 @@ class Template
     border-bottom:1px solid #FC4400;
 }
 .order dl dd.submit input{
-    background:#FF6633;
+    background:#F63;
+}
+.order dl dd .layui-form-select dl dd.layui-this{
+	background:#F63;
 }
 </style>
 
 <div class="order">
   <div class="buy2">在线快速订购</div>
   
-  <form method="post" action="" target="_parent" class="form">
+  <form method="post" action="" target="_parent" class="form layui-form">
     <dl class="order_form">
       <dd class="pro"><span class="left">订购产品：</span><span class="right"><select name="product_id"></select></span></dd>
       <dd><span class="left">订购数量：</span><span class="right"><input type="text" name="count" value="1" class="text">' .
@@ -368,14 +378,14 @@ class Template
 	  <input type="hidden" name="city">
 	  <input type="hidden" name="county">
 	  <input type="hidden" name="town">
-      <dd><span class="left"></span><span class="right"><select class="select province"><option value="0">省份</option>' .
-            '</select></span></dd>
-      <dd><span class="left"></span><span class="right"><select class="select city"><option value="0">城市</option>' .
-            '</select></span></dd>
-      <dd><span class="left"></span><span class="right"><select class="select county"><option value="0">区/县</option>' .
-            '</select></span></dd>
-      <dd><span class="left"></span><span class="right"><select class="select town"><option value="0">乡镇/街道（若不清楚，可不选）' .
-            '</option></select></span></dd>
+      <dd><span class="left"></span><span class="right"><select class="province" lay-filter="province">' .
+                '<option value="0">省份</option></select></span></dd>
+      <dd><span class="left"></span><span class="right"><select class="city" lay-filter="city">' .
+                '<option value="0">城市</option></select></span></dd>
+      <dd><span class="left"></span><span class="right"><select class="county" lay-filter="county">' .
+                '<option value="0">区/县</option></select></span></dd>
+      <dd><span class="left"></span><span class="right"><select class="town" lay-filter="town">' .
+                '<option value="0">乡镇/街道（若不清楚，可不选）</option></select></span></dd>
 	  </div>
 	  <div id="bb">
       <dd><span class="left">省　　份：</span><span class="right"><input type="text" name="province2" class="text">' .
@@ -402,7 +412,6 @@ class Template
       <dd class="captcha"><span class="left"></span><span class="right"><img src="' . Config::get('system.index_php') .
             'common/captcha2" onClick="this.src=\'' . Config::get('system.index_php') .
             'common/captcha2?tm=\'+Math.random();" alt="验证码" title="看不清？换一张"></span></dd>
-      <dd class="info info1">请认真填写以上信息，然后点击下面的“立即提交订单”按钮以完成下单</dd>
       <dd class="info info2">为防止刷单，本站需登录QQ才能下单，登录后即可看见提交按钮</dd>
       <dd class="submit"><input type="submit" value="立即提交订单"> <img src="public/home/images/qq_login.png?' .
             staticCache() . '" alt="QQ登录" onClick="window.open(\'' . Config::get('system.index_php') .
@@ -445,8 +454,9 @@ class Template
 <script type="text/javascript" src="public/base/jquery.cookie.js?' . staticCache() . '"></script>
 <script type="text/javascript" src="public/base/ValidForm.js?' . staticCache() . '"></script>
 <script type="text/javascript" src="public/base/Address.js?' . staticCache() . '"></script>
-<script type="text/javascript" src="public/base/sha1.js?' . staticCache() . '"></script>
+<script type="text/javascript" src="public/base/LayUI/LayUI.js?' . staticCache() . '"></script>
 <script type="text/javascript" src="public/home/js/Order.js?' . staticCache() . '"></script>
+<link rel="stylesheet" type="text/css" href="public/base/LayUI/LayUI.css?' . staticCache() . '">
 <link rel="stylesheet" type="text/css" href="public/home/styles/Order4.css?' . staticCache() . '">
 <script type="text/javascript">let DISTRICT="' . Config::get('app.web_url') . Config::get('system.index_php') .
             'common/district";</script>
@@ -461,12 +471,15 @@ class Template
 .order dl dd.submit input{
     background:#F63;
 }
+.order dl dd .layui-form-select dl dd.layui-this{
+	background:#F63;
+}
 </style>
 
 <div class="order">
   <div class="buy"></div>
   
-  <form method="post" action="" target="_parent" class="form">
+  <form method="post" action="" target="_parent" class="form layui-form">
     <dl class="order_form">
       <dd class="pro"><span class="left">订购产品：</span><span class="right"><select name="product_id"></select></span></dd>
       <dd><span class="left">订购数量：</span><span class="right">' .
@@ -481,14 +494,14 @@ class Template
 	  <input type="hidden" name="city">
 	  <input type="hidden" name="county">
 	  <input type="hidden" name="town">
-      <dd><span class="left"></span><span class="right"><select class="select province"><option value="0">省份</option>' .
-            '</select></span></dd>
-      <dd><span class="left"></span><span class="right"><select class="select city"><option value="0">城市</option>' .
-            '</select></span></dd>
-      <dd><span class="left"></span><span class="right"><select class="select county"><option value="0">区/县</option>' .
-            '</select></span></dd>
-      <dd><span class="left"></span><span class="right"><select class="select town"><option value="0">乡镇/街道（若不清楚，可不选）' .
-            '</option></select></span></dd>
+      <dd><span class="left"></span><span class="right"><select class="province" lay-filter="province">' .
+                '<option value="0">省份</option></select></span></dd>
+      <dd><span class="left"></span><span class="right"><select class="city" lay-filter="city">' .
+                '<option value="0">城市</option></select></span></dd>
+      <dd><span class="left"></span><span class="right"><select class="county" lay-filter="county">' .
+                '<option value="0">区/县</option></select></span></dd>
+      <dd><span class="left"></span><span class="right"><select class="town" lay-filter="town">' .
+                '<option value="0">乡镇/街道（若不清楚，可不选）</option></select></span></dd>
 	  </div>
 	  <div id="bb">
       <dd><span class="left">省　　份：</span><span class="right">' .
@@ -515,7 +528,6 @@ class Template
       <dd class="captcha"><span class="left"></span><span class="right"><img src="' . Config::get('system.index_php') .
             'common/captcha2" onClick="this.src=\'' . Config::get('system.index_php') .
             'common/captcha2?tm=\'+Math.random();" alt="验证码" title="看不清？换一张"></span></dd>
-      <dd class="info info1">请认真填写以上信息，然后点击下面的“立即提交订单”按钮以完成下单</dd>
       <dd class="info info2">为防止刷单，本站需登录QQ才能下单，登录后即可看见提交按钮</dd>
       <dd class="submit"><input type="submit" value="立即提交订单"> <img src="public/home/images/qq_login.png?' .
             staticCache() . '" alt="QQ登录" onClick="window.open(\'' . Config::get('system.index_php') .
@@ -558,8 +570,9 @@ class Template
 <script type="text/javascript" src="public/base/jquery.cookie.js?' . staticCache() . '"></script>
 <script type="text/javascript" src="public/base/ValidForm.js?' . staticCache() . '"></script>
 <script type="text/javascript" src="public/base/Address.js?' . staticCache() . '"></script>
-<script type="text/javascript" src="public/base/sha1.js?' . staticCache() . '"></script>
+<script type="text/javascript" src="public/base/LayUI/LayUI.js?' . staticCache() . '"></script>
 <script type="text/javascript" src="public/home/js/Order.js?' . staticCache() . '"></script>
+<link rel="stylesheet" type="text/css" href="public/base/LayUI/LayUI.css?' . staticCache() . '">
 <link rel="stylesheet" type="text/css" href="public/home/styles/Order5.css?' . staticCache() . '">
 <script type="text/javascript">let DISTRICT="' . Config::get('app.web_url') . Config::get('system.index_php') .
             'common/district";</script>
@@ -574,12 +587,15 @@ class Template
 .order dl dd.submit input{
     background:#BE0F22;
 }
+.order dl dd .layui-form-select dl dd.layui-this{
+	background:#BE0F22;
+}
 </style>
 
 <div class="order">
   <div class="buy"></div>
   
-  <form method="post" action="" target="_parent" class="form">
+  <form method="post" action="" target="_parent" class="form layui-form">
     <dl class="order_form">
       <dd class="pro"><span class="left">订购产品：</span><span class="right"><select name="product_id"></select></span></dd>
       <dd><span class="left">订购数量：</span><span class="right"><input type="text" name="count" value="1" class="text">' .
@@ -594,14 +610,14 @@ class Template
 	  <input type="hidden" name="city">
 	  <input type="hidden" name="county">
 	  <input type="hidden" name="town">
-      <dd><span class="left"></span><span class="right"><select class="select province"><option value="0">省份</option>' .
-                '</select></span></dd>
-      <dd><span class="left"></span><span class="right"><select class="select city"><option value="0">城市</option>' .
-                '</select></span></dd>
-      <dd><span class="left"></span><span class="right"><select class="select county"><option value="0">区/县</option>' .
-                '</select></span></dd>
-      <dd><span class="left"></span><span class="right"><select class="select town"><option value="0">乡镇/街道（若不清楚，可不选）' .
-                '</option></select></span></dd>
+      <dd><span class="left"></span><span class="right"><select class="province" lay-filter="province">' .
+                '<option value="0">省份</option></select></span></dd>
+      <dd><span class="left"></span><span class="right"><select class="city" lay-filter="city">' .
+                '<option value="0">城市</option></select></span></dd>
+      <dd><span class="left"></span><span class="right"><select class="county" lay-filter="county">' .
+                '<option value="0">区/县</option></select></span></dd>
+      <dd><span class="left"></span><span class="right"><select class="town" lay-filter="town">' .
+                '<option value="0">乡镇/街道（若不清楚，可不选）</option></select></span></dd>
 	  </div>
 	  <div id="bb">
       <dd><span class="left">省　　份：</span><span class="right"><input type="text" name="province2" class="text"></span>' .
@@ -628,7 +644,6 @@ class Template
       <dd class="captcha"><span class="left"></span><span class="right"><img src="' . Config::get('system.index_php') .
                 'common/captcha2" onClick="this.src=\'' . Config::get('system.index_php') .
                 'common/captcha2?tm=\'+Math.random();" alt="验证码" title="看不清？换一张"></span></dd>
-      <dd class="info info1">请认真填写以上信息，然后点击下面的“立即提交订单”按钮以完成下单</dd>
       <dd class="info info2">为防止刷单，本站需登录QQ才能下单，登录后即可看见提交按钮</dd>
       <dd class="submit"><input type="submit" value="立即提交订单"> <img src="public/home/images/qq_login.png?' .
                 staticCache() . '" alt="QQ登录" onClick="window.open(\'' . Config::get('system.index_php') .
@@ -687,8 +702,9 @@ class Template
                     $output
                 );
                 $output = str_replace(
-                    '<div class="right"><div class="send"></div><div class="list"><div class="list1"></div>' .
-                    '<div class="list2"></div></div></div>',
+                    '<div class="right">
+    <div class="send"></div><div class="list"><div class="list1"></div><div class="list2"></div></div>
+  </div>',
                     $object['is_show_send'] ?
                         '<div class="right"><div class="send"></div><div class="list"><div class="list1"></div>' .
                         '<div class="list2"></div></div></div>' :
@@ -824,13 +840,14 @@ class Template
                 $dd .= "\r\n    " . '<input type="hidden" name="city">';
                 $dd .= "\r\n    " . '<input type="hidden" name="county">';
                 $dd .= "\r\n    " . '<input type="hidden" name="town">';
-                $dd .= "\r\n    " . '<dd>　　　　　<select class="select province"><option value="0">省份</option></select>' .
-                    '</dd>';
-                $dd .= "\r\n    " . '<dd>　　　　　<select class="select city"><option value="0">城市</option></select></dd>';
-                $dd .= "\r\n    " . '<dd>　　　　　<select class="select county"><option value="0">区/县</option></select>' .
-                    '</dd>';
-                $dd .= "\r\n    " . '<dd>　　　　　<select class="select town"><option value="0">乡镇/街道（若不清楚，可不选）</option>' .
-                    '</select></dd>';
+                $dd .= "\r\n    " . '<dd>　　　　　<select class="province" lay-filter="province">' .
+                    '<option value="0">省份</option></select></dd>';
+                $dd .= "\r\n    " .
+                    '<dd>　　　　　<select class="city" lay-filter="city"><option value="0">城市</option></select></dd>';
+                $dd .= "\r\n    " . '<dd>　　　　　<select class="county" lay-filter="county">' .
+                    '<option value="0">区/县</option></select></dd>';
+                $dd .= "\r\n    " . '<dd>　　　　　<select class="town" lay-filter="town">' .
+                    '<option value="0">乡镇/街道（若不清楚，可不选）</option></select></dd>';
                 $dd .= "\r\n    " . '</div>';
                 $dd .= "\r\n    " . '<div id="bb">';
                 $dd .= "\r\n    " . '<dd>省　　份：<input type="text" name="province2" class="text"></dd>';
@@ -847,13 +864,14 @@ class Template
                 $dd .= "\r\n    " . '<input type="hidden" name="city">';
                 $dd .= "\r\n    " . '<input type="hidden" name="county">';
                 $dd .= "\r\n    " . '<input type="hidden" name="town">';
+                $dd .= "\r\n    " . '<dd>　　　　　<select class="province" lay-filter="province">' .
+                    '<option value="0">省份</option></select></dd>';
                 $dd .= "\r\n    " .
-                    '<dd>　　　　　<select class="select province"><option value="0">省份</option></select></dd>';
-                $dd .= "\r\n    " . '<dd>　　　　　<select class="select city"><option value="0">城市</option></select></dd>';
-                $dd .= "\r\n    " .
-                    '<dd>　　　　　<select class="select county"><option value="0">区/县</option></select></dd>';
-                $dd .= "\r\n    " . '<dd>　　　　　<select class="select town"><option value="0">乡镇/街道（若不清楚，可不选）</option>' .
-                    '</select></dd>';
+                    '<dd>　　　　　<select class="city" lay-filter="city"><option value="0">城市</option></select></dd>';
+                $dd .= "\r\n    " . '<dd>　　　　　<select class="county" lay-filter="county">' .
+                    '<option value="0">区/县</option></select></dd>';
+                $dd .= "\r\n    " . '<dd>　　　　　<select class="town" lay-filter="town">' .
+                    '<option value="0">乡镇/街道（若不清楚，可不选）</option></select></dd>';
                 $dd .= "\r\n    " . '</div>';
             } elseif (in_array(5, $fieldTemp)) {
                 $dd .= "\r\n    " .
@@ -921,13 +939,14 @@ class Template
                 $dd .= "\r\n    " . '<input type="hidden" name="county">';
                 $dd .= "\r\n    " . '<input type="hidden" name="town">';
                 $dd .= "\r\n    " . '<dd><span class="left"></span><span class="right">' .
-                    '<select class="select province"><option value="0">省份</option></select></span></dd>';
+                    '<select class="province" lay-filter="province"><option value="0">省份</option></select></span></dd>';
                 $dd .= "\r\n    " . '<dd><span class="left"></span><span class="right">' .
-                    '<select class="select city"><option value="0">城市</option></select></span></dd>';
+                    '<select class="city" lay-filter="city"><option value="0">城市</option></select></span></dd>';
                 $dd .= "\r\n    " . '<dd><span class="left"></span><span class="right">' .
-                    '<select class="select county"><option value="0">区/县</option></select></span></dd>';
-                $dd .= "\r\n    " . '<dd><span class="left"></span><span class="right">' .
-                    '<select class="select town"><option value="0">乡镇/街道（若不清楚，可不选）</option></select></span></dd>';
+                    '<select class="county" lay-filter="county"><option value="0">区/县</option></select></span></dd>';
+                $dd .= "\r\n    " .
+                    '<dd><span class="left"></span><span class="right"><select class="town" lay-filter="town">' .
+                    '<option value="0">乡镇/街道（若不清楚，可不选）</option></select></span></dd>';
                 $dd .= "\r\n    " . '</div>';
                 $dd .= "\r\n    " . '<div id="bb">';
                 $dd .= "\r\n    " . '<dd><span class="left">省　　份：</span><span class="right">' .
@@ -948,13 +967,14 @@ class Template
                 $dd .= "\r\n    " . '<input type="hidden" name="county">';
                 $dd .= "\r\n    " . '<input type="hidden" name="town">';
                 $dd .= "\r\n    " . '<dd><span class="left"></span><span class="right">' .
-                    '<select class="select province"><option value="0">省份</option></select></span></dd>';
+                    '<select class="province" lay-filter="province"><option value="0">省份</option></select></span></dd>';
                 $dd .= "\r\n    " . '<dd><span class="left"></span><span class="right">' .
-                    '<select class="select city"><option value="0">城市</option></select></span></dd>';
+                    '<select class="city" lay-filter="city"><option value="0">城市</option></select></span></dd>';
                 $dd .= "\r\n    " . '<dd><span class="left"></span><span class="right">' .
-                    '<select class="select county"><option value="0">区/县</option></select></span></dd>';
-                $dd .= "\r\n    " . '<dd><span class="left"></span><span class="right">' .
-                    '<select class="select town"><option value="0">乡镇/街道（若不清楚，可不选）</option></select></span></dd>';
+                    '<select class="county" lay-filter="county"><option value="0">区/县</option></select></span></dd>';
+                $dd .= "\r\n    " .
+                    '<dd><span class="left"></span><span class="right"><select class="town" lay-filter="town">' .
+                    '<option value="0">乡镇/街道（若不清楚，可不选）</option></select></span></dd>';
                 $dd .= "\r\n    " . '</div>';
             } elseif (in_array(5, $fieldTemp)) {
                 $dd .= "\r\n    " . '<dd><span class="left">所在地区：</span><span class="right">' .

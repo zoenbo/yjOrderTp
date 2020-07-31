@@ -29,31 +29,31 @@ $(function () {
     showAllError: false,
     dragonfly: true,
     tipSweep: true,
-    ignoreHidden: true,
+    // ignoreHidden: true,
     datatype: {
       'province': function (gets) {
-        return $('input[name=type]:checked').val() === 'a' && gets !== '0';
+        return $('input[name=type]:checked').val() === 'b' ? true : gets !== '0';
       },
       'county': function (gets) {
-        return $('input[name=type]:checked').val() === 'a' && gets !== '0';
+        return $('input[name=type]:checked').val() === 'b' ? true : gets !== '0';
       },
       'city': function (gets) {
-        return $('input[name=type]:checked').val() === 'a' && gets !== '0';
+        return $('input[name=type]:checked').val() === 'b' ? true : gets !== '0';
       },
-      /* 'town' : function(gets){
-        return $('input[name=type]:checked').val()=='a' && gets!='0';
+      /* 'town': function(gets){
+        return $('input[name=type]:checked').val() === 'b' ? true : gets !== '0';
       }, */
       'province2': function (gets) {
-        return $('input[name=type]:checked').val() === 'b' && !(gets.length < 2 || gets.length > 10);
+        return $('input[name=type]:checked').val() === 'a' ? true : !(gets.length < 2 || gets.length > 10);
       },
       'county2': function (gets) {
-        return $('input[name=type]:checked').val() === 'b' && !(gets.length < 2 || gets.length > 15);
+        return $('input[name=type]:checked').val() === 'a' ? true : !(gets.length < 2 || gets.length > 15);
       },
       'city2': function (gets) {
-        return $('input[name=type]:checked').val() === 'b' && !(gets.length < 2 || gets.length > 15);
+        return $('input[name=type]:checked').val() === 'a' ? true : !(gets.length < 2 || gets.length > 15);
       },
       'town2': function (gets) {
-        return $('input[name=type]:checked').val() === 'b' && gets.length <= 25;
+        return $('input[name=type]:checked').val() === 'a' ? true : gets.length <= 25;
       },
       'post': function (gets) {
         return !(gets !== '' && !/^[\d]{6}$/.test(gets));
@@ -62,7 +62,7 @@ $(function () {
         return gets.length <= 250;
       },
       'email': function (gets) {
-        return !(gets !== '' && !/^[\w\-.]+@[\w\-.]+(\.\w+)+$/.test(gets));
+        return !(gets !== '' && !/^[\w\-.]+@[\w\-.]+(.\w+)+$/.test(gets));
       }
     }
   }).addRule([{

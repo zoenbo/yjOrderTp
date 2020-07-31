@@ -10,7 +10,7 @@
 {/block}
 
 {block name="form"}
-<form method="post" action="" class="form">
+<form method="post" action="" class="form layui-form">
   <table>
     <tr><td>分类名称：</td><td><input type="text" name="name" class="input-text"></td></tr>
     <tr><td>分类颜色：</td><td><input type="text" name="color" class="input-text"></td><td>留空则为黑色，颜色值可以为：表示颜色的英文单词，如red；16进制的颜色代码，如#FF0000；10进制的颜色代码，如rgb(255,0,0)。</td></tr>

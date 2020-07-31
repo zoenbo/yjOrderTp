@@ -1,24 +1,9 @@
 $(function () {
-  type($('input[name=type]:checked').val());
-  $('input[name=type]').on('ifChecked', function () {
-    type($(this).val());
-  });
-  function type (val) {
-    let $single = $('.single');
-    switch (val) {
-      case '0':
-        $single.hide();
-        break;
-      case '1':
-        $single.show();
-        break;
-    }
-  }
-
-  let $template = $('select[name=template]');
-  template($template);
-  $template.on('change', function () {
-    template($(this));
+  template($('select[name=template]'));
+  layui.use(['form'], function () {
+    layui.form.on('select(template)', function (data) {
+      template($(data.elem));
+    });
   });
   function template (element) {
     let $style = $('.style');
@@ -64,78 +49,121 @@ $(function () {
     }
   }
 
-  $('select[name=sort1]').on('change', function () {
-    product();
-  });
   product();
+  layui.use(['form'], function () {
+    layui.form.on('select(sort1)', function () {
+      product();
+    });
+  });
+  let $selected1 = $('select[name=selected1]');
+  let productSelect1 = xmSelect.render({
+    el: '.product_select1',
+    toolbar: {
+      show: true
+    },
+    filterable: true,
+    autoRow: true,
+    on: function (data) {
+      let html = '';
+      let productIds = [];
+      $.each(data.arr, function (index, value) {
+        html += '<option value="' + value.value + '" style="color:' + value.color + ';">' + value.name + '</option>';
+        productIds.push(value.value);
+      });
+      $selected1.html(html);
+      layui.use(['form'], function () {
+        layui.form.render();
+      });
+      productIds.sort((num1, num2) => num1 - num2);
+      $('input[name=product_ids1]').val(productIds.join(','));
+    }
+  });
   function product () {
     $.ajax({
       type: 'POST',
       url: ThinkPHP['AJAX'],
       data: {
-        product_sort_id: $('select[name=sort1] option:selected').val()
+        product_sort_id: $('select[name=sort1] option:selected').val(),
+        product_ids1: $('input[name=product_ids1]').val()
       },
       success: function (data) {
-        let $productPidSelect = $('.product_ids1 select');
-        let html = '';
-        let $pro = $('input[name=pro]');
-        let pro = $pro.length ? $pro.val() : '';
-        $productPidSelect.empty();
-        $.each($.parseJSON(data), function (index, value) {
-          html += '<option value="' + value.id + '"' + ($.inArray(value.id + '', pro.split(',')) !== -1 && $('input[name=product_type]:checked').val() === '0' ? 'selected' : '') + ' style="color:' + value.color + ';">' + value.name + '（' + (value.price + '元') + '）</option>';
+        productSelect1.update({
+          data: $.parseJSON(data)
         });
-        $productPidSelect.append(html);
       }
     });
   }
-
-  let $selected1 = $('select[name=selected1]');
   setTimeout(selected1, 500);
   function selected1 () {
-    $selected1.empty();
     let html = '';
-    let $pro = $('input[name=pro]');
-    let pro = $pro.length ? $pro.val() : '';
-    $('.product_ids1 select option').each(function () {
-      if ($.inArray($(this).val() + '', pro.split(',')) !== -1 && $('input[name=product_type]:checked').val() === '0') html += '<option value="' + $(this).val() + '" ' + ($(this).val() === $('input[name=product_selected]').val() ? 'selected' : '') + ' style="' + $(this).attr('style') + '">' + $(this).text() + '</option>';
+    $.each(productSelect1.getValue(), function (index, value) {
+      if ($.inArray(value.value + '', $('input[name=product_ids1]').val().split(',')) !== -1 && $('input[name=product_type]:checked').val() === '0') html += '<option value="' + value.value + '"' + (value.value + '' === $('input[name=product_selected]').val() ? 'selected' : '') + ' style="color:' + value.color + ';">' + value.name + '</option>';
     });
-    $selected1.append(html);
+    $selected1.html(html);
+    layui.use(['form'], function () {
+      layui.form.render();
+    });
   }
-  $('.product_ids1 select').on('change', function () {
-    $selected1.empty();
-    $('.product_ids1 select option:selected').each(function () {
-      $selected1.append('<option value="' + $(this).val() + '" style="' + $(this).attr('style') + '">' + $(this).text() + '</option>');
-    });
-  });
 
+  product2();
   let $selected2 = $('select[name=selected2]');
-  setTimeout(selected2, 500);
-  function selected2 () {
-    $selected2.empty();
-    let html = '';
-    let productSortId = '';
-    $('.product_ids2 select option:selected').each(function () {
-      if (!new RegExp('<optgroup label="' + $(this).parent().attr('label') + '" style="' + $(this).parent().attr('style') + '">').test(html)) {
-        html += '<optgroup label="' + $(this).parent().attr('label') + '" style="' + $(this).parent().attr('style') + '">';
-        productSortId += $(this).parent().attr('value') + ',';
-      }
-      html += '<option value="' + $(this).val() + '" ' + ($(this).val() === $('input[name=product_selected]').val() ? 'selected' : '') + ' style="' + $(this).attr('style') + '">' + $(this).text() + '</option>';
-    });
-    $selected2.append(html);
-    $('input[name=sort2]').val(productSortId.substring(0, productSortId.length - 1));
-  }
-  $('.product_ids2 select').on('change', function () {
-    $selected2.empty();
-    let html = '';
-    let productSortId = '';
-    $('.product_ids2 select option:selected').each(function () {
-      if (!new RegExp('<optgroup label="' + $(this).parent().attr('label') + '" style="' + $(this).parent().attr('style') + '">').test(html)) {
-        html += '<optgroup label="' + $(this).parent().attr('label') + '" style="' + $(this).parent().attr('style') + '">';
-        productSortId += $(this).parent().attr('value') + ',';
-      }
-      html += '<option value="' + $(this).val() + '" style="' + $(this).attr('style') + '">' + $(this).text() + '</option>';
-    });
-    $selected2.append(html);
-    $('input[name=sort2]').val(productSortId.substring(0, productSortId.length - 1));
+  let productSelect2 = xmSelect.render({
+    el: '.product_select2',
+    toolbar: {
+      show: true
+    },
+    filterable: true,
+    autoRow: true,
+    on: function (data) {
+      let html = '';
+      let productSortId = '';
+      let productIds = [];
+      $.each(data.arr, function (index, value) {
+        if (!new RegExp('<optgroup label="' + value.parent_name + '" style="color:' + value.parent_color + ';">').test(html)) {
+          html += '<optgroup label="' + value.parent_name + '" style="color:' + value.parent_color + ';">';
+          productSortId += value.parent_value + ',';
+        }
+        html += '<option value="' + value.value + '" style="color:' + value.color + ';"' + (value.value + '' === $('input[name=product_selected]').val() ? ' selected' : '') + '>' + value.name + '</option>';
+        productIds.push(value.value);
+      });
+      $selected2.html(html);
+      layui.use(['form'], function () {
+        layui.form.render();
+      });
+      $('input[name=sort2]').val(productSortId.substring(0, productSortId.length - 1));
+      productIds.sort((num1, num2) => num1 - num2);
+      $('input[name=product_ids2]').val(productIds.join(','));
+    }
   });
+  function product2 () {
+    $.ajax({
+      type: 'POST',
+      url: ThinkPHP['AJAX2'],
+      data: {
+        product_ids2: $('input[name=product_ids2]').val()
+      },
+      success: function (data) {
+        productSelect2.update({
+          data: $.parseJSON(data)
+        });
+      }
+    });
+  }
+  setTimeout(selected2, 1500);
+  function selected2 () {
+    let html = '';
+    let productSortId = '';
+    $.each(productSelect2.getValue(), function (index, value) {
+      if (!new RegExp('<optgroup label="' + value.parent_name + '" style="color:' + value.parent_color + ';">').test(html)) {
+        html += '<optgroup label="' + value.parent_name + '" style="color:' + value.parent_color + ';">';
+        productSortId += value.parent_value + ',';
+      }
+      html += '<option value="' + value.value + '" style="color:' + value.color + ';"' + (value.value + '' === $('input[name=product_selected]').val() ? ' selected' : '') + '>' + value.name + '</option>';
+    });
+    $selected2.html(html);
+    $('input[name=sort2]').val(productSortId.substring(0, productSortId.length - 1));
+    layui.use(['form'], function () {
+      layui.form.render();
+    });
+  }
 });

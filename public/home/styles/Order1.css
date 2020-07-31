@@ -3,9 +3,6 @@
 	margin:0;
 	padding:0;
 }
-select optgroup{
-	font-style:normal;
-}
 .order{
 	margin:0 auto;
 }
@@ -67,16 +64,37 @@ select optgroup{
 	font-weight:bold;
 	font:120% Microsoft YaHei, 微软雅黑, SimSun, 宋体, Arial, Verdana;
 }
+.order div.left dl dd.sms_verify input.button{
+	border:none;
+	cursor:pointer;
+	color:#FFF;
+	font-weight:bold;
+	font:100% Microsoft YaHei, 微软雅黑, SimSun, 宋体, Arial, Verdana;
+}
 .order div.left dl dd.submit img{
 	cursor:pointer;
 }
-.order div.left dl dd select{
-	height:25px;
-	font-size:14px;
-	border:1px solid #666;
-}
-.order div.left dl dd.pro select,.order div.left dl #aa select{
+.order dl dd .layui-form-select{
+	margin:0 0 5px 0;
 	width:445px;
+}
+.order dl dd dl.layui-anim{
+	width:445px;
+	margin:0;
+	top:21px;
+	padding:5px 0;
+}
+.order dl dd .layui-form-selectup dl.layui-anim{
+	top:auto;
+	bottom:17px;
+}
+.order dl dd .layui-form-select dl dd{
+	line-height:21px;
+}
+.order dl dd .layui-input,.order dl dd .layui-select{
+	height:19px;
+	line-height:19px;
+	border-color:#666;
 }
 .order div.left dl dd.captcha{
 	height:auto;

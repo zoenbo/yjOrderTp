@@ -8,7 +8,7 @@
 {/block}
 
 {block name="form"}
-<form method="post" action="" class="form">
+<form method="post" action="" class="form layui-form">
   <table>
     <tr><td>用 户 名：</td><td>{$One['name']}</td></tr>
     <tr><td>身　　份：</td><td>{if condition="$One['id']==1"}创始人{else/}{if condition="$One['level']==1"}超级管理员{elseif condition="$One['level']==2"/}普通管理员{/if}{/if}</td></tr>

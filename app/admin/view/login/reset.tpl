@@ -14,7 +14,7 @@
 </head>
 
 <body>
-<form method="post" action="" class="form">
+<form method="post" action="" class="form layui-form">
   <table>
     <tr><td colspan="2" class="left">此功能仅供系统创始人使用，如果您非系统创始人，请联系管理员登录后台为您重置密码</td></tr>
     <tr><td>密码重置密钥：</td><td><input type="text" name="reset_pass_key" class="input-text"></td></tr>

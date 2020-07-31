@@ -96,7 +96,7 @@ span.keyword{
 	float:right;
 	padding-right:30px;
 }
-.search select,.search input.input-text{
+.search .layui-form-select,.search input.input-text{
 	width:200px;
 }
 div.list{
@@ -134,6 +134,7 @@ p.nothing{
 	padding-top:40px;
 	clear:both;
 }
+
 form.page{
 	clear:both;
 }
@@ -143,8 +144,11 @@ form.page p{
 	font-size:16px;
 	margin:0;
 }
-form.page select{
-	width:80px;
+form.page .layui-form-select{
+	width:100px;
+}
+form.page .layui-form-select dl dd{
+	text-align:left;
 }
 .form{
 	width:95%;
@@ -176,11 +180,14 @@ form.page select{
 .form table tr td.left{
 	text-align:left;
 }
-.form table tr td input.input-text{
+.form table tr td input.input-text,
+.form table tr td .layui-form-select{
 	width:358px;
 }
-.form table tr td select{
-	width:360px;
+.form table tr td .xm-select{
+	width:356px;
+	position:relative;
+	top:2px;
 }
 .form table tr td textarea{
 	width:358px;
@@ -247,8 +254,15 @@ form.page select{
 .tools h3{
 	clear:both;
 }
+.tools form.search{
+	float:none;
+}
 .tools label{
 	display:inline-block;
 	float:left;
 	padding-right:5px;
+}
+.tools label input.input-text,
+.tools .layui-form-select{
+	width:150px;
 }

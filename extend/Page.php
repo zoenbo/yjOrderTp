@@ -45,18 +45,18 @@ class Page
     {
         $upRow = $this->nowPage - 1;
         $downRow = $this->nowPage + 1;
-        $html = '<form method="get" action="" class="page"><p>' . $this->nowPage . '/' . $this->totalPages .
+        $html = '<form method="get" action="" class="page layui-form"><p>' . $this->nowPage . '/' . $this->totalPages .
             '页（每页' . $this->pageSize . '条/共' . $this->totalRows . '条） | ' . ($this->nowPage > 1 ? '<a href="' .
                 $this->url(1) . '">首页</a> |' : '首页 |') . ' ' . ($upRow > 0 ? '<a href="' . $this->url($upRow) .
-                '">上一页</a> |' : '上一页 |') . ' ' . ($downRow <= $this->totalPages ? '<a href="' .
-                $this->url($downRow) . '">下一页</a> |' : '下一页 |') . ' ' . ($this->nowPage < $this->totalPages ?
-                '<a href="' . $this->url($this->totalPages) . '">尾页</a>' : '尾页') .
-            ' <select class="select" onchange="location.href=this.options[this.selectedIndex].value">';
+                '">上一页</a> |' : '上一页 |') . ' ' . ($downRow <= $this->totalPages ? '<a href="' . $this->url($downRow) .
+                '">下一页</a> |' : '下一页 |') . ' ' . ($this->nowPage < $this->totalPages ? '<a href="' .
+                $this->url($this->totalPages) . '">尾页</a>' : '尾页') .
+            ' <select lay-filter="page" lay-search>';
         for ($i = 1; $i <= $this->totalPages; $i++) {
-            $html .= '<option value="' . $this->url($i) . '" ' . ($i == $this->nowPage ? 'selected' : '') . '>第' . $i
-                . '页</option>';
+            $html .= '<option value="' . $this->url($i) . '" ' . ($i == $this->nowPage ? 'selected' : '') . '>第' . $i .
+                '页</option>';
         }
         $html .= '</select></p></form>';
-        return $html;
+        return str_replace('?' . $this->p . '=1', '', $html);
     }
 }

@@ -24,7 +24,7 @@ let ThinkPHP = {
 </head>
 
 <body>
-<form method="post" action="" class="form">
+<form method="post" action="" class="form layui-form">
   <input type="hidden" name="qqau" value="{$Qqau}">
   <table>
     <tr><td>QQ网名：</td><td>{$Nickname}</td></tr>

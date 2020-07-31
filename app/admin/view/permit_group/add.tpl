@@ -10,7 +10,7 @@
 {/block}
 
 {block name="form"}
-<form method="post" action="" class="form">
+<form method="post" action="" class="form layui-form">
   <table>
     <tr><td>权限组名称：</td><td><input type="text" name="name" class="input-text"></td><td></td></tr>
     <tr><td>权　　限：</td><td colspan="2" class="tip">以黑色字体显示的权限为模块的主权限，以蓝色字体显示的权限为此模块中的子权限，以红色字体显示的权限为默认权限</td></tr>

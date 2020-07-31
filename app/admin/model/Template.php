@@ -82,17 +82,17 @@ class Template extends Model
             'date' => time()
         ];
         if (Request::post('product_type') == 0) {
-            if (!is_array(Request::post('product_ids1'))) {
+            if (!Request::post('product_ids1')) {
                 return '请至少选择一个产品！';
             }
-            $data['product'] = '0|' . Request::post('sort1') . '|' . implode(',', Request::post('product_ids1')) . '|' .
-                Request::post('selected1') . '|' . Request::post('view_type');
+            $data['product'] = '0|' . Request::post('sort1') . '|' . Request::post('product_ids1') .
+                '|' . Request::post('selected1') . '|' . Request::post('view_type');
         } elseif (Request::post('product_type') == 1) {
-            if (!is_array(Request::post('product_ids2'))) {
+            if (!Request::post('product_ids2')) {
                 return '请至少选择一个产品！';
             }
-            $data['product'] = '1|' . Request::post('sort2') . '|' . implode(',', Request::post('product_ids2')) . '|' .
-                Request::post('selected2') . '|' . Request::post('view_type');
+            $data['product'] = '1|' . Request::post('sort2') . '|' . Request::post('product_ids2') .
+                '|' . Request::post('selected2') . '|' . Request::post('view_type');
         }
         $validate = new valid();
         if ($validate->check($data)) {
@@ -126,17 +126,17 @@ class Template extends Model
             'often' => Request::post('often', '', 'stripslashes')
         ];
         if (Request::post('product_type') == 0) {
-            if (!is_array(Request::post('product_ids1'))) {
+            if (!Request::post('product_ids1')) {
                 return '请至少选择一个产品！';
             }
-            $data['product'] = '0|' . Request::post('sort1') . '|' . implode(',', Request::post('product_ids1')) . '|' .
-                Request::post('selected1') . '|' . Request::post('view_type');
+            $data['product'] = '0|' . Request::post('sort1') . '|' . Request::post('product_ids1') .
+                '|' . Request::post('selected1') . '|' . Request::post('view_type');
         } elseif (Request::post('product_type') == 1) {
-            if (!is_array(Request::post('product_ids2'))) {
+            if (!Request::post('product_ids2')) {
                 return '请至少选择一个产品！';
             }
-            $data['product'] = '1|' . Request::post('sort2') . '|' . implode(',', Request::post('product_ids2')) . '|' .
-                Request::post('selected2') . '|' . Request::post('view_type');
+            $data['product'] = '1|' . Request::post('sort2') . '|' . Request::post('product_ids2') .
+                '|' . Request::post('selected2') . '|' . Request::post('view_type');
         }
         $validate = new valid();
         if ($validate->check($data)) {

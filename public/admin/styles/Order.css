@@ -1,20 +1,20 @@
 @charset "utf-8";
-.tools label input.text{
-	width:130px;
-}
-.tools select{
-	width:150px;
-}
 .multi_form .radio-box{
 	padding-right:0;
 	margin:5px 0 0 0;
+	position:relative;
+	top:5px;
 }
 .multi_form label{
 	line-height:19px;
 }
-.multi_form select,.multi_form input.btn{
+.multi_form .check-box{
 	position:relative;
-	top:-3px;
+	top:5px;
+}
+.multi_form input.btn{
+	position:relative;
+	top:-2px;
 }
 .multi_form label div{
 	margin:-3px 10px;

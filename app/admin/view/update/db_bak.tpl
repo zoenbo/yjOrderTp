@@ -11,7 +11,7 @@
 {/block}
 
 {block name="form"}
-<form method="post" action="" class="form">
+<form method="post" action="" class="form layui-form">
   <table>
     <tr><td>此备份功能只能备份您在本系统中添加的个人数据，仅供系统升级时使用</td></tr>
     <tr><td colspan="2" class="left"><input type="submit" value="确认备份" class="btn btn-primary radius"></td></tr>

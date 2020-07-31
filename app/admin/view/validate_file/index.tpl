@@ -7,7 +7,7 @@
 {/block}
 
 {block name="form"}
-<form method="post" action="" class="form">
+<form method="post" action="" class="form layui-form">
   <table>
     <tr><td colspan="2" class="tip left">此功能可按照您输入的内容在您的系统根目录生成对应的文件，用于第三方平台中的网站所属权验证；每次生成验证文件，将会自动删除上一次生成的验证文件。</td></tr>
     <tr><td>文 件 名：</td><td><input type="text" name="name" value="{:config('validate_file.name')}" class="input-text"></td></tr>

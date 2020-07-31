@@ -8,7 +8,7 @@
 {/block}
 
 {block name="form"}
-<form method="post" action="" class="form">
+<form method="post" action="" class="form layui-form">
   <table>
     <tr><td class="tip">数据表，不选则为备份全部数据表</td></tr>
   </table>

@@ -28,7 +28,7 @@
   {include file="order/search" /}
   
   <h3>批量操作</h3>
-  <form method="post" action="" class="multi_form">
+  <form method="post" action="" class="multi_form layui-form">
     <input type="hidden" name="ids">
     {if condition="session(config('system.session_key').'.level')==1||in_array(config('permit_manage.'.request()->controller().'.output'),session(config('system.session_key').'.permit_manage'))"}
     <div class="radio-box"><label><input type="radio" name="type" value="0" checked>导出当前所有订单</label></div>
@@ -47,7 +47,7 @@
     {/if}
     {/if}
     {if condition="session(config('system.session_key').'.level')==1||in_array(config('permit_manage.'.request()->controller().'.state'),session(config('system.session_key').'.permit_manage'))"}
-    <div class="radio-box"><label><input type="radio" name="type" value="5">修改订单状态：</label></div><select name="order_state_id" class="select">{$OrderState}</select>
+    <div class="radio-box"><label><input type="radio" name="type" value="5">修改订单状态：</label></div><select name="order_state_id" lay-search>{$OrderState}</select>
     {/if}
     <input type="submit" value="确认操作" class="btn btn-primary radius multi">
   </form>

@@ -13,7 +13,7 @@
 </head>
 
 <body>
-<form method="post" action="" class="form">
+<form method="post" action="" class="form layui-form">
   <input type="hidden" name="pass_key" value="{$PassKey}">
   <table>
     <tr><td colspan="2" style="text-align:center;">系统信息</td></tr>

@@ -9,7 +9,7 @@
 {/block}
 
 {block name="form"}
-<form method="post" action="" class="form">
+<form method="post" action="" class="form layui-form">
   <table>
     <tr><td>公司名称：</td><td><input type="text" name="name" class="input-text"></td></tr>
     <tr><td>公司代码：</td><td><input type="text" name="code" class="input-text"></td><td><a href="https://www.yvjie.cn/help/detail.html?id=3" target="_blank">点击此处</a>查询公司代码</td></tr>
