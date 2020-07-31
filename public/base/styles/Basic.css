@@ -51,8 +51,7 @@ span.keyword{
 	display:none;
 }
 .header{
-	overflow:hidden;
-	margin:0 0 10px 20px;
+	margin:0 0 0 20px;
 }
 .header h3{
 	margin-top:5px;
@@ -65,6 +64,7 @@ span.keyword{
 }
 .header ul{
 	font-weight:bold;
+	float:left;
 	margin:3px 0 0 0;
 }
 .header ul li{
@@ -92,7 +92,7 @@ span.keyword{
 	line-height:30px;
 }
 .search{
-	font-size:16px;
+	font-size:14px;
 	float:right;
 	padding-right:30px;
 }
