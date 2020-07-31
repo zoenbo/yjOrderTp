@@ -209,6 +209,7 @@ form.page .layui-form-select dl dd{
 	width:500px;
 	margin:0 auto;
 	table-layout:fixed;
+	clear:both;
 }
 .detail tr td{
 	border-bottom:1px dashed #deeffb;
