@@ -24,7 +24,7 @@ select optgroup{
 	display:block;
 	width:100%;
 }
-.order dl dd.pro span.right label,.order dl .attr dd span.right label{
+.order dl dd span.right label{
 	border:1px #ccc solid;
 	border-radius:5px;
 	padding:5px 13px;
