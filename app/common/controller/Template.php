@@ -96,7 +96,7 @@ class Template
       <dl>
         <input type="hidden" name="template_id" value="">
         <dd>订单查询</dd>
-        <dd>查询方式：按 <label><input type="radio" name="field" value="1" checked>订单号</label> ' .
+        <dd>查询方式：<label><input type="radio" name="field" value="1" checked>订单号</label> ' .
             '<label><input type="radio" name="field" value="2">姓名</label> ' .
             '<label><input type="radio" name="field" value="3">联系电话</label></dd>
         <dd>关 键 词：<input type="text" name="keyword" class="text"></dd>
@@ -189,7 +189,7 @@ class Template
     <dl>
       <input type="hidden" name="template_id" value="">
       <dd>订单查询</dd>
-      <dd>查询方式：按 <label><input type="radio" name="field" value="1" checked>订单号</label> ' .
+      <dd>查询方式：<label><input type="radio" name="field" value="1" checked>订单号</label> ' .
           '<label><input type="radio" name="field" value="2">姓名</label> ' .
           '<label><input type="radio" name="field" value="3">联系电话</label></dd>
       <dd>关 键 词：<input type="text" name="keyword" class="text"></dd>
@@ -302,7 +302,7 @@ class Template
     <dl>
       <input type="hidden" name="template_id" value="">
       <dd class="center">订单查询</dd>
-      <dd><span class="left">查询方式：</span><span class="right">按 ' .
+      <dd><span class="left">查询方式：</span><span class="right">' .
             '<label><input type="radio" name="field" value="1" checked>订单号</label> ' .
             '<label><input type="radio" name="field" value="2">姓名</label> ' .
             '<label><input type="radio" name="field" value="3">联系电话</label></span></dd>
@@ -414,7 +414,7 @@ class Template
     <dl>
       <input type="hidden" name="template_id" value="">
       <dd class="center">订单查询</dd>
-      <dd><span class="left">查询方式：</span><span class="right">按 ' .
+      <dd><span class="left">查询方式：</span><span class="right">' .
             '<label><input type="radio" name="field" value="1" checked>订单号</label> ' .
             '<label><input type="radio" name="field" value="2">姓名</label> ' .
             '<label><input type="radio" name="field" value="3">联系电话</label></span></dd>
@@ -527,7 +527,7 @@ class Template
     <dl>
       <input type="hidden" name="template_id" value="">
       <dd class="center">订单查询</dd>
-      <dd><span class="left">查询方式：</span><span class="right">按 ' .
+      <dd><span class="left">查询方式：</span><span class="right">' .
             '<label><input type="radio" name="field" value="1" checked>订单号</label> ' .
             '<label><input type="radio" name="field" value="2">姓名</label> ' .
             '<label><input type="radio" name="field" value="3">联系电话</label></span></dd>
@@ -640,7 +640,7 @@ class Template
     <dl>
       <input type="hidden" name="template_id" value="">
       <dd class="center">订单查询</dd>
-      <dd><span class="left">查询方式：</span><span class="right">按 ' .
+      <dd><span class="left">查询方式：</span><span class="right">' .
                 '<label><input type="radio" name="field" value="1" checked>订单号</label> ' .
                 '<label><input type="radio" name="field" value="2">姓名</label> ' .
                 '<label><input type="radio" name="field" value="3">联系电话</label></span></dd>
