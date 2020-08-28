@@ -47,7 +47,6 @@ class Profile extends Base
     //QQ登录
     public function qq()
     {
-        include ROOT_PATH . '/extend/qq/autoload.php';
         $qc = new QC('', '', Config::get('app.web_url') . 'callback.php/qq_profile');
         $qc->qqLogin();
     }

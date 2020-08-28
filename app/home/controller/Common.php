@@ -41,7 +41,6 @@ class Common extends Base
     //QQ登录
     public function qq()
     {
-        include ROOT_PATH . '/extend/qq/autoload.php';
         $QC = new QC('', '', Config::get('app.web_url') . Config::get('system.index_php') . 'common/qqReturn');
         $QC->qqLogin();
     }
@@ -49,7 +48,6 @@ class Common extends Base
     //QQ登录返回
     public function qqReturn()
     {
-        include ROOT_PATH . '/extend/qq/autoload.php';
         $QC = new QC('', '', Config::get('app.web_url') . Config::get('system.index_php') . 'common/qqReturn');
         $callback = $QC->qqCallback();
         $openid = $QC->getOpenid();

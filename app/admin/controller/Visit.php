@@ -47,7 +47,7 @@ class Visit extends Base
                 $Visit->truncate();
                 return $this->success(
                     '',
-                    '文件生成成功！<a href="' . Config::get('app.web_url') . $file . '">下载</a>' .
+                    '文件生成成功！<a href="' . Config::get('app.web_url') . $file . '">下载</a> ' .
                     '<a href="javascript:" onclick="window.parent.addTab(\'' . Route::buildUrl('/output/index') .
                     '\',\'导出的数据\')">去管理文件</a> <a href="' . Route::buildUrl('/' .
                         parse_name(Request::controller()) . '/index') . '">返回</a>',
