@@ -322,6 +322,10 @@ class Order extends Model
         }
         $validate = new valid();
         if ($validate->only($scene)->check($data)) {
+            unset($data['province2']);
+            unset($data['city2']);
+            unset($data['county2']);
+            unset($data['town2']);
             return $this->insertGetId($data);
         } else {
             return $validate->getError();
