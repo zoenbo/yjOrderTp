@@ -122,7 +122,7 @@ return [
         echo '<meta charset="utf-8">';
         if ($Wechat->errMsg == 'no access') {
             echo 'IP白名单配置正常，无需再配置';
-        } elseif (preg_match('/invalid ip (.*) ipv6 (.*), not in whitelist hint: \[/', $Wechat->errMsg, $ip)) {
+        } elseif (preg_match('/invalid ip (.*) ipv6 (.*), not in whitelist rid:/', $Wechat->errMsg, $ip)) {
             echo 'IPv4地址：' . $ip[1] . '<br>IPv6地址：' . $ip[2] . '（如果IPv6地址前包含::ffff:，则无需配置IPv6地址）';
         } else {
             echo '发生其它错误，错误信息：' . $Wechat->errMsg . '，如有疑问请联系客服处理';
